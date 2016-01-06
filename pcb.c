@@ -3,7 +3,9 @@
 //
 
 #include <stdlib.h>
+#include <stdio.h>
 
-pcb (void) {
-
+int main(void) {
+    printf("test");
+    return 0;
 }
