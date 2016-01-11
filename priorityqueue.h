@@ -1,0 +1,8 @@
+//
+// Created by jef on 1/11/16.
+//
+
+#ifndef ASSIGNMENT1_PRIORITYQUEUE_H
+#define ASSIGNMENT1_PRIORITYQUEUE_H
+
+#endif //ASSIGNMENT1_PRIORITYQUEUE_H
