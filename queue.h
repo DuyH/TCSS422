@@ -15,10 +15,10 @@ typedef struct node_type {
 	struct node_type *next;
 }Node;
 
-void enqueue (Node *);
+void enqueue (Node *head);
 
-Node * dequeue();
+Node * dequeue(Node *head);
 
-Node * peek();
+Node * peek(Node *head);
 
 #endif /* QUEUE_H_ */
