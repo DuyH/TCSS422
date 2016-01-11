@@ -30,5 +30,5 @@ const char* getStateName(enum process_state state) {
 }
 
 void toString(PCB pcb) {
-    printf("PID: %d, Priority: %d, State: %s, Next PCB: %p\n", pcb.pid, pcb.priority, getStateName(pcb.state), pcb.next_pcb);
+    printf("PID: %d, Priority: %d, State: %s\n", pcb.pid, pcb.priority, getStateName(pcb.state));
 }
