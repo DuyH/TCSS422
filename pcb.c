@@ -14,8 +14,6 @@
 #include <stdio.h>
 #include "pcb.h"
 
-typedef PCB * PCB_p;
-
 const char* getStateName(enum process_state state) {
     switch (state) {
         case new:
