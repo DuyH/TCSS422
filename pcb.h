@@ -27,4 +27,4 @@ typedef struct pcb {
 
 void toString(PCB pcb);
 
-#endif PCB_H_
+#endif /* PCB_H_ */
