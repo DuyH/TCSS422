@@ -1,29 +1,35 @@
 /*
  * pcb.h
- * Authors: Duy Huynh & Jeffrey LeCompte
  *
+ *  Created on: Jan 11, 2016
+ *      Author: trung, duy
  */
 
 #ifndef PCB_H_
 #define PCB_H_
 
 typedef enum process_state {
-    new,
-    ready,
-    running,
-    waiting,
-    terminated
-} state;
+	new,
+	ready,
+	running,
+	waiting,
+	terminated
+}state;
 
-typedef struct pcb {
-    int pid;                    /* identification number (size 4) */
-    int priority;               /* priority (size 4) */
-    enum process_state state;   /* current state (size 4) */
-    // Program counter, stack pointer, registers
-    // Address space info (how much memory it takes)
-    // Expected execution time (burst)
+typedef struct pcb_type {
+	int pid;
+	int priority;
+	enum process_state state;
 } PCB;
 
-void toString(PCB pcb);
+
+int getPID (PCB *pcb);
+
+int getPriority (PCB *pcb);
+
+const char* getStateName(enum process_state state);
+
+void toString(PCB * pcb);
 
 #endif /* PCB_H_ */
+

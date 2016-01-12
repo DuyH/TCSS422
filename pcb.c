@@ -1,6 +1,6 @@
 /*
  * pcb.c
- * Authors: Duy Huynh & Jeffrey LeCompte
+ * Authors: Duy Huynh & Jeffrey LeCompte, Trung Dang
  * Sources:
  *         https://en.wikipedia.org/wiki/Process_control_block
  *         http://www.tutorialspoint.com/operating_system/os_processes.htm
@@ -26,9 +26,23 @@ const char* getStateName(enum process_state state) {
             return "waiting";
         case terminated:
             return "terminated";
+        default: return "0";
     }
 }
 
-void toString(PCB pcb) {
-    printf("PID: %d, Priority: %d, State: %s\n", pcb.pid, pcb.priority, getStateName(pcb.state));
+
+int getPID (PCB *pcb) {
+	return pcb->pid;
+}
+
+int getPriority (PCB *pcb) {
+	return pcb->priority;
+}
+
+enum process_state getState(PCB *pcb) {
+	return pcb->state;
+}
+
+void toString(PCB * pcb) {
+    printf("contents: PID: %d, Priority: %d, State: %s\n", pcb->pid, pcb->priority, getStateName(pcb->state));
 }
