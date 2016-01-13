@@ -33,6 +33,11 @@ const char* getStateName(enum process_state state) {
     }
 }
 
+PCB * create() {
+    PCB * pcb = calloc(3, sizeof(PCB));
+    return pcb;
+}
+
 /**
  * Get the id of this PCB
  *

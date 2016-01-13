@@ -1,8 +1,8 @@
 /*
- * queue.c
+ *  queue.c
  *
  *  Created on: Jan 11, 2016
- *      Author: Trung Dang
+ *  Author: Trung Dang
  *
  *  A linked-list implementation of FIFO queue. Supports enqueue, dequeue, and print queue.
  */

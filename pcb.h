@@ -14,13 +14,15 @@ typedef enum process_state {
 	running,
 	waiting,
 	terminated
-}state;
+} state;
 
 typedef struct pcb_type {
 	int pid;
 	int priority;
 	enum process_state state;
 } PCB;
+
+PCB * create();
 
 int getPID (PCB *pcb);
 
