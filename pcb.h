@@ -22,7 +22,6 @@ typedef struct pcb_type {
 	enum process_state state;
 } PCB;
 
-
 int getPID (PCB *pcb);
 
 int getPriority (PCB *pcb);

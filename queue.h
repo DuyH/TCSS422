@@ -12,9 +12,6 @@
 
 #include "pcb.h"
 
-/***
- *
- */
 typedef struct node_type {
 	PCB * data;
 	struct node_type *next;
@@ -27,6 +24,5 @@ Node * dequeue(Node **head);
 Node * peek(Node *head);
 
 void printQueue(Node *head, int printLastNode);
-
 
 #endif /* QUEUE_H_ */

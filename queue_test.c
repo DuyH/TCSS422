@@ -2,7 +2,9 @@
  * queue_test.c
  *
  *  Created on: Jan 11, 2016
- *      Author: trung
+ *      Author: Trung Dang
+ *
+ *      Testing the implementation of FIFO queue.c file. queue.c is implemented using a linked-list structure.
  */
 
 #include <stdlib.h>
@@ -11,79 +13,70 @@
 
 #include "queue.h"
 
-Node * initializeQueue (Node * head){
-	Node *curr = head;
-	if (curr == NULL ) {
-		Node * headNode = (Node *) malloc(sizeof(Node));
-		PCB * pcb = (PCB *)malloc (sizeof(PCB));
-		pcb->pid = 0;
-		pcb->priority = rand()%(32); //source: http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
-		pcb->state = new;
-		headNode->data = pcb;
-		curr = headNode;
 
-		int i;
-		int number_pcb = rand()%21; //source: http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
-		for (i = 1; i <= number_pcb; i++) {
-			Node *newNode = (Node *) malloc(sizeof(Node));
-			PCB *new_pcb =  (PCB *) malloc(sizeof(PCB));
-			new_pcb->pid = i;
-			new_pcb->priority = rand()%31;	//source: http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
-			new_pcb->state = new;
-			newNode->data = new_pcb;
-			curr = enqueue(curr, newNode);
-			//if (i == 1) printQueue(head, 0);
-			//else printQueue(head, 1);
-		}
-	}
-	head = curr;
-	return head;
-}
-
+/**
+ * Test the enqueue function of queue.c. This function also prints out each element of the queue as
+ * they are added.
+ *
+ * Parameters:	Node* head:	A pointer to the head of the queue
+ * 				PCB * pcbs:	A pointer to the array of structures of PCB type
+ * 				int size  :	The size of the array
+ */
 Node * testEnqueue(Node *head, PCB *pcbs, int size) {
 	printf("Testing enqueue with %d PCBs...\n", size);
-	int i = 1;
+	int i = 1, printLastNodeOrNot = 0;
 	PCB *p;
 	for (p = pcbs; p < pcbs + size; p++ ) {
 		Node *newNode = (Node *) malloc(sizeof(Node));
 		newNode->data = p;
 		head = enqueue(head, newNode);
-		printQueue(head, 0);
+		printQueue(head, printLastNodeOrNot);
 		i++;
 	}
 	return head;
 }
+/**
+ * Test the dequeue function of queue.c. Dequeue happens at the front of the queue.
+ * The content of the element removed will be printed.
+ *
+ * Parameters:	Node * head: A pointer to the head of the queue
+ */
 void testDequeue(Node *head) {
 	printf("Testing dequeue...\n");
-	//Node *curr = head;
+	int printLastNodeOrNot = 1;
 	while (head != NULL) {
 		Node * result = dequeue(&head);
-//		Node *temp = (Node *) malloc(sizeof(Node));
-//		temp->data->pid = result->data->pid;
-//		temp->data->priority = result->data->priority;
-//		temp->data->state = result->data->state;
-		printQueue(head, 1);
-//		printf("\ncontents: PID %d, Priority %d, State: %s\n", temp->data->pid,
-//						temp->data->priority, getStateName(temp->data->state));
+		printQueue(head, printLastNodeOrNot);
 		printf("\n\tcontents: PID %d, Priority %d, State: %s\n", result->data->pid,
 				result->data->priority, getStateName(result->data->state));
-
 	}
 }
+/**
+ * Generate elements for an array of PCB structures based on specified size.
+ * The rand()%31 function came from a formula on website:
+ * http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
+ *
+ * Parameters:	PCB *pcbs:	A pointer to the array of structures to be generated
+ * 				int size:	The size of the array
+ */
 PCB * createPCBS(PCB *pcbs, int size) {
 	int i = 0;
 	PCB *p;
-	//PCB *curr = pcbs;;
 	for (p = pcbs; p < pcbs + size; p++) {
 		(*p).pid = i;
 		i++;
-		(*p).priority = rand()%31;	//source: http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
+		(*p).priority = rand()%31;
 		(*p).state = new;
 	}
-	//pcbs = curr;
 	return pcbs;
 }
 
+/**
+ *	Print the content of the array of structures specified in the parameter.
+ *
+ *	Parameters:	PCB * pcbs:	A pointer to the array of structures to be printed
+ *				int size:	The size of the array
+ */
 void printPCBS(PCB *pcbs, int size) {
 	PCB *p;
 	int counter = 0;
@@ -91,19 +84,22 @@ void printPCBS(PCB *pcbs, int size) {
 		printf("\tPCB%d(PID: %d, Priority: %d, State: %s)\n", counter++, (*p).pid, (*p).priority, getStateName((*p).state));
 	}
 }
+
+/**
+ * Main function.
+ * The rand()%21 function came from formula on website:
+ * //source: http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
+ */
 int main() {
 	Node *head = NULL;
-	//Node *head2 = NULL;
-	srand (time (0));
-	int pcbs_size = 4;//rand()%21;
-	PCB * pcbs = calloc(pcbs_size, sizeof(PCB));
+	srand (time (0));		//Set the rand() to generate a new series each time the program is run
+	int pcbs_size = rand()%21;
+	PCB * pcbs = calloc(pcbs_size, sizeof(PCB));	//allocate space for an array of PCBs
 	createPCBS(pcbs, pcbs_size);
 	printf("Queue created: head == %p (NULL)\n", head);
 	printf("PCB initialized:\n");
 	printPCBS(pcbs, pcbs_size);
-	//printQueue("Queue initialized: %");
 	head = testEnqueue(head, pcbs, pcbs_size);
 	testDequeue(head);
-
 	return 0;
 }

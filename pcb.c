@@ -14,6 +14,9 @@
 #include <stdio.h>
 #include "pcb.h"
 
+/**
+ * The default state of a PCB
+ */
 const char* getStateName(enum process_state state) {
     switch (state) {
         case new:
@@ -30,19 +33,38 @@ const char* getStateName(enum process_state state) {
     }
 }
 
-
+/**
+ * Get the id of this PCB
+ *
+ * Parameters: PCB * pcb: A pointer to the PCB structure
+ */
 int getPID (PCB *pcb) {
 	return pcb->pid;
 }
 
+/**
+ * Get the priority of this PCB
+ *
+ * Parameters: PCB * pcb: A pointer to the PCB structure
+ */
 int getPriority (PCB *pcb) {
 	return pcb->priority;
 }
 
+/**
+ * Get the state of this PCB
+ *
+ * Parameters: PCB * pcb: A pointer to the PCB structure
+ */
 enum process_state getState(PCB *pcb) {
 	return pcb->state;
 }
 
+/**
+ * Print the content of this PCB
+ *
+ * Parameters: PCB * pcb: A pointer to the PCB structure
+ */
 void toString(PCB * pcb) {
     printf("contents: PID: %d, Priority: %d, State: %s\n", pcb->pid, pcb->priority, getStateName(pcb->state));
 }
