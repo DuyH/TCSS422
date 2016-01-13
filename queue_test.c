@@ -53,7 +53,7 @@ void testDequeue(Node *head) {
 }
 /**
  * Generate elements for an array of PCB structures based on specified size.
- * The rand()%31 function came from a formula on website:
+ * The rand()%31 + 0 function came from a formula on website:
  * http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
  *
  * Parameters:	PCB *pcbs:	A pointer to the array of structures to be generated
@@ -65,7 +65,7 @@ PCB * createPCBS(PCB *pcbs, int size) {
 	for (p = pcbs; p < pcbs + size; p++) {
 		(*p).pid = i;
 		i++;
-		(*p).priority = rand()%31;
+		(*p).priority = rand()%31 + 0;
 		(*p).state = new;
 	}
 	return pcbs;
@@ -87,13 +87,13 @@ void printPCBS(PCB *pcbs, int size) {
 
 /**
  * Main function.
- * The rand()%21 function came from formula on website:
+ * The rand()%21 + 10 function came from formula on website:
  * //source: http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
  */
 int main() {
 	Node *head = NULL;
 	srand (time (0));		//Set the rand() to generate a new series each time the program is run
-	int pcbs_size = rand()%21;
+	int pcbs_size = rand()%21 + 10;
 	PCB * pcbs = calloc(pcbs_size, sizeof(PCB));	//allocate space for an array of PCBs
 	createPCBS(pcbs, pcbs_size);
 	printf("Queue created: head == %p (NULL)\n", head);
