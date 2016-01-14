@@ -36,9 +36,9 @@ Node * enqueue (Node *head, Node *newNode){
  *
  * Parameters:	Node **head: A pointer to the address of the head of the queue.
  */
-Node * dequeue(Node **head){
-	Node * toBeReturned = *head;
-	*head = (*head)->next;
+Node * dequeue(Node *head){
+	Node * toBeReturned = head;
+	head = (head)->next;
 	return toBeReturned;
 }
 

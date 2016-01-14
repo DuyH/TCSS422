@@ -2,24 +2,24 @@
 // Created by jef on 1/11/16.
 //
 
-#include "pcb.h"
-
 #ifndef PRIORITYQUEUE_H
 #define PRIORITYQUEUE_H
 
+#include "pcb.h"
+#include "queue.h"
+
 typedef struct p_queue {
-    int val;
-    struct PCB *pcb;
+    Node * pri_Queue[32];
 } p_queue;
 
-int * create();
+p_queue * create_pqueue();
 
-void add(PCB *pcb);
+void add(p_queue * priority_Queue, PCB *pcb);
 
-void check();
+void check(p_queue * priority_Queue);
 
-void remove(p_queue * node);
+PCB * pop_pcb(p_queue * priority_Queue);
 
-void display();
+void display(p_queue * priority_Queue);
 
 #endif /* PRIORITYQUEUE_H */

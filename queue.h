@@ -19,7 +19,7 @@ typedef struct node_type {
 
 Node * enqueue (Node *head, Node *new);
 
-Node * dequeue(Node **head);
+Node * dequeue(Node *head);
 
 Node * peek(Node *head);
 
