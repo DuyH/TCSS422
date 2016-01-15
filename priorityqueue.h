@@ -20,6 +20,6 @@ void check(p_queue * priority_Queue);
 
 PCB * pop_pcb(p_queue * priority_Queue);
 
-void display(p_queue * priority_Queue);
+void display(p_queue * priority_Queue, int showContents);
 
 #endif /* PRIORITYQUEUE_H */

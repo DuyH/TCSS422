@@ -24,15 +24,16 @@ int main() {
 		for (n = 0; n < 10; n++) {
 			int pNum = rand() % 32;
 			PCB * pcb = create();
-			pcb->pid = idNum;
-			idNum++;
+			
 			pcb->priority = pNum;
 			pcb->state = new;
 
 			add(priority_Q, pcb);
+			pcb->pid = idNum;
+			idNum++;
 		}
 		
-		display(priority_Q);																//displays the current state of the priority queue after ten additions
+		display(priority_Q, 0);																//displays the current state of the priority queue after ten additions
 		printf("\n\n");																		//gives gap in display
 		
 			for (dequeue_Count = rand() %3 + 4; dequeue_Count > 0; dequeue_Count--) {		//creates a loop for a random number between 4 and 6
@@ -43,7 +44,7 @@ int main() {
 		printf("\n\n");																		//gives a gap in the display
 	}
 	
-	display(priority_Q);																	//displays the priority queue
+	display(priority_Q, 1);																	//displays the priority queue
 	
 	return 0;
 	
