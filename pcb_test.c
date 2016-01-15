@@ -19,13 +19,13 @@
 int main(void) {
 
     // Create a random number of PCB's (0-20 range)
-    srand(time(0)); // Random seed
+    srand((unsigned int)time(NULL)); // Random seed
     int numPcbs = rand() % 20;
     PCB pcb_array[numPcbs];
 
     // Instantiate just one PCB and print its contents:
     printf("-- initial generated PCB --\n");
-    PCB * pcb = create();
+    PCB *pcb = create();
     toString(pcb);
 
     // Continue to generate a random amount of PCB's and print out their contents:
@@ -33,10 +33,9 @@ int main(void) {
 
     for (int n = 0; n < numPcbs; n++) {
         int priority = rand() % 31 + 1;
-        PCB * pcb = create();
+        PCB *pcb = create();
         pcb->pid = n;
         pcb->priority = priority;
-        pcb->state = new;
         pcb_array[n] = *pcb;
 
         toString(&pcb_array[n]);

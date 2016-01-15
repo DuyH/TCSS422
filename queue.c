@@ -2,9 +2,9 @@
  *  queue.c
  *
  *  Created on: Jan 11, 2016
- *  Author: Trung Dang
+ *  Authors: Duy Huynh, Jeffrey LeCompte, Trung Dang, Brandon Scholer
  *
- *  A linked-list implementation of FIFO queue. Supports enqueue, dequeue, and print queue.
+ *  A linked-list implementation of FIFO queue. Supports enqueue, dequeue, peek, isEmpty, print queue.
  */
 
 #include <stdlib.h>
@@ -12,64 +12,94 @@
 #include "queue.h"
 
 /**
- * Add the specified node to the end of the queue. If the queue is empty (head is NULL),
- * enqueueing will result in the head pointer points to the newNode
+ * Add new node to rear of queue. An empty queue results in the new node being the new head.
+ * Example call: enqueue(&queue, &pcb);
  *
- * Parameters:	Node * head: A pointer to the head of the queue
- * 				Node *newNode: A pointer to the new element to be added
+ * Parameters:	Queue *queue: pointer to head of queue list
+ * 				PCB *pcb: pointer to pcb to be added
+ * Returns: Pointer to head of Queue.
  */
-Node * enqueue (Node *head, Node *newNode){
-	Node *curr;
-	if (head != NULL) {
-		curr = head;
-		while (curr->next != NULL) {
-			curr = curr->next;
-		}
-		curr->next = newNode;
-	} else {
-		head = newNode;
-	}
-	return head;
+Queue * enqueue (Queue *queue, PCB *pcb) {
+
+    // Ready a new node to add to list:
+    Node *node = malloc(sizeof(Node));
+    node->pcb = pcb;
+    //node->pcb->pid = queue->counter;
+    node->next = NULL;
+
+    // Node becomes head in empty list, otherwise appended to rear.
+    queue->size == 0 ? (queue->head = queue->rear = node) : (queue->rear->next = node);
+
+    // New node always becomes the new rear node
+    queue->rear = node;
+
+    // Keep track of list size and PID counter
+    queue->size++;
+    //queue->counter++;
+
+    return queue;
 }
 /**
- * Remove the least recently added element of the queue (the element at the front of the queue)
+ * Remove and return the head of the queue.
+ * Example call: dequeue(&queue);
  *
- * Parameters:	Node **head: A pointer to the address of the head of the queue.
+ * Parameters: Queue *queue: A pointer to the head of the queue.
+ * Returns: Contents (pcb) of head node.
  */
-Node * dequeue(Node *head){
-	Node * toBeReturned = head;
-	head = (head)->next;
-	return toBeReturned;
+PCB * dequeue(Queue *queue) {
+
+    if (queue->size == 0) {
+        printf("There was nothing to dequeue\n");
+        return NULL;
+    } else {
+        queue->size--;
+        PCB *returnPcb = queue->head->pcb;
+        queue->head = queue->head->next;
+        return returnPcb;
+    }
+
 }
 
 /**
- * Under development!
+ * Returns the contents of the head node of the list without a dequeue.
+ * Example call: toString(peek(&queue));
  */
-Node * peek(Node *head) {
-	return head;
+PCB * peek(Queue *queue) {
+	return queue->head->pcb;
 }
 
 /**
- * Print the content of the queue. The last node of the queue is printed or not depends on the control
- * variable printLastNode
- *
- * Parameters:	Node * head:	A pointer to the head of the queue
- * 				int printLastNode:	A control value to specified whether
- * 									 to print the last node of the queue or not
+ * Returns if queue is empty or not.
  */
-void printQueue(Node *head, int printLastNode) {
-	Node *curr, * prev;
-	int counter = 1;
-	curr = head;
-	prev = NULL;
-	printf("\tQueue: ");
-	while (curr != NULL){
-		printf("P%d->", counter);
-		counter++;
-		prev = curr;
-		curr = curr->next;
-		if (curr == NULL) printf("-*");
-	}
-	if (printLastNode == 0) toString(prev->data);
+int isEmpty(Queue *queue) {
+    return queue->size == 0; // Returning 0 means empty queue
+}
+
+/**
+ * Prints the content of the queue with the option to include the contents of the last Node in the queue.
+ * Example call: printQueue(&queue, 0);
+ *
+ * Parameters:  Queue * head: A pointer to the head of the queue
+ * 				int printLastNode: 1 to print contents of the last Node, 0 to omit.
+ */
+void printQueue(Queue *queue, int printLastNode) {
+    if (queue->size == 0) {
+        printf("Nothing in queue to print!\n");
+    } else {
+        Node *current = queue->head;
+        printf("Q: ");
+        while (current != NULL) {
+            printf("P%d", current->pcb->pid);
+            if (current->next != NULL) printf("->");
+            current = current->next;
+            if(current == NULL) printf("-*");
+        }
+        if(printLastNode) {
+            printf(" contents: ");
+            toString(queue->rear->pcb);
+        }else {
+            printf("\n");
+        }
+    }
 }
 
