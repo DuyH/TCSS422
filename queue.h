@@ -32,6 +32,6 @@ PCB * peek(Queue *head);
 
 int isEmpty(Queue *head);
 
-void printQueue(Queue *head, int printLastNode);
+void printQueue(Queue *head, int printLastNode, int queue_count);
 
 #endif /* QUEUE_H_ */

@@ -25,7 +25,7 @@
 void testEnqueue(Queue *queue, PCB *pcbs, int numPcbs) {
     printf("Testing enqueue with %d PCBs...\n", numPcbs);
     int n;
-    for (n = 0; n < numPcbs; n++) printQueue(enqueue(queue, &pcbs[n]), 1);
+    for (n = 0; n < numPcbs; n++) printQueue(enqueue(queue, &pcbs[n]), 1, NULL);
 }
 
 /**
@@ -37,9 +37,9 @@ void testEnqueue(Queue *queue, PCB *pcbs, int numPcbs) {
 void testDequeue(Queue *queue) {
     printf("Testing dequeue...\n");
     while (queue != NULL) {
-        printQueue(queue, 0);
+        printQueue(queue, 0, NULL);
         PCB *pcb = dequeue(queue);
-        printQueue(queue, 0);
+        printQueue(queue, 0, NULL);
         toString(pcb);
     }
 }
@@ -53,11 +53,11 @@ void testDequeue(Queue *queue) {
 void testPeek(Queue *queue) {
     printf("Testing peek...\n");
     printf("Queue before peek:\n");
-    printQueue(queue, 0);
+    printQueue(queue, 0, NULL);
     printf("Peeking: ");
     toString(peek(queue));
     printf("Queue after peek:\n");
-    printQueue(queue, 0);
+    printQueue(queue, 0, NULL);
 }
 
 /**
