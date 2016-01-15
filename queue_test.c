@@ -24,7 +24,8 @@
  */
 void testEnqueue(Queue *queue, PCB *pcbs, int numPcbs) {
     printf("Testing enqueue with %d PCBs...\n", numPcbs);
-    for (int n = 0; n < numPcbs; n++) printQueue(enqueue(queue, &pcbs[n]), 1);
+    int n;
+    for (n = 0; n < numPcbs; n++) printQueue(enqueue(queue, &pcbs[n]), 1);
 }
 
 /**
@@ -69,7 +70,8 @@ void testPeek(Queue *queue) {
  */
 void createPCBS(PCB pcbs[], int numPcbs) {
     // Initialize each PCB with random priority (0-31 range)
-    for (int n = 0; n < numPcbs; n++) {
+    int n;
+    for (n = 0; n < numPcbs; n++) {
         PCB *pcb = create();
         pcb->pid = n + 1; // Start with PID: 01
         pcb->priority = rand() % 31 + 1;
