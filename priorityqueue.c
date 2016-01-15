@@ -21,7 +21,7 @@
 p_queue * create_pqueue() {
 	
 	int i;
-	p_queue * thisPQueue = calloc(1, sizeof(p_queue));
+	p_queue * thisPQueue = calloc(PRIORITY_NUMBERS, sizeof(p_queue));
 	for (i = 0; i < PRIORITY_NUMBERS; i++)
 	{
 		Queue * curQueue = calloc(1, sizeof(Queue));
