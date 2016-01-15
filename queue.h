@@ -1,8 +1,8 @@
 /*
- * queue.h
+ *  queue.h
  *
  *  Created on: Jan 11, 2016
- *      Author: Duy Huynh
+ *  Authors: Duy Huynh, Jeffrey LeCompte, Trung Dang, Brandon Scholer
  *
  *  Header defines structures and functions used in implementation of a queue with linked-list data structure.
  */
@@ -21,6 +21,8 @@ typedef struct queue {
     Node *head, *rear;
     int size;
 }Queue;
+
+//Example empty Queue creation: Queue queue = {NULL, NULL, 0};
 
 Queue * enqueue (Queue *head, PCB *new);
 
