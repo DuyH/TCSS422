@@ -1,12 +1,17 @@
 /*
  * pcb.h
  *
- *  Created on: Jan 11, 2016
- *      Author: trung, duy
- */
+ * TCSS 422 '16
+ * Assignment 1
+ * Authors: Duy Huynh, Jeffrey LeCompte, Trung Dang, Brandon Scholer
+ *
+ * PCB header file consisting of a pid, priority, state and method to print its contents.
+ *
+*/
 
 #ifndef PCB_H_
 #define PCB_H_
+
 
 typedef enum process_state {
 	new,

@@ -1,12 +1,11 @@
 /*
  * pcb.c
- * Authors: Duy Huynh & Jeffrey LeCompte, Trung Dang
- * Sources:
- *         https://en.wikipedia.org/wiki/Process_control_block
- *         http://www.tutorialspoint.com/operating_system/os_processes.htm
- *         https://courses.cs.washington.edu/courses/cse451/07wi/lectures/4-process.pdf
- *         http://stackoverflow.com/questions/4938854/process-control-block
- *         Detailed PCB Example: http://www.brokenthorn.com/Resources/OSDev24.html
+ *
+ * TCSS 422 '16
+ * Assignment 1
+ * Authors: Duy Huynh, Jeffrey LeCompte, Trung Dang, Brandon Scholer
+ *
+ * PCB structure consisting of a pid, priority, and state.
  *
 */
 
@@ -15,7 +14,7 @@
 #include "pcb.h"
 
 /**
- * The default state of a PCB
+ * Retrieve the descriptive name of pcb's state, given enumeration.
  */
 const char* getStateName(enum process_state state) {
     switch (state) {
@@ -33,6 +32,9 @@ const char* getStateName(enum process_state state) {
     }
 }
 
+/**
+ * Reserve memory for a PCB in the heap.
+ */
 PCB * create() {
     PCB * pcb = calloc(3, sizeof(PCB));
     return pcb;
@@ -59,14 +61,14 @@ int getPriority (PCB *pcb) {
 /**
  * Get the state of this PCB
  *
- * Parameters: PCB * pcb: A pointer to the PCB structure
+ * Parameters - PCB * pcb: A pointer to the PCB structure
  */
 enum process_state getState(PCB *pcb) {
 	return pcb->state;
 }
 
 /**
- * Print the content of this PCB
+ * Print the contents of this PCB to console.
  *
  * Parameters: PCB * pcb: A pointer to the PCB structure
  */

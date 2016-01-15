@@ -1,12 +1,19 @@
-//
-// Created by jef on 1/11/16.
-//
+/*
+ * priorityqueue.c
+ *
+ * TCSS 422 '16
+ * Assignment 1
+ * Authors: Duy Huynh, Jeffrey LeCompte, Trung Dang, Brandon Scholer
+ *
+ * Represents an implementation of a priority queue for FIFO queues consisting of PCB's.
+ *
+*/
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "priorityqueue.h"
 
-#define PRIORITY_NUMBERS 32		// number of priorities
+#define PRIORITY_NUMBERS 32		// Range of priorities, as stated
 
 /*
 *instantiates a priority queue.

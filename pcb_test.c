@@ -14,32 +14,28 @@
 #include <time.h>
 
 /*
- * Main driver to test a pcb.
+ * Main driver to test the PCB struct.
  */
 int main(void) {
 
-    // Decide a random number of PCB's to create, from 1-10 pcb's
-    srand(time(0));
-    int n, pNum = 0;
-
-
-    // Create an array of pcbs, 0-20
+    // Create a random number of PCB's (0-20 range)
+    srand(time(0)); // Random seed
     int numPcbs = rand() % 20;
     PCB pcb_array[numPcbs];
 
-    // Creates an initial PCB
-    PCB * pcb = create();
-
-    // Print out the newly instantiated pcb
+    // Instantiate just one PCB and print its contents:
     printf("-- initial generated PCB --\n");
+    PCB * pcb = create();
     toString(pcb);
+
+    // Continue to generate a random amount of PCB's and print out their contents:
     printf("\n-- random generated priorities --\n");
 
-    for (n = 0; n < numPcbs; n++) {
-        int pNum = rand() % 31 + 1;
+    for (int n = 0; n < numPcbs; n++) {
+        int priority = rand() % 31 + 1;
         PCB * pcb = create();
         pcb->pid = n;
-        pcb->priority = pNum;
+        pcb->priority = priority;
         pcb->state = new;
         pcb_array[n] = *pcb;
 
