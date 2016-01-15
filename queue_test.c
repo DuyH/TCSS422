@@ -24,9 +24,7 @@
  */
 void testEnqueue(Queue *queue, PCB *pcbs, int numPcbs) {
     printf("Testing enqueue with %d PCBs...\n", numPcbs);
-    for (int n = 0; n < numPcbs; n++){
-        printQueue(enqueue(queue, &pcbs[n]), 1);
-    }
+    for (int n = 0; n < numPcbs; n++) printQueue(enqueue(queue, &pcbs[n]), 1);
 }
 
 /**
@@ -123,6 +121,6 @@ int main() {
     printf("\n");
 
     printf("Finished Tests");
-    
+
     return 0;
 }
