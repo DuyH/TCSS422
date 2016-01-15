@@ -86,14 +86,14 @@ void createPCBS(PCB pcbs[], int numPcbs) {
  * //source: http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
  */
 int main() {
-
-    // Create Queue and display to console:
-    Queue *queue = calloc(1, sizeof(Queue));
-    printf("Queue created: head == %p (NULL)\n\n", queue->head);
-
     // Create PCBs and display to console:
     srand((unsigned int)time(NULL)); // Random seed
     int numPcbs = rand() % 21 + 10; // Range 10-30 PCB's
+
+    // Create Queue and display to console:
+    Queue *queue = calloc(numPcbs, sizeof(Queue));
+    printf("Queue created: head == %p (NULL)\n\n", queue->head);
+
     PCB *pcbs = malloc(numPcbs * sizeof(PCB));
     printf("%d PCB's initialized:\n", numPcbs);
     printf("=====================\n");
