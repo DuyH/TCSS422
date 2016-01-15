@@ -19,7 +19,7 @@
 int main(void) {
 
     // Create a random number of PCB's (0-20 range)
-    srand(time(0)); // Random seed
+    srand((unsigned int)time(NULL)); // Random seed
     int numPcbs = rand() % 20;
     PCB pcb_array[numPcbs];
 

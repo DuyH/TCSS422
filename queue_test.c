@@ -86,11 +86,11 @@ void createPCBS(PCB pcbs[], int numPcbs) {
 int main() {
 
     // Create Queue and display to console:
-    Queue queue = {NULL, NULL, 0, 1};
-    printf("Queue created: head == %p (NULL)\n\n", queue);
+    Queue *queue = calloc(1, sizeof(Queue));
+    printf("Queue created: head == %p (NULL)\n\n", queue->head);
 
     // Create PCBs and display to console:
-    srand(time(0)); // Random seed
+    srand((unsigned int)time(NULL)); // Random seed
     int numPcbs = rand() % 21 + 10; // Range 10-30 PCB's
     PCB *pcbs = malloc(numPcbs * sizeof(PCB));
     printf("%d PCB's initialized:\n", numPcbs);
@@ -100,24 +100,24 @@ int main() {
 
     // Testing isEmpty before adding to queue:
     printf("Testing isEmpty function: \n");
-    printf("Is the queue empty? (1 indicates empty): %d\n", isEmpty(&queue));
+    printf("Is the queue empty? (1 indicates empty): %d\n", isEmpty(queue));
     printf("\n");
 
     // Enqueue the array of PCB's and display to console:
-    testEnqueue(&queue, pcbs, numPcbs);
+    testEnqueue(queue, pcbs, numPcbs);
     printf("\n");
 
     // Testing isEmpty after populating queue:
     printf("Testing isEmpty function: \n");
-    printf("Is the queue empty? (1 indicates empty): %d\n", isEmpty(&queue));
+    printf("Is the queue empty? (1 indicates empty): %d\n", isEmpty(queue));
     printf("\n");
 
     // Peek at the queue and print queue again to ensure head is still there:
-    testPeek(&queue);
+    testPeek(queue);
     printf("\n");
 
     // Deqeueue the array of PCB's and display to console:
-    testDequeue(&queue);
+    testDequeue(queue);
     printf("\n");
 
     printf("Finished Tests");
