@@ -2,7 +2,7 @@
  * queue.h
  *
  *  Created on: Jan 11, 2016
- *      Author: Trung Dang
+ *      Author: Duy Huynh
  *
  *  Header defines structures and functions used in implementation of a queue with linked-list data structure.
  */
@@ -12,17 +12,24 @@
 
 #include "pcb.h"
 
-typedef struct node_type {
-	PCB * data;
-	struct node_type *next;
+typedef struct node {
+    PCB *pcb;
+    struct node *next;
 }Node;
 
-Node * enqueue (Node *head, Node *new);
+typedef struct queue {
+    Node *head, *rear;
+    int size;
+}Queue;
 
-Node * dequeue(Node *head);
+Queue * enqueue (Queue *head, PCB *new);
 
-Node * peek(Node *head);
+PCB * dequeue(Queue *head);
 
-void printQueue(Node *head, int printLastNode);
+PCB * peek(Queue *head);
+
+int isEmpty(Queue *head);
+
+void printQueue(Queue *head, int printLastNode);
 
 #endif /* QUEUE_H_ */
