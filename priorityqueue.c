@@ -70,10 +70,11 @@ PCB * pop_pcb(p_queue * priority_Queue) {
 
 /*
 * displays the current iteration of the Priority Queue
+* takes an integer to determine if contents of last item should be shown.
 */
-void display(p_queue * priority_Queue){
+void display(p_queue * priority_Queue, int showContents){
 	int i;
 	for (i = 0; i < PRIORITY_NUMBERS; i++) {
-			printQueue(priority_Queue->pri_Queue[i], 1);	// prints the queues in priority order
+			printQueue(priority_Queue->pri_Queue[i], showContents);	// prints the queues in priority order
 	}
 }
