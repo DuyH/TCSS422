@@ -87,7 +87,7 @@ void printQueue(Queue *queue, int printLastNode, int queue_count) {
         printf("Nothing in queue to print!\n");
     } else {
         Node *current = queue->head;
-        if (queue_count == NULL)
+        if (queue_count == -1)
             printf("Q: "); // prints for FIFO
         else
             printf("Q%d: ", queue_count); // prints for Priority Queue
