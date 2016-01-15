@@ -19,7 +19,7 @@ typedef struct node {
 
 typedef struct queue {
     Node *head, *rear;
-    int size;
+    int size, counter;
 }Queue;
 
 //Example empty Queue creation: Queue queue = {NULL, NULL, 0};

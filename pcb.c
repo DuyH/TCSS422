@@ -16,7 +16,7 @@
 /**
  * Retrieve the descriptive name of pcb's state, given enumeration.
  */
-const char* getStateName(enum process_state state) {
+const char *getStateName(enum process_state state) {
     switch (state) {
         case new:
             return "new";
@@ -28,15 +28,16 @@ const char* getStateName(enum process_state state) {
             return "waiting";
         case terminated:
             return "terminated";
-        default: return "0";
+        default:
+            return "0";
     }
 }
 
 /**
  * Reserve memory for a PCB in the heap.
  */
-PCB * create() {
-    PCB * pcb = calloc(3, sizeof(PCB));
+PCB *create() {
+    PCB *pcb = calloc(3, sizeof(PCB));
     return pcb;
 }
 
@@ -45,8 +46,8 @@ PCB * create() {
  *
  * Parameters: PCB * pcb: A pointer to the PCB structure
  */
-int getPID (PCB *pcb) {
-	return pcb->pid;
+int getPID(PCB *pcb) {
+    return pcb->pid;
 }
 
 /**
@@ -54,8 +55,8 @@ int getPID (PCB *pcb) {
  *
  * Parameters: PCB * pcb: A pointer to the PCB structure
  */
-int getPriority (PCB *pcb) {
-	return pcb->priority;
+int getPriority(PCB *pcb) {
+    return pcb->priority;
 }
 
 /**
@@ -64,7 +65,7 @@ int getPriority (PCB *pcb) {
  * Parameters - PCB * pcb: A pointer to the PCB structure
  */
 enum process_state getState(PCB *pcb) {
-	return pcb->state;
+    return pcb->state;
 }
 
 /**
@@ -72,6 +73,6 @@ enum process_state getState(PCB *pcb) {
  *
  * Parameters: PCB * pcb: A pointer to the PCB structure
  */
-void toString(PCB * pcb) {
-    printf("contents: PID: %d, Priority: %d, State: %s\n", pcb->pid, pcb->priority, getStateName(pcb->state));
+void toString(PCB *pcb) {
+    printf("PID: %02d, Priority: %02d, State: %s\n", pcb->pid, pcb->priority, getStateName(pcb->state));
 }

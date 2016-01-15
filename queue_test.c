@@ -1,10 +1,10 @@
 /*
- * queue_test.c
+ *  queue_test.c
  *
  *  Created on: Jan 11, 2016
- *      Author: Trung Dang
+ *  Authors: Duy Huynh, Jeffrey LeCompte, Trung Dang, Brandon Scholer
  *
- *      Testing the implementation of FIFO queue.c file. queue.c is implemented using a linked-list structure.
+ *  Testing the implementation of FIFO queue.c file. queue.c is implemented using a linked-list structure.
  */
 
 #include <stdlib.h>
@@ -18,71 +18,66 @@
  * Test the enqueue function of queue.c. This function also prints out each element of the queue as
  * they are added.
  *
- * Parameters:	Node* head:	A pointer to the head of the queue
- * 				PCB * pcbs:	A pointer to the array of structures of PCB type
- * 				int size  :	The size of the array
+ * Parameters:	Queue* queue:	A pointer to the head of the queue
+ * 				PCB *pcbs: array of PCB's
+ *              int numPcbs: Number of PCB's to be created
  */
-Node * testEnqueue(Node *head, PCB *pcbs, int size) {
-	printf("Testing enqueue with %d PCBs...\n", size);
-	int i = 1, printLastNodeOrNot = 0;
-	PCB *p;
-	for (p = pcbs; p < pcbs + size; p++ ) {
-		Node *newNode = (Node *) malloc(sizeof(Node));
-		newNode->data = p;
-		head = enqueue(head, newNode);
-		printQueue(head, printLastNodeOrNot);
-		i++;
-	}
-	return head;
+void testEnqueue(Queue *queue, PCB *pcbs, int numPcbs) {
+    printf("Testing enqueue with %d PCBs...\n", numPcbs);
+    for (int n = 0; n < numPcbs; n++){
+        printQueue(enqueue(queue, &pcbs[n]), 1);
+    }
 }
+
 /**
  * Test the dequeue function of queue.c. Dequeue happens at the front of the queue.
  * The content of the element removed will be printed.
  *
- * Parameters:	Node * head: A pointer to the head of the queue
+ * Parameters:	Queue * queue: A pointer to the head of the queue
  */
-void testDequeue(Node *head) {
-	printf("Testing dequeue...\n");
-	int printLastNodeOrNot = 1;
-	while (head != NULL) {
-		Node * result = dequeue(&head);
-		printQueue(head, printLastNodeOrNot);
-		printf("\n\tcontents: PID %d, Priority %d, State: %s\n", result->data->pid,
-				result->data->priority, getStateName(result->data->state));
-	}
+void testDequeue(Queue *queue) {
+    printf("Testing dequeue...\n");
+    while (queue != NULL) {
+        printQueue(queue, 0);
+        PCB *pcb = dequeue(queue);
+        printQueue(queue, 0);
+        toString(pcb);
+    }
 }
+
+/**
+ * Test peek function of queue.c, returning the head of queue without a dequeue.
+ *
+ * Parameters: Queue* queue: A pointer to the head of the queue
+ * Returns: PCB pcb, the head of queue
+ */
+void testPeek(Queue *queue) {
+    printf("Testing peek...\n");
+    printf("Queue before peek:\n");
+    printQueue(queue, 0);
+    printf("Peeking: ");
+    toString(peek(queue));
+    printf("Queue after peek:\n");
+    printQueue(queue, 0);
+}
+
 /**
  * Generate elements for an array of PCB structures based on specified size.
  * The rand()%31 + 0 function came from a formula on website:
  * http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
  *
- * Parameters:	PCB *pcbs:	A pointer to the array of structures to be generated
- * 				int size:	The size of the array
+ * Parameters:  PCB pcbs[]: array of PCB's
+ *              int numPcbs: Number of PCB's to be created
  */
-PCB * createPCBS(PCB *pcbs, int size) {
-	int i = 0;
-	PCB *p;
-	for (p = pcbs; p < pcbs + size; p++) {
-		(*p).pid = i;
-		i++;
-		(*p).priority = rand()%31 + 0;
-		(*p).state = new;
-	}
-	return pcbs;
-}
-
-/**
- *	Print the content of the array of structures specified in the parameter.
- *
- *	Parameters:	PCB * pcbs:	A pointer to the array of structures to be printed
- *				int size:	The size of the array
- */
-void printPCBS(PCB *pcbs, int size) {
-	PCB *p;
-	int counter = 0;
-	for (p = pcbs; p < pcbs + size; p++) {
-		printf("\tPCB%d(PID: %d, Priority: %d, State: %s)\n", counter++, (*p).pid, (*p).priority, getStateName((*p).state));
-	}
+void createPCBS(PCB pcbs[], int numPcbs) {
+    // Initialize each PCB with random priority (0-31 range)
+    for (int n = 0; n < numPcbs; n++) {
+        PCB *pcb = create();
+        pcb->pid = n + 1; // Start with PID: 01
+        pcb->priority = rand() % 31 + 1;
+        pcbs[n] = *pcb;
+        toString(pcb);
+    }
 }
 
 /**
@@ -91,15 +86,43 @@ void printPCBS(PCB *pcbs, int size) {
  * //source: http://www.dreamincode.net/forums/topic/69684-how-to-use-rand-in-a-certain-range-of-numbers/
  */
 int main() {
-	Node *head = NULL;
-	srand (time (0));		//Set the rand() to generate a new series each time the program is run
-	int pcbs_size = rand()%21 + 10;
-	PCB * pcbs = calloc(pcbs_size, sizeof(PCB));	//allocate space for an array of PCBs
-	createPCBS(pcbs, pcbs_size);
-	printf("Queue created: head == %p (NULL)\n", head);
-	printf("PCB initialized:\n");
-	printPCBS(pcbs, pcbs_size);
-	head = testEnqueue(head, pcbs, pcbs_size);
-	testDequeue(head);
-	return 0;
+
+    // Create Queue and display to console:
+    Queue queue = {NULL, NULL, 0, 1};
+    printf("Queue created: head == %p (NULL)\n\n", queue);
+
+    // Create PCBs and display to console:
+    srand(time(0)); // Random seed
+    int numPcbs = rand() % 21 + 10; // Range 10-30 PCB's
+    PCB *pcbs = malloc(numPcbs * sizeof(PCB));
+    printf("%d PCB's initialized:\n", numPcbs);
+    printf("=====================\n");
+    createPCBS(pcbs, numPcbs);
+    printf("\n");
+
+    // Testing isEmpty before adding to queue:
+    printf("Testing isEmpty function: \n");
+    printf("Is the queue empty? (1 indicates empty): %d\n", isEmpty(&queue));
+    printf("\n");
+
+    // Enqueue the array of PCB's and display to console:
+    testEnqueue(&queue, pcbs, numPcbs);
+    printf("\n");
+
+    // Testing isEmpty after populating queue:
+    printf("Testing isEmpty function: \n");
+    printf("Is the queue empty? (1 indicates empty): %d\n", isEmpty(&queue));
+    printf("\n");
+
+    // Peek at the queue and print queue again to ensure head is still there:
+    testPeek(&queue);
+    printf("\n");
+
+    // Deqeueue the array of PCB's and display to console:
+    testDequeue(&queue);
+    printf("\n");
+
+    printf("Finished Tests");
+    
+    return 0;
 }

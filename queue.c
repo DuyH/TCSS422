@@ -24,6 +24,7 @@ Queue * enqueue (Queue *queue, PCB *pcb) {
     // Ready a new node to add to list:
     Node *node = malloc(sizeof(Node));
     node->pcb = pcb;
+    node->pcb->pid = queue->counter;
     node->next = NULL;
 
     // Node becomes head in empty list, otherwise appended to rear.
@@ -32,8 +33,9 @@ Queue * enqueue (Queue *queue, PCB *pcb) {
     // New node always becomes the new rear node
     queue->rear = node;
 
-    // Keep track of list size
+    // Keep track of list size and PID counter
     queue->size++;
+    queue->counter++;
 
     return queue;
 }
@@ -51,7 +53,6 @@ PCB * dequeue(Queue *queue) {
         return NULL;
     } else {
         queue->size--;
-        printf("Dequeueing the head which is: %p", queue->head);
         PCB *returnPcb = queue->head->pcb;
         queue->head = queue->head->next;
         return returnPcb;
@@ -71,7 +72,7 @@ PCB * peek(Queue *queue) {
  * Returns if queue is empty or not.
  */
 int isEmpty(Queue *queue) {
-    return queue->size; // Returning 0 means empty queue
+    return queue->size == 0; // Returning 0 means empty queue
 }
 
 /**
@@ -85,17 +86,16 @@ void printQueue(Queue *queue, int printLastNode) {
     if (queue->size == 0) {
         printf("Nothing in queue to print!\n");
     } else {
-        int counter = 1;
         Node *current = queue->head;
         printf("Q: ");
         while (current != NULL) {
-            printf("P%d", counter++);
+            printf("P%d", current->pcb->pid);
             if (current->next != NULL) printf("->");
             current = current->next;
             if(current == NULL) printf("-*");
         }
         if(printLastNode) {
-            printf(" : ");
+            printf(" contents: ");
             toString(queue->rear->pcb);
         }else {
             printf("\n");
