@@ -9,7 +9,7 @@
 #include "queue.h"
 
 typedef struct p_queue {
-    Node * pri_Queue[32];
+    Queue * pri_Queue[32];
 } p_queue;
 
 p_queue * create_pqueue();

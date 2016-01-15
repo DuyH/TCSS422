@@ -1,41 +1,49 @@
+/*
+ * priorityqueue_test.c
+ *
+ * TCSS 422 '16
+ * Assignment 1
+ * Authors: Duy Huynh, Jeffrey LeCompte, Trung Dang, Brandon Scholer
+ *
+ * Testing the implementation of a priority queue for FIFO queues consisting of PCB's.
+ *
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "priorityqueue.h"
 
 int main() {
 	
-	//sets up a priority queue
-	p_queue * priority_Q = create_pqueue();
+	p_queue * priority_Q = create_pqueue();													//sets up a priority queue
 	
-	// Decide a random number of PCB's to create, from 1-10 pcb's
     srand(time(0));
-    int i, n, pNum = 0;
-
-
-    // Create a number of pcbs, 0-20
-    int numPcbs = rand() % 20;
+    int i, n, idNum = 0, pNum = 0, dequeue_Count;
 	
-	for (i = 0; i < 10; i++) {
-		// Creates the PCB's and puts them in the Priority Queue.
+	for (i = 0; i < 10; i++) {																// Creates the PCB's and puts them in the Priority Queue.
 		for (n = 0; n < 10; n++) {
-			int pNum = rand() % 31;
+			int pNum = rand() % 32;
 			PCB * pcb = create();
-			pcb->pid = n;
+			pcb->pid = idNum;
+			idNum++;
 			pcb->priority = pNum;
 			pcb->state = new;
 
 			add(priority_Q, pcb);
 		}
 		
-		int dequeue_Count = rand() %2 + 4;
-			for (; dequeue_Count > 0; dequeue_Count--) { 
-			PCB * removed = pop_pcb(priority_Q);
-			toString(removed);
+		display(priority_Q);																//displays the current state of the priority queue after ten additions
+		printf("\n\n");																		//gives gap in display
+		
+			for (dequeue_Count = rand() %3 + 4; dequeue_Count > 0; dequeue_Count--) {		//creates a loop for a random number between 4 and 6
+			PCB * removed = pop_pcb(priority_Q);											//pops a pcb from the priority queue
+			toString(removed);																//prints the contents of the removed pcb
+			
 		}
+		printf("\n\n");																		//gives a gap in the display
 	}
 	
-	//displays the priority queue
-	display(priority_Q);
+	display(priority_Q);																	//displays the priority queue
 	
 	return 0;
 	

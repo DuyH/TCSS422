@@ -24,7 +24,7 @@ Queue * enqueue (Queue *queue, PCB *pcb) {
     // Ready a new node to add to list:
     Node *node = malloc(sizeof(Node));
     node->pcb = pcb;
-    node->pcb->pid = queue->counter;
+    //node->pcb->pid = queue->counter;
     node->next = NULL;
 
     // Node becomes head in empty list, otherwise appended to rear.
@@ -35,7 +35,7 @@ Queue * enqueue (Queue *queue, PCB *pcb) {
 
     // Keep track of list size and PID counter
     queue->size++;
-    queue->counter++;
+    //queue->counter++;
 
     return queue;
 }
