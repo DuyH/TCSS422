@@ -27,8 +27,9 @@ int main() {
 
 	for (i = 0; i < 10; i++) {																// Creates the PCB's and puts them in the Priority Queue.
         queue_count++;
+
+        // Create and add 10 pcb's to enqueue
         for (n = 0; n < 10; n++) {
-			// Create and add pcb to pqueue
 			PCB * pcb = create();
 			pcb->priority = rand() % 32;; // Assign random priority (0-31 range)
 			add(priority_Q, pcb);

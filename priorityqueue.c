@@ -75,6 +75,7 @@ PCB * pop_pcb(p_queue * priority_Queue) {
 void display(p_queue * priority_Queue, int showContents, int queue_count){
 	int i;
 	for (i = 0; i < PRIORITY_NUMBERS; i++) {
-			printQueue(priority_Queue->pri_Queue[i], showContents, queue_count);	// prints the queues in priority order
+		printf("Q%02d: ", i);
+		printQueue(priority_Queue->pri_Queue[i], showContents);    // prints the queues in priority order
 	}
 }
