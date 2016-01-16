@@ -84,13 +84,13 @@ int isEmpty(Queue *queue) {
  */
 void printQueue(Queue *queue, int printLastNode, int queue_count) {
     if (queue->size == 0) {
-        printf("Nothing in queue to print!\n");
+        if (queue_count == -1) printf("Q: ");
+        else printf("Q%d: ", queue_count);
+        printf("Queue is empty!\n");
     } else {
         Node *current = queue->head;
-        if (queue_count == -1)
-            printf("Q: "); // prints for FIFO
-        else
-            printf("Q%d: ", queue_count); // prints for Priority Queue
+        if (queue_count == -1) printf("Q: "); // prints for FIFO
+        else printf("Q%d: ", queue_count); // prints for Priority Queue
         while (current != NULL) {
             printf("P%d", current->pcb->pid);
             if (current->next != NULL) printf("->");
@@ -100,9 +100,7 @@ void printQueue(Queue *queue, int printLastNode, int queue_count) {
         if(printLastNode) {
             printf(" contents: ");
             toString(queue->rear->pcb);
-        }else {
-            printf("\n");
-        }
+        }else printf("\n");
     }
 }
 
