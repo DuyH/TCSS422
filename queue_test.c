@@ -39,7 +39,7 @@ void testEnqueue(Queue *queue, PCB *pcbs, int numPcbs) {
  */
 void testDequeue(Queue *queue) {
     printf("Testing dequeue...\n");
-    while (queue != NULL) {
+    while (queue->size != 0) {
         printf("Q: ");
         printQueue(queue, 0);
         PCB *pcb = dequeue(queue);
