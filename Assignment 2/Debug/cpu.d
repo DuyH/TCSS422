@@ -1,9 +1,5 @@
-cpu.d: ../cpu.c ../queue.h ../pcb.h ../dispatcher.h ../scheduler.h
+cpu.d: ../cpu.c ../queue.h ../pcb.h
 
 ../queue.h:
 
 ../pcb.h:
-
-../dispatcher.h:
-
-../scheduler.h:
