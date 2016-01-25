@@ -8,6 +8,10 @@
 #ifndef SCHEDULER_H_
 #define SCHEDULER_H_
 
+#include "queue.h"
 
+extern sysStack;
+
+Queue * schedule(Queue *processes, Queue *readyQueue);
 
 #endif /* SCHEDULER_H_ */
