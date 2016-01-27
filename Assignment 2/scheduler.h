@@ -10,7 +10,7 @@
 
 #include "queue.h"
 
-extern sysStack;
+extern int sysStack;
 
 /**
  * Fetch the next process in newly created list of process
