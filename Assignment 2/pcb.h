@@ -26,6 +26,7 @@ typedef struct pcb_type {
 	int pid;
 	int priority;
 	enum process_state state;
+	int pc_value;
 } PCB;
 
 PCB * create();

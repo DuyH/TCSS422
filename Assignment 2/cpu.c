@@ -6,6 +6,34 @@
  */
 #include "cpu.h"
 
+
+/****** DISPATCHER ***********/
+PCB * dispatch(Queue *readyQueue) {
+    PCB *readyPCB = dequeue(readyQueue);
+    readyPCB->state = running;
+    sysStack = readyPCB->pc_value;
+    return readyPCB;
+}
+
+/**
+ * SCHEDULER
+ * Fetch a process from the newly created process list and put it
+ * in the ready queue to be running.
+ */
+Queue * fetchProcess(Queue *newProcess, Queue *readyQueue) {
+    if (isEmpty(newProcess)) {
+        printf("No process to be scheduled! List is empty.\n");
+    } else {
+        PCB *readyPCB = dequeue(newProcess);
+        readyPCB->state = ready;
+        enqueue(readyQueue, readyPCB);
+        printf("Process transfered to readyQueue: ");
+        toString(readyPCB);
+    }
+    return readyQueue;
+}
+
+
 Queue * initializeNewQueue(Queue * queue, int numb_process) {
 	int n;
 	    for (n = 0; n < numb_process; n++) {
@@ -17,7 +45,6 @@ Queue * initializeNewQueue(Queue * queue, int numb_process) {
 	    }
 	return queue;
 }
-
 
 int main () {
 	srand(time(0));

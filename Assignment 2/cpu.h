@@ -9,12 +9,21 @@
 #include <stdlib.h>
 #include <time.h>
 #include "queue.h"
-#include "scheduler.h"
-#include "dispatcher.h"
+#include "pcb.h"
+
+typedef enum interrupt_state {
+    timer
+} interrupt_type;
 
 /*
  * Global variable for frame pointer
  */
 int sysStack;
+
+PCB * dispatch(Queue *readyQueue);
+
+Queue * fetchProcess(Queue *newProcess, Queue *readyQueue);
+
+Queue * initializeNewQueue(Queue * queue, int numb_process);
 
 #endif //ASSIGNMENT1_CPU_H
