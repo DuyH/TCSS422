@@ -8,6 +8,7 @@
 #ifndef SCHEDULER_H_
 #define SCHEDULER_H_
 
+#include <stdio.h>
 #include "queue.h"
 
 /**

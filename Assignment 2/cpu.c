@@ -4,18 +4,7 @@
  *  Created on: Jan 20, 2016
  *      Author: trung
  */
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "queue.h"
-#include "scheduler.h"
-#include "dispatcher.h"
-
-
-/*
- * Global variable for frame pointer
- */
-extern int sysStack = 0;
+#include "cpu.h"
 
 Queue * initializeNewQueue(Queue * queue, int numb_process) {
 	int n;
@@ -30,13 +19,10 @@ Queue * initializeNewQueue(Queue * queue, int numb_process) {
 }
 
 
-int main (){
-
+int main () {
 	srand(time(0));
 	unsigned int PC = random() % 1001 + 3000;
-
-
-        int maxProcess = 30, processes = 0;
+    int maxProcess = 30, processes = 0;
 
 
 	//Create the ready queue
