@@ -9,8 +9,7 @@
 #define DISPATCHER_H_
 
 #include "queue.h"
-
-extern int sysStack;
+#include "pcb.h"
 
 PCB *dispatch(Queue *queue);
 

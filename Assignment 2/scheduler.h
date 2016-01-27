@@ -10,8 +10,6 @@
 
 #include "queue.h"
 
-extern int sysStack;
-
 /**
  * Fetch the next process in newly created list of process
  * and put it in ready queue.

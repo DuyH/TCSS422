@@ -15,7 +15,7 @@
 /*
  * Global variable for frame pointer
  */
-int sysStack;
+extern int sysStack = 0;
 
 Queue * initializeNewQueue(Queue * queue, int numb_process) {
 	int n;
