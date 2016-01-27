@@ -36,7 +36,7 @@ int main (){
 	unsigned int PC = random() % 1001 + 3000;
 
 
-    int maxProcess = 30, processes = 0;
+        int maxProcess = 30, processes = 0;
 
 
 	//Create the ready queue
@@ -74,9 +74,6 @@ int main (){
 			toString(runningProcess);
 			printf("ReadyQueue after dispatched: ");
 			printQueue(readyQueue, 0);
-
-
-
 		}
 		//printf("Ready queue: ");
 		//printQueue(readyQueue, 0);
