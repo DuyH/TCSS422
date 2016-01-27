@@ -5,18 +5,27 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../cpu.c \
+../dispatcher.c \
+../isr.c \
 ../pcb.c \
-../queue.c 
+../queue.c \
+../scheduler.c 
 
 OBJS += \
 ./cpu.o \
+./dispatcher.o \
+./isr.o \
 ./pcb.o \
-./queue.o 
+./queue.o \
+./scheduler.o 
 
 C_DEPS += \
 ./cpu.d \
+./dispatcher.d \
+./isr.d \
 ./pcb.d \
-./queue.d 
+./queue.d \
+./scheduler.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

@@ -10,8 +10,8 @@
 
 #include "queue.h"
 
-extern sysStack;
+extern int sysStack;
 
-Queue *dispatch(Queue *queue);
+PCB *dispatch(Queue *queue);
 
 #endif /* DISPATCHER_H_ */

@@ -12,6 +12,14 @@
 
 extern sysStack;
 
-Queue * schedule(Queue *processes, Queue *readyQueue);
+/**
+ * Fetch the next process in newly created list of process
+ * and put it in ready queue.
+ */
+Queue * fetchProcess(Queue *processes, Queue *readyQueue);
+
+
+
+
 
 #endif /* SCHEDULER_H_ */

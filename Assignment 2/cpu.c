@@ -8,6 +8,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include "queue.h"
+#include "scheduler.h"
+#include "dispatcher.h"
+
 
 /*
  * Global variable for frame pointer
@@ -32,14 +35,19 @@ int main (){
 	srand(time(0));
 	unsigned int PC = random() % 1001 + 3000;
 
-	//Random integer 0 - 5
-	int numb_process = rand() % 6, maxProcess = 30, processes = 0;
+
+    int maxProcess = 30, processes = 0;
 
 
 	//Create the ready queue
 	Queue *readyQueue = malloc(sizeof(Node));
 
+	//Represent a time quantum. Assumed every process has the same time quantum.
 	while (processes <= maxProcess) {
+
+		//Random integer 0 - 5
+		int numb_process = rand() % 6;
+
 		//Create a list of new processes: 0 - 5 processes
 		Queue *newProcess = calloc(numb_process, sizeof(Node));
 
@@ -55,15 +63,23 @@ int main (){
 			//Save the system stack
 			sysStack = PC;
 
+			//Scheduler fetches a process from process list and put to readyQueue
+			readyQueue = fetchProcess(newProcess, readyQueue);
+			printf("Ready queue: ");
+			printQueue(readyQueue,0);
 
-			PCB *readyPCB = dequeue(newProcess);
-			readyPCB->state = ready;
+			//Dispatcher dequeues a ready process and put it in running state
+			PCB *runningProcess = dispatch(readyQueue);
+			printf("Running process: ");
+			toString(runningProcess);
+			printf("ReadyQueue after dispatched: ");
+			printQueue(readyQueue, 0);
 
-			readyQueue = enqueue(readyQueue, readyPCB);
+
 
 		}
-		printf("Ready queue: ");
-		printQueue(readyQueue, 0);
+		//printf("Ready queue: ");
+		//printQueue(readyQueue, 0);
 	}
 
 	return 0;
