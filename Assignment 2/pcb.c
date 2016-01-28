@@ -18,8 +18,8 @@
  */
 const char *getStateName(enum process_state state) {
     switch (state) {
-    	case created:
-    		return "created";
+        case created:
+            return "created";
         case new:
             return "new";
         case ready:
@@ -76,6 +76,5 @@ enum process_state getState(PCB *pcb) {
  * Parameters: PCB * pcb: A pointer to the PCB structure
  */
 void toString(PCB *pcb) {
-    printf("PID: %02d, Priority: %02d, State: %s\n", getPID(pcb), getPriority(pcb), (char *) getState(pcb));
-//    printf("PID: %02d, Priority: %02d, State: %s\n", pcb->pid, pcb->priority, (char *) pcb->state);
+    printf("PID: %02d, Priority: %02d, State: %s\n", getPID(pcb), getPriority(pcb), getStateName(pcb->state));
 }

@@ -9,6 +9,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "queue.h"
 
 /**
@@ -72,7 +73,7 @@ PCB * peek(Queue *queue) {
  * Returns if queue is empty or not.
  */
 int isEmpty(Queue *queue) {
-    return queue->size == 0; // Returning 0 means empty queue
+    return queue->size == 0;
 }
 
 /**

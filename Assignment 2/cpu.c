@@ -57,7 +57,6 @@ int main () {
 
 	//Represent a time quantum. Assumed every process has the same time quantum.
 	while (processes <= maxProcess) {
-
 		//Random integer 0 - 5
 		int numb_process = rand() % 6;
 
@@ -70,7 +69,6 @@ int main () {
 		newProcess = initializeNewQueue(newProcess, numb_process);
 		printf("New process initialized: ");
 		printQueue(newProcess, 0);
-
 
 		while (!isEmpty(newProcess)) {
 			//Save the system stack
