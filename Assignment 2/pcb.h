@@ -12,7 +12,6 @@
 #ifndef PCB_H_
 #define PCB_H_
 
-
 typedef enum process_state {
 	created,
 	new,
@@ -40,4 +39,3 @@ const char* getStateName(enum process_state state);
 void toString(PCB * pcb);
 
 #endif /* PCB_H_ */
-

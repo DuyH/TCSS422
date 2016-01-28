@@ -4,8 +4,8 @@
  *  Created on: Jan 20, 2016
  *      Author: trung
  */
-#include "cpu.h"
 
+#include "cpu.h"
 
 /****** DISPATCHER ***********/
 PCB * dispatch(Queue *readyQueue) {
@@ -81,7 +81,7 @@ int main () {
 			printf("Ready queue: ");
 			printQueue(readyQueue,0);
 
-			//Dispatcher dequeues a ready process and put it in running state
+			//Dispatcher dequeues a ready process and puts it in running state
 			PCB *runningProcess = dispatch(readyQueue);
 			printf("Running process: ");
 			toString(runningProcess);
