@@ -1,0 +1,131 @@
+New process initialized: P1(31)->P2(24)-*
+Process transfered to readyQueue: PID: 1, Priority: 31, State: ready PC_Value: 0
+
+Running Process: PID: 1, Priority: 31, State: ready PC_Value: 0
+ Switching To: PID: 1, Priority: 31, State: ready PC_Value: 0
+
+Previous Process: PID: 1, Priority: 31, State: running PC_Value: 0
+ New Process: PID: 1, Priority: 31, State: running PC_Value: 0
+
+Queue is empty!
+Process transfered to readyQueue: PID: 2, Priority: 24, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(4)->P2(30)-*
+Process transfered to readyQueue: PID: 1, Priority: 4, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 30, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(4)->P2(30)-*
+P1(2)-*
+Process transfered to readyQueue: PID: 1, Priority: 2, State: ready PC_Value: 0
+
+Running Process: PID: 1, Priority: 2, State: ready PC_Value: 0
+ Switching To: PID: 1, Priority: 2, State: ready PC_Value: 0
+
+Previous Process: PID: 1, Priority: 2, State: running PC_Value: 0
+ New Process: PID: 1, Priority: 2, State: running PC_Value: 0
+
+Queue is empty!
+New process initialized: Queue is empty!
+P1(27)->P2(15)-*
+Process transfered to readyQueue: PID: 1, Priority: 27, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 15, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(27)->P2(15)-*
+P1(20)->P2(7)->P3(3)->P4(1)->P5(16)-*
+Process transfered to readyQueue: PID: 1, Priority: 20, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 7, State: ready PC_Value: 0
+
+Running Process: PID: 2, Priority: 7, State: ready PC_Value: 0
+ Switching To: PID: 2, Priority: 7, State: ready PC_Value: 0
+
+Previous Process: PID: 2, Priority: 7, State: running PC_Value: 0
+ New Process: PID: 2, Priority: 7, State: running PC_Value: 0
+
+Queue is empty!
+Process transfered to readyQueue: PID: 3, Priority: 3, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 4, Priority: 1, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 5, Priority: 16, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(31)->P2(11)-*
+Process transfered to readyQueue: PID: 1, Priority: 31, State: ready PC_Value: 0
+
+Running Process: PID: 1, Priority: 31, State: ready PC_Value: 0
+ Switching To: PID: 1, Priority: 31, State: ready PC_Value: 0
+
+Previous Process: PID: 1, Priority: 31, State: running PC_Value: 0
+ New Process: PID: 1, Priority: 31, State: running PC_Value: 0
+
+Queue is empty!
+Process transfered to readyQueue: PID: 2, Priority: 11, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(3)->P2(25)->P3(27)->P4(21)->P5(5)->P6(21)-*
+Process transfered to readyQueue: PID: 1, Priority: 3, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 25, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 3, Priority: 27, State: ready PC_Value: 0
+
+Running Process: PID: 3, Priority: 27, State: ready PC_Value: 0
+ Switching To: PID: 3, Priority: 27, State: ready PC_Value: 0
+
+Previous Process: PID: 3, Priority: 27, State: running PC_Value: 0
+ New Process: PID: 3, Priority: 27, State: running PC_Value: 0
+
+Queue is empty!
+Process transfered to readyQueue: PID: 4, Priority: 21, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 5, Priority: 5, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 6, Priority: 21, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(13)->P2(9)->P3(29)->P4(9)->P5(23)-*
+Process transfered to readyQueue: PID: 1, Priority: 13, State: ready PC_Value: 0
+
+Running Process: PID: 1, Priority: 13, State: ready PC_Value: 0
+ Switching To: PID: 1, Priority: 13, State: ready PC_Value: 0
+
+Previous Process: PID: 1, Priority: 13, State: running PC_Value: 0
+ New Process: PID: 1, Priority: 13, State: running PC_Value: 0
+
+Queue is empty!
+Process transfered to readyQueue: PID: 2, Priority: 9, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 3, Priority: 29, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 4, Priority: 9, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 5, Priority: 23, State: ready PC_Value: 0
+
+Running Process: PID: 5, Priority: 23, State: ready PC_Value: 0
+ Switching To: PID: 5, Priority: 23, State: ready PC_Value: 0
+
+Previous Process: PID: 5, Priority: 23, State: running PC_Value: 0
+ New Process: PID: 5, Priority: 23, State: running PC_Value: 0
+
+Queue is empty!
+New process initialized: Queue is empty!
+P1(9)->P2(26)->P3(8)->P4(18)-*
+Process transfered to readyQueue: PID: 1, Priority: 9, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 26, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 3, Priority: 8, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 4, Priority: 18, State: ready PC_Value: 0
+
+Running Process: PID: 4, Priority: 18, State: ready PC_Value: 0
+ Switching To: PID: 4, Priority: 18, State: ready PC_Value: 0
+
+Previous Process: PID: 4, Priority: 18, State: running PC_Value: 0
+ New Process: PID: 4, Priority: 18, State: running PC_Value: 0
+
+Queue is empty!
+New process initialized: Queue is empty!
+P1(3)-*
+Process transfered to readyQueue: PID: 1, Priority: 3, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(3)-*
+P1(11)->P2(16)->P3(18)->P4(10)->P5(16)-*
+Process transfered to readyQueue: PID: 1, Priority: 11, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 16, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 3, Priority: 18, State: ready PC_Value: 0
+
+Running Process: PID: 3, Priority: 18, State: ready PC_Value: 0
+ Switching To: PID: 3, Priority: 18, State: ready PC_Value: 0
+
+Previous Process: PID: 3, Priority: 18, State: running PC_Value: 0
+ New Process: PID: 3, Priority: 18, State: running PC_Value: 0
+
+Queue is empty!
+Process transfered to readyQueue: PID: 4, Priority: 10, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 5, Priority: 16, State: ready PC_Value: 0

@@ -34,4 +34,6 @@ int isEmpty(Queue *head);
 
 void printQueue(Queue *head, int printLastNode);
 
+char * queue_toString(Queue *head, int printLastNode);
+
 #endif /* QUEUE_H_ */

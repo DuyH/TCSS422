@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 #include "queue.h"
 
 /**
@@ -25,18 +26,18 @@ Queue * enqueue (Queue *queue, PCB *pcb) {
     // Ready a new node to add to list:
     Node *node = malloc(sizeof(Node));
     node->pcb = pcb;
-    node->pcb->pid = queue->counter;
+    //node->pcb->pid = queue->counter;
     node->next = NULL;
 
     // Node becomes head in empty list, otherwise appended to rear.
+    
     queue->size == 0 ? (queue->head = queue->rear = node) : (queue->rear->next = node);
-
     // New node always becomes the new rear node
     queue->rear = node;
 
     // Keep track of list size and PID counter
     queue->size++;
-    queue->counter++;
+    //queue->counter++;
 
     return queue;
 }
@@ -56,6 +57,7 @@ PCB * dequeue(Queue *queue) {
         queue->size--;
         PCB *returnPcb = queue->head->pcb;
         queue->head = queue->head->next;
+        //if (queue->size == 0) queue->rear = queue->head;
         return returnPcb;
     }
 
@@ -99,5 +101,39 @@ void printQueue(Queue *queue, int printLastNode) {
             toString(queue->rear->pcb);
         }else printf("\n");
     }
+}
+ 
+/**
+ *Returns the contents of the queue as a string with the option to include the contents of the
+ *last Node in the queue.
+ *
+ *Parameters: Queue *head: A pointer to the head of the queue
+ *Parameters: int printLastNode: 1 to print contents of the last Node, 0 to omit.
+ */
+char * queue_toString(Queue *queue, int printLastNode) {
+    static char queue_string[500];
+    if (queue->size == 0) {
+        sprintf(queue_string, "Queue is empty!\n");
+    } else {
+        
+        char first_part[50], second_part[50], third_part[50], fourth_part[50], fifth_part[50];
+        Node *current = queue->head;
+        while (current != NULL) {
+            sprintf(first_part, "P%d(%d)", current->pcb->pid, current->pcb->priority);
+            strcat(queue_string, first_part);
+            if (current->next != NULL) strcat(queue_string, "->");
+            current = current->next;
+            if(current == NULL) strcat(queue_string, "-*");
+        }
+        if(printLastNode) {
+            strcat(queue_string, " contents: ");
+            sprintf(fifth_part, "%s", toString(queue->rear->pcb));
+            strcat(queue_string, fifth_part);
+        }else {
+            
+            strcat(queue_string, "\n");
+        }
+    }
+    return queue_string;
 }
 

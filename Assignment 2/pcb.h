@@ -36,6 +36,18 @@ int getPriority (PCB *pcb);
 
 const char* getStateName(enum process_state state);
 
-void toString(PCB * pcb);
+int getPC_value (PCB *pcb);
+
+void setPID (PCB *pcb, int new_pid);
+
+void setPriority (PCB *pcb, int new_priority);
+
+void setState (PCB *pcb, enum process_state new_state);
+
+void setPC_value (PCB *pcb, int new_pc_value);
+
+char * toString(PCB * pcb);
+
+void printPCB(PCB * pcb);
 
 #endif /* PCB_H_ */
