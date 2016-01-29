@@ -27,14 +27,12 @@ CPU_p CPU_constructor(void) {
 }
 
 
-
-
 /**
  * Creates and appends output to a file
  *
  * Parameters: char * string: the string to be added
  */
-void file_handler(char *string) {
+void CPU_file_handler(char *string) {
     FILE *fp;
     fp = fopen("scheduleTrace.txt", "a+");
     fputs(string, fp);
@@ -44,7 +42,7 @@ void file_handler(char *string) {
 /**
  * Removes the text file if already in place
  */
-void remove_file() {
+void CPU_remove_file() {
     remove("scheduleTrace.txt");
 }
 
@@ -66,14 +64,14 @@ PCB *dispatch(CPU_p cpu) {
  * Fetch a process from the newly created process list and put it
  * in the ready queue to be running.
  */
-Queue *fetchProcess(CPU_p cpu, State state_type, int printCounter) {
+Queue *CPU_fetch_process(CPU_p cpu, Interrupt_type interrupt_type, int printCounter) {
     PCB *readyPCB;
-    if (state_type == timer) {
+    if (interrupt_type == timer) {
 
         if (Queue_isEmpty(cpu->newProcessesQueue)) {
             char noPrint[STR_LEN];
             sprintf(noPrint, "No process to be scheduled! List is empty.\n");
-            file_handler(noPrint);
+            CPU_file_handler(noPrint);
         } else {
             char transfer_PCB[STR_LEN];
             readyPCB = Queue_dequeue(cpu->newProcessesQueue);
@@ -81,13 +79,13 @@ Queue *fetchProcess(CPU_p cpu, State state_type, int printCounter) {
 
             cpu->readyQueue = Queue_enqueue(cpu->readyQueue, readyPCB);
             sprintf(transfer_PCB, "Process transfered to readyQueue: %s", PCB_toString(readyPCB));
-            file_handler(transfer_PCB);
+            CPU_file_handler(transfer_PCB);
 
             if (printCounter % 4 == 0) {
                 char changingProcess[STR_LEN];
                 sprintf(changingProcess, "\nRunning Process: %s Switching To: %s\n", PCB_toString(readyPCB),
                         PCB_toString(cpu->readyQueue->head->pcb));
-                file_handler(changingProcess);
+                CPU_file_handler(changingProcess);
             }
         }
     }
@@ -96,9 +94,10 @@ Queue *fetchProcess(CPU_p cpu, State state_type, int printCounter) {
     PCB *runningProcess = dispatch(cpu);
     if (printCounter % 4 == 0) {
         char newProcess[STR_LEN];
-        sprintf(newProcess, "Previous Process: %s New Process: %s\n", PCB_toString(readyPCB), PCB_toString(runningProcess));
-        file_handler(newProcess);
-        file_handler(queue_toString(cpu->readyQueue, 0));
+        sprintf(newProcess, "Previous Process: %s New Process: %s\n", PCB_toString(readyPCB),
+                PCB_toString(runningProcess));
+        CPU_file_handler(newProcess);
+        CPU_file_handler(Queue_toString(cpu->readyQueue, 0));
 
     }
     return cpu->readyQueue;
@@ -108,7 +107,7 @@ Queue *fetchProcess(CPU_p cpu, State state_type, int printCounter) {
 /**
  * Function that creates 0-5 new processes and puts them into a list.
  */
-Queue *createNewProcesses(Queue *queue, int numb_process) {
+Queue *CPU_create_processes(Queue *queue, int numb_process) {
     int n;
     for (n = 0; n < numb_process; n++) {
         PCB *pcb = PCB_constructor();
@@ -132,7 +131,7 @@ int main() {
     CPU *cpu = CPU_constructor();
 
     // Prepare for file writing:
-    remove_file();
+    CPU_remove_file();
     char process_queue_string[STR_LEN];
     sprintf(process_queue_string, "New process initialized: ");
 
@@ -142,7 +141,7 @@ int main() {
         // 1a. Create a queue of new processes, 0 - 5 processes at a time:
         int num_proc_created = rand() % 6;
         total_procs += num_proc_created;
-        cpu->newProcessesQueue = createNewProcesses(cpu->newProcessesQueue, num_proc_created);
+        cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue, num_proc_created);
 
 
         // 1b. Print newly created process queue to console:
@@ -152,8 +151,8 @@ int main() {
         printf("\n");
 
         // 1c. Print newly created processes queue to file:
-        file_handler(process_queue_string);
-        file_handler(queue_toString(cpu->newProcessesQueue, 0));
+        CPU_file_handler(process_queue_string);
+        CPU_file_handler(Queue_toString(cpu->newProcessesQueue, 0));
 
 
         // Iterate through the newly created processes list until empty:
@@ -163,7 +162,7 @@ int main() {
             cpu->sysStack = PC;
 
             //Scheduler fetches a process from process list and put to readyQueue
-            cpu->readyQueue = fetchProcess(cpu, timer, ctx_switch_count);
+            cpu->readyQueue = CPU_fetch_process(cpu, timer, ctx_switch_count);
             //printf("Ready queue: ");
             //printf("%s", queue_toString(readyQueue, 0));
             ctx_switch_count++;

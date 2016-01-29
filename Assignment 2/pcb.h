@@ -63,7 +63,7 @@ const char *PCB_get_state(State);   // returns state value
 
 int getPC_value(PCB_p);             // returns pc value
 
-// Utility Functions:
+/* Utility Functions */
 
 char *PCB_toString(PCB_p);          // returns pointer to character array of this pcb's contents
 

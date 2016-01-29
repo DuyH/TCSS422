@@ -24,12 +24,12 @@
 typedef struct node {
     PCB_p pcb;
     struct node *next;
-}Node;
+} Node;
 
 typedef struct queue {
     Node *head, *rear;
     int size, counter;
-}Queue;
+} Queue;
 
 typedef Queue *Queue_p;
 
@@ -59,7 +59,7 @@ int Queue_get_size(Queue_p);            // returns the size of this queue
 
 int Queue_get_counter(Queue_p);         // returns this queue's counter
 
-/* Utility Functions */
+/* ADT Functions */
 
 Queue_p Queue_enqueue(Queue_p, PCB_p);  // Enqueues a pcb object to a queue object
 
@@ -69,8 +69,10 @@ PCB_p Queue_peek(Queue_p);              // Returns a pcb object from a queue obj
 
 int Queue_isEmpty(Queue_p);             // Returns 1 if queue is empty or 0 if not
 
+/* Utility Functions */
+
 void Queue_print(Queue_p, int);         // Prints queue; 1: prints last Node, 0: does not print last Node
 
-char * queue_toString(Queue_p, int);    // Returns a character array of the queue
+char *Queue_toString(Queue_p, int);    // Returns a character array of the queue
 
 #endif /* QUEUE_H_ */

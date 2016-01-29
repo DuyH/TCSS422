@@ -30,7 +30,7 @@ Queue *Queue_enqueue(Queue *queue, PCB *pcb) {
     node->next = NULL;
 
     // Node becomes head in empty list, otherwise appended to rear.
-    
+
     queue->size == 0 ? (queue->head = queue->rear = node) : (queue->rear->next = node);
     // New node always becomes the new rear node
     queue->rear = node;
@@ -41,6 +41,7 @@ Queue *Queue_enqueue(Queue *queue, PCB *pcb) {
 
     return queue;
 }
+
 /**
  * Remove and return the head of the queue.
  * Example call: dequeue(&queue);
@@ -68,7 +69,7 @@ PCB *Queue_dequeue(Queue *queue) {
  * Example call: toString(peek(&queue));
  */
 PCB *Queue_peek(Queue *queue) {
-	return queue->head->pcb;
+    return queue->head->pcb;
 }
 
 /**
@@ -94,15 +95,15 @@ void Queue_print(Queue *queue, int printLastNode) {
             printf("P%d(%d)", current->pcb->pid, current->pcb->priority);
             if (current->next != NULL) printf("->");
             current = current->next;
-            if(current == NULL) printf("-*");
+            if (current == NULL) printf("-*");
         }
-        if(printLastNode) {
+        if (printLastNode) {
             printf(" contents: ");
             PCB_toString(queue->rear->pcb);
-        }else printf("\n");
+        } else printf("\n");
     }
 }
- 
+
 /**
  *Returns the contents of the queue as a string with the option to include the contents of the
  *last Node in the queue.
@@ -110,12 +111,12 @@ void Queue_print(Queue *queue, int printLastNode) {
  *Parameters: Queue *head: A pointer to the head of the queue
  *Parameters: int printLastNode: 1 to print contents of the last Node, 0 to omit.
  */
-char * queue_toString(Queue *queue, int printLastNode) {
+char *Queue_toString(Queue *queue, int printLastNode) {
     static char queue_string[500];
     if (queue->size == 0) {
         sprintf(queue_string, "Queue is empty!\n");
     } else {
-        
+
         char first_part[50], second_part[50], third_part[50], fourth_part[50], fifth_part[50];
         Node *current = queue->head;
         while (current != NULL) {
@@ -123,14 +124,14 @@ char * queue_toString(Queue *queue, int printLastNode) {
             strcat(queue_string, first_part);
             if (current->next != NULL) strcat(queue_string, "->");
             current = current->next;
-            if(current == NULL) strcat(queue_string, "-*");
+            if (current == NULL) strcat(queue_string, "-*");
         }
-        if(printLastNode) {
+        if (printLastNode) {
             strcat(queue_string, " contents: ");
             sprintf(fifth_part, "%s", PCB_toString(queue->rear->pcb));
             strcat(queue_string, fifth_part);
-        }else {
-            
+        } else {
+
             strcat(queue_string, "\n");
         }
     }

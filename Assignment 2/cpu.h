@@ -7,7 +7,9 @@
 * Trung Dang
 * Brandon Scholor
 *
+* TCSS 422 - Winter 2016
 * Date: 1/20/16
+* Assignment 2
 *
 * Description:
 * This header file defines the class and methods for the cpu implementation
@@ -24,63 +26,71 @@
 #include "queue.h"
 #include "pcb.h"
 
-/**
- * Enumerating interrupt states.
- */
+/* Enumerating interrupt states. */
 typedef enum interrupt_state {
     timer
 } Interrupt_type;
 
-/**
- * A struct representing a CPU.
- */
+/* A struct representing a CPU. */
 typedef struct cpu_type {
     unsigned int pc;
     unsigned int sysStack;
-    PCB *currentProcess;
-    Queue *readyQueue;
-    Queue *terminatedQueue;
-    Queue *newProcessesQueue;
+    PCB_p currentProcess;
+    Queue_p readyQueue;
+    Queue_p terminatedQueue;
+    Queue_p newProcessesQueue;
 } CPU;
 
 typedef CPU *CPU_p;
 
 /* CPU Constructor */
-CPU_p CPU_constructor(void);
+CPU_p CPU_constructor(void);                    // constructs a new cpu object in the heap
 
 /* CPU destructor */
-void CPU_destructor(CPU_p);
+void CPU_destructor(CPU_p);                     // frees memory allocated to pcb object
 
-/* CPU getters & setters */
+/* Setters */
 
-/* Set CPU's PC */
-void CPU_set_pc(CPU_p, unsigned int);
+void CPU_set_pc(CPU_p, unsigned int);           // sets this->pc to int value
 
-/* Get CPU's PC */
-unsigned int CPU_get_pc(CPU_p);
+void CPU_set_current_process(CPU_p, PCB_p);     // sets this->current_process to pcb pointer
+
+void CPU_set_readyQueue(CPU_p, Queue_p);        // sets this->readyQueue to queue pointer
+
+void CPU_set_terminatedQueue(CPU_p, Queue_p);   // sets this->terminatedQueue to queue pointer
+
+void CPU_set_newProcessesQueue(CPU_p, Queue_p); // sets this->newProcessesQueue to queue pointer
+
+/* Getters */
+
+unsigned int CPU_get_pc(CPU_p);                 // returns this cpu's pc
+
+PCB_p CPU_get_current_proc(CPU_p);              // returns this cpu's currently running process (pcb pointer)
+
+Queue_p CPU_get_readyQueue(CPU_p);              // returns this cpu's readyQueue queue
+
+Queue_p CPU_get_terminatedQueue(CPU_p);         // returns this cpu's terminatedQueue queue
+
+Queue_p CPU_get_newProcessesQueue(CPU_p);       // returns this cpu's newProcesses queue
+
+/* ADT Functions */
 
 /* Set CPU's System Stack */
-void CPU_push_sysStack(CPU_p, unsigned int);
+void CPU_push_sysStack(CPU_p, unsigned int);    // Pushes unsigned int value onto cpu's sysStack
 
 /* Get CPU's System Stack */
-unsigned int CPU_pop_sysStack(CPU_p);
-
-/* Set CPU's currently running process */
-void CPU_set_current_process(CPU_p, PCB_p);
-
-/* Get CPU's currently running process */
-PCB *get_current_process(CPU *cpu_p);
+unsigned int CPU_pop_sysStack(CPU_p);           // Pops off int value from cpu's sysStack
 
 /* Utility Functions */
 
-PCB *dispatch(CPU_p);
+PCB_p dispatch(CPU_p);                          // Dispatches...
 
-Queue *fetchProcess(CPU_p, State, int printCounter);
+Queue_p CPU_fetch_process(CPU_p, Interrupt_type, int);   // Fetches new process
 
-Queue *createNewProcesses(Queue *queue, int numb_process);
+Queue_p CPU_create_processes(Queue_p, int);     // Creates new processes
 
-void file_handler(char *string);
+void CPU_file_handler(char *string);            // Handles file writing
 
-void remove_file();
+void CPU_remove_file();                         // Removes existing file
 
 #endif //ASSIGNMENT1_CPU_H

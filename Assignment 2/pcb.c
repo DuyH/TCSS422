@@ -85,7 +85,7 @@ int get_PC_value(PCB *pcb) {
  *Parameters: PCB *pcb: A pointer to the PCB structure
  *Parameters: int new_pid: The new value to be the pid
  */
- void PCB_set_pid(PCB *pcb, int new_pid) {
+void PCB_set_pid(PCB *pcb, int new_pid) {
     pcb->pid = new_pid;
 }
 
@@ -137,5 +137,6 @@ char *PCB_toString(PCB *pcb) {
  * Parameters: PCB * pcb: A pointer to the PCB structure
  */
 void PCB_print(PCB *pcb) {
-    printf("PID: %02d, Priority: %02d, State: %s\n", PCB_get_pid(pcb), PCB_get_priority(pcb), PCB_get_state(pcb->state));
+    printf("PID: %02d, Priority: %02d, State: %s\n", PCB_get_pid(pcb), PCB_get_priority(pcb),
+           PCB_get_state(pcb->state));
 }
