@@ -17,11 +17,11 @@
  * Add new node to rear of queue. An empty queue results in the new node being the new head.
  * Example call: enqueue(&queue, &pcb);
  *
- * Parameters:	Queue *queue: pointer to head of queue list
- * 				PCB *pcb: pointer to pcb to be added
+ * Parameters:	Queue_p queue: pointer to head of queue list
+ * 				PCB_p pcb: pointer to pcb to be added
  * Returns: Pointer to head of Queue.
  */
-Queue *Queue_enqueue(Queue *queue, PCB *pcb) {
+Queue_p Queue_enqueue(Queue_p queue, PCB_p pcb) {
 
     // Ready a new node to add to list:
     Node *node = malloc(sizeof(Node));
@@ -46,17 +46,17 @@ Queue *Queue_enqueue(Queue *queue, PCB *pcb) {
  * Remove and return the head of the queue.
  * Example call: dequeue(&queue);
  *
- * Parameters: Queue *queue: A pointer to the head of the queue.
+ * Parameters: Queue_p queue: A pointer to the head of the queue.
  * Returns: Contents (pcb) of head node.
  */
-PCB *Queue_dequeue(Queue *queue) {
+PCB_p Queue_dequeue(Queue_p queue) {
 
     if (queue->size == 0) {
         printf("There was nothing to dequeue\n");
         return NULL;
     } else {
         queue->size--;
-        PCB *returnPcb = queue->head->pcb;
+        PCB_p returnPcb = queue->head->pcb;
         queue->head = queue->head->next;
         //if (queue->size == 0) queue->rear = queue->head;
         return returnPcb;
@@ -68,14 +68,14 @@ PCB *Queue_dequeue(Queue *queue) {
  * Returns the contents of the head node of the list without a dequeue.
  * Example call: toString(peek(&queue));
  */
-PCB *Queue_peek(Queue *queue) {
+PCB_p Queue_peek(Queue_p queue) {
     return queue->head->pcb;
 }
 
 /**
  * Returns if queue is empty or not.
  */
-int Queue_isEmpty(Queue *queue) {
+int Queue_isEmpty(Queue_p queue) {
     return queue->size == 0;
 }
 
@@ -83,10 +83,10 @@ int Queue_isEmpty(Queue *queue) {
  * Prints the content of the queue with the option to include the contents of the last Node in the queue.
  * Example call: printQueue(&queue, 0);
  *
- * Parameters:  Queue * head: A pointer to the head of the queue
+ * Parameters:  Queue_p  head: A pointer to the head of the queue
  * 				int printLastNode: 1 to print contents of the last Node, 0 to omit.
  */
-void Queue_print(Queue *queue, int printLastNode) {
+void Queue_print(Queue_p queue, int printLastNode) {
     if (queue->size == 0) {
         printf("Queue is empty!\n");
     } else {
@@ -108,10 +108,10 @@ void Queue_print(Queue *queue, int printLastNode) {
  *Returns the contents of the queue as a string with the option to include the contents of the
  *last Node in the queue.
  *
- *Parameters: Queue *head: A pointer to the head of the queue
+ *Parameters: Queue_p head: A pointer to the head of the queue
  *Parameters: int printLastNode: 1 to print contents of the last Node, 0 to omit.
  */
-char *Queue_toString(Queue *queue, int printLastNode) {
+char *Queue_toString(Queue_p queue, int printLastNode) {
     static char queue_string[500];
     if (queue->size == 0) {
         sprintf(queue_string, "Queue is empty!\n");

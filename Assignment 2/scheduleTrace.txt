@@ -1,105 +1,106 @@
-New process initialized: P1(4)-*
-Process transfered to readyQueue: PID: 1, Priority: 4, State: ready PC_Value: 0
+New process initialized: P1(24)->P2(11)-*
+Process transfered to readyQueue: PID: 1, Priority: 24, State: ready PC_Value: 0
 
-Running Process: PID: 1, Priority: 4, State: ready PC_Value: 0
- Switching To: PID: 1, Priority: 4, State: ready PC_Value: 0
+Running Process: PID: 1, Priority: 24, State: ready PC_Value: 0
+ Switching To: PID: 1, Priority: 24, State: ready PC_Value: 0
 
-Previous Process: PID: 1, Priority: 4, State: running PC_Value: 0
- New Process: PID: 1, Priority: 4, State: running PC_Value: 0
+Previous Process: PID: 1, Priority: 24, State: running PC_Value: 0
+ New Process: PID: 1, Priority: 24, State: running PC_Value: 0
+
+Queue is empty!
+Process transfered to readyQueue: PID: 2, Priority: 11, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+New process initialized: Queue is empty!
+New process initialized: Queue is empty!
+P1(23)-*
+Process transfered to readyQueue: PID: 1, Priority: 23, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(23)-*
+P1(9)->P2(3)-*
+Process transfered to readyQueue: PID: 1, Priority: 9, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 3, State: ready PC_Value: 0
+
+Running Process: PID: 2, Priority: 3, State: ready PC_Value: 0
+ Switching To: PID: 2, Priority: 3, State: ready PC_Value: 0
+
+Previous Process: PID: 2, Priority: 3, State: running PC_Value: 0
+ New Process: PID: 2, Priority: 3, State: running PC_Value: 0
 
 Queue is empty!
 New process initialized: Queue is empty!
-P1(11)->P2(17)->P3(9)-*
-Process transfered to readyQueue: PID: 1, Priority: 11, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 2, Priority: 17, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 3, Priority: 9, State: ready PC_Value: 0
-New process initialized: Queue is empty!
-P1(11)->P2(17)->P3(9)-*
-P1(20)->P2(12)->P3(4)-*
-Process transfered to readyQueue: PID: 1, Priority: 20, State: ready PC_Value: 0
+P1(24)->P2(16)->P3(24)->P4(27)-*
+Process transfered to readyQueue: PID: 1, Priority: 24, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 16, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 3, Priority: 24, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 4, Priority: 27, State: ready PC_Value: 0
 
-Running Process: PID: 1, Priority: 20, State: ready PC_Value: 0
- Switching To: PID: 1, Priority: 20, State: ready PC_Value: 0
+Running Process: PID: 4, Priority: 27, State: ready PC_Value: 0
+ Switching To: PID: 4, Priority: 27, State: ready PC_Value: 0
 
-Previous Process: PID: 1, Priority: 20, State: running PC_Value: 0
- New Process: PID: 1, Priority: 20, State: running PC_Value: 0
+Previous Process: PID: 4, Priority: 27, State: running PC_Value: 0
+ New Process: PID: 4, Priority: 27, State: running PC_Value: 0
 
 Queue is empty!
-Process transfered to readyQueue: PID: 2, Priority: 12, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 3, Priority: 4, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(17)-*
+Process transfered to readyQueue: PID: 1, Priority: 17, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(17)-*
+P1(15)->P2(7)-*
+Process transfered to readyQueue: PID: 1, Priority: 15, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 7, State: ready PC_Value: 0
 New process initialized: Queue is empty!
 New process initialized: Queue is empty!
-P1(14)-*
+P1(14)->P2(5)->P3(2)->P4(6)-*
 Process transfered to readyQueue: PID: 1, Priority: 14, State: ready PC_Value: 0
-New process initialized: Queue is empty!
-P1(14)-*
-P1(4)-*
-Process transfered to readyQueue: PID: 1, Priority: 4, State: ready PC_Value: 0
 
-Running Process: PID: 1, Priority: 4, State: ready PC_Value: 0
- Switching To: PID: 1, Priority: 4, State: ready PC_Value: 0
+Running Process: PID: 1, Priority: 14, State: ready PC_Value: 0
+ Switching To: PID: 1, Priority: 14, State: ready PC_Value: 0
 
-Previous Process: PID: 1, Priority: 4, State: running PC_Value: 0
- New Process: PID: 1, Priority: 4, State: running PC_Value: 0
+Previous Process: PID: 1, Priority: 14, State: running PC_Value: 0
+ New Process: PID: 1, Priority: 14, State: running PC_Value: 0
 
 Queue is empty!
-New process initialized: Queue is empty!
-P1(21)->P2(30)->P3(5)->P4(4)->P5(1)-*
-Process transfered to readyQueue: PID: 1, Priority: 21, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 2, Priority: 30, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 3, Priority: 5, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 4, Priority: 4, State: ready PC_Value: 0
-
-Running Process: PID: 4, Priority: 4, State: ready PC_Value: 0
- Switching To: PID: 4, Priority: 4, State: ready PC_Value: 0
-
-Previous Process: PID: 4, Priority: 4, State: running PC_Value: 0
- New Process: PID: 4, Priority: 4, State: running PC_Value: 0
-
-Queue is empty!
-Process transfered to readyQueue: PID: 5, Priority: 1, State: ready PC_Value: 0
-New process initialized: Queue is empty!
-P1(2)->P2(23)-*
-Process transfered to readyQueue: PID: 1, Priority: 2, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 2, Priority: 23, State: ready PC_Value: 0
-New process initialized: Queue is empty!
-New process initialized: Queue is empty!
-P1(19)->P2(19)->P3(2)->P4(4)-*
-Process transfered to readyQueue: PID: 1, Priority: 19, State: ready PC_Value: 0
-
-Running Process: PID: 1, Priority: 19, State: ready PC_Value: 0
- Switching To: PID: 1, Priority: 19, State: ready PC_Value: 0
-
-Previous Process: PID: 1, Priority: 19, State: running PC_Value: 0
- New Process: PID: 1, Priority: 19, State: running PC_Value: 0
-
-Queue is empty!
-Process transfered to readyQueue: PID: 2, Priority: 19, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 5, State: ready PC_Value: 0
 Process transfered to readyQueue: PID: 3, Priority: 2, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 4, Priority: 4, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 4, Priority: 6, State: ready PC_Value: 0
 New process initialized: Queue is empty!
-P1(31)-*
-Process transfered to readyQueue: PID: 1, Priority: 31, State: ready PC_Value: 0
+P1(18)->P2(7)-*
+Process transfered to readyQueue: PID: 1, Priority: 18, State: ready PC_Value: 0
 
-Running Process: PID: 1, Priority: 31, State: ready PC_Value: 0
- Switching To: PID: 1, Priority: 31, State: ready PC_Value: 0
+Running Process: PID: 1, Priority: 18, State: ready PC_Value: 0
+ Switching To: PID: 1, Priority: 18, State: ready PC_Value: 0
 
-Previous Process: PID: 1, Priority: 31, State: running PC_Value: 0
- New Process: PID: 1, Priority: 31, State: running PC_Value: 0
+Previous Process: PID: 1, Priority: 18, State: running PC_Value: 0
+ New Process: PID: 1, Priority: 18, State: running PC_Value: 0
 
 Queue is empty!
+Process transfered to readyQueue: PID: 2, Priority: 7, State: ready PC_Value: 0
 New process initialized: Queue is empty!
-P1(11)->P2(6)->P3(14)->P4(21)->P5(18)-*
-Process transfered to readyQueue: PID: 1, Priority: 11, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 2, Priority: 6, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 3, Priority: 14, State: ready PC_Value: 0
-Process transfered to readyQueue: PID: 4, Priority: 21, State: ready PC_Value: 0
+P1(4)->P2(4)->P3(1)->P4(24)->P5(22)-*
+Process transfered to readyQueue: PID: 1, Priority: 4, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 4, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 3, Priority: 1, State: ready PC_Value: 0
 
-Running Process: PID: 4, Priority: 21, State: ready PC_Value: 0
- Switching To: PID: 4, Priority: 21, State: ready PC_Value: 0
+Running Process: PID: 3, Priority: 1, State: ready PC_Value: 0
+ Switching To: PID: 3, Priority: 1, State: ready PC_Value: 0
 
-Previous Process: PID: 4, Priority: 21, State: running PC_Value: 0
- New Process: PID: 4, Priority: 21, State: running PC_Value: 0
+Previous Process: PID: 3, Priority: 1, State: running PC_Value: 0
+ New Process: PID: 3, Priority: 1, State: running PC_Value: 0
 
 Queue is empty!
-Process transfered to readyQueue: PID: 5, Priority: 18, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 4, Priority: 24, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 5, Priority: 22, State: ready PC_Value: 0
+New process initialized: Queue is empty!
+P1(25)->P2(21)->P3(2)-*
+Process transfered to readyQueue: PID: 1, Priority: 25, State: ready PC_Value: 0
+Process transfered to readyQueue: PID: 2, Priority: 21, State: ready PC_Value: 0
+
+Running Process: PID: 2, Priority: 21, State: ready PC_Value: 0
+ Switching To: PID: 2, Priority: 21, State: ready PC_Value: 0
+
+Previous Process: PID: 2, Priority: 21, State: running PC_Value: 0
+ New Process: PID: 2, Priority: 21, State: running PC_Value: 0
+
+Queue is empty!
+Process transfered to readyQueue: PID: 3, Priority: 2, State: ready PC_Value: 0
