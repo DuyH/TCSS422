@@ -75,6 +75,14 @@ Queue_p CPU_get_newProcessesQueue(CPU_p);       // returns this cpu's newProcess
 
 /* ADT Functions */
 
+Queue_p CPU_enqueue_readyQueue(CPU_p, PCB_p);   // Enqueues a PCB object to the CPU's readyQueue
+
+PCB_p CPU_dequeue_readyQueue(CPU_p);            // Dequeues a PCB object from the CPU's readyQueue
+
+Queue_p CPU_enqueue_terminatedQueue(CPU_p, PCB_p);   // Enqueues a PCB object to the CPU's terminatedQueue
+
+PCB_p CPU_dequeue_terminatedQueue(CPU_p);            // Dequeues a PCB object from the CPU's terminatedQueue
+
 /* Set CPU's System Stack */
 void CPU_push_sysStack(CPU_p, unsigned int);    // Pushes unsigned int value onto cpu's sysStack
 

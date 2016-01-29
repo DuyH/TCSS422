@@ -21,9 +21,7 @@
 #define MAX_PROCESS 30
 #define STR_LEN 200
 
-/**
- * CPU Constructor:
- */
+/* CPU Constructor */
 CPU_p CPU_constructor(void) {
     CPU_p cpu = malloc(sizeof(CPU));
     cpu->pc = 0;
@@ -35,6 +33,7 @@ CPU_p CPU_constructor(void) {
     return cpu;
 }
 
+/* CPU Desctructor */
 void CPU_destructor(CPU_p cpu) {
     free(cpu);
 }
@@ -77,6 +76,22 @@ Queue_p CPU_get_terminatedQueue(CPU_p cpu) {
 
 Queue_p CPU_get_newProcessesQueue(CPU_p cpu) {
     return cpu->newProcessesQueue;
+}
+
+Queue_p CPU_enqueue_readyQueue(CPU_p cpu, PCB_p pcb) {
+    Queue_enqueue(CPU_get_readyQueue(cpu), pcb);
+}
+
+PCB_p CPU_dequeue_readyQueue(CPU_p cpu) {
+    return Queue_dequeue(CPU_get_readyQueue(cpu));
+}
+
+Queue_p CPU_enqueue_terminatedQueue(CPU_p cpu, PCB_p pcb) {
+    Queue_enqueue(CPU_get_terminatedQueue(cpu), pcb);
+}
+
+PCB_p CPU_dequeue_terminatedQueue(CPU_p cpu) {
+    return Queue_dequeue(CPU_get_terminatedQueue(cpu));
 }
 
 void CPU_push_sysStack(CPU_p cpu, unsigned int sysStack) {
