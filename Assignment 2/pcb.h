@@ -1,53 +1,72 @@
-/*
- * pcb.h
- *
- * TCSS 422 '16
- * Assignment 1
- * Authors: Duy Huynh, Jeffrey LeCompte, Trung Dang, Brandon Scholer
- *
- * PCB header file consisting of a pid, priority, state and method to print its contents.
- *
-*/
+/***********************************************************************************************
+* pcb.h
+*
+* Programming Team:
+* Duy Huynh
+* Jeffrey LeCompte
+* Trung Dang
+* Brandon Scholer
+*
+* TCSS 422 - Winter 2016
+* Date: 1/20/16
+* Assignment 2
+*
+* Description:
+* This header file defines the class and methods for the process control block implementation
+*
+************************************************************************************************/
 
 #ifndef PCB_H_
 #define PCB_H_
 
 typedef enum process_state {
-	created,
-	new,
-	ready,
-	running,
-	waiting,
-	terminated
-} state;
+    created,
+    new,
+    ready,
+    running,
+    waiting,
+    terminated
+} State;
 
 typedef struct pcb_type {
-	int pid;
-	int priority;
-	enum process_state state;
-	int pc_value;
+    int pid;
+    int priority;
+    enum process_state state;
+    int pc_value;
 } PCB;
 
-PCB * create();
+typedef PCB *PCB_p;
 
-int getPID (PCB *pcb);
+/* PCB Constructor */
+PCB_p PCB_constructor();            // constructs a new pcb object in the heap
 
-int getPriority (PCB *pcb);
+/* PCB Destructor */
+void PCB_destructor(PCB_p);         // frees memory allocated to pcb object
 
-const char* getStateName(enum process_state state);
+/* Setters */
 
-int getPC_value (PCB *pcb);
+void PCB_set_pid(PCB_p, int);       // sets this->pid to int value
 
-void setPID (PCB *pcb, int new_pid);
+void PCB_set_priority(PCB_p, int);  // sets this->priority to int value
 
-void setPriority (PCB *pcb, int new_priority);
+void PCB_set_state(PCB_p, State);   // sets this->state to State value
 
-void setState (PCB *pcb, enum process_state new_state);
+void PCB_set_pc(PCB_p, int);        // sets this->pc to int value
 
-void setPC_value (PCB *pcb, int new_pc_value);
+/* Getters */
 
-char * toString(PCB * pcb);
+int PCB_get_pid(PCB_p);             // returns pid value
 
-void printPCB(PCB * pcb);
+int PCB_get_priority(PCB_p);        // returns priority value
+
+const char *PCB_get_state(State);   // returns state value
+
+int getPC_value(PCB_p);             // returns pc value
+
+// Utility Functions:
+
+char *PCB_toString(PCB_p);          // returns pointer to character array of this pcb's contents
+
+void PCB_print(PCB_p);              // prints to console this pcb's contents
 
 #endif /* PCB_H_ */

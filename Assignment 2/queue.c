@@ -21,7 +21,7 @@
  * 				PCB *pcb: pointer to pcb to be added
  * Returns: Pointer to head of Queue.
  */
-Queue * enqueue (Queue *queue, PCB *pcb) {
+Queue *Queue_enqueue(Queue *queue, PCB *pcb) {
 
     // Ready a new node to add to list:
     Node *node = malloc(sizeof(Node));
@@ -48,7 +48,7 @@ Queue * enqueue (Queue *queue, PCB *pcb) {
  * Parameters: Queue *queue: A pointer to the head of the queue.
  * Returns: Contents (pcb) of head node.
  */
-PCB * dequeue(Queue *queue) {
+PCB *Queue_dequeue(Queue *queue) {
 
     if (queue->size == 0) {
         printf("There was nothing to dequeue\n");
@@ -67,14 +67,14 @@ PCB * dequeue(Queue *queue) {
  * Returns the contents of the head node of the list without a dequeue.
  * Example call: toString(peek(&queue));
  */
-PCB * peek(Queue *queue) {
+PCB *Queue_peek(Queue *queue) {
 	return queue->head->pcb;
 }
 
 /**
  * Returns if queue is empty or not.
  */
-int isEmpty(Queue *queue) {
+int Queue_isEmpty(Queue *queue) {
     return queue->size == 0;
 }
 
@@ -85,7 +85,7 @@ int isEmpty(Queue *queue) {
  * Parameters:  Queue * head: A pointer to the head of the queue
  * 				int printLastNode: 1 to print contents of the last Node, 0 to omit.
  */
-void printQueue(Queue *queue, int printLastNode) {
+void Queue_print(Queue *queue, int printLastNode) {
     if (queue->size == 0) {
         printf("Queue is empty!\n");
     } else {
@@ -98,7 +98,7 @@ void printQueue(Queue *queue, int printLastNode) {
         }
         if(printLastNode) {
             printf(" contents: ");
-            toString(queue->rear->pcb);
+            PCB_toString(queue->rear->pcb);
         }else printf("\n");
     }
 }
@@ -127,7 +127,7 @@ char * queue_toString(Queue *queue, int printLastNode) {
         }
         if(printLastNode) {
             strcat(queue_string, " contents: ");
-            sprintf(fifth_part, "%s", toString(queue->rear->pcb));
+            sprintf(fifth_part, "%s", PCB_toString(queue->rear->pcb));
             strcat(queue_string, fifth_part);
         }else {
             

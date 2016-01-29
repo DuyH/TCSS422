@@ -1,9 +1,21 @@
-//
-// Created by jef on 1/27/16.
-//
+/***********************************************************************************************
+* cpu.h
+*
+* Programming Team:
+* Duy Huynh
+* Jeffrey LeCompte
+* Trung Dang
+* Brandon Scholor
+*
+* Date: 1/20/16
+*
+* Description:
+* This header file defines the class and methods for the cpu implementation
+*
+************************************************************************************************/
 
-#ifndef ASSIGNMENT1_CPU_H
-#define ASSIGNMENT1_CPU_H
+#ifndef CPU_H
+#define CPU_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,22 +24,62 @@
 #include "queue.h"
 #include "pcb.h"
 
+/**
+ * Enumerating interrupt states.
+ */
 typedef enum interrupt_state {
     timer
-} interrupt_type;
+} Interrupt_type;
 
-/*
- * Global variable for frame pointer
+/**
+ * A struct representing a CPU.
  */
-int sysStack;
+typedef struct cpu_type {
+    unsigned int pc;
+    unsigned int sysStack;
+    PCB *currentProcess;
+    Queue *readyQueue;
+    Queue *terminatedQueue;
+    Queue *newProcessesQueue;
+} CPU;
 
-PCB * dispatch(Queue *readyQueue);
+typedef CPU *CPU_p;
 
-Queue * fetchProcess(Queue *newProcess, Queue *readyQueue, enum interrupt_state, int printCounter);
+/* CPU Constructor */
+CPU_p CPU_constructor(void);
+
+/* CPU destructor */
+void CPU_destructor(CPU_p);
+
+/* CPU getters & setters */
+
+/* Set CPU's PC */
+void CPU_set_pc(CPU_p, unsigned int);
+
+/* Get CPU's PC */
+unsigned int CPU_get_pc(CPU_p);
+
+/* Set CPU's System Stack */
+void CPU_push_sysStack(CPU_p, unsigned int);
+
+/* Get CPU's System Stack */
+unsigned int CPU_pop_sysStack(CPU_p);
+
+/* Set CPU's currently running process */
+void CPU_set_current_process(CPU_p, PCB_p);
+
+/* Get CPU's currently running process */
+PCB *get_current_process(CPU *cpu_p);
+
+/* Utility Functions */
+
+PCB *dispatch(CPU_p);
+
+Queue *fetchProcess(CPU_p, State, int printCounter);
 
 Queue *createNewProcesses(Queue *queue, int numb_process);
 
-void file_handler(char * string);
+void file_handler(char *string);
 
 void remove_file();
 

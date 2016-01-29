@@ -16,7 +16,7 @@
 /**
  * Retrieve the descriptive name of pcb's state, given enumeration.
  */
-const char *getStateName(enum process_state state) {
+const char *PCB_get_state(enum process_state state) {
     switch (state) {
         case created:
             return "created";
@@ -38,7 +38,7 @@ const char *getStateName(enum process_state state) {
 /**
  * Reserve memory for a PCB in the heap.
  */
-PCB *create() {
+PCB *PCB_constructor() {
     PCB *pcb = calloc(3, sizeof(PCB));
     return pcb;
 }
@@ -48,7 +48,7 @@ PCB *create() {
  *
  * Parameters: PCB * pcb: A pointer to the PCB structure
  */
-int getPID(PCB *pcb) {
+int PCB_get_pid(PCB *pcb) {
     return pcb->pid;
 }
 
@@ -57,7 +57,7 @@ int getPID(PCB *pcb) {
  *
  * Parameters: PCB * pcb: A pointer to the PCB structure
  */
-int getPriority(PCB *pcb) {
+int PCB_get_priority(PCB *pcb) {
     return pcb->priority;
 }
 
@@ -85,7 +85,7 @@ int get_PC_value(PCB *pcb) {
  *Parameters: PCB *pcb: A pointer to the PCB structure
  *Parameters: int new_pid: The new value to be the pid
  */
- void setPID (PCB *pcb, int new_pid) {
+ void PCB_set_pid(PCB *pcb, int new_pid) {
     pcb->pid = new_pid;
 }
 
@@ -95,7 +95,7 @@ int get_PC_value(PCB *pcb) {
  *Parameters: PCB *pcb: A pointer to the PCB structure
  *Parameters: int new_priority: The new priority
  */
-void setPriority (PCB *pcb, int new_priority) {
+void PCB_set_priority(PCB *pcb, int new_priority) {
     pcb->priority = new_priority;
 }
 
@@ -105,7 +105,7 @@ void setPriority (PCB *pcb, int new_priority) {
  *Parameters: PCB *pcb: A pointer to the PCB structure
  *Parameters: enum process_state new_state: the new state
  */
-void setState (PCB *pcb, enum process_state new_state) {
+void PCB_set_state(PCB *pcb, enum process_state new_state) {
     pcb->state = new_state;
 }
 
@@ -115,7 +115,7 @@ void setState (PCB *pcb, enum process_state new_state) {
  *Parameters: PCB *pcb: A pointer to the PCB structure
  *Parameters: int new_pc_value: the new pc_value
  */
-void setPC_value (PCB *pcb, int new_pc_value) {
+void PCB_set_pc(PCB *pcb, int new_pc_value) {
     pcb->pc_value = new_pc_value;
 }
 
@@ -124,9 +124,10 @@ void setPC_value (PCB *pcb, int new_pc_value) {
  *
  * Parameters: PCB * pcb: A pointer to the PCB structure
  */
-char * toString(PCB *pcb) {
+char *PCB_toString(PCB *pcb) {
     static char pcbString[50];
-    sprintf(pcbString, "PID: %d, Priority: %d, State: %s PC_Value: %d\n", getPID(pcb), getPriority(pcb), getStateName(pcb->state), get_PC_value(pcb));
+    sprintf(pcbString, "PID: %d, Priority: %d, State: %s PC_Value: %d\n", PCB_get_pid(pcb), PCB_get_priority(pcb),
+            PCB_get_state(pcb->state), get_PC_value(pcb));
     return pcbString;
 }
 
@@ -135,6 +136,6 @@ char * toString(PCB *pcb) {
  *
  * Parameters: PCB * pcb: A pointer to the PCB structure
  */
-void printPCB(PCB *pcb) {
-    printf("PID: %02d, Priority: %02d, State: %s\n", getPID(pcb), getPriority(pcb), getStateName(pcb->state));
+void PCB_print(PCB *pcb) {
+    printf("PID: %02d, Priority: %02d, State: %s\n", PCB_get_pid(pcb), PCB_get_priority(pcb), PCB_get_state(pcb->state));
 }
