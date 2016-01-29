@@ -1,11 +1,20 @@
-/*
- *  cpu.c
- *
- *  Created on: Jan 20, 2016
- *  Authors: Duy Huynh, Jeffrey LeCompte, Trung Dang, Brandon Scholer
- *
- *  This program represents a CPU in terms of a Round-Robin scheduler, utilizing the PCB and Queue from Assignment 1.
- */
+/***********************************************************************************************
+* cpu.c
+*
+* Programming Team:
+* Duy Huynh
+* Jeffrey LeCompte
+* Trung Dang
+* Brandon Scholor
+*
+* TCSS 422 - Winter 2016
+* Date: 1/20/16
+* Assignment 2
+*
+* Description:
+* This program represents a CPU in terms of a Round-Robin scheduler, utilizing the PCB and Queue from Assignment 1.
+*
+************************************************************************************************/
 
 #include "cpu.h"
 
@@ -26,6 +35,57 @@ CPU_p CPU_constructor(void) {
     return cpu;
 }
 
+void CPU_destructor(CPU_p cpu) {
+    free(cpu);
+}
+
+void CPU_set_pc(CPU_p cpu, unsigned int pc) {
+    cpu->pc = pc;
+}
+
+void CPU_set_current_process(CPU_p cpu, PCB_p pcb) {
+    cpu->currentProcess = pcb;
+}
+
+void CPU_set_readyQueue(CPU_p cpu, Queue_p queue) {
+    cpu->readyQueue = queue;
+}
+
+void CPU_set_terminatedQueue(CPU_p cpu, Queue_p queue) {
+    cpu->terminatedQueue = queue;
+}
+
+void CPU_set_newProcessesQueue(CPU_p cpu, Queue_p queue) {
+    cpu->newProcessesQueue = queue;
+}
+
+unsigned int CPU_get_pc(CPU_p cpu) {
+    return cpu->pc;
+}
+
+PCB_p CPU_get_current_proc(CPU_p cpu) {
+    return cpu->currentProcess;
+}
+
+Queue_p CPU_get_readyQueue(CPU_p cpu) {
+    return cpu->readyQueue;
+}
+
+Queue_p CPU_get_terminatedQueue(CPU_p cpu) {
+    return cpu->terminatedQueue;
+}
+
+Queue_p CPU_get_newProcessesQueue(CPU_p cpu) {
+    return cpu->newProcessesQueue;
+}
+
+void CPU_push_sysStack(CPU_p cpu, unsigned int sysStack) {
+    cpu->sysStack = sysStack;
+}
+
+unsigned int CPU_pop_sysStack(CPU_p cpu) {
+    return cpu->sysStack;
+}
 
 /**
  * Creates and appends output to a file
