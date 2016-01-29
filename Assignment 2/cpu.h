@@ -25,7 +25,7 @@ PCB * dispatch(Queue *readyQueue);
 
 Queue * fetchProcess(Queue *newProcess, Queue *readyQueue, enum interrupt_state, int printCounter);
 
-Queue * initializeNewQueue(Queue * queue, int numb_process);
+Queue *createNewProcesses(Queue *queue, int numb_process);
 
 void file_handler(char * string);
 
