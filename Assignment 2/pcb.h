@@ -59,11 +59,13 @@ int PCB_get_pid(PCB_p);             // returns pid value
 
 int PCB_get_priority(PCB_p);        // returns priority value
 
-const char *PCB_get_state(State);   // returns state value
+State PCB_get_state(PCB_p);         // returns state value
 
 int getPC_value(PCB_p);             // returns pc value
 
 /* Utility Functions */
+
+const char *PCB_get_state_string(State);   // returns state value
 
 char *PCB_toString(PCB_p);          // returns pointer to character array of this pcb's contents
 

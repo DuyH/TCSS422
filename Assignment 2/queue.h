@@ -34,26 +34,14 @@ typedef struct queue {
 typedef Queue *Queue_p;
 
 /* Queue Constructor */
+
 Queue_p Queue_constructor();            // constructs a new queue object in the heap
 
 /* Queue Destructor */
+
 void Queue_destructor(Queue_p);         // frees memory allocated to queue object
 
-/* Setters */
-
-void Queue_set_head(Queue_p, PCB_p);    // sets this->head to pcb
-
-void Queue_set_rear(Queue_p, PCB_p);    // sets this->rear to pcb
-
-void Queue_set_size(Queue_p, int);      // sets this->size to int value
-
-void Queue_set_counter(Queue_p, int);   // sets this->counter to int value
-
 /* Getters */
-
-PCB_p Queue_get_head(Queue_p);          // returns this queue's head value, a pcb
-
-PCB_p Queue_get_rear(Queue_p);          // returns this queue's rear value, a pcb
 
 int Queue_get_size(Queue_p);            // returns the size of this queue
 
