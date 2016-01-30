@@ -90,7 +90,8 @@ Queue_p CPU_get_newProcessesQueue(CPU_p cpu) {
 /* CPU ADT Functions */
 
 Queue_p CPU_enqueue_readyQueue(CPU_p cpu, PCB_p pcb) {
-    Queue_enqueue(CPU_get_readyQueue(cpu), pcb);
+    return Queue_enqueue(CPU_get_readyQueue(cpu), pcb);
+
 }
 
 PCB_p CPU_dequeue_readyQueue(CPU_p cpu) {
@@ -98,7 +99,7 @@ PCB_p CPU_dequeue_readyQueue(CPU_p cpu) {
 }
 
 Queue_p CPU_enqueue_terminatedQueue(CPU_p cpu, PCB_p pcb) {
-    Queue_enqueue(CPU_get_terminatedQueue(cpu), pcb);
+    return Queue_enqueue(CPU_get_terminatedQueue(cpu), pcb);
 }
 
 PCB_p CPU_dequeue_terminatedQueue(CPU_p cpu) {
