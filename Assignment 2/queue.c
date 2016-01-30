@@ -21,6 +21,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include "queue.h"
+#include "cpu.h"
 
 /**
  * Constructs a Queue object in the heap, returning a pointer to it.
@@ -163,7 +164,7 @@ void Queue_print(Queue_p queue, int printLastNode) {
         }
         if (printLastNode) {
             printf(" contents: ");
-            PCB_toString(queue->rear->pcb);
+            PCB_toString(queue->rear->pcb);;
         } else printf("\n");
     }
 }
