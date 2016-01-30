@@ -30,6 +30,7 @@ unsigned int CTX_SWITCH_COUNT = 0;
 CPU_p CPU_constructor(void) {
     CPU_p cpu = malloc(sizeof(CPU));
     cpu->pc = 0;
+    cpu->timer = 0;
     cpu->sysStack = 0;
     cpu->currentProcess = NULL;
     cpu->readyQueue = calloc(1, sizeof(Queue));
@@ -91,7 +92,6 @@ Queue_p CPU_get_newProcessesQueue(CPU_p cpu) {
 
 Queue_p CPU_enqueue_readyQueue(CPU_p cpu, PCB_p pcb) {
     return Queue_enqueue(CPU_get_readyQueue(cpu), pcb);
-
 }
 
 PCB_p CPU_dequeue_readyQueue(CPU_p cpu) {
@@ -163,7 +163,7 @@ void CPU_dispatcher(CPU_p cpu) {
     PCB_set_state(cpu->currentProcess, running);
 
     // 4. Copy its PC value to sysStack, replacing the interrupted process
-    cpu->sysStack = PCB_get_PC(cpu->currentProcess);
+    CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
 
     if (CTX_SWITCH_COUNT % 4 == 0) {
         printf("Last Process: %s", PCB_toString(prevProcess));
@@ -187,8 +187,13 @@ void CPU_pseudo_isr(CPU_p cpu) {
     // 2. Save the CPU state to the PCB
     PCB_set_pc(cpu->currentProcess, cpu->pc);
 
+    fprintf(file, "Current  in ISR: %s", PCB_toString(cpu->currentProcess));
+
     // 3. "Do an up-call" to the scheduler
     CPU_scheduler(cpu, timer);
+
+    cpu->pc = CPU_pop_sysStack(cpu);
+
     return;
 }
 
@@ -320,8 +325,7 @@ int main() {
 
             printf("Process ID: %u Enqueued\n", temp_pcb->pid);
             fprintf(file, "Process ID: %u Enqueued\n", temp_pcb->pid);
-            fprintf(file, "%s", PCB_toString(temp_pcb));
-            fprintf(file, "\n");
+            fprintf(file, "%s\n", PCB_toString(temp_pcb));
         }
 
         // puts head of readyQueue as current process and changes state to running
@@ -329,6 +333,12 @@ int main() {
             cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
             PCB_set_state(cpu->currentProcess, running);
         }
+
+        if (cpu->pc < 3000) {
+            cpu->pc = rand() % 1001 + 3000;
+        }
+
+        CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
 
         // calls pseudo ISR
         CPU_pseudo_isr(cpu);

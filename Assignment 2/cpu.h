@@ -33,6 +33,7 @@ typedef enum interrupt_state {
 
 /* A struct representing a CPU. */
 typedef struct cpu_type {
+    unsigned int timer;
     unsigned int pc;
     unsigned int sysStack;
     PCB_p currentProcess;
