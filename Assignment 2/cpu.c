@@ -23,7 +23,7 @@
 #define CPU_CYCLES 100
 
 // File for saving text
-FILE *fp;
+FILE *file;
 unsigned int CTX_SWITCH_COUNT = 0;
 
 /* CPU Constructor */
@@ -148,8 +148,8 @@ void CPU_dispatcher(CPU_p cpu) {
         printf("Interrupted Process: %s", PCB_toString(prevProcess));
         printf("Switching to: %s\n", PCB_toString(nextProcess));
 
-        fprintf(fp, "Interrupted Process: %s", PCB_toString(prevProcess));
-        fprintf(fp, "Switching to: %s\n", PCB_toString(nextProcess));
+        fprintf(file, "Interrupted Process: %s", PCB_toString(prevProcess));
+        fprintf(file, "Switching to: %s\n", PCB_toString(nextProcess));
     }
 
     // 1. Save the state of current process into its PCB (PC value)
@@ -169,9 +169,9 @@ void CPU_dispatcher(CPU_p cpu) {
         printf("Current Process: %s", PCB_toString(nextProcess));
         printf("Ready Queue: %s\n\n", Queue_toString(cpu->readyQueue, 0));
 
-        fprintf(fp, "Last Process: %s", PCB_toString(prevProcess));
-        fprintf(fp, "Current Process: %s", PCB_toString(nextProcess));
-        fprintf(fp, "Ready Queue: %s\n\n", Queue_toString(cpu->readyQueue, 0));
+        fprintf(file, "Last Process: %s", PCB_toString(prevProcess));
+        fprintf(file, "Current Process: %s", PCB_toString(nextProcess));
+        fprintf(file, "Ready Queue: %s\n\n", Queue_toString(cpu->readyQueue, 0));
     }
 
     // 5. Return to the scheduler
@@ -180,9 +180,6 @@ void CPU_dispatcher(CPU_p cpu) {
 }
 
 void CPU_pseudo_isr(CPU_p cpu) {
-
-    cpu->currentProcess = cpu->readyQueue->head;
-
     // 1. Change the state of the running process to interrupted
     PCB_set_state(cpu->currentProcess, interrupted);
 
@@ -278,9 +275,12 @@ Queue *CPU_create_processes(Queue *queue, int numb_process) {
 }
 
 int main() {
+    // Prepare for file writing:
+    CPU_remove_file();
 
     // House Keeping:
-    fp = fopen("scheduleTrace.txt", "w+");
+    file = fopen("scheduleTrace.txt", "w+");
+    fprintf(file, "New process initialized: \n");
     srand(time(NULL)); // Seed random generator
     unsigned int PC = rand() % 1001 + 3000;
     int total_procs = 0;
@@ -290,10 +290,6 @@ int main() {
     CPU *cpu = CPU_constructor();
     PCB_p empty_pcb; // this is nothing, acts as place holder (non-null value)
     cpu->currentProcess = empty_pcb;
-
-    // Prepare for file writing:
-    CPU_remove_file();
-    fprintf(fp, "New process initialized: \n");
 
     // CPU: Represent a time quantum. Assumed every process has the same time quantum.
     while (total_procs <= MAX_PROCESS - 5) {
@@ -310,9 +306,9 @@ int main() {
         printf("\n");
 
         // 1c. Print newly created processes queue to file:
-        fprintf(fp, "Number of new processes created this round: %d, total: %d\n", num_proc_created, total_procs);
-        fprintf(fp, "Newly created processes list: ");
-        fprintf(fp, "%s\n", Queue_toString(cpu->newProcessesQueue, 0));
+        fprintf(file, "Number of new processes created this round: %d, total: %d\n", num_proc_created, total_procs);
+        fprintf(file, "Newly created processes list: ");
+        fprintf(file, "%s\n", Queue_toString(cpu->newProcessesQueue, 0));
 
         // Iterate through the newly created processes list until empty:
         while (!Queue_isEmpty(cpu->newProcessesQueue)) {
@@ -321,9 +317,9 @@ int main() {
             Queue_enqueue(cpu->readyQueue, temp_pcb);
 
             printf("Process ID: %u Enqueued\n", temp_pcb->pid);
-            fprintf(fp, "Process ID: %u Enqueued\n", temp_pcb->pid);
-            fprintf(fp, "%s", PCB_toString(temp_pcb));
-            fprintf(fp, "\n");
+            fprintf(file, "Process ID: %u Enqueued\n", temp_pcb->pid);
+            fprintf(file, "%s", PCB_toString(temp_pcb));
+            fprintf(file, "\n");
         }
 
         // puts head of readyQueue as current process and changes state to running
@@ -341,7 +337,7 @@ int main() {
 //            cpu->sysStack = PC;
 //
 //            // Scheduler fetches a process from process list and put to readyQueue
-////            cpu->readyQueue = CPU_fetch_process(cpu, timer, ctx_switch_count);
+//            cpu->readyQueue = CPU_fetch_process(cpu, timer, ctx_switch_count);
 //
 //
 //            //printf("Ready queue: ");
@@ -360,7 +356,7 @@ int main() {
         //printQueue(readyQueue, 0);
     }
 
-    fclose(fp);
+    fclose(file);
     CPU_destructor(cpu);
     return 0;
 }

@@ -21,7 +21,6 @@
 #include <stdbool.h>
 #include <string.h>
 #include "queue.h"
-#include "cpu.h"
 
 /**
  * Constructs a Queue object in the heap, returning a pointer to it.
