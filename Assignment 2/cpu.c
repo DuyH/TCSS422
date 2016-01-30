@@ -197,19 +197,6 @@ void CPU_remove_file() {
     remove("scheduleTrace.txt");
 }
 
-
-/****** DISPATCHER ***********/
-PCB_p dispatch(CPU_p cpu) {
-
-    PCB *currentPCB = Queue_dequeue(cpu->readyQueue);
-    if (currentPCB != NULL) {
-        currentPCB->state = running;
-        cpu->sysStack = currentPCB->pc_value;
-    }
-
-    return currentPCB;
-}
-
 /**
  * SCHEDULER
  * Fetch a process from the newly created process list and put it

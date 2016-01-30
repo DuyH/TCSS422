@@ -33,7 +33,7 @@ typedef struct pcb_type {
     int pid;
     int priority;
     enum process_state state;
-    int pc_value;
+    unsigned int pc_value;
 } PCB;
 
 typedef PCB *PCB_p;
@@ -62,7 +62,7 @@ int PCB_get_priority(PCB_p);        // returns priority value
 
 State PCB_get_state(PCB_p);         // returns state value
 
-int PCB_get_PC(PCB_p);              // returns pc value
+unsigned int PCB_get_PC(PCB_p);              // returns pc value
 
 /* Utility Functions */
 

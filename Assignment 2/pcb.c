@@ -116,7 +116,7 @@ State PCB_get_state(PCB_p pcb) {
  * Parameters:   PCB_p  pcb: A pointer to the PCB structure
  * Returns:     int PC value of PCB object.
  */
-int PCB_get_PC(PCB_p pcb) {
+unsigned int PCB_get_PC(PCB_p pcb) {
     return pcb->pc_value;
 }
 
@@ -154,7 +154,7 @@ const char *PCB_get_state_string(State state) {
 char *PCB_toString(PCB_p pcb) {
     static char pcbString[50];
     sprintf(pcbString, "PID: %d, Priority: %d, State: %s PC_Value: %d\n", PCB_get_pid(pcb), PCB_get_priority(pcb),
-            PCB_get_state_string(pcb->state), get_PC_value(pcb));
+            PCB_get_state_string(pcb->state), PCB_get_PC(pcb));
     return pcbString;
 }
 
