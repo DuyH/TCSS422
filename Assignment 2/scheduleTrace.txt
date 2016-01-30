@@ -1,192 +1,211 @@
 New process initialized: 
-Number of new processes created this round: 1, total: 1
-Newly created processes list: P1(14)-*
-
-Process ID: 1 Enqueued
-PID: 1, Priority: 14, State: ready PC_Value: 0
-
-Interrupted Process: PID: 1, Priority: 14, State: ready PC_Value: 0
-Switching to: PID: 1, Priority: 14, State: ready PC_Value: 0
-
-Last Process: PID: 1, Priority: 14, State: running PC_Value: 0
-Current Process: PID: 1, Priority: 14, State: running PC_Value: 0
-Ready Queue: Queue is empty!
-
-
-Number of new processes created this round: 0, total: 1
-Newly created processes list: Queue is empty!
-
-Number of new processes created this round: 5, total: 6
-Newly created processes list: Queue is empty!
-P1(29)->P2(6)->P3(8)->P4(29)->P5(18)-*
-
-Process ID: 1 Enqueued
-PID: 1, Priority: 29, State: ready PC_Value: 0
-
-Process ID: 2 Enqueued
-PID: 2, Priority: 6, State: ready PC_Value: 0
-
-Process ID: 3 Enqueued
-PID: 3, Priority: 8, State: ready PC_Value: 0
-
-Process ID: 4 Enqueued
-PID: 4, Priority: 29, State: ready PC_Value: 0
-
-Process ID: 5 Enqueued
-PID: 5, Priority: 18, State: ready PC_Value: 0
-
-Number of new processes created this round: 2, total: 8
-Newly created processes list: Queue is empty!
-P1(29)->P2(6)->P3(8)->P4(29)->P5(18)-*
-P1(17)->P2(30)-*
-
-Process ID: 1 Enqueued
-PID: 1, Priority: 17, State: ready PC_Value: 0
-
-Process ID: 2 Enqueued
-PID: 2, Priority: 30, State: ready PC_Value: 0
-
-Number of new processes created this round: 5, total: 13
-Newly created processes list: Queue is empty!
-P1(29)->P2(6)->P3(8)->P4(29)->P5(18)-*
-P1(17)->P2(30)-*
-P1(16)->P2(31)->P3(17)->P4(21)->P5(9)-*
-
-Process ID: 1 Enqueued
-PID: 1, Priority: 16, State: ready PC_Value: 0
-
-Process ID: 2 Enqueued
-PID: 2, Priority: 31, State: ready PC_Value: 0
-
-Process ID: 3 Enqueued
-PID: 3, Priority: 17, State: ready PC_Value: 0
-
-Process ID: 4 Enqueued
-PID: 4, Priority: 21, State: ready PC_Value: 0
-
-Process ID: 5 Enqueued
-PID: 5, Priority: 9, State: ready PC_Value: 0
-
-Interrupted Process: PID: 2, Priority: 6, State: ready PC_Value: 0
-Switching to: PID: 3, Priority: 8, State: ready PC_Value: 0
-
-Last Process: PID: 2, Priority: 6, State: ready PC_Value: 0
-Current Process: PID: 3, Priority: 8, State: running PC_Value: 0
-Ready Queue: Queue is empty!
-P1(29)->P2(6)->P3(8)->P4(29)->P5(18)-*
-P1(17)->P2(30)-*
-P1(16)->P2(31)->P3(17)->P4(21)->P5(9)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-
-
-Number of new processes created this round: 3, total: 16
-Newly created processes list: Queue is empty!
-P1(29)->P2(6)->P3(8)->P4(29)->P5(18)-*
-P1(17)->P2(30)-*
-P1(16)->P2(31)->P3(17)->P4(21)->P5(9)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P1(1)->P2(2)->P3(9)-*
-
-Process ID: 1 Enqueued
-PID: 1, Priority: 1, State: ready PC_Value: 0
-
-Process ID: 2 Enqueued
-PID: 2, Priority: 2, State: ready PC_Value: 0
-
-Process ID: 3 Enqueued
-PID: 3, Priority: 9, State: ready PC_Value: 0
-
-Number of new processes created this round: 1, total: 17
-Newly created processes list: Queue is empty!
-P1(29)->P2(6)->P3(8)->P4(29)->P5(18)-*
-P1(17)->P2(30)-*
-P1(16)->P2(31)->P3(17)->P4(21)->P5(9)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P1(1)->P2(2)->P3(9)-*
-P1(7)-*
-
-Process ID: 1 Enqueued
-PID: 1, Priority: 7, State: ready PC_Value: 0
-
-Number of new processes created this round: 3, total: 20
-Newly created processes list: Queue is empty!
-P1(29)->P2(6)->P3(8)->P4(29)->P5(18)-*
-P1(17)->P2(30)-*
-P1(16)->P2(31)->P3(17)->P4(21)->P5(9)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P1(1)->P2(2)->P3(9)-*
-P1(7)-*
-P1(28)->P2(17)->P3(17)-*
-
-Process ID: 1 Enqueued
-PID: 1, Priority: 28, State: ready PC_Value: 0
-
-Process ID: 2 Enqueued
-PID: 2, Priority: 17, State: ready PC_Value: 0
-
-Process ID: 3 Enqueued
-PID: 3, Priority: 17, State: ready PC_Value: 0
-
-Number of new processes created this round: 4, total: 24
-Newly created processes list: Queue is empty!
-P1(29)->P2(6)->P3(8)->P4(29)->P5(18)-*
-P1(17)->P2(30)-*
-P1(16)->P2(31)->P3(17)->P4(21)->P5(9)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P1(1)->P2(2)->P3(9)-*
-P1(7)-*
-P1(28)->P2(17)->P3(17)-*
-P1(11)->P2(19)->P3(15)->P4(31)-*
-
-Process ID: 1 Enqueued
-PID: 1, Priority: 11, State: ready PC_Value: 0
-
-Process ID: 2 Enqueued
-PID: 2, Priority: 19, State: ready PC_Value: 0
-
-Process ID: 3 Enqueued
-PID: 3, Priority: 15, State: ready PC_Value: 0
-
-Process ID: 4 Enqueued
-PID: 4, Priority: 31, State: ready PC_Value: 0
-
-Interrupted Process: PID: 1, Priority: 14, State: ready PC_Value: 0
-Switching to: PID: 1, Priority: 17, State: ready PC_Value: 0
-
-Last Process: PID: 1, Priority: 14, State: ready PC_Value: 0
-Current Process: PID: 1, Priority: 17, State: running PC_Value: 0
-Ready Queue: Queue is empty!
-P1(29)->P2(6)->P3(8)->P4(29)->P5(18)-*
-P1(17)->P2(30)-*
-P1(16)->P2(31)->P3(17)->P4(21)->P5(9)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P4(29)->P5(18)->P1(14)->P1(17)->P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)-*
-P1(1)->P2(2)->P3(9)-*
-P1(7)-*
-P1(28)->P2(17)->P3(17)-*
-P1(11)->P2(19)->P3(15)->P4(31)-*
-P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)->P1(1)->P2(2)->P3(9)->P3(8)->P1(7)->P4(29)->P1(28)->P2(17)->P3(17)->P5(18)->P1(11)->P2(19)->P3(15)->P4(31)->P1(14)-*
-P2(30)->P1(29)->P1(16)->P2(31)->P3(17)->P4(21)->P5(9)->P2(6)->P1(1)->P2(2)->P3(9)->P3(8)->P1(7)->P4(29)->P1(28)->P2(17)->P3(17)->P5(18)->P1(11)->P2(19)->P3(15)->P4(31)->P1(14)-*
-
-
-Number of new processes created this round: 0, total: 24
-Newly created processes list: Queue is empty!
-
-Number of new processes created this round: 3, total: 27
-Newly created processes list: Queue is empty!
-P1(9)->P2(3)->P3(6)-*
+Number of new processes created this round: 2, total: 2
+Newly created processes list: P1(9)->P2(19)-*
 
 Process ID: 1 Enqueued
 PID: 1, Priority: 9, State: ready PC_Value: 0
 
 Process ID: 2 Enqueued
-PID: 2, Priority: 3, State: ready PC_Value: 0
+PID: 2, Priority: 19, State: ready PC_Value: 0
+
+Interrupted Process: PID: 1, Priority: 9, State: ready PC_Value: 0
+Switching to: PID: 2, Priority: 19, State: ready PC_Value: 0
+
+Last Process: PID: 1, Priority: 9, State: ready PC_Value: 0
+Current Process: PID: 2, Priority: 19, State: running PC_Value: 0
+Ready Queue: P1(9)->P2(19)-*
+P1(9)-*
+P1(9)-*
+
+
+Number of new processes created this round: 2, total: 4
+Newly created processes list: P1(9)->P2(19)-*
+P1(9)-*
+P1(9)-*
+P3(7)->P4(24)-*
 
 Process ID: 3 Enqueued
-PID: 3, Priority: 6, State: ready PC_Value: 0
+PID: 3, Priority: 7, State: ready PC_Value: 0
+
+Process ID: 4 Enqueued
+PID: 4, Priority: 24, State: ready PC_Value: 0
+
+Number of new processes created this round: 0, total: 4
+Newly created processes list: Queue is empty!
+
+Number of new processes created this round: 2, total: 6
+Newly created processes list: Queue is empty!
+P5(28)->P6(20)-*
+
+Process ID: 5 Enqueued
+PID: 5, Priority: 28, State: ready PC_Value: 0
+
+Process ID: 6 Enqueued
+PID: 6, Priority: 20, State: ready PC_Value: 0
+
+Number of new processes created this round: 4, total: 10
+Newly created processes list: Queue is empty!
+P5(28)->P6(20)-*
+P7(18)->P8(22)->P9(5)->P10(27)-*
+
+Process ID: 7 Enqueued
+PID: 7, Priority: 18, State: ready PC_Value: 0
+
+Process ID: 8 Enqueued
+PID: 8, Priority: 22, State: ready PC_Value: 0
+
+Process ID: 9 Enqueued
+PID: 9, Priority: 5, State: ready PC_Value: 0
+
+Process ID: 10 Enqueued
+PID: 10, Priority: 27, State: ready PC_Value: 0
+
+Interrupted Process: PID: 4, Priority: 24, State: ready PC_Value: 0
+Switching to: PID: 2, Priority: 19, State: ready PC_Value: 0
+
+Last Process: PID: 4, Priority: 24, State: ready PC_Value: 0
+Current Process: PID: 2, Priority: 19, State: running PC_Value: 0
+Ready Queue: Queue is empty!
+P5(28)->P6(20)-*
+P7(18)->P8(22)->P9(5)->P10(27)-*
+P1(9)->P5(28)->P6(20)->P3(7)->P7(18)->P8(22)->P9(5)->P10(27)->P4(24)-*
+P1(9)->P5(28)->P6(20)->P3(7)->P7(18)->P8(22)->P9(5)->P10(27)->P4(24)-*
+
+
+Number of new processes created this round: 1, total: 11
+Newly created processes list: Queue is empty!
+P5(28)->P6(20)-*
+P7(18)->P8(22)->P9(5)->P10(27)-*
+P1(9)->P5(28)->P6(20)->P3(7)->P7(18)->P8(22)->P9(5)->P10(27)->P4(24)-*
+P1(9)->P5(28)->P6(20)->P3(7)->P7(18)->P8(22)->P9(5)->P10(27)->P4(24)-*
+P11(31)-*
+
+Process ID: 11 Enqueued
+PID: 11, Priority: 31, State: ready PC_Value: 0
+
+Number of new processes created this round: 5, total: 16
+Newly created processes list: Queue is empty!
+P5(28)->P6(20)-*
+P7(18)->P8(22)->P9(5)->P10(27)-*
+P1(9)->P5(28)->P6(20)->P3(7)->P7(18)->P8(22)->P9(5)->P10(27)->P4(24)-*
+P1(9)->P5(28)->P6(20)->P3(7)->P7(18)->P8(22)->P9(5)->P10(27)->P4(24)-*
+P11(31)-*
+P12(11)->P13(26)->P14(8)->P15(7)->P16(28)-*
+
+Process ID: 12 Enqueued
+PID: 12, Priority: 11, State: ready PC_Value: 0
+
+Process ID: 13 Enqueued
+PID: 13, Priority: 26, State: ready PC_Value: 0
+
+Process ID: 14 Enqueued
+PID: 14, Priority: 8, State: ready PC_Value: 0
+
+Process ID: 15 Enqueued
+PID: 15, Priority: 7, State: ready PC_Value: 0
+
+Process ID: 16 Enqueued
+PID: 16, Priority: 28, State: ready PC_Value: 0
+
+Number of new processes created this round: 0, total: 16
+Newly created processes list: Queue is empty!
+
+Number of new processes created this round: 1, total: 17
+Newly created processes list: Queue is empty!
+P17(1)-*
+
+Process ID: 17 Enqueued
+PID: 17, Priority: 1, State: ready PC_Value: 0
+
+Interrupted Process: PID: 6, Priority: 20, State: ready PC_Value: 0
+Switching to: PID: 3, Priority: 7, State: ready PC_Value: 0
+
+Last Process: PID: 6, Priority: 20, State: ready PC_Value: 0
+Current Process: PID: 3, Priority: 7, State: running PC_Value: 0
+Ready Queue: Queue is empty!
+P17(1)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+
+
+Number of new processes created this round: 4, total: 21
+Newly created processes list: Queue is empty!
+P17(1)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P18(21)->P19(6)->P20(13)->P21(9)-*
+
+Process ID: 18 Enqueued
+PID: 18, Priority: 21, State: ready PC_Value: 0
+
+Process ID: 19 Enqueued
+PID: 19, Priority: 6, State: ready PC_Value: 0
+
+Process ID: 20 Enqueued
+PID: 20, Priority: 13, State: ready PC_Value: 0
+
+Process ID: 21 Enqueued
+PID: 21, Priority: 9, State: ready PC_Value: 0
+
+Number of new processes created this round: 3, total: 24
+Newly created processes list: Queue is empty!
+P17(1)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P18(21)->P19(6)->P20(13)->P21(9)-*
+P22(13)->P23(29)->P24(23)-*
+
+Process ID: 22 Enqueued
+PID: 22, Priority: 13, State: ready PC_Value: 0
+
+Process ID: 23 Enqueued
+PID: 23, Priority: 29, State: ready PC_Value: 0
+
+Process ID: 24 Enqueued
+PID: 24, Priority: 23, State: ready PC_Value: 0
+
+Number of new processes created this round: 1, total: 25
+Newly created processes list: Queue is empty!
+P17(1)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P18(21)->P19(6)->P20(13)->P21(9)-*
+P22(13)->P23(29)->P24(23)-*
+P25(29)-*
+
+Process ID: 25 Enqueued
+PID: 25, Priority: 29, State: ready PC_Value: 0
+
+Number of new processes created this round: 2, total: 27
+Newly created processes list: Queue is empty!
+P17(1)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P18(21)->P19(6)->P20(13)->P21(9)-*
+P22(13)->P23(29)->P24(23)-*
+P25(29)-*
+P26(29)->P27(16)-*
+
+Process ID: 26 Enqueued
+PID: 26, Priority: 29, State: ready PC_Value: 0
+
+Process ID: 27 Enqueued
+PID: 27, Priority: 16, State: ready PC_Value: 0
+
+Interrupted Process: PID: 9, Priority: 5, State: ready PC_Value: 0
+Switching to: PID: 10, Priority: 27, State: ready PC_Value: 0
+
+Last Process: PID: 9, Priority: 5, State: ready PC_Value: 0
+Current Process: PID: 10, Priority: 27, State: running PC_Value: 0
+Ready Queue: Queue is empty!
+P17(1)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P7(18)->P8(22)->P9(5)->P10(27)->P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)-*
+P18(21)->P19(6)->P20(13)->P21(9)-*
+P22(13)->P23(29)->P24(23)-*
+P25(29)-*
+P26(29)->P27(16)-*
+P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)->P18(21)->P19(6)->P20(13)->P21(9)->P3(7)->P22(13)->P23(29)->P24(23)->P7(18)->P25(29)->P8(22)->P26(29)->P27(16)->P9(5)-*
+P4(24)->P11(31)->P2(19)->P12(11)->P13(26)->P14(8)->P15(7)->P16(28)->P1(9)->P5(28)->P17(1)->P6(20)->P18(21)->P19(6)->P20(13)->P21(9)->P3(7)->P22(13)->P23(29)->P24(23)->P7(18)->P25(29)->P8(22)->P26(29)->P27(16)->P9(5)-*
+
 

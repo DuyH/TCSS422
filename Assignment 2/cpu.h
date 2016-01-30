@@ -101,7 +101,7 @@ PCB_p dispatch(CPU_p);                          // Dispatches...
 
 Queue_p CPU_fetch_process(CPU_p, Interrupt_type, int);   // Fetches new process
 
-Queue_p CPU_create_processes(Queue_p, int);     // Creates new processes
+Queue_p CPU_create_processes(Queue_p, int, int);     // Creates new processes
 
 void CPU_file_handler(char *string);            // Handles file writing
 

@@ -263,11 +263,11 @@ void CPU_remove_file() {
 /**
  * Function that creates 0-5 new processes and puts them into a list.
  */
-Queue *CPU_create_processes(Queue *queue, int numb_process) {
+Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID) {
     int n;
     for (n = 0; n < numb_process; n++) {
         PCB *pcb = PCB_constructor();
-        PCB_set_pid(pcb, n + 1);
+        PCB_set_pid(pcb, process_ID + n);
         PCB_set_priority(pcb, rand() % 31 + 1);
         PCB_set_state(pcb, created);
         queue = Queue_enqueue(queue, pcb);
@@ -284,7 +284,7 @@ int main() {
     fprintf(file, "New process initialized: \n");
     srand(time(NULL)); // Seed random generator
     unsigned int PC = rand() % 1001 + 3000;
-    int total_procs = 0;
+    int total_procs = 0, process_ID = 1;
 
 
     // Create CPU:
@@ -298,8 +298,9 @@ int main() {
         // 1a. Create a queue of new processes, 0 - 5 processes at a time:
         int num_proc_created = rand() % 6;
         total_procs += num_proc_created;
-        cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue, num_proc_created);
 
+        cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue, num_proc_created, process_ID);
+        process_ID += num_proc_created;
         // 1b. Print newly created process queue to console:
         printf("Number of new processes created this round: %d, total: %d\n", num_proc_created, total_procs);
         printf("Newly created processes list: ");
