@@ -140,12 +140,11 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type) {
     }
 }
 
-void CPU_dispatcher(CPU_p cpu){
+void CPU_dispatcher(CPU_p cpu) {
 
     // Save pointers to the previous and next process (needed so we can print)
     PCB_p prevProcess = cpu->currentProcess;
     PCB_p nextProcess = Queue_peek(cpu->readyQueue);
-
 
     // 1. Save the state of current process into its PCB (PC value)
     // Per Canvas Discussions, DON'T DO THIS AGAIN HERE! It's in ISR.
@@ -160,8 +159,7 @@ void CPU_dispatcher(CPU_p cpu){
     cpu->sysStack = PCB_get_PC(cpu->currentProcess);
 
     // 5. Return to the scheduler
-    // return somethingsomething i don't know.
-
+    // returns prevalent stuff to scheduler, but not for this project
 }
 
 void CPU_pseudo_isr(CPU_p cpu) {
@@ -213,7 +211,8 @@ Queue_p CPU_fetch_process(CPU_p cpu, Interrupt_type interrupt_type, int printCou
         } else {
             char transfer_PCB[STR_LEN];
             readyPCB = Queue_dequeue(cpu->newProcessesQueue);
-            readyPCB->state = ready;
+            PCB_set_state(readyPCB, ready);
+//            readyPCB->state = ready;
 
             cpu->readyQueue = Queue_enqueue(cpu->readyQueue, readyPCB);
             sprintf(transfer_PCB, "Process transfered to readyQueue: %s", PCB_toString(readyPCB));
@@ -249,9 +248,9 @@ Queue *CPU_create_processes(Queue *queue, int numb_process) {
     int n;
     for (n = 0; n < numb_process; n++) {
         PCB *pcb = PCB_constructor();
-        pcb->pid = n + 1; // Start with PID: 01
-        pcb->priority = rand() % 31 + 1;
-        pcb->state = created;
+        PCB_set_pid(pcb, n + 1);
+        PCB_set_priority(pcb, rand() % 31 + 1);
+        PCB_set_state(pcb, created);
         queue = Queue_enqueue(queue, pcb);
     }
     return queue;
@@ -281,7 +280,6 @@ int main() {
         total_procs += num_proc_created;
         cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue, num_proc_created);
 
-
         // 1b. Print newly created process queue to console:
         printf("Number of new processes created this round: %d, total: %d\n", num_proc_created, total_procs);
         printf("Newly created processes list: ");
@@ -301,6 +299,9 @@ int main() {
 
             //Scheduler fetches a process from process list and put to readyQueue
             cpu->readyQueue = CPU_fetch_process(cpu, timer, ctx_switch_count);
+
+            PC = rand() % 1001 + 3000;
+            cpu->readyQueue->head->pcb->pc_value = PC;
             //printf("Ready queue: ");
             //printf("%s", queue_toString(readyQueue, 0));
             ctx_switch_count++;

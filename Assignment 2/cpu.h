@@ -91,6 +91,12 @@ unsigned int CPU_pop_sysStack(CPU_p);           // Pops off int value from cpu's
 
 /* Utility Functions */
 
+void CPU_dispatcher(CPU_p cpu);
+
+void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type);
+
+void CPU_pseudo_isr(CPU_p cpu);
+
 PCB_p dispatch(CPU_p);                          // Dispatches...
 
 Queue_p CPU_fetch_process(CPU_p, Interrupt_type, int);   // Fetches new process
