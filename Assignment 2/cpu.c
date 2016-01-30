@@ -20,6 +20,7 @@
 
 #define MAX_PROCESS 30
 #define STR_LEN 200
+#define CPU_CYCLES 100
 
 /* CPU Constructor */
 CPU_p CPU_constructor(void) {
@@ -33,10 +34,13 @@ CPU_p CPU_constructor(void) {
     return cpu;
 }
 
-/* CPU Desctructor */
+/* CPU Destructor */
+
 void CPU_destructor(CPU_p cpu) {
     free(cpu);
 }
+
+/* CPU Setters */
 
 void CPU_set_pc(CPU_p cpu, unsigned int pc) {
     cpu->pc = pc;
@@ -58,6 +62,7 @@ void CPU_set_newProcessesQueue(CPU_p cpu, Queue_p queue) {
     cpu->newProcessesQueue = queue;
 }
 
+/* CPU Getters */
 unsigned int CPU_get_pc(CPU_p cpu) {
     return cpu->pc;
 }
@@ -77,6 +82,8 @@ Queue_p CPU_get_terminatedQueue(CPU_p cpu) {
 Queue_p CPU_get_newProcessesQueue(CPU_p cpu) {
     return cpu->newProcessesQueue;
 }
+
+/* CPU ADT Functions */
 
 Queue_p CPU_enqueue_readyQueue(CPU_p cpu, PCB_p pcb) {
     Queue_enqueue(CPU_get_readyQueue(cpu), pcb);
@@ -102,6 +109,75 @@ unsigned int CPU_pop_sysStack(CPU_p cpu) {
     return cpu->sysStack;
 }
 
+void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type) {
+    switch (interrupt_type) {
+        case timer:
+
+            // 1. Put process back into the readyQueue
+            Queue_enqueue(cpu->readyQueue, cpu->currentProcess);
+
+            // 2. Change its state from interrupted to ready
+            PCB_set_state(cpu->currentProcess, ready);
+
+            // 3. Make call to dispatcher
+            CPU_dispatcher(cpu);
+
+            // 4. Returned from dispatcher, do any housekeeping
+            // Nothing here to do at the moment!
+
+            // 5. Returns to pseudo-ISR
+            break;
+
+        case io:
+
+            printf("IO interrupt placeholder!\n");
+            break;
+
+        default:
+
+            printf("Unknown interrupt type!\n");
+            break;
+    }
+}
+
+void CPU_dispatcher(CPU_p cpu){
+
+    // Save pointers to the previous and next process (needed so we can print)
+    PCB_p prevProcess = cpu->currentProcess;
+    PCB_p nextProcess = Queue_peek(cpu->readyQueue);
+
+
+    // 1. Save the state of current process into its PCB (PC value)
+    // Per Canvas Discussions, DON'T DO THIS AGAIN HERE! It's in ISR.
+
+    // 2. Then dequeue next waiting process
+    cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+
+    // 3. Change its state to running
+    PCB_set_state(cpu->currentProcess, running);
+
+    // 4. Copy its PC value to sysStack, replacing the interrupted process
+    cpu->sysStack = PCB_get_PC(cpu->currentProcess);
+
+    // 5. Return to the scheduler
+    // return somethingsomething i don't know.
+
+}
+
+void CPU_pseudo_isr(CPU_p cpu) {
+
+    // 1. Change the state of the running process to interrupted
+    PCB_set_state(cpu->currentProcess, interrupted);
+
+    // 2. Save the CPU state to the PCB
+    PCB_set_pc(cpu->currentProcess, cpu->pc);
+
+    // 3. "Do an up-call" to the scheduler
+    CPU_scheduler(cpu, timer);
+}
+
+/* Utility Functions */
+
 /**
  * Creates and appends output to a file
  *
@@ -123,7 +199,7 @@ void CPU_remove_file() {
 
 
 /****** DISPATCHER ***********/
-PCB *dispatch(CPU_p cpu) {
+PCB_p dispatch(CPU_p cpu) {
 
     PCB *currentPCB = Queue_dequeue(cpu->readyQueue);
     if (currentPCB != NULL) {
@@ -139,8 +215,8 @@ PCB *dispatch(CPU_p cpu) {
  * Fetch a process from the newly created process list and put it
  * in the ready queue to be running.
  */
-Queue *CPU_fetch_process(CPU_p cpu, Interrupt_type interrupt_type, int printCounter) {
-    PCB *readyPCB;
+Queue_p CPU_fetch_process(CPU_p cpu, Interrupt_type interrupt_type, int printCounter) {
+    PCB_p readyPCB;
     if (interrupt_type == timer) {
 
         if (Queue_isEmpty(cpu->newProcessesQueue)) {

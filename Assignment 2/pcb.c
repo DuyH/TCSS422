@@ -116,7 +116,7 @@ State PCB_get_state(PCB_p pcb) {
  * Parameters:   PCB_p  pcb: A pointer to the PCB structure
  * Returns:     int PC value of PCB object.
  */
-int get_PC_value(PCB_p pcb) {
+int PCB_get_PC(PCB_p pcb) {
     return pcb->pc_value;
 }
 

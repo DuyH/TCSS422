@@ -28,7 +28,7 @@
 
 /* Enumerating interrupt states. */
 typedef enum interrupt_state {
-    timer
+    timer, io
 } Interrupt_type;
 
 /* A struct representing a CPU. */

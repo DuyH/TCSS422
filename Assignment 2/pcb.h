@@ -25,6 +25,7 @@ typedef enum process_state {
     ready,
     running,
     waiting,
+    interrupted,
     terminated
 } State;
 
@@ -61,7 +62,7 @@ int PCB_get_priority(PCB_p);        // returns priority value
 
 State PCB_get_state(PCB_p);         // returns state value
 
-int getPC_value(PCB_p);             // returns pc value
+int PCB_get_PC(PCB_p);              // returns pc value
 
 /* Utility Functions */
 
