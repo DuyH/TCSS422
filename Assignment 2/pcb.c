@@ -26,8 +26,8 @@
  * Returns: Pointer to created PCB object.
  */
 PCB_p PCB_constructor() {
-	PCB_p pcb = calloc(3, sizeof(PCB));
-	return pcb;
+    PCB_p pcb = calloc(3, sizeof(PCB));
+    return pcb;
 }
 
 /**
@@ -36,7 +36,7 @@ PCB_p PCB_constructor() {
  * Parameters:  PCB_p pcb: pointer to the PCB object.
  */
 void PCB_destructor(PCB_p pcb) {
-	free(pcb);
+    free(pcb);
 }
 
 /**
@@ -46,7 +46,7 @@ void PCB_destructor(PCB_p pcb) {
  *              int new_pid: The new value to be the pid
  */
 void PCB_set_pid(PCB_p pcb, int new_pid) {
-	pcb->pid = new_pid;
+    pcb->pid = new_pid;
 }
 
 /**
@@ -56,7 +56,7 @@ void PCB_set_pid(PCB_p pcb, int new_pid) {
  *              int new_priority: The new priority
  */
 void PCB_set_priority(PCB_p pcb, int new_priority) {
-	pcb->priority = new_priority;
+    pcb->priority = new_priority;
 }
 
 /**
@@ -66,8 +66,8 @@ void PCB_set_priority(PCB_p pcb, int new_priority) {
  *              enum process_state new_state: the new state
  */
 void PCB_set_state(PCB_p pcb, State new_state) {
-	if (pcb != NULL)
-		pcb->state = new_state;
+    if (pcb != NULL)
+        pcb->state = new_state;
 }
 
 /**
@@ -77,7 +77,7 @@ void PCB_set_state(PCB_p pcb, State new_state) {
  *              int new_pc_value: the new pc_value
  */
 void PCB_set_pc(PCB_p pcb, int new_pc_value) {
-	pcb->pc_value = new_pc_value;
+    pcb->pc_value = new_pc_value;
 }
 
 /**
@@ -87,7 +87,7 @@ void PCB_set_pc(PCB_p pcb, int new_pc_value) {
  * Returns:     int id of PCB object.
  */
 int PCB_get_pid(PCB_p pcb) {
-	return pcb->pid;
+    return pcb->pid;
 }
 
 /**
@@ -97,7 +97,7 @@ int PCB_get_pid(PCB_p pcb) {
  * Returns:     int priority of PCB object.
  */
 int PCB_get_priority(PCB_p pcb) {
-	return pcb->priority;
+    return pcb->priority;
 }
 
 /**
@@ -107,7 +107,7 @@ int PCB_get_priority(PCB_p pcb) {
  * Returns:     State of PCB object.
  */
 State PCB_get_state(PCB_p pcb) {
-	return pcb->state;
+    return pcb->state;
 }
 
 /**
@@ -117,7 +117,7 @@ State PCB_get_state(PCB_p pcb) {
  * Returns:     int PC value of PCB object.
  */
 unsigned int PCB_get_PC(PCB_p pcb) {
-	return pcb->pc_value;
+    return pcb->pc_value;
 }
 
 /**
@@ -127,24 +127,24 @@ unsigned int PCB_get_PC(PCB_p pcb) {
  * Returns:     char State string value.
  */
 const char *PCB_get_state_string(State state) {
-	switch (state) {
-	case created:
-		return "created";
-	case new:
-		return "new";
-	case ready:
-		return "ready";
-	case running:
-		return "running";
-	case waiting:
-		return "waiting";
-	case interrupted:
-		return "interrupted";
-	case terminated:
-		return "terminated";
-	default:
-		return "0";
-	}
+    switch (state) {
+        case created:
+            return "created";
+        case new:
+            return "new";
+        case ready:
+            return "ready";
+        case running:
+            return "running";
+        case waiting:
+            return "waiting";
+        case interrupted:
+            return "interrupted";
+        case terminated:
+            return "terminated";
+        default:
+            return "0";
+    }
 }
 
 /**
@@ -154,11 +154,11 @@ const char *PCB_get_state_string(State state) {
  * Returns:     char PCB string representation.
  */
 char *PCB_toString(PCB_p pcb) {
-	static char pcbString[50];
-	sprintf(pcbString, "PID: %d, Priority: %d, State: %s, PC_Value: %d\n",
-			PCB_get_pid(pcb), PCB_get_priority(pcb),
-			PCB_get_state_string(pcb->state), PCB_get_PC(pcb));
-	return pcbString;
+    static char pcbString[50];
+    sprintf(pcbString, "PID: %d, Priority: %d, State: %s, PC_Value: %d\n",
+            PCB_get_pid(pcb), PCB_get_priority(pcb),
+            PCB_get_state_string(pcb->state), PCB_get_PC(pcb));
+    return pcbString;
 }
 
 /**
@@ -167,6 +167,6 @@ char *PCB_toString(PCB_p pcb) {
  * Parameters:  PCB_p pcb: A pointer to the PCB structure
  */
 void PCB_print(PCB_p pcb) {
-	printf("PID: %02d, Priority: %02d, State: %s\n", PCB_get_pid(pcb),
-			PCB_get_priority(pcb), PCB_get_state_string(pcb->state));
+    printf("PID: %02d, Priority: %02d, State: %s\n", PCB_get_pid(pcb),
+           PCB_get_priority(pcb), PCB_get_state_string(pcb->state));
 }

@@ -22,13 +22,13 @@
 #include "pcb.h"
 
 typedef struct node {
-	PCB_p pcb;
-	struct node *next;
+    PCB_p pcb;
+    struct node *next;
 } Node;
 
 typedef struct queue {
-	Node *head, *rear;
-	int size, counter;
+    Node *head, *rear;
+    int size, counter;
 } Queue;
 
 typedef Queue *Queue_p;

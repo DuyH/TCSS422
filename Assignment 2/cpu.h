@@ -28,18 +28,18 @@
 
 /* Enumerating interrupt states. */
 typedef enum interrupt_state {
-	timer, io, normal
+    timer, io, normal
 } Interrupt_type;
 
 /* A struct representing a CPU. */
 typedef struct cpu_type {
-	unsigned int timer;
-	unsigned int pc;
-	unsigned int sysStack;
-	PCB_p currentProcess;
-	Queue_p readyQueue;
-	Queue_p terminatedQueue;
-	Queue_p newProcessesQueue;
+    unsigned int timer;
+    unsigned int pc;
+    unsigned int sysStack;
+    PCB_p currentProcess;
+    Queue_p readyQueue;
+    Queue_p terminatedQueue;
+    Queue_p newProcessesQueue;
 } CPU;
 
 typedef CPU *CPU_p;

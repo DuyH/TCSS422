@@ -20,14 +20,14 @@
 #define PCB_H_
 
 typedef enum process_state {
-	created, new, ready, running, waiting, interrupted, terminated
+    created, new, ready, running, waiting, interrupted, terminated
 } State;
 
 typedef struct pcb_type {
-	int pid;
-	int priority;
-	enum process_state state;
-	unsigned int pc_value;
+    int pid;
+    int priority;
+    enum process_state state;
+    unsigned int pc_value;
 } PCB;
 
 typedef PCB *PCB_p;
