@@ -1,20 +1,20 @@
 /***********************************************************************************************
-* cpu.h
-*
-* Programming Team:
-* Duy Huynh
-* Jeffrey LeCompte
-* Trung Dang
-* Brandon Scholor
-*
-* TCSS 422 - Winter 2016
-* Date: 1/20/16
-* Assignment 2
-*
-* Description:
-* This header file defines the class and methods for the cpu implementation
-*
-************************************************************************************************/
+ * cpu.h
+ *
+ * Programming Team:
+ * Duy Huynh
+ * Jeffrey LeCompte
+ * Trung Dang
+ * Brandon Scholor
+ *
+ * TCSS 422 - Winter 2016
+ * Date: 1/20/16
+ * Assignment 2
+ *
+ * Description:
+ * This header file defines the class and methods for the cpu implementation
+ *
+ ************************************************************************************************/
 
 #ifndef CPU_H
 #define CPU_H
@@ -28,37 +28,37 @@
 
 /* Enumerating interrupt states. */
 typedef enum interrupt_state {
-    timer, io, normal
+	timer, io, normal
 } Interrupt_type;
 
 /* A struct representing a CPU. */
 typedef struct cpu_type {
-    unsigned int timer;
-    unsigned int pc;
-    unsigned int sysStack;
-    PCB_p currentProcess;
-    Queue_p readyQueue;
-    Queue_p terminatedQueue;
-    Queue_p newProcessesQueue;
+	unsigned int timer;
+	unsigned int pc;
+	unsigned int sysStack;
+	PCB_p currentProcess;
+	Queue_p readyQueue;
+	Queue_p terminatedQueue;
+	Queue_p newProcessesQueue;
 } CPU;
 
 typedef CPU *CPU_p;
 
 /* CPU Constructor */
-CPU_p CPU_constructor(void);                    // constructs a new cpu object in the heap
+CPU_p CPU_constructor(void);          // constructs a new cpu object in the heap
 
 /* CPU destructor */
-void CPU_destructor(CPU_p);                     // frees memory allocated to pcb object
+void CPU_destructor(CPU_p);              // frees memory allocated to pcb object
 
 /* Setters */
 
 void CPU_set_pc(CPU_p, unsigned int);           // sets this->pc to int value
 
-void CPU_set_current_process(CPU_p, PCB_p);     // sets this->current_process to pcb pointer
+void CPU_set_current_process(CPU_p, PCB_p); // sets this->current_process to pcb pointer
 
-void CPU_set_readyQueue(CPU_p, Queue_p);        // sets this->readyQueue to queue pointer
+void CPU_set_readyQueue(CPU_p, Queue_p); // sets this->readyQueue to queue pointer
 
-void CPU_set_terminatedQueue(CPU_p, Queue_p);   // sets this->terminatedQueue to queue pointer
+void CPU_set_terminatedQueue(CPU_p, Queue_p); // sets this->terminatedQueue to queue pointer
 
 void CPU_set_newProcessesQueue(CPU_p, Queue_p); // sets this->newProcessesQueue to queue pointer
 
@@ -66,29 +66,29 @@ void CPU_set_newProcessesQueue(CPU_p, Queue_p); // sets this->newProcessesQueue 
 
 unsigned int CPU_get_pc(CPU_p);                 // returns this cpu's pc
 
-PCB_p CPU_get_current_proc(CPU_p);              // returns this cpu's currently running process (pcb pointer)
+PCB_p CPU_get_current_proc(CPU_p); // returns this cpu's currently running process (pcb pointer)
 
-Queue_p CPU_get_readyQueue(CPU_p);              // returns this cpu's readyQueue queue
+Queue_p CPU_get_readyQueue(CPU_p);        // returns this cpu's readyQueue queue
 
-Queue_p CPU_get_terminatedQueue(CPU_p);         // returns this cpu's terminatedQueue queue
+Queue_p CPU_get_terminatedQueue(CPU_p); // returns this cpu's terminatedQueue queue
 
-Queue_p CPU_get_newProcessesQueue(CPU_p);       // returns this cpu's newProcesses queue
+Queue_p CPU_get_newProcessesQueue(CPU_p); // returns this cpu's newProcesses queue
 
 /* ADT Functions */
 
-Queue_p CPU_enqueue_readyQueue(CPU_p, PCB_p);   // Enqueues a PCB object to the CPU's readyQueue
+Queue_p CPU_enqueue_readyQueue(CPU_p, PCB_p); // Enqueues a PCB object to the CPU's readyQueue
 
-PCB_p CPU_dequeue_readyQueue(CPU_p);            // Dequeues a PCB object from the CPU's readyQueue
+PCB_p CPU_dequeue_readyQueue(CPU_p); // Dequeues a PCB object from the CPU's readyQueue
 
-Queue_p CPU_enqueue_terminatedQueue(CPU_p, PCB_p);   // Enqueues a PCB object to the CPU's terminatedQueue
+Queue_p CPU_enqueue_terminatedQueue(CPU_p, PCB_p); // Enqueues a PCB object to the CPU's terminatedQueue
 
-PCB_p CPU_dequeue_terminatedQueue(CPU_p);            // Dequeues a PCB object from the CPU's terminatedQueue
+PCB_p CPU_dequeue_terminatedQueue(CPU_p); // Dequeues a PCB object from the CPU's terminatedQueue
 
 /* Set CPU's System Stack */
-void CPU_push_sysStack(CPU_p, unsigned int);    // Pushes unsigned int value onto cpu's sysStack
+void CPU_push_sysStack(CPU_p, unsigned int); // Pushes unsigned int value onto cpu's sysStack
 
 /* Get CPU's System Stack */
-unsigned int CPU_pop_sysStack(CPU_p);           // Pops off int value from cpu's sysStack
+unsigned int CPU_pop_sysStack(CPU_p);  // Pops off int value from cpu's sysStack
 
 /* Utility Functions */
 

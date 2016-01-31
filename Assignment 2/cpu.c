@@ -116,12 +116,12 @@ unsigned int CPU_pop_sysStack(CPU_p cpu) {
 
 void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC) {
 	while (!Queue_isEmpty(cpu->newProcessesQueue)) {
-				PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
-				PCB_set_state(temp_pcb, ready);
-				//PCB_set_pc(temp_pcb, PC);
-				Queue_enqueue(cpu->readyQueue, temp_pcb);
-				fprintf(file, "Process ID: %u Enqueued\n", temp_pcb->pid);
-				fprintf(file, "%s", PCB_toString(temp_pcb));
+		PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
+		PCB_set_state(temp_pcb, ready);
+		//PCB_set_pc(temp_pcb, PC);
+		Queue_enqueue(cpu->readyQueue, temp_pcb);
+		fprintf(file, "Process ID: %u Enqueued\n", temp_pcb->pid);
+		fprintf(file, "%s", PCB_toString(temp_pcb));
 	}
 	fprintf(file, "\n");
 	switch (interrupt_type) {
@@ -154,10 +154,10 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
 	PCB_p prevProcess = cpu->currentProcess;
 	PCB_p nextProcess = Queue_peek(cpu->readyQueue);
 	//if (CTX_SWITCH_COUNT % 4 == 0) {
-		if (prevProcess != NULL)
-			fprintf(file, "Running process: %s", PCB_toString(prevProcess));
-		if (nextProcess != NULL)
-			fprintf(file, "Switching to: %s", PCB_toString(nextProcess));
+	if (prevProcess != NULL)
+		fprintf(file, "Running process: %s", PCB_toString(prevProcess));
+	if (nextProcess != NULL)
+		fprintf(file, "Switching to: %s", PCB_toString(nextProcess));
 	//}
 	// 1. Save the state of current process into its PCB (PC value)
 	// Per Canvas Discussions, DON'T DO THIS AGAIN HERE! It's in ISR.
@@ -171,19 +171,17 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
 
 	if (interrupt_type == timer) {
 		// 4. Copy its PC value to sysStack, replacing the interrupted process
-			CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
+		CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
 	} else if (interrupt_type == normal) {
 		CPU_set_pc(cpu, cpu->sysStack);
 	}
 
-
-
 	//if (CTX_SWITCH_COUNT % 4 == 0) {
-		if (prevProcess != NULL)
-			fprintf(file, "Last Process: %s", PCB_toString(prevProcess));
-		if (nextProcess != NULL)
-			fprintf(file, "Current running Process: %s", PCB_toString(nextProcess));
-		fprintf(file, "Ready Queue: %s", Queue_toString(cpu->readyQueue, 0));
+	if (prevProcess != NULL)
+		fprintf(file, "Last Process: %s", PCB_toString(prevProcess));
+	if (nextProcess != NULL)
+		fprintf(file, "Current running Process: %s", PCB_toString(nextProcess));
+	fprintf(file, "Ready Queue: %s", Queue_toString(cpu->readyQueue, 0));
 
 	//}
 
@@ -202,22 +200,21 @@ void CPU_pseudo_isr(CPU_p cpu, int PC) {
 		// 2. Save the CPU state to the PCB
 		PCB_set_pc(cpu->currentProcess, cpu->pc);
 
-		fprintf(file, "Process interrupted: %s", PCB_toString(cpu->currentProcess));
+		fprintf(file, "Process interrupted: %s",
+				PCB_toString(cpu->currentProcess));
 
 		//Replace PC of CPU will value stored in systemStack
-			cpu->pc = cpu->sysStack;
+		cpu->pc = cpu->sysStack;
 
 		//cpu->pc = CPU_pop_sysStack(cpu);
 
 		// 3. "Do an up-call" to the scheduler
 		CPU_scheduler(cpu, timer, PC);
 
-
 	} else {
 		fprintf(file, "No process currently running. Normal interrupt...\n");
 		CPU_scheduler(cpu, normal, PC);
 	}
-
 
 	return;
 }
@@ -275,8 +272,10 @@ int main() {
 
 	// CPU: Represent a time quantum. Assumed every process has the same time quantum.
 	int time_count = 1;
+	//total_procs <= MAX_PROCESS - 5
 	while (total_procs <= MAX_PROCESS - 5) {
-		fprintf(file, "***************TIME QUANTUM = %d***************\n", time_count);
+		fprintf(file, "***************TIME QUANTUM = %d***************\n",
+				time_count);
 
 		// 1a. Create a queue of new processes, 0 - 5 processes at a time:
 		int num_proc_created = 0;
@@ -290,8 +289,10 @@ int main() {
 		process_ID += num_proc_created;
 
 		// 1c. Print newly created processes queue to file:
-		fprintf(file, "New processes initialized: %d. Total processes: %d\n",num_proc_created, total_procs);
-		fprintf(file, "Newly created processes list: %s", Queue_toString(cpu->newProcessesQueue, 0));
+		fprintf(file, "New processes initialized: %d. Total processes: %d\n",
+				num_proc_created, total_procs);
+		fprintf(file, "Newly created processes list: %s",
+				Queue_toString(cpu->newProcessesQueue, 0));
 
 		// puts head of readyQueue as current process and changes state to running
 //        if (cpu->currentProcess == empty_pcb && !Queue_isEmpty(cpu->readyQueue)) {
@@ -307,12 +308,13 @@ int main() {
 		fprintf(file, "Current PC: %d. System Stack: %d\n", PC, cpu->sysStack);
 
 		//if (cpu->currentProcess != NULL)
-			CPU_push_sysStack(cpu, PC);
+		CPU_push_sysStack(cpu, PC);
 
 		// calls pseudo ISR
 		CPU_pseudo_isr(cpu, PC);
 
-		fprintf(file, "Current PC: %d. System Stack: %d\n\n", PC, cpu->sysStack);
+		fprintf(file, "Current PC: %d. System Stack: %d\n\n", PC,
+				cpu->sysStack);
 
 		CTX_SWITCH_COUNT++;
 		time_count++;

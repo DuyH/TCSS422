@@ -1,39 +1,33 @@
 /***********************************************************************************************
-* pcb.h
-*
-* Programming Team:
-* Duy Huynh
-* Jeffrey LeCompte
-* Trung Dang
-* Brandon Scholer
-*
-* TCSS 422 - Winter 2016
-* Date: 1/20/16
-* Assignment 2
-*
-* Description:
-* This header file defines the class and methods for the process control block implementation
-*
-************************************************************************************************/
+ * pcb.h
+ *
+ * Programming Team:
+ * Duy Huynh
+ * Jeffrey LeCompte
+ * Trung Dang
+ * Brandon Scholer
+ *
+ * TCSS 422 - Winter 2016
+ * Date: 1/20/16
+ * Assignment 2
+ *
+ * Description:
+ * This header file defines the class and methods for the process control block implementation
+ *
+ ************************************************************************************************/
 
 #ifndef PCB_H_
 #define PCB_H_
 
 typedef enum process_state {
-    created,
-    new,
-    ready,
-    running,
-    waiting,
-    interrupted,
-    terminated
+	created, new, ready, running, waiting, interrupted, terminated
 } State;
 
 typedef struct pcb_type {
-    int pid;
-    int priority;
-    enum process_state state;
-    unsigned int pc_value;
+	int pid;
+	int priority;
+	enum process_state state;
+	unsigned int pc_value;
 } PCB;
 
 typedef PCB *PCB_p;
@@ -68,7 +62,7 @@ unsigned int PCB_get_PC(PCB_p);              // returns pc value
 
 const char *PCB_get_state_string(State);   // returns state value
 
-char *PCB_toString(PCB_p);          // returns pointer to character array of this pcb's contents
+char *PCB_toString(PCB_p); // returns pointer to character array of this pcb's contents
 
 void PCB_print(PCB_p);              // prints to console this pcb's contents
 
