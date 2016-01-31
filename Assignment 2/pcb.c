@@ -67,7 +67,8 @@ void PCB_set_priority(PCB_p pcb, int new_priority) {
  *              enum process_state new_state: the new state
  */
 void PCB_set_state(PCB_p pcb, State new_state) {
-    pcb->state = new_state;
+	if (pcb != NULL)
+		pcb->state = new_state;
 }
 
 /**
@@ -138,6 +139,8 @@ const char *PCB_get_state_string(State state) {
             return "running";
         case waiting:
             return "waiting";
+        case interrupted:
+        	return "interrupted";
         case terminated:
             return "terminated";
         default:
@@ -153,7 +156,7 @@ const char *PCB_get_state_string(State state) {
  */
 char *PCB_toString(PCB_p pcb) {
     static char pcbString[50];
-    sprintf(pcbString, "PID: %d, Priority: %d, State: %s PC_Value: %d\n", PCB_get_pid(pcb), PCB_get_priority(pcb),
+    sprintf(pcbString, "PID: %d, Priority: %d, State: %s, PC_Value: %d\n", PCB_get_pid(pcb), PCB_get_priority(pcb),
             PCB_get_state_string(pcb->state), PCB_get_PC(pcb));
     return pcbString;
 }

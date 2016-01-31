@@ -130,7 +130,10 @@ PCB_p Queue_dequeue(Queue_p queue) {
  * Returns:     PCB_p pointer to head Node's PCB in Queue object.
  */
 PCB_p Queue_peek(Queue_p queue) {
-    return queue->head->pcb;
+	if (!Queue_isEmpty(queue))
+		return queue->head->pcb;
+	else
+		return NULL;
 }
 
 /**
@@ -152,7 +155,7 @@ int Queue_isEmpty(Queue_p queue) {
  */
 void Queue_print(Queue_p queue, int printLastNode) {
     if (queue->size == 0) {
-        printf("Queue is empty!\n");
+        printf("Queue is empty!\n\n");
     } else {
         Node *current = queue->head;
         while (current != NULL) {
@@ -176,28 +179,29 @@ void Queue_print(Queue_p queue, int printLastNode) {
  *Parameters: int printLastNode: 1 to print contents of the last Node, 0 to omit.
  */
 char *Queue_toString(Queue_p queue, int printLastNode) {
-    static char queue_string[500];
+    char *queue_string = calloc(500, sizeof(char));
     if (queue->size == 0) {
         sprintf(queue_string, "Queue is empty!\n");
     } else {
 
-        char first_part[50], second_part[50], third_part[50], fourth_part[50], fifth_part[50];
+        char first_part[100];
         Node *current = queue->head;
         while (current != NULL) {
             sprintf(first_part, "P%d(%d)", current->pcb->pid, current->pcb->priority);
             strcat(queue_string, first_part);
             if (current->next != NULL) strcat(queue_string, "->");
+           else strcat(queue_string, "-*");
             current = current->next;
-            if (current == NULL) strcat(queue_string, "-*");
-        }
-        if (printLastNode) {
-            strcat(queue_string, " contents: ");
-            sprintf(fifth_part, "%s", PCB_toString(queue->rear->pcb));
-            strcat(queue_string, fifth_part);
-        } else {
 
-            strcat(queue_string, "\n");
         }
+//        if (printLastNode) {
+//            strcat(queue_string, " contents: ");
+//            sprintf(first_part, "%s", PCB_toString(queue->rear->pcb));
+//            strcat(queue_string, first_part);
+//        } else {
+//
+           strcat(queue_string, "\n");
+//        }
     }
     return queue_string;
 }

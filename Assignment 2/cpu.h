@@ -28,7 +28,7 @@
 
 /* Enumerating interrupt states. */
 typedef enum interrupt_state {
-    timer, io
+    timer, io, normal
 } Interrupt_type;
 
 /* A struct representing a CPU. */
@@ -92,11 +92,11 @@ unsigned int CPU_pop_sysStack(CPU_p);           // Pops off int value from cpu's
 
 /* Utility Functions */
 
-void CPU_dispatcher(CPU_p cpu);
+void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type);
 
-void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type);
+void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int);
 
-void CPU_pseudo_isr(CPU_p cpu);
+void CPU_pseudo_isr(CPU_p cpu, int);
 
 PCB_p dispatch(CPU_p);                          // Dispatches...
 

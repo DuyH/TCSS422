@@ -1,193 +1,189 @@
-New process initialized: 
-Number of new processes created this round: 3, total: 3
-Newly created processes list: P1(16)->P2(29)->P3(9)-*
-
+***************TIME QUANTUM = 1***************
+New processes initialized: 3. Total processes: 3
+Newly created processes list: P1(24)->P2(2)->P3(8)-*
+Current PC: 3766. System Stack: 0
+No process currently running. Normal interrupt...
 Process ID: 1 Enqueued
-PID: 1, Priority: 16, State: ready PC_Value: 0
-
+PID: 1, Priority: 24, State: ready, PC_Value: 0
 Process ID: 2 Enqueued
-PID: 2, Priority: 29, State: ready PC_Value: 0
-
+PID: 2, Priority: 2, State: ready, PC_Value: 0
 Process ID: 3 Enqueued
-PID: 3, Priority: 9, State: ready PC_Value: 0
+PID: 3, Priority: 8, State: ready, PC_Value: 0
 
-Current  in ISR: PID: 1, Priority: 16, State: 0 PC_Value: 3152
-Interrupted Process: PID: 1, Priority: 16, State: ready PC_Value: 3152
-Switching to: PID: 2, Priority: 29, State: ready PC_Value: 0
+Switching to: PID: 1, Priority: 24, State: ready, PC_Value: 0
+Current running Process: PID: 1, Priority: 24, State: running, PC_Value: 0
+Ready Queue: P2(2)->P3(8)-*
+Current PC: 3766. System Stack: 3766
 
-Last Process: PID: 1, Priority: 16, State: ready PC_Value: 3152
-Current Process: PID: 2, Priority: 29, State: running PC_Value: 0
-Ready Queue: P1(16)->P2(29)->P3(9)-*
-P3(9)->P1(16)-*
-P3(9)->P1(16)-*
-
-
-Number of new processes created this round: 0, total: 3
+***************TIME QUANTUM = 2***************
+New processes initialized: 0. Total processes: 3
 Newly created processes list: Queue is empty!
+Current PC: 6879. System Stack: 3766
+Timer interrupt...
+Process interrupted: PID: 1, Priority: 24, State: interrupted, PC_Value: 3766
 
-Current  in ISR: PID: 2, Priority: 29, State: 0 PC_Value: 3340
-Number of new processes created this round: 4, total: 7
-Newly created processes list: Queue is empty!
-P4(10)->P5(23)->P6(18)->P7(16)-*
+Running process: PID: 1, Priority: 24, State: ready, PC_Value: 3766
+Switching to: PID: 2, Priority: 2, State: ready, PC_Value: 0
+Last Process: PID: 1, Priority: 24, State: ready, PC_Value: 3766
+Current running Process: PID: 2, Priority: 2, State: running, PC_Value: 0
+Ready Queue: P3(8)->P1(24)-*
+Current PC: 6879. System Stack: 0
 
+***************TIME QUANTUM = 3***************
+New processes initialized: 5. Total processes: 8
+Newly created processes list: P4(19)->P5(21)->P6(29)->P7(16)->P8(4)-*
+Current PC: 10058. System Stack: 0
+Timer interrupt...
+Process interrupted: PID: 2, Priority: 2, State: interrupted, PC_Value: 6879
 Process ID: 4 Enqueued
-PID: 4, Priority: 10, State: ready PC_Value: 0
-
+PID: 4, Priority: 19, State: ready, PC_Value: 0
 Process ID: 5 Enqueued
-PID: 5, Priority: 23, State: ready PC_Value: 0
-
+PID: 5, Priority: 21, State: ready, PC_Value: 0
 Process ID: 6 Enqueued
-PID: 6, Priority: 18, State: ready PC_Value: 0
-
+PID: 6, Priority: 29, State: ready, PC_Value: 0
 Process ID: 7 Enqueued
-PID: 7, Priority: 16, State: ready PC_Value: 0
-
-Current  in ISR: PID: 3, Priority: 9, State: 0 PC_Value: 3342
-Number of new processes created this round: 3, total: 10
-Newly created processes list: Queue is empty!
-P4(10)->P5(23)->P6(18)->P7(16)-*
-P8(28)->P9(25)->P10(31)-*
-
+PID: 7, Priority: 16, State: ready, PC_Value: 0
 Process ID: 8 Enqueued
-PID: 8, Priority: 28, State: ready PC_Value: 0
+PID: 8, Priority: 4, State: ready, PC_Value: 0
 
+Running process: PID: 2, Priority: 2, State: ready, PC_Value: 6879
+Switching to: PID: 3, Priority: 8, State: ready, PC_Value: 0
+Last Process: PID: 2, Priority: 2, State: ready, PC_Value: 6879
+Current running Process: PID: 3, Priority: 8, State: running, PC_Value: 0
+Ready Queue: P1(24)->P4(19)->P5(21)->P6(29)->P7(16)->P8(4)->P2(2)-*
+Current PC: 10058. System Stack: 0
+
+***************TIME QUANTUM = 4***************
+New processes initialized: 0. Total processes: 8
+Newly created processes list: Queue is empty!
+Current PC: 13249. System Stack: 0
+Timer interrupt...
+Process interrupted: PID: 3, Priority: 8, State: interrupted, PC_Value: 10058
+
+Running process: PID: 3, Priority: 8, State: ready, PC_Value: 10058
+Switching to: PID: 1, Priority: 24, State: ready, PC_Value: 3766
+Last Process: PID: 3, Priority: 8, State: ready, PC_Value: 10058
+Current running Process: PID: 1, Priority: 24, State: running, PC_Value: 3766
+Ready Queue: P4(19)->P5(21)->P6(29)->P7(16)->P8(4)->P2(2)->P3(8)-*
+Current PC: 13249. System Stack: 3766
+
+***************TIME QUANTUM = 5***************
+New processes initialized: 4. Total processes: 12
+Newly created processes list: P9(12)->P10(9)->P11(13)->P12(25)-*
+Current PC: 16642. System Stack: 3766
+Timer interrupt...
+Process interrupted: PID: 1, Priority: 24, State: interrupted, PC_Value: 13249
 Process ID: 9 Enqueued
-PID: 9, Priority: 25, State: ready PC_Value: 0
-
+PID: 9, Priority: 12, State: ready, PC_Value: 0
 Process ID: 10 Enqueued
-PID: 10, Priority: 31, State: ready PC_Value: 0
-
-Current  in ISR: PID: 1, Priority: 16, State: 0 PC_Value: 3152
-Number of new processes created this round: 1, total: 11
-Newly created processes list: Queue is empty!
-P4(10)->P5(23)->P6(18)->P7(16)-*
-P8(28)->P9(25)->P10(31)-*
-P11(28)-*
-
+PID: 10, Priority: 9, State: ready, PC_Value: 0
 Process ID: 11 Enqueued
-PID: 11, Priority: 28, State: ready PC_Value: 0
-
-Current  in ISR: PID: 2, Priority: 29, State: 0 PC_Value: 3340
-Interrupted Process: PID: 2, Priority: 29, State: ready PC_Value: 3340
-Switching to: PID: 4, Priority: 10, State: ready PC_Value: 0
-
-Last Process: PID: 2, Priority: 29, State: ready PC_Value: 3340
-Current Process: PID: 4, Priority: 10, State: running PC_Value: 0
-Ready Queue: Queue is empty!
-P4(10)->P5(23)->P6(18)->P7(16)-*
-P8(28)->P9(25)->P10(31)-*
-P11(28)-*
-P5(23)->P6(18)->P7(16)->P3(9)->P8(28)->P9(25)->P10(31)->P1(16)->P11(28)->P2(29)-*
-P5(23)->P6(18)->P7(16)->P3(9)->P8(28)->P9(25)->P10(31)->P1(16)->P11(28)->P2(29)-*
-
-
-Number of new processes created this round: 0, total: 11
-Newly created processes list: Queue is empty!
-
-Current  in ISR: PID: 4, Priority: 10, State: 0 PC_Value: 3412
-Number of new processes created this round: 5, total: 16
-Newly created processes list: Queue is empty!
-P12(13)->P13(13)->P14(7)->P15(14)->P16(27)-*
-
+PID: 11, Priority: 13, State: ready, PC_Value: 0
 Process ID: 12 Enqueued
-PID: 12, Priority: 13, State: ready PC_Value: 0
+PID: 12, Priority: 25, State: ready, PC_Value: 0
 
+Running process: PID: 1, Priority: 24, State: ready, PC_Value: 13249
+Switching to: PID: 4, Priority: 19, State: ready, PC_Value: 0
+Last Process: PID: 1, Priority: 24, State: ready, PC_Value: 13249
+Current running Process: PID: 4, Priority: 19, State: running, PC_Value: 0
+Ready Queue: P5(21)->P6(29)->P7(16)->P8(4)->P2(2)->P3(8)->P9(12)->P10(9)->P11(13)->P12(25)->P1(24)-*
+Current PC: 16642. System Stack: 0
+
+***************TIME QUANTUM = 6***************
+New processes initialized: 0. Total processes: 12
+Newly created processes list: Queue is empty!
+Current PC: 19809. System Stack: 0
+Timer interrupt...
+Process interrupted: PID: 4, Priority: 19, State: interrupted, PC_Value: 16642
+
+Running process: PID: 4, Priority: 19, State: ready, PC_Value: 16642
+Switching to: PID: 5, Priority: 21, State: ready, PC_Value: 0
+Last Process: PID: 4, Priority: 19, State: ready, PC_Value: 16642
+Current running Process: PID: 5, Priority: 21, State: running, PC_Value: 0
+Ready Queue: P6(29)->P7(16)->P8(4)->P2(2)->P3(8)->P9(12)->P10(9)->P11(13)->P12(25)->P1(24)->P4(19)-*
+Current PC: 19809. System Stack: 0
+
+***************TIME QUANTUM = 7***************
+New processes initialized: 1. Total processes: 13
+Newly created processes list: P13(4)-*
+Current PC: 23070. System Stack: 0
+Timer interrupt...
+Process interrupted: PID: 5, Priority: 21, State: interrupted, PC_Value: 19809
 Process ID: 13 Enqueued
-PID: 13, Priority: 13, State: ready PC_Value: 0
+PID: 13, Priority: 4, State: ready, PC_Value: 0
 
+Running process: PID: 5, Priority: 21, State: ready, PC_Value: 19809
+Switching to: PID: 6, Priority: 29, State: ready, PC_Value: 0
+Last Process: PID: 5, Priority: 21, State: ready, PC_Value: 19809
+Current running Process: PID: 6, Priority: 29, State: running, PC_Value: 0
+Ready Queue: P7(16)->P8(4)->P2(2)->P3(8)->P9(12)->P10(9)->P11(13)->P12(25)->P1(24)->P4(19)->P13(4)->P5(21)-*
+Current PC: 23070. System Stack: 0
+
+***************TIME QUANTUM = 8***************
+New processes initialized: 4. Total processes: 17
+Newly created processes list: P14(15)->P15(7)->P16(9)->P17(31)-*
+Current PC: 26338. System Stack: 0
+Timer interrupt...
+Process interrupted: PID: 6, Priority: 29, State: interrupted, PC_Value: 23070
 Process ID: 14 Enqueued
-PID: 14, Priority: 7, State: ready PC_Value: 0
-
+PID: 14, Priority: 15, State: ready, PC_Value: 0
 Process ID: 15 Enqueued
-PID: 15, Priority: 14, State: ready PC_Value: 0
-
+PID: 15, Priority: 7, State: ready, PC_Value: 0
 Process ID: 16 Enqueued
-PID: 16, Priority: 27, State: ready PC_Value: 0
-
-Current  in ISR: PID: 5, Priority: 23, State: 0 PC_Value: 3617
-Number of new processes created this round: 1, total: 17
-Newly created processes list: Queue is empty!
-P12(13)->P13(13)->P14(7)->P15(14)->P16(27)-*
-P17(14)-*
-
+PID: 16, Priority: 9, State: ready, PC_Value: 0
 Process ID: 17 Enqueued
-PID: 17, Priority: 14, State: ready PC_Value: 0
+PID: 17, Priority: 31, State: ready, PC_Value: 0
 
-Current  in ISR: PID: 6, Priority: 18, State: 0 PC_Value: 3466
-Number of new processes created this round: 3, total: 20
-Newly created processes list: Queue is empty!
-P12(13)->P13(13)->P14(7)->P15(14)->P16(27)-*
-P17(14)-*
-P18(23)->P19(18)->P20(24)-*
+Running process: PID: 6, Priority: 29, State: ready, PC_Value: 23070
+Switching to: PID: 7, Priority: 16, State: ready, PC_Value: 0
+Last Process: PID: 6, Priority: 29, State: ready, PC_Value: 23070
+Current running Process: PID: 7, Priority: 16, State: running, PC_Value: 0
+Ready Queue: P8(4)->P2(2)->P3(8)->P9(12)->P10(9)->P11(13)->P12(25)->P1(24)->P4(19)->P13(4)->P5(21)->P14(15)->P15(7)->P16(9)->P17(31)->P6(29)-*
+Current PC: 26338. System Stack: 0
 
+***************TIME QUANTUM = 9***************
+New processes initialized: 4. Total processes: 21
+Newly created processes list: P18(6)->P19(3)->P20(19)->P21(26)-*
+Current PC: 29516. System Stack: 0
+Timer interrupt...
+Process interrupted: PID: 7, Priority: 16, State: interrupted, PC_Value: 26338
 Process ID: 18 Enqueued
-PID: 18, Priority: 23, State: ready PC_Value: 0
-
+PID: 18, Priority: 6, State: ready, PC_Value: 0
 Process ID: 19 Enqueued
-PID: 19, Priority: 18, State: ready PC_Value: 0
-
+PID: 19, Priority: 3, State: ready, PC_Value: 0
 Process ID: 20 Enqueued
-PID: 20, Priority: 24, State: ready PC_Value: 0
-
-Current  in ISR: PID: 7, Priority: 16, State: 0 PC_Value: 3957
-Interrupted Process: PID: 7, Priority: 16, State: ready PC_Value: 3957
-Switching to: PID: 3, Priority: 9, State: ready PC_Value: 3342
-
-Last Process: PID: 7, Priority: 16, State: ready PC_Value: 3957
-Current Process: PID: 3, Priority: 9, State: running PC_Value: 3342
-Ready Queue: Queue is empty!
-P12(13)->P13(13)->P14(7)->P15(14)->P16(27)-*
-P17(14)-*
-P18(23)->P19(18)->P20(24)-*
-P8(28)->P9(25)->P10(31)->P1(16)->P11(28)->P2(29)->P4(10)->P12(13)->P13(13)->P14(7)->P15(14)->P16(27)->P5(23)->P17(14)->P6(18)->P18(23)->P19(18)->P20(24)->P7(16)-*
-P8(28)->P9(25)->P10(31)->P1(16)->P11(28)->P2(29)->P4(10)->P12(13)->P13(13)->P14(7)->P15(14)->P16(27)->P5(23)->P17(14)->P6(18)->P18(23)->P19(18)->P20(24)->P7(16)-*
-
-
-Number of new processes created this round: 4, total: 24
-Newly created processes list: Queue is empty!
-P12(13)->P13(13)->P14(7)->P15(14)->P16(27)-*
-P17(14)-*
-P18(23)->P19(18)->P20(24)-*
-P8(28)->P9(25)->P10(31)->P1(16)->P11(28)->P2(29)->P4(10)->P12(13)->P13(13)->P14(7)->P15(14)->P16(27)->P5(23)->P17(14)->P6(18)->P18(23)->P19(18)->P20(24)->P7(16)-*
-P8(28)->P9(25)->P10(31)->P1(16)->P11(28)->P2(29)->P4(10)->P12(13)->P13(13)->P14(7)->P15(14)->P16(27)->P5(23)->P17(14)->P6(18)->P18(23)->P19(18)->P20(24)->P7(16)-*
-P21(13)->P22(9)->P23(7)->P24(27)-*
-
+PID: 20, Priority: 19, State: ready, PC_Value: 0
 Process ID: 21 Enqueued
-PID: 21, Priority: 13, State: ready PC_Value: 0
+PID: 21, Priority: 26, State: ready, PC_Value: 0
 
+Running process: PID: 7, Priority: 16, State: ready, PC_Value: 26338
+Switching to: PID: 8, Priority: 4, State: ready, PC_Value: 0
+Last Process: PID: 7, Priority: 16, State: ready, PC_Value: 26338
+Current running Process: PID: 8, Priority: 4, State: running, PC_Value: 0
+Ready Queue: P2(2)->P3(8)->P9(12)->P10(9)->P11(13)->P12(25)->P1(24)->P4(19)->P13(4)->P5(21)->P14(15)->P15(7)->P16(9)->P17(31)->P6(29)->P18(6)->P19(3)->P20(19)->P21(26)->P7(16)-*
+Current PC: 29516. System Stack: 0
+
+***************TIME QUANTUM = 10***************
+New processes initialized: 5. Total processes: 26
+Newly created processes list: P22(12)->P23(12)->P24(11)->P25(25)->P26(19)-*
+Current PC: 33418. System Stack: 0
+Timer interrupt...
+Process interrupted: PID: 8, Priority: 4, State: interrupted, PC_Value: 29516
 Process ID: 22 Enqueued
-PID: 22, Priority: 9, State: ready PC_Value: 0
-
+PID: 22, Priority: 12, State: ready, PC_Value: 0
 Process ID: 23 Enqueued
-PID: 23, Priority: 7, State: ready PC_Value: 0
-
+PID: 23, Priority: 12, State: ready, PC_Value: 0
 Process ID: 24 Enqueued
-PID: 24, Priority: 27, State: ready PC_Value: 0
-
-Current  in ISR: PID: 3, Priority: 9, State: 0 PC_Value: 3342
-Number of new processes created this round: 5, total: 29
-Newly created processes list: Queue is empty!
-P12(13)->P13(13)->P14(7)->P15(14)->P16(27)-*
-P17(14)-*
-P18(23)->P19(18)->P20(24)-*
-P8(28)->P9(25)->P10(31)->P1(16)->P11(28)->P2(29)->P4(10)->P12(13)->P13(13)->P14(7)->P15(14)->P16(27)->P5(23)->P17(14)->P6(18)->P18(23)->P19(18)->P20(24)->P7(16)-*
-P8(28)->P9(25)->P10(31)->P1(16)->P11(28)->P2(29)->P4(10)->P12(13)->P13(13)->P14(7)->P15(14)->P16(27)->P5(23)->P17(14)->P6(18)->P18(23)->P19(18)->P20(24)->P7(16)-*
-P21(13)->P22(9)->P23(7)->P24(27)-*
-P25(10)->P26(31)->P27(22)->P28(18)->P29(7)-*
-
+PID: 24, Priority: 11, State: ready, PC_Value: 0
 Process ID: 25 Enqueued
-PID: 25, Priority: 10, State: ready PC_Value: 0
-
+PID: 25, Priority: 25, State: ready, PC_Value: 0
 Process ID: 26 Enqueued
-PID: 26, Priority: 31, State: ready PC_Value: 0
+PID: 26, Priority: 19, State: ready, PC_Value: 0
 
-Process ID: 27 Enqueued
-PID: 27, Priority: 22, State: ready PC_Value: 0
+Running process: PID: 8, Priority: 4, State: ready, PC_Value: 29516
+Switching to: PID: 2, Priority: 2, State: ready, PC_Value: 6879
+Last Process: PID: 8, Priority: 4, State: ready, PC_Value: 29516
+Current running Process: PID: 2, Priority: 2, State: running, PC_Value: 6879
+Ready Queue: P3(8)->P9(12)->P10(9)->P11(13)->P12(25)->P1(24)->P4(19)->P13(4)->P5(21)->P14(15)->P15(7)->P16(9)->P17(31)->P6(29)->P18(6)->P19(3)->P20(19)->P21(26)->P7(16)->P22(12)->P23(12)->P24(11)->P25(25)->P26(19)->P8(4)-*
+Current PC: 33418. System Stack: 6879
 
-Process ID: 28 Enqueued
-PID: 28, Priority: 18, State: ready PC_Value: 0
-
-Process ID: 29 Enqueued
-PID: 29, Priority: 7, State: ready PC_Value: 0
-
-Current  in ISR: PID: 8, Priority: 28, State: 0 PC_Value: 3586
