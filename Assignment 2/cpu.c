@@ -153,12 +153,12 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
     // Save pointers to the previous and next process (needed so we can print)
     PCB_p prevProcess = cpu->currentProcess;
     PCB_p nextProcess = Queue_peek(cpu->readyQueue);
-    //if (CTX_SWITCH_COUNT % 4 == 0) {
-    if (prevProcess != NULL)
-        fprintf(file, "Running process: %s", PCB_toString(prevProcess));
-    if (nextProcess != NULL)
-        fprintf(file, "Switching to: %s", PCB_toString(nextProcess));
-    //}
+    if (CTX_SWITCH_COUNT % 4 == 0) {
+    	if (prevProcess != NULL)
+    		fprintf(file, "Running process: %s", PCB_toString(prevProcess));
+    	if (nextProcess != NULL)
+    		fprintf(file, "Switching to: %s", PCB_toString(nextProcess));
+    }
     // 1. Save the state of current process into its PCB (PC value)
     // Per Canvas Discussions, DON'T DO THIS AGAIN HERE! It's in ISR.
 
@@ -176,14 +176,13 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
         CPU_set_pc(cpu, cpu->sysStack);
     }
 
-    //if (CTX_SWITCH_COUNT % 4 == 0) {
-    if (prevProcess != NULL)
-        fprintf(file, "Last Process: %s", PCB_toString(prevProcess));
-    if (nextProcess != NULL)
-        fprintf(file, "Current running Process: %s", PCB_toString(nextProcess));
-    fprintf(file, "Ready Queue: %s", Queue_toString(cpu->readyQueue, 0));
-
-    //}
+    if (CTX_SWITCH_COUNT % 4 == 0) {
+    	if (prevProcess != NULL)
+    		fprintf(file, "Last Process: %s", PCB_toString(prevProcess));
+    	if (nextProcess != NULL)
+    		fprintf(file, "Current running Process: %s", PCB_toString(nextProcess));
+    	fprintf(file, "Ready Queue: %s", Queue_toString(cpu->readyQueue, 0));
+    }
 
     // 5. Return to the scheduler
     // returns prevalent stuff to scheduler, but not for this project
@@ -273,14 +272,16 @@ int main() {
     // CPU: Represent a time quantum. Assumed every process has the same time quantum.
     int time_count = 1;
     //total_procs <= MAX_PROCESS - 5
-    while (total_procs <= MAX_PROCESS - 5) {
+    while (total_procs < MAX_PROCESS) {
         fprintf(file, "***************TIME QUANTUM = %d***************\n",
                 time_count);
 
         // 1a. Create a queue of new processes, 0 - 5 processes at a time:
         int num_proc_created = 0;
-
-        num_proc_created = rand() % 6;
+        do {
+        	num_proc_created = rand() % 6;
+        } while (total_procs + num_proc_created > MAX_PROCESS);
+        fprintf(file, "Process randomed: %d\n", num_proc_created);
         total_procs += num_proc_created;
 
         cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue,
