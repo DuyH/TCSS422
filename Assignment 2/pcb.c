@@ -154,7 +154,7 @@ const char *PCB_get_state_string(State state) {
  * Returns:     char PCB string representation.
  */
 char *PCB_toString(PCB_p pcb) {
-    static char pcbString[50];
+    static char pcbString[200];
     sprintf(pcbString, "PID: %d, Priority: %d, State: %s, PC_Value: %d\n",
             PCB_get_pid(pcb), PCB_get_priority(pcb),
             PCB_get_state_string(pcb->state), PCB_get_PC(pcb));
