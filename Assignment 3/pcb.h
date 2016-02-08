@@ -28,6 +28,13 @@ typedef struct pcb_type {
     int priority;
     enum process_state state;
     unsigned int pc_value;
+    unsigned int max_pc;
+    unsigned int creation;
+    unsigned int termination;
+    unsigned int terminate;
+    unsigned int term_count;
+    unsigned int io_trap_1[4];
+    unsigned int io_trap_2[4];
 } PCB;
 
 typedef PCB *PCB_p;
@@ -48,6 +55,20 @@ void PCB_set_state(PCB_p, State);   // sets this->state to State value
 
 void PCB_set_pc(PCB_p, int);        // sets this->pc to int value
 
+void PCB_set_max_pc(PCB_p, int);    // sets this->max_pc to int value
+
+void PCB_set_creation(PCB_p, int);  // sets this->creation to int value
+
+void PCB_set_termination(PCB_p, int); // sets this->termination to int value
+
+void PCB_set_terminate(PCB_p, int); // sets this->terminate to int value
+
+void PCB_set_term_count(PCB_p, int); // sets this->term_count to int value
+
+void PCB_set_ io_trap_1(PCB_p, int, int); // sets->io_trap_1 to int value at int index
+
+void PCB_set_ io_trap_1(PCB_p, int, int); // sets->io_trap_2 to int value at int index
+
 /* Getters */
 
 int PCB_get_pid(PCB_p);             // returns pid value
@@ -57,6 +78,20 @@ int PCB_get_priority(PCB_p);        // returns priority value
 State PCB_get_state(PCB_p);         // returns state value
 
 unsigned int PCB_get_PC(PCB_p);              // returns pc value
+
+unsigned int PCB_get_max_pc(PCB_p);         // returns max_pc value
+
+unsigned int PCB_get_creation(PCB_p);       // returns creation value
+
+unsigned int PCB_get_termination(PCB_p);    // returns termination value
+
+unsigned int PCB_get_terminate(PCB_p);      // returns terminate value
+
+unsigned int PCB_get_term_count(PCB_p);     // returns term_count value;
+
+unsigned int * PCB_get_io_trap(PCB_p, int); // returns the referenced io_trap array;
+
+unsigned int * PCB_get_io_trap_index(PCB_p, int, int) // returns the referenced index of the referenced io_trap array;
 
 /* Utility Functions */
 
