@@ -25,17 +25,17 @@ typedef enum process_state {
 } State;
 
 typedef struct pcb_type {
-    int pid;
-    int priority;
-    enum process_state state;
-    unsigned int pc_value;
-    unsigned int max_pc;
-    unsigned int creation;
-    unsigned int termination;
-    unsigned int terminate;
-    unsigned int term_count;
+    int pid;                        // id number
+    int priority;                   // priority
+    enum process_state state;       // state of the process
+    unsigned int pc_value;          // pc value
+    unsigned int max_pc;            // the max pc value before reset
+    unsigned int creation;          // clock time at process creation
+    unsigned int termination;       // clock time at process termination
+    unsigned int terminate;         // max number for process termination, 0 for no termination
+    unsigned int term_count;        // counter until process termination
     unsigned int io_trap_1[4];
-    unsigned int io_trap_2[4];
+    unsigned int io_trap_2[4];      // arrays where io trap will occur
 } PCB;
 
 typedef PCB *PCB_p;
@@ -68,7 +68,7 @@ void PCB_set_term_count(PCB_p, int); // sets this->term_count to int value
 
 void PCB_set_ io_trap_1(PCB_p, int, int); // sets->io_trap_1 to int value at int index
 
-void PCB_set_ io_trap_1(PCB_p, int, int); // sets->io_trap_2 to int value at int index
+void PCB_set_ io_trap_2(PCB_p, int, int); // sets->io_trap_2 to int value at int index
 
 /* Getters */
 
@@ -92,7 +92,7 @@ unsigned int PCB_get_term_count(PCB_p);     // returns term_count value;
 
 unsigned int * PCB_get_io_trap(PCB_p, int); // returns the referenced io_trap array;
 
-unsigned int * PCB_get_io_trap_index(PCB_p, int, int) // returns the referenced index of the referenced io_trap array;
+unsigned int * PCB_get_io_trap_index(PCB_p, int, int); // returns the referenced index of the referenced io_trap array;
 
 /* Utility Functions */
 

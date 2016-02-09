@@ -39,6 +39,10 @@ void PCB_destructor(PCB_p pcb) {
     free(pcb);
 }
 
+/****************************************************
+*                   Setters                         *
+****************************************************/
+
 /**
  * Set the id of this PCB
  *
@@ -81,6 +85,82 @@ void PCB_set_pc(PCB_p pcb, int new_pc_value) {
 }
 
 /**
+*Set the max_pc of this PCB
+*
+*Parameters:    PCB_p pcb: a pointer to the PCB structure
+*               int new_max_pc: the new max_pc value
+*/
+void PCB_set_max_pc(PCB_p pcb, int new_max_pc) {
+  pcb->max_pc = new_max_pc;
+}
+
+/**
+*Set the creation of this PCB
+*
+*Parameters:    PCB_p pcb: a pointer to the PCB structure
+*               int new_creation: the new creation value
+*/
+void PCB_set_creation(PCB_p pcb, int new_creation) {
+    pcb->creation = new_creation;
+}
+
+/**
+*Set the termination of this PCB
+*
+*Parameters:    PCB_p pcb: a pointer to the PCB structure
+*               int new_termination: the new termination value
+*/
+void PCB_set_termination(PCB_p pcb, int new_termination) {
+    pcb->termination = new_termination;
+}
+
+/**
+*Set the terminate of this PCB
+*
+*Parameters:    PCB_p pcb: a pointer to the PCB structure
+*               int new_terminate: the new terminate value
+*/
+void PCB_set_terminate(PCB_p pcb, int new_terminate) {
+    pcb->terminate = new_terminate;
+}
+
+/**
+*Set the term_count of this PCB
+*
+*Parameters:    PCB_p pcb: a pointer to the PCB structure
+*               int new_term_count: the new term_count value
+*/
+void PCB_set_term_count(PCB_p pcb, int new_term_count) {
+    pcb->term_count = new_term_count;
+}
+
+/**
+*Set an io_trap of this PCB
+*
+*Parameters:    PCB_p pcb: a pointer to the PCB structure
+*               int io_value: the new io value
+*               int index: the index of the new io_value
+*/
+void PCB_set_ io_trap_1(PCB_p pcb, int io_value, int index) {
+    pcb->io_trap_1[index] = io_value;
+}
+
+/**
+*Set an io_trap of this PCB
+*
+*Parameters:    PCB_p pcb: a pointer to the PCB structure
+*               int io_value: the new io value
+*               int index: the index of the new io_value
+*/
+void PCB_set_ io_trap_2(PCB_p pcb, int io_value, int index) {
+    pcb->io_trap_2[index] = io_value;
+}
+
+/****************************************************
+*                   Getters                         *
+****************************************************/
+
+/**
  * Get the id of this PCB
  *
  * Parameters:  PCB_p  pcb: A pointer to the PCB structure
@@ -119,6 +199,90 @@ State PCB_get_state(PCB_p pcb) {
 unsigned int PCB_get_PC(PCB_p pcb) {
     return pcb->pc_value;
 }
+
+/**
+ * Get the max_pc value of this PCB
+ *
+ * Parameters:   PCB_p  pcb: A pointer to the PCB structure
+ * Returns:     int max_pc value of PCB object.
+ */
+unsigned int PCB_get_max_pc(PCB_p pcb) {
+    return pcb->max_pc;
+}
+
+/**
+ * Get the creation value of this PCB
+ *
+ * Parameters:   PCB_p  pcb: A pointer to the PCB structure
+ * Returns:     int creation value of PCB object.
+ */
+unsigned int PCB_get_creation(PCB_p pcb) {
+    return pcb->creation;
+}
+
+/**
+ * Get the termination value of this PCB
+ *
+ * Parameters:   PCB_p  pcb: A pointer to the PCB structure
+ * Returns:     int termination value of PCB object.
+ */
+unsigned int PCB_get_termination(PCB_p pcb) {
+    return pcb->termination;
+}
+
+/**
+ * Get the terminate value of this PCB
+ *
+ * Parameters:   PCB_p  pcb: A pointer to the PCB structure
+ * Returns:     int terminate value of PCB object.
+ */
+unsigned int PCB_get_terminate(PCB_p pcb) {
+    return pcb->terminate;
+}
+
+/**
+ * Get the term_count value of this PCB
+ *
+ * Parameters:   PCB_p  pcb: A pointer to the PCB structure
+ * Returns:     int term_count value of PCB object.
+ */
+unsigned int PCB_get_term_count(PCB_p pcb) {
+    return pcb->term_count;
+}
+
+/**
+ * Get the indicated io_trap of this PCB
+ *
+ * Parameters:   PCB_p  pcb: A pointer to the PCB structure
+ * Returns:      indicated io_trap array of PCB object.
+ */
+unsigned int * PCB_get_io_trap(PCB_p pcb, int io_trap_num) {
+    switch (io_trap_num) {
+        case 1 :
+            return pcb->io_trap_1;
+        case 2 :
+            return pcb->io_trap_2;
+    }
+}
+
+/**
+ * Get a value of the indicated io_trap of this PCB
+ *
+ * Parameters:   PCB_p  pcb: A pointer to the PCB structure
+ * Returns:     int indicated io_trap value of indicated index of PCB object.
+ */
+unsigned int PCB_get_io_trap_index(PCB_p pcb, int index, int io_trap_num) {
+    switch (io_trap_num) {
+        case 1 :
+            return pcb->io_trap_1[index];
+        case 2 :
+            return pcb->io_trap_2[index];
+    }
+}
+
+/****************************************************
+*                    Utility                        *
+****************************************************/
 
 /**
  * Retrieve the descriptive name of pcb's state, given enumeration.
