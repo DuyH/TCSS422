@@ -17,6 +17,7 @@
  ************************************************************************************************/
 #include <pthread.h>
 #include "cpu.h"
+#include "Timer.h"
 
 
 #define MAX_PROCESS 30
@@ -251,14 +252,12 @@ Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID) {
         PCB_set_pid(pcb, process_ID + n);
         PCB_set_priority(pcb, rand() % 31 + 1);
         PCB_set_state(pcb, created);
+        PCB_set_pc(pcb, rand() % 3000 + 1500);
         queue = Queue_enqueue(queue, pcb);
     }
     return queue;
 }
 
-void CPU_timer() {
-
-}
 
 int main() {
     // Prepare for file writing:
@@ -271,17 +270,19 @@ int main() {
     unsigned int PC = 0;
     int total_procs = 0, process_ID = 1;
 
+    Timer *timer = Timer_initialize();
 
     // Create CPU:
     CPU *cpu = CPU_constructor();
+    int interrupt;
 
-    // CPU: Represent a time quantum. Assumed every process has the same time quantum.
-    int time_count = 1;
+    // CPU: Represent an instruction execution.
+    long int time_count = 1;
+
     //total_procs <= MAX_PROCESS - 5
-    while (total_procs < MAX_PROCESS) {
-        fprintf(file, "***************Instruction cycle %d ***************\n",
+    while (time_count < 100000) {
+        fprintf(file, "***************Instruction cycle %lu ***************\n",
                 time_count);
-
         // 1a. Create a queue of new processes, 0 - 5 processes at a time:
         int num_proc_created = 0;
         do {
@@ -301,22 +302,28 @@ int main() {
         fprintf(file, "Newly created processes list: %s",
                 Queue_toString(cpu->newProcessesQueue, 0));
 
+
+
         //Increment PC by 1 to stimulate instruction execution
         PC += 1;
 
-        fprintf(file, "Current PC: %d. System Stack: %d\n", PC, cpu->sysStack);
+        //fprintf(file, "Current PC: %d. System Stack: %d\n", PC, cpu->sysStack);
 
         //if (cpu->currentProcess != NULL)
         CPU_push_sysStack(cpu, PC);
 
-        // calls pseudo ISR
-        CPU_pseudo_isr(cpu, PC);
+        //Timer interrupt if timer is 0, Timer_interrupt returns 1
+        if (interrupt == 1) {
+        	// calls pseudo ISR
+        	CPU_pseudo_isr(cpu, PC);
+        }
 
         fprintf(file, "Current PC: %d. System Stack: %d\n\n", PC,
                 cpu->sysStack);
 
         CTX_SWITCH_COUNT++;
         time_count++;
+        interrupt = Timer_countDown();
     }
     fclose(file);
     CPU_destructor(cpu);

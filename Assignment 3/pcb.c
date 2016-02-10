@@ -27,6 +27,18 @@
  */
 PCB_p PCB_constructor() {
     PCB_p pcb = calloc(3, sizeof(PCB));
+
+    int i = 0;
+    for (; i < 4; i++) {
+    	int new = 300 * (rand() % 3  + 3);
+    	int new1 = 300 * (rand() % 3  + 3) + (rand() % 10 + 10);
+    	if (i != 0) {
+    		new += pcb->io_trap_1[i - 1];
+    		new1 += pcb->io_trap_2[i - 1];
+    	}
+        PCB_set_io_trap_1(pcb, new, i);
+        PCB_set_io_trap_2(pcb, new1, i);
+    }
     return pcb;
 }
 
