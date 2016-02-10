@@ -15,8 +15,9 @@
  * This program represents a CPU in terms of a Round-Robin scheduler, utilizing the PCB and Queue from Assignment 1.
  *
  ************************************************************************************************/
-
+#include <pthread.h>
 #include "cpu.h"
+
 
 #define MAX_PROCESS 30
 #define STR_LEN 200
@@ -255,6 +256,10 @@ Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID) {
     return queue;
 }
 
+void CPU_timer() {
+
+}
+
 int main() {
     // Prepare for file writing:
     CPU_remove_file();
@@ -266,6 +271,7 @@ int main() {
     unsigned int PC = 0;
     int total_procs = 0, process_ID = 1;
 
+
     // Create CPU:
     CPU *cpu = CPU_constructor();
 
@@ -273,7 +279,7 @@ int main() {
     int time_count = 1;
     //total_procs <= MAX_PROCESS - 5
     while (total_procs < MAX_PROCESS) {
-        fprintf(file, "***************TIME QUANTUM = %d***************\n",
+        fprintf(file, "***************Instruction cycle %d ***************\n",
                 time_count);
 
         // 1a. Create a queue of new processes, 0 - 5 processes at a time:
@@ -295,16 +301,8 @@ int main() {
         fprintf(file, "Newly created processes list: %s",
                 Queue_toString(cpu->newProcessesQueue, 0));
 
-        // puts head of readyQueue as current process and changes state to running
-//        if (cpu->currentProcess == empty_pcb && !Queue_isEmpty(cpu->readyQueue)) {
-//            cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
-//            PCB_set_state(cpu->currentProcess, running);
-//        }
-        unsigned int random = rand() % 1001 + 3000;
-        if (random < 3000) {
-            random = rand() % 1001 + 3000;
-        }
-        PC += random;
+        //Increment PC by 1 to stimulate instruction execution
+        PC += 1;
 
         fprintf(file, "Current PC: %d. System Stack: %d\n", PC, cpu->sysStack);
 

@@ -141,7 +141,7 @@ void PCB_set_term_count(PCB_p pcb, int new_term_count) {
 *               int io_value: the new io value
 *               int index: the index of the new io_value
 */
-void PCB_set_ io_trap_1(PCB_p pcb, int io_value, int index) {
+void PCB_set_io_trap_1(PCB_p pcb, int io_value, int index) {
     pcb->io_trap_1[index] = io_value;
 }
 
@@ -152,7 +152,7 @@ void PCB_set_ io_trap_1(PCB_p pcb, int io_value, int index) {
 *               int io_value: the new io value
 *               int index: the index of the new io_value
 */
-void PCB_set_ io_trap_2(PCB_p pcb, int io_value, int index) {
+void PCB_set_io_trap_2(PCB_p pcb, int io_value, int index) {
     pcb->io_trap_2[index] = io_value;
 }
 
@@ -277,6 +277,8 @@ unsigned int PCB_get_io_trap_index(PCB_p pcb, int index, int io_trap_num) {
             return pcb->io_trap_1[index];
         case 2 :
             return pcb->io_trap_2[index];
+        default:
+        	return -1;
     }
 }
 

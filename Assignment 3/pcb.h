@@ -66,9 +66,9 @@ void PCB_set_terminate(PCB_p, int); // sets this->terminate to int value
 
 void PCB_set_term_count(PCB_p, int); // sets this->term_count to int value
 
-void PCB_set_ io_trap_1(PCB_p, int, int); // sets->io_trap_1 to int value at int index
+void PCB_set_io_trap_1(PCB_p, int, int); // sets->io_trap_1 to int value at int index
 
-void PCB_set_ io_trap_2(PCB_p, int, int); // sets->io_trap_2 to int value at int index
+void PCB_set_io_trap_2(PCB_p, int, int); // sets->io_trap_2 to int value at int index
 
 /* Getters */
 
@@ -92,7 +92,7 @@ unsigned int PCB_get_term_count(PCB_p);     // returns term_count value;
 
 unsigned int * PCB_get_io_trap(PCB_p, int); // returns the referenced io_trap array;
 
-unsigned int * PCB_get_io_trap_index(PCB_p, int, int); // returns the referenced index of the referenced io_trap array;
+unsigned int PCB_get_io_trap_index(PCB_p, int, int); // returns the referenced index of the referenced io_trap array;
 
 /* Utility Functions */
 
