@@ -17,7 +17,7 @@
  ************************************************************************************************/
 #include <pthread.h>
 #include "cpu.h"
-#include "Timer.h"
+#include "timer.h"
 
 
 #define MAX_PROCESS 30
@@ -32,7 +32,7 @@ unsigned int CTX_SWITCH_COUNT = 1;
 CPU_p CPU_constructor(void) {
     CPU_p cpu = malloc(sizeof(CPU));
     cpu->pc = 0;
-    cpu->timer = 0;
+    cpu->timer = 0; //TODO: Should this also be a Timer object?
     cpu->sysStack = 0;
     cpu->currentProcess = NULL;
     cpu->readyQueue = calloc(30, sizeof(Queue));
@@ -270,7 +270,7 @@ int main() {
     unsigned int PC = 0;
     int total_procs = 0, process_ID = 1;
 
-    Timer *timer = Timer_initialize();
+    Timer_p timer = Timer_constructor(300); //TODO: what should be the value here?
 
     // Create CPU:
     CPU *cpu = CPU_constructor();
@@ -323,7 +323,7 @@ int main() {
 
         CTX_SWITCH_COUNT++;
         time_count++;
-        interrupt = Timer_countDown();
+        interrupt = Timer_countDown(timer);
     }
     fclose(file);
     CPU_destructor(cpu);
