@@ -13,7 +13,6 @@ struct timer {
 };
 typedef struct timer Timer;
 
-
 Timer *Timer_initialize();
 
 int Timer_coundown();
