@@ -28,6 +28,9 @@ typedef Timer *Timer_p;
 /* Timer Constructor */
 Timer_p Timer_constructor(long int);    // constructs a new Timer object in the heap
 
+/* Timer Destructor */
+void Timer_destructor(Timer_p);    // constructs a new Timer object in the heap
+
 /* Utility Functions */
 int Timer_countDown(Timer_p);   // decrements the Timer, returning a 1 if countdown reaches 0.
 

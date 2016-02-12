@@ -31,6 +31,10 @@ Timer_p Timer_constructor(long int time) {
 	return timer;
 }
 
+void Timer_destructor(Timer_p timer) {
+    free(timer);
+}
+
 /**
  * Counts down by decrementing the Timer.
  *
