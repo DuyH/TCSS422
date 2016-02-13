@@ -116,6 +116,7 @@ unsigned int CPU_pop_sysStack(CPU_p cpu) {
 }
 
 void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device) {
+    printf("INTERRUPT: %s\n", interrupt_type);
     switch (interrupt_type) {
         case INTERRUPT_TIMER:
             // 1. Put process back into the readyQueue
@@ -209,9 +210,10 @@ void CPU_remove_file() {
  */
 Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long int time_count) {
     int n;
+    static int proc_id = 1;
     for (n = 0; n < numb_process; n++) {
         PCB *pcb = PCB_constructor();
-        PCB_set_pid(pcb, process_ID + n);
+        PCB_set_pid(pcb, proc_id++);
         PCB_set_creation(pcb, time_count);
         PCB_set_max_pc(pcb, 2345);
         PCB_set_priority(pcb, rand() % 31 + 1);
@@ -231,8 +233,8 @@ int CPU_check_io_request(PCB_p pcb, int device_num) {
     int index;
         for (index = 0; index < MAX_IO_TRAPS; index++) {
             int check_request = PCB_get_io_trap_index(pcb, index, device_num);
-            if (index < check_request) break;
-            else if (index == check_request) return 1;
+            if (pcb->pc_value < check_request) break;
+            else if (pcb->pc_value == check_request) return 1;
         }
     return 0;
 }
@@ -259,16 +261,13 @@ int main() {
 
     // Create CPU:
     CPU *cpu = CPU_constructor();
+   
     int interrupt, device_1_interrupt, device_2_interrupt, io_request;
 
     // CPU: Represent an instruction execution.
     long int time_count = 1;
-
-    //total_procs <= MAX_PROCESS - 5
-    while (time_count < 100000) {
-        time_count++;
-
-        // 1a. Create a queue of new processes, 0 - 5 processes at a time:
+    
+// 1a. Create a queue of new processes, 0 - 5 processes at a time:
         int num_proc_created = 0;
         do {
         	num_proc_created = rand() % 6;
@@ -287,6 +286,13 @@ int main() {
         }
 
         cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+   
+    
+    //total_procs <= MAX_PROCESS - 5
+    while (time_count < 100000) {
+        
+
+        printf("Check: %ld\n", time_count);  
 
         /**** EXECUTION INSTRUCTION ****/
         //Increment PC by 1 to stimulate instruction execution
@@ -310,9 +316,28 @@ int main() {
         /**** CHECK FOR TIMER INTERRUPT ****/
         // Timer interrupt if timer is 0, Timer_interrupt returns 1
         if (interrupt == 1) {
+            printf("HERE");
         	// calls pseudo ISR
         	CPU_pseudo_isr(cpu, INTERRUPT_TIMER, PCB_get_PC(cpu->currentProcess), NULL);
             Timer_set_count(timer, QUANTUM);
+            
+               int num_proc_created = 0;
+            do {
+                num_proc_created = rand() % 6;
+            } while (total_procs + num_proc_created > MAX_PROCESS);
+            total_procs += num_proc_created;
+
+            cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue,
+                                                      num_proc_created, process_ID, time_count);
+
+            process_ID += num_proc_created;
+
+            while (!Queue_isEmpty(cpu->newProcessesQueue)) {
+                PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
+                PCB_set_state(temp_pcb, ready);
+                Queue_enqueue(cpu->readyQueue, temp_pcb);
+            }
+
         }
 
         /**** CHECK FOR I/O COMPLETION INTERRUPT  ****/
@@ -332,11 +357,19 @@ int main() {
 
         /**** CHECK FOR I/O TRAP ****/
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_1);
-        if (io_request == 1) CPU_io_trap_handler(cpu, device_1, DEVICE_ARRAY_1);
+        if (io_request == 1) {
+            CPU_io_trap_handler(cpu, device_1, DEVICE_ARRAY_1);
+            //if (device_1->timer->count == -1 || device_1->timer->count == 0) 
+                //Timer_set_count(device_1->timer, QUANTUM * (rand() %3 + 3));
+        }
 
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_2);
-        if (io_request == 1) CPU_io_trap_handler(cpu, device_2, DEVICE_ARRAY_2);
-
+        if (io_request == 1) {
+            CPU_io_trap_handler(cpu, device_2, DEVICE_ARRAY_2);
+           // if (device_1->timer->count == -1 || device_1->timer->count == 0) 
+              //  Timer_set_count(device_1->timer, QUANTUM * (rand() %3 + 3));
+        }
+        time_count++;
     }
     fclose(file);
     CPU_destructor(cpu);

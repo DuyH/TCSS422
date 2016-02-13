@@ -36,7 +36,7 @@ typedef enum interrupt_state {
 typedef struct cpu_type {
     long int timer;
     unsigned int pc;
-    unsigned int PID;
+    //unsigned int PID;
     unsigned int sysStack;
     PCB_p currentProcess;
     Queue_p readyQueue;

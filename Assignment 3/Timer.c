@@ -25,7 +25,7 @@
  * Returns: Pointer to created Timer object.
  */
 Timer_p Timer_constructor(long int time) {
-	Timer_p timer = calloc(100, sizeof(Timer_p));
+	Timer_p timer = calloc(300, sizeof(Timer_p));
 	timer->count = time;
 	return timer;
 }
