@@ -116,9 +116,10 @@ unsigned int CPU_pop_sysStack(CPU_p cpu) {
 }
 
 void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device) {
-    printf("INTERRUPT: %s\n", interrupt_type);
+    
     switch (interrupt_type) {
         case INTERRUPT_TIMER:
+        
             // 1. Put process back into the readyQueue
             Queue_enqueue(cpu->readyQueue, cpu->currentProcess);
 
@@ -289,10 +290,7 @@ int main() {
    
     
     //total_procs <= MAX_PROCESS - 5
-    while (time_count < 100000) {
-        
-
-        printf("Check: %ld\n", time_count);  
+    while (time_count < 100000) { 
 
         /**** EXECUTION INSTRUCTION ****/
         //Increment PC by 1 to stimulate instruction execution
@@ -312,11 +310,10 @@ int main() {
             CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
 
         interrupt = Timer_countDown(timer);
-
         /**** CHECK FOR TIMER INTERRUPT ****/
         // Timer interrupt if timer is 0, Timer_interrupt returns 1
         if (interrupt == 1) {
-            printf("HERE");
+            
         	// calls pseudo ISR
         	CPU_pseudo_isr(cpu, INTERRUPT_TIMER, PCB_get_PC(cpu->currentProcess), NULL);
             Timer_set_count(timer, QUANTUM);
@@ -339,19 +336,22 @@ int main() {
             }
 
         }
-
         /**** CHECK FOR I/O COMPLETION INTERRUPT  ****/
         if (!Queue_isEmpty(device_1->waitingQueue))
             device_1_interrupt = Timer_countDown(device_1->timer);
+        
         if (device_1_interrupt == 1) {
             CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_1);
+            if (device_1->timer->count == -1 || device_1->timer->count == 0) 
             Timer_set_count(device_1->timer, QUANTUM * (rand() % 3 + 3));
+        
         }
 
         if (!Queue_isEmpty(device_2->waitingQueue))
             device_2_interrupt = Timer_countDown(device_2->timer);
         if (device_2_interrupt == 1) {
             CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_2);
+            if (device_2->timer->count == -1 || device_2->timer->count == 0) 
             Timer_set_count(device_2->timer, QUANTUM * (rand() % 3 + 3));
         }
 
@@ -359,15 +359,15 @@ int main() {
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_1);
         if (io_request == 1) {
             CPU_io_trap_handler(cpu, device_1, DEVICE_ARRAY_1);
-            //if (device_1->timer->count == -1 || device_1->timer->count == 0) 
-                //Timer_set_count(device_1->timer, QUANTUM * (rand() %3 + 3));
+            if (device_1->timer->count == -1 || device_1->timer->count == 0) 
+                Timer_set_count(device_1->timer, QUANTUM * (rand() %3 + 3));
         }
 
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_2);
         if (io_request == 1) {
             CPU_io_trap_handler(cpu, device_2, DEVICE_ARRAY_2);
-           // if (device_1->timer->count == -1 || device_1->timer->count == 0) 
-              //  Timer_set_count(device_1->timer, QUANTUM * (rand() %3 + 3));
+           if (device_1->timer->count == -1 || device_1->timer->count == 0) 
+                Timer_set_count(device_1->timer, QUANTUM * (rand() %3 + 3));
         }
         time_count++;
     }
