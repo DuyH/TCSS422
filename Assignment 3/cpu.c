@@ -316,13 +316,15 @@ int main() {
         }
 
         /**** CHECK FOR I/O COMPLETION INTERRUPT  ****/
-        device_1_interrupt = Timer_countDown(device_1->timer);
+        if (!Queue_isEmpty(device_1->waitingQueue))
+            device_1_interrupt = Timer_countDown(device_1->timer);
         if (device_1_interrupt == 1) {
             CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_1);
             Timer_set_count(device_1->timer, QUANTUM * (rand() % 3 + 3));
         }
 
-        device_2_interrupt = Timer_countDown(device_2->timer);
+        if (!Queue_isEmpty(device_2->waitingQueue))
+            device_2_interrupt = Timer_countDown(device_2->timer);
         if (device_2_interrupt == 1) {
             CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_2);
             Timer_set_count(device_2->timer, QUANTUM * (rand() % 3 + 3));
@@ -334,7 +336,7 @@ int main() {
 
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_2);
         if (io_request == 1) CPU_io_trap_handler(cpu, device_2, DEVICE_ARRAY_2);
-        
+
     }
     fclose(file);
     CPU_destructor(cpu);
