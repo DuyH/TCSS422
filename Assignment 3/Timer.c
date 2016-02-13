@@ -18,6 +18,7 @@
 
 #include <stdlib.h>
 #include "timer.h"
+#include "IO.h"
 
 
 /**
@@ -35,6 +36,14 @@ void Timer_destructor(Timer_p timer) {
     free(timer);
 }
 
+void Timer_set_count(Timer_p timer, long int time) {
+	timer->count = time;
+}
+
+long int Timer_get_count(Timer_p timer) {
+	return timer->count;
+}
+
 /**
  * Counts down by decrementing the Timer.
  *
@@ -46,4 +55,3 @@ int Timer_countDown(Timer_p timer) {
 	if (timer->count == 0) return 1;
 	return 0;
 }
-

@@ -33,6 +33,10 @@ Timer_p Timer_constructor(long int);    // constructs a new Timer object in the 
 /* Timer Destructor */
 void Timer_destructor(Timer_p);    // constructs a new Timer object in the heap
 
+void Timer_set_count(Timer_p timer, long int time);
+
+long int Timer_get_count(Timer_p timer);
+
 /* Utility Functions */
 int Timer_countDown(Timer_p);   // decrements the Timer, returning a 1 if countdown reaches 0.
 

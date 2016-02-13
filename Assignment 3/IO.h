@@ -25,7 +25,6 @@
 typedef struct io {
     Timer_p timer;
     Queue_p waitingQueue;
-
 } IO;
 
 typedef IO *IO_p;
