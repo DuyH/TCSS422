@@ -19,6 +19,8 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
+#define QUANTUM 300
+
 typedef struct timer {
 	int count;
 } Timer;

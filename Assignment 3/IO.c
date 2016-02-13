@@ -21,9 +21,13 @@
 #include "io.h"
 #include "cpu.h"
 
-IO_p IO_constructor(){
+IO_p IO_constructor() {
     IO_p io = calloc(1, sizeof(IO_p));
-    io->timer = Timer_constructor(1800); //TODO randomize this number, based on what?
+
+    // Get a random number, 3-5 times greater than Quantum
+    srand((unsigned int) time(NULL)); // Random seed
+
+    io->timer = Timer_constructor(QUANTUM * (rand() % 3 + 3));
     io->waitingQueue = Queue_constructor();
     return io;
 }
