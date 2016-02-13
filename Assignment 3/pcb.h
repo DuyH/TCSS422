@@ -58,7 +58,7 @@ void PCB_set_pc(PCB_p, int);        // sets this->pc to int value
 
 void PCB_set_max_pc(PCB_p, int);    // sets this->max_pc to int value
 
-void PCB_set_creation(PCB_p, int);  // sets this->creation to int value
+void PCB_set_creation(PCB_p, long int);  // sets this->creation to int value
 
 void PCB_set_termination(PCB_p, int); // sets this->termination to int value
 

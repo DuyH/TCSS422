@@ -37,7 +37,7 @@ unsigned int CTX_SWITCH_COUNT = 1;
 CPU_p CPU_constructor(void) {
     CPU_p cpu = malloc(sizeof(CPU));
     cpu->pc = 0;
-    cpu->timer = 0; //TODO: Should this also be a Timer object?
+    cpu->timer = 0; // TODO: Should this also be a Timer object?
     cpu->sysStack = 0;
     cpu->currentProcess = NULL;
     cpu->readyQueue = calloc(30, sizeof(Queue));
@@ -254,15 +254,17 @@ void CPU_remove_file() {
 /**
  * Function that creates 0-5 new processes and puts them into a list.
  */
-Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID) {
+Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long int time_count) {
     int n;
     for (n = 0; n < numb_process; n++) {
         PCB *pcb = PCB_constructor();
         PCB_set_pid(pcb, process_ID + n);
+        PCB_set_creation(pcb, time_count);
         PCB_set_priority(pcb, rand() % 31 + 1);
         PCB_set_state(pcb, created);
         PCB_set_pc(pcb, rand() % 3000 + 1500);
         queue = Queue_enqueue(queue, pcb);
+        fprintf(file, "Process created: PID %d at %ld", PCB_get_pid(pcb), PCB_get_creation(pcb));
     }
     return queue;
 }
@@ -314,6 +316,8 @@ int main() {
     while (time_count < 100000) {
         fprintf(file, "***************Instruction cycle %lu ***************\n",
                 time_count);
+        time_count++;
+
         // 1a. Create a queue of new processes, 0 - 5 processes at a time:
         int num_proc_created = 0;
         do {
@@ -323,7 +327,7 @@ int main() {
         total_procs += num_proc_created;
 
         cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue,
-                                                      num_proc_created, process_ID);
+                                                      num_proc_created, process_ID, time_count);
 
         process_ID += num_proc_created;
 
@@ -339,21 +343,22 @@ int main() {
         //Increment PC by 1 to stimulate instruction execution
         PCB_increment_PC(cpu->currentProcess);
         if (PCB_get_PC(cpu->currentProcess) == 0) PCB_increment_term_count(cpu->currentProcess);
-        if (PCB_get_terminate(cpu->currentProcess) != 0
-            && PCB_get_teriminate(cpu->currentProcess) == PCB_term_count(cpu->currentProcess) {
-                fprintf(file, "Process terminated: PID %d at ", PCB_get_pid(cpu->currentProcess));
-                PCB_destructor(cpu->currentProcess);
-                cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
-                continue;
+        if (PCB_get_terminate(cpu->currentProcess) != 0 &&
+                PCB_get_terminate(cpu->currentProcess) == PCB_get_term_count(cpu->currentProcess)) {
+                    fprintf(file, "Process terminated: PID %d at ", PCB_get_pid(cpu->currentProcess), time_count);
+                    PCB_set_termination(cpu->currentProcess, time_count);
+                    CPU_enqueue_terminatedQueue(cpu, cpu->currentProcess);
+                    cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+                    continue;
             }
 
-        //fprintf(file, "Current PC: %d. System Stack: %d\n", PC, cpu->sysStack);
+        fprintf(file, "Current PC: %d. System Stack: %d\n", PC, cpu->sysStack);
 
-        //if (cpu->currentProcess != NULL)
-        CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
+        if (cpu->currentProcess != NULL)
+            CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
 
         /**** CHECK FOR TIMER INTERRUPT ****/
-        //Timer interrupt if timer is 0, Timer_interrupt returns 1
+        // Timer interrupt if timer is 0, Timer_interrupt returns 1
         if (interrupt == 1) {
         	// calls pseudo ISR
         	CPU_pseudo_isr(cpu, INTERRUPT_TIMER, PCB_get_PC(cpu->currentProcess), NULL);
@@ -363,20 +368,19 @@ int main() {
                 cpu->sysStack);
 
         CTX_SWITCH_COUNT++;
-        time_count++;
         interrupt = Timer_countDown(timer);
-        
+
         /**** CHECK FOR I/O COMPLETION INTERRUPT  ****/
         device_1_interrupt = Timer_countDown(device_1->timer);
         if (device_1_interrupt == 1) CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_1);
-        
+
         device_2_interrupt = Timer_countDown(device_2->timer);
         if (device_2_interrupt == 1) CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_2);
-        
+
         /**** CHECK FOR I/O TRAP ****/
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_1);
         if (io_request == 1) CPU_io_trap_handler(cpu, device_1);
-        
+
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_2);
         if (io_request == 1) CPU_io_trap_handler(cpu, device_2);
         

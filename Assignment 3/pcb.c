@@ -113,7 +113,7 @@ void PCB_set_max_pc(PCB_p pcb, int new_max_pc) {
 *Parameters:    PCB_p pcb: a pointer to the PCB structure
 *               int new_creation: the new creation value
 */
-void PCB_set_creation(PCB_p pcb, int new_creation) {
+void PCB_set_creation(PCB_p pcb, long int new_creation) {
     pcb->creation = new_creation;
 }
 
