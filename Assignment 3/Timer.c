@@ -18,8 +18,6 @@
 
 #include <stdlib.h>
 #include "timer.h"
-#include "IO.h"
-
 
 /**
  * Constructs a Timer object in the heap, returning a pointer to it.
@@ -27,7 +25,7 @@
  * Returns: Pointer to created Timer object.
  */
 Timer_p Timer_constructor(long int time) {
-	Timer_p timer = calloc(1, sizeof(Timer_p));
+	Timer_p timer = calloc(100, sizeof(Timer_p));
 	timer->count = time;
 	return timer;
 }

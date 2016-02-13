@@ -5,11 +5,11 @@
  * Duy Huynh
  * Jeffrey LeCompte
  * Trung Dang
- * Brandon Scholor
+ * Brandon Scholer
  *
  * TCSS 422 - Winter 2016
- * Date: 1/20/16
- * Assignment 2
+ * Date: 2/12/16
+ * Assignment 3
  *
  * Description:
  * This header file defines the class and methods for the cpu implementation
@@ -34,7 +34,7 @@ typedef enum interrupt_state {
 
 /* A struct representing a CPU. */
 typedef struct cpu_type {
-    unsigned int timer;
+    long int timer;
     unsigned int pc;
     unsigned int PID;
     unsigned int sysStack;
@@ -102,13 +102,13 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type);
 
 void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int, IO_p);
 
-void CPU_pseudo_isr(CPU_p cpu, Interrupt_type, int, int, IO_p);
+void CPU_pseudo_isr(CPU_p cpu, Interrupt_type, int, IO_p);
 
 PCB_p dispatch(CPU_p);                          // Dispatches...
 
 Queue_p CPU_fetch_process(CPU_p, Interrupt_type, int);   // Fetches new process
 
-Queue_p CPU_create_processes(CPU_p, Queue_p, int, long int);     // Creates new processes
+Queue_p CPU_create_processes(Queue_p, int, int, long int);     // Creates new processes
 
 void CPU_file_handler(char *string);            // Handles file writing
 
@@ -116,6 +116,6 @@ void CPU_remove_file();                         // Removes existing file
 
 int CPU_check_io_request(PCB_p, int);                // checks io request
 
-void CPU_io_trap_handler(CPU_p cpu, IO_p device, int dev_num);   // handles io traps
+void CPU_io_trap_handler(CPU_p cpu, IO_p device, int device_num);   // handles io traps
 
 #endif //ASSIGNMENT1_CPU_H

@@ -32,9 +32,4 @@ typedef IO *IO_p;
 /* IO Constructor */
 IO_p IO_constructor(void);          // constructs a new IO object in the heap
 
-/* IO Destructor */
-void IO_destructor(IO_p);           // frees memory allocated to IO object
-
-/* Utility Functions */
-
 #endif //IO_H
