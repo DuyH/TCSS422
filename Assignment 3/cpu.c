@@ -256,7 +256,7 @@ Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long
         PCB_set_state(pcb, created);
         PCB_set_pc(pcb, rand() % 3000 + 1500);
         queue = Queue_enqueue(queue, pcb);
-        fprintf(file, "Process created: PID %d at %ld", PCB_get_pid(pcb), PCB_get_creation(pcb));
+        fprintf(file, "Process created: PID %d at %u", PCB_get_pid(pcb), PCB_get_creation(pcb));
     }
     return queue;
 }
@@ -347,7 +347,7 @@ int main() {
         if (PCB_get_PC(cpu->currentProcess) == 0) PCB_increment_term_count(cpu->currentProcess);
         if (PCB_get_terminate(cpu->currentProcess) != 0 &&
                 PCB_get_terminate(cpu->currentProcess) == PCB_get_term_count(cpu->currentProcess)) {
-                    fprintf(file, "Process terminated: PID %d at ", PCB_get_pid(cpu->currentProcess), time_count);
+                    fprintf(file, "Process terminated: PID %d at %ld", PCB_get_pid(cpu->currentProcess), time_count);
                     PCB_set_termination(cpu->currentProcess, time_count);
                     CPU_enqueue_terminatedQueue(cpu, cpu->currentProcess);
                     cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
