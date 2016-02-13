@@ -25,6 +25,7 @@
 #include <time.h>
 #include "queue.h"
 #include "pcb.h"
+#include "timer.h"
 
 /* Enumerating interrupt states. */
 typedef enum interrupt_state {
@@ -33,7 +34,7 @@ typedef enum interrupt_state {
 
 /* A struct representing a CPU. */
 typedef struct cpu_type {
-    unsigned int timer;
+    Timer_p timer;
     unsigned int pc;
     unsigned int sysStack;
     PCB_p currentProcess;
