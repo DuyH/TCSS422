@@ -26,12 +26,12 @@
  * Returns: Pointer to created PCB object.
  */
 PCB_p PCB_constructor() {
-    PCB_p pcb = calloc(3, sizeof(PCB));
+    PCB_p pcb = calloc(1, sizeof(PCB));
 
     int i = 0;
     for (; i < 4; i++) {
-    	int new = 300 * (rand() % 3  + 3);
-    	int new1 = 300 * (rand() % 3  + 3) + (rand() % 10 + 10);
+    	int new = 1 * (rand() % 3  + 3);
+    	int new1 = 1 * (rand() % 3  + 3) + (rand() % 10 + 10);
     	if (i != 0) {
     		new += pcb->io_trap_1[i - 1];
     		new1 += pcb->io_trap_2[i - 1];

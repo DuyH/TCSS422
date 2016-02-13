@@ -19,7 +19,7 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
-#define QUANTUM 300
+#define QUANTUM 5
 
 typedef struct timer {
 	long int count;

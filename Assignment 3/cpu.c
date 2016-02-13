@@ -138,7 +138,7 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int time_count, IO_
             // 3. Make call to dispatcher
             CPU_dispatcher(cpu, INTERRUPT_TIMER);
 
-            fprintf(file, "PID %d is running, PID %d put in ready queue",
+            fprintf(file, "Timer intterupt: PID %d is running, PID %d put in ready queue",
                     cpu->currentProcess->pid, cpu->readyQueue->head->pcb->pid);
 
             // 4. Returned from dispatcher, do any housekeeping
@@ -254,14 +254,14 @@ Queue *CPU_create_processes(CPU_p cpu, Queue *queue, int numb_process, long int 
     int n;
     for (n = 0; n < numb_process; n++) {
         PCB *pcb = PCB_constructor();
-        PCB_set_pid(pcb, pcb->pid + n);
+        PCB_set_pid(pcb, cpu->PID);
         PCB_set_creation(pcb, time_count);
         PCB_set_max_pc(pcb, 2345);
         PCB_set_priority(pcb, rand() % 31 + 1);
         PCB_set_state(pcb, created);
         PCB_set_pc(pcb, rand() % 3000 + 1500);
         queue = Queue_enqueue(queue, pcb);
-        fprintf(file, "Process created: PID %d at %lu", PCB_get_pid(pcb), PCB_get_creation(pcb));
+        fprintf(file, "Process created: PID %d at %lu\n", PCB_get_pid(pcb), PCB_get_creation(pcb));
         cpu->PID += 1;
     }
     return queue;
@@ -315,11 +315,8 @@ int main() {
     long int time_count = 1;
 
     //total_procs <= MAX_PROCESS - 5
-    while (time_count < 100000) {
-//        fprintf(file, "***************Instruction cycle %lu ***************\n",
-//                time_count);
-
-
+    while (time_count <= 10) {
+        fprintf(file, "***************Instruction cycle %lu ***************\n",time_count);
 
         if (time_count == 1) CPU_scheduler(cpu, INTERRUPT_NORMAL, 0, NULL);
         // 1a. Create a queue of new processes, 0 - 5 processes at a time:
@@ -338,7 +335,7 @@ int main() {
         if (PCB_get_PC(cpu->currentProcess) == 0) PCB_increment_term_count(cpu->currentProcess);
         if (PCB_get_terminate(cpu->currentProcess) != 0 &&
                 PCB_get_terminate(cpu->currentProcess) == PCB_get_term_count(cpu->currentProcess)) {
-                    fprintf(file, "Process terminated: PID %d at %ld", PCB_get_pid(cpu->currentProcess), time_count);
+                    fprintf(file, "Process terminated: PID %d at %ld\n", PCB_get_pid(cpu->currentProcess), time_count);
                     PCB_set_termination(cpu->currentProcess, time_count);
                     CPU_enqueue_terminatedQueue(cpu, cpu->currentProcess);
                     cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
@@ -383,7 +380,7 @@ int main() {
 
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_2);
         if (io_request == 1) CPU_io_trap_handler(cpu, device_2, DEVICE_ARRAY_2);
-        
+        cpu->pc++;
     }
     fclose(file);
     CPU_destructor(cpu);
