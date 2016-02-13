@@ -8,8 +8,8 @@
  * Brandon Scholer
  *
  * TCSS 422 - Winter 2016
- * Date: 1/20/16
- * Assignment 2
+ * Date: 2/10/16
+ * Assignment 3
  *
  * Description:
  * PCB structure consisting of a pid, priority, and state.

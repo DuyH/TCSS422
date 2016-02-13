@@ -9,7 +9,7 @@
  *
  * TCSS 422 - Winter 2016
  * Date: 1/20/16
- * Assignment 2
+ * Assignment 3
  *
  * Description:
  * This program represents a CPU in terms of a Round-Robin scheduler, utilizing the PCB and Queue from Assignment 1.
