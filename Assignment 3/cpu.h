@@ -25,10 +25,11 @@
 #include <time.h>
 #include "queue.h"
 #include "pcb.h"
+#include "io.h"
 
 /* Enumerating interrupt states. */
 typedef enum interrupt_state {
-    timer, io, normal
+    INTERRUPT_TIMER, INTERRUPT_IO, INTERRUPT_NORMAL
 } Interrupt_type;
 
 /* A struct representing a CPU. */
@@ -96,7 +97,7 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type);
 
 void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int, IO_p);
 
-void CPU_pseudo_isr(CPU_p cpu,Interrupt_type, int, IO_p);
+void CPU_pseudo_isr(CPU_p cpu, Interrupt_type, int, IO_p);
 
 PCB_p dispatch(CPU_p);                          // Dispatches...
 

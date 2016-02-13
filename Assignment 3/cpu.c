@@ -18,6 +18,7 @@
 #include <pthread.h>
 #include "cpu.h"
 #include "timer.h"
+#include "io.h"
 
 
 #define MAX_PROCESS 30
@@ -131,7 +132,7 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
     }
     fprintf(file, "\n");
     switch (interrupt_type) {
-        case timer:
+        case INTERRUPT_TIMER:
             // 1. Put process back into the readyQueue
             Queue_enqueue(cpu->readyQueue, cpu->currentProcess);
 
@@ -139,7 +140,7 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
             PCB_set_state(cpu->currentProcess, ready);
 
             // 3. Make call to dispatcher
-            CPU_dispatcher(cpu, timer);
+            CPU_dispatcher(cpu, INTERRUPT_TIMER);
 
             // 4. Returned from dispatcher, do any housekeeping
             // Nothing here to do at the moment!
@@ -147,12 +148,12 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
             // 5. Returns to pseudo-ISR
             return;
             break;
-        case io:
+        case INTERRUPT_IO:
             // 1. Put waiting process into the readyQueue
             Queue_enqueue(cpu->readyQueue, Queue_dequeue(device->waitingQueue));
             break;
         default:
-            CPU_dispatcher(cpu, normal);
+            CPU_dispatcher(cpu, INTERRUPT_NORMAL);
             break;
     }
     return;
@@ -179,10 +180,10 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
     // 3. Change its state to running
     PCB_set_state(cpu->currentProcess, running);
 
-    if (interrupt_type == timer) {
+    if (interrupt_type == INTERRUPT_TIMER) {
         // 4. Copy its PC value to sysStack, replacing the interrupted process
         CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
-    } else if (interrupt_type == normal) {
+    } else if (interrupt_type == INTERRUPT_NORMAL) {
         CPU_set_pc(cpu, cpu->sysStack);
     }
 
@@ -222,7 +223,7 @@ void CPU_pseudo_isr(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p devic
 
     } else {
         fprintf(file, "No process currently running. Normal interrupt...\n");
-        CPU_scheduler(cpu, normal, PC, device);
+        CPU_scheduler(cpu, INTERRUPT_NORMAL, PC, device);
     }
 
     return;
@@ -273,7 +274,7 @@ int CPU_check_io_request(PCB_p pcb, int device_num) {
     int PC = PCB_get_PC(pcb);
     int index;
         for (index = 0; index < MAX_IO_TRAPS; index++) {
-            int check_request = PCB_get_io_trap_index(pcb, index, device_num)
+            int check_request = PCB_get_io_trap_index(pcb, index, device_num);
             if (index < check_request) break;
             else if (index == check_request) return 1;
         }
@@ -284,7 +285,7 @@ int CPU_check_io_request(PCB_p pcb, int device_num) {
 * Function that handles the I/O traps.
 */
 void CPU_io_trap_handler(CPU_p cpu, IO_p device) {
-    QUEUE_enqueue(device->waitingQueue, cpu->currentProcess);
+    Queue_enqueue(device->waitingQueue, cpu->currentProcess);
     cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
 }
 
@@ -300,7 +301,7 @@ int main() {
     int total_procs = 0, process_ID = 1;
     IO *device_1 = IO_constructor(), *device_2 = IO_constructor();
 
-    Timer_p timer = Timer_constructor(300); //TODO: what should be the value here?
+    Timer_p timer = Timer_constructor(QUANTUM);
 
     // Create CPU:
     CPU *cpu = CPU_constructor();
@@ -347,7 +348,7 @@ int main() {
         //Timer interrupt if timer is 0, Timer_interrupt returns 1
         if (interrupt == 1) {
         	// calls pseudo ISR
-        	CPU_pseudo_isr(cpu, timer, PCB_get_PC(cpu->currentProcess), NULL);
+        	CPU_pseudo_isr(cpu, INTERRUPT_TIMER, PCB_get_PC(cpu->currentProcess), NULL);
         }
 
         fprintf(file, "Current PC: %d. System Stack: %d\n\n", PCB_get_PC(cpu->currentProcess),
@@ -359,10 +360,10 @@ int main() {
         
         /**** CHECK FOR I/O COMPLETION INTERRUPT  ****/
         device_1_interrupt = Timer_countDown(device_1->timer);
-        if (device_1_interrupt == 1) CPU_pseudo_isr(cpu, io, PCB_get_PC(cpu->currentProcess), device_1);
+        if (device_1_interrupt == 1) CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_1);
         
         device_2_interrupt = Timer_countDown(device_2->timer);
-        if (device_2_interrupt == 1) CPU_pseudo_isr(cpu, io, PCB_get_PC(cpu->currentProcess), device_2);
+        if (device_2_interrupt == 1) CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_2);
         
         /**** CHECK FOR I/O TRAP ****/
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_1);

@@ -274,6 +274,8 @@ unsigned int * PCB_get_io_trap(PCB_p pcb, int io_trap_num) {
             return pcb->io_trap_1;
         case 2 :
             return pcb->io_trap_2;
+        default:
+            return NULL;
     }
 }
 
