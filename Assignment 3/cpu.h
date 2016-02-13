@@ -36,6 +36,7 @@ typedef enum interrupt_state {
 typedef struct cpu_type {
     unsigned int timer;
     unsigned int pc;
+    unsigned int PID;
     unsigned int sysStack;
     PCB_p currentProcess;
     Queue_p readyQueue;
@@ -55,6 +56,8 @@ void CPU_destructor(CPU_p);              // frees memory allocated to pcb object
 
 void CPU_set_pc(CPU_p, unsigned int);           // sets this->pc to int value
 
+void CPU_set_pid(CPU_p, unsigned int);
+
 void CPU_set_current_process(CPU_p, PCB_p); // sets this->current_process to pcb pointer
 
 void CPU_set_readyQueue(CPU_p, Queue_p); // sets this->readyQueue to queue pointer
@@ -66,6 +69,8 @@ void CPU_set_newProcessesQueue(CPU_p, Queue_p); // sets this->newProcessesQueue 
 /* Getters */
 
 unsigned int CPU_get_pc(CPU_p);                 // returns this cpu's pc
+
+unsigned int CPU_get_pid(CPU_p);
 
 PCB_p CPU_get_current_proc(CPU_p); // returns this cpu's currently running process (pcb pointer)
 
@@ -97,13 +102,13 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type);
 
 void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int, IO_p);
 
-void CPU_pseudo_isr(CPU_p cpu, Interrupt_type, int, IO_p);
+void CPU_pseudo_isr(CPU_p cpu, Interrupt_type, int, int, IO_p);
 
 PCB_p dispatch(CPU_p);                          // Dispatches...
 
 Queue_p CPU_fetch_process(CPU_p, Interrupt_type, int);   // Fetches new process
 
-Queue_p CPU_create_processes(Queue_p, int, int, long int);     // Creates new processes
+Queue_p CPU_create_processes(CPU_p, Queue_p, int, long int);     // Creates new processes
 
 void CPU_file_handler(char *string);            // Handles file writing
 

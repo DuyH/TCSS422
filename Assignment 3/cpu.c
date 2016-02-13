@@ -32,6 +32,7 @@ unsigned int CTX_SWITCH_COUNT = 1;
 CPU_p CPU_constructor(void) {
     CPU_p cpu = malloc(sizeof(CPU));
     cpu->pc = 0;
+    cpu->PID = 0;
     cpu->timer = 0; // TODO: Should this also be a Timer object?
     cpu->sysStack = 0;
     cpu->currentProcess = NULL;
@@ -116,7 +117,16 @@ unsigned int CPU_pop_sysStack(CPU_p cpu) {
     return cpu->sysStack;
 }
 
-void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device) {
+void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int time_count, IO_p device) {
+	      int num_proc_created = rand() % 6;
+	//        fprintf(file, "Process randomed: %d\n", num_proc_created);
+	        cpu->newProcessesQueue = CPU_create_processes(cpu, cpu->newProcessesQueue,
+	                                                      num_proc_created, time_count);
+	        while (!Queue_isEmpty(cpu->newProcessesQueue)) {
+	                   PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
+	                   PCB_set_state(temp_pcb, ready);
+	                   Queue_enqueue(cpu->readyQueue, temp_pcb);
+	               }
     switch (interrupt_type) {
         case INTERRUPT_TIMER:
             // 1. Put process back into the readyQueue
@@ -192,7 +202,7 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
     return;
 }
 
-void CPU_pseudo_isr(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device) {
+void CPU_pseudo_isr(CPU_p cpu, Interrupt_type interrupt_type, int PID, int PC, IO_p device) {
     if (cpu->currentProcess != NULL) {
 
         // 1. Change the state of the running process to interrupted
@@ -240,18 +250,19 @@ void CPU_remove_file() {
 /**
  * Function that creates 0-5 new processes and puts them into a list.
  */
-Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long int time_count) {
+Queue *CPU_create_processes(CPU_p cpu, Queue *queue, int numb_process, long int time_count) {
     int n;
     for (n = 0; n < numb_process; n++) {
         PCB *pcb = PCB_constructor();
-        PCB_set_pid(pcb, process_ID + n);
+        PCB_set_pid(pcb, pcb->pid + n);
         PCB_set_creation(pcb, time_count);
         PCB_set_max_pc(pcb, 2345);
         PCB_set_priority(pcb, rand() % 31 + 1);
         PCB_set_state(pcb, created);
         PCB_set_pc(pcb, rand() % 3000 + 1500);
         queue = Queue_enqueue(queue, pcb);
-        fprintf(file, "Process created: PID %d at %ld", PCB_get_pid(pcb), PCB_get_creation(pcb));
+        fprintf(file, "Process created: PID %d at %lu", PCB_get_pid(pcb), PCB_get_creation(pcb));
+        cpu->PID += 1;
     }
     return queue;
 }
@@ -308,34 +319,17 @@ int main() {
 //        fprintf(file, "***************Instruction cycle %lu ***************\n",
 //                time_count);
 
-        time_count++;
 
+
+        if (time_count == 1) CPU_scheduler(cpu, INTERRUPT_NORMAL, 0, NULL);
         // 1a. Create a queue of new processes, 0 - 5 processes at a time:
-        int num_proc_created = 0;
-        do {
-        	num_proc_created = rand() % 6;
-        } while (total_procs + num_proc_created > MAX_PROCESS);
-//        fprintf(file, "Process randomed: %d\n", num_proc_created);
-        total_procs += num_proc_created;
-
-        cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue,
-                                                      num_proc_created, process_ID, time_count);
-
-        process_ID += num_proc_created;
+        time_count++;
 
         // 1c. Print newly created processes queue to file:
 //        fprintf(file, "New processes initialized: %d. Total processes: %d\n",
 //                num_proc_created, total_procs);
 //        fprintf(file, "Newly created processes list: %s",
 //                Queue_toString(cpu->newProcessesQueue, 0));
-
-        while (!Queue_isEmpty(cpu->newProcessesQueue)) {
-            PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
-            PCB_set_state(temp_pcb, ready);
-            Queue_enqueue(cpu->readyQueue, temp_pcb);
-        }
-
-        cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
 
         /**** EXECUTION INSTRUCTION ****/
         //Increment PC by 1 to stimulate instruction execution
@@ -366,20 +360,20 @@ int main() {
         // Timer interrupt if timer is 0, Timer_interrupt returns 1
         if (interrupt == 1) {
         	// calls pseudo ISR
-        	CPU_pseudo_isr(cpu, INTERRUPT_TIMER, PCB_get_PC(cpu->currentProcess), NULL);
+        	CPU_pseudo_isr(cpu, INTERRUPT_TIMER, process_ID, PCB_get_PC(cpu->currentProcess), NULL);
             Timer_set_count(timer, QUANTUM);
         }
 
         /**** CHECK FOR I/O COMPLETION INTERRUPT  ****/
         device_1_interrupt = Timer_countDown(device_1->timer);
         if (device_1_interrupt == 1) {
-            CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_1);
+            CPU_pseudo_isr(cpu, INTERRUPT_IO, process_ID, PCB_get_PC(cpu->currentProcess), device_1);
             Timer_set_count(device_1->timer, QUANTUM * (rand() % 3 + 3));
         }
 
         device_2_interrupt = Timer_countDown(device_2->timer);
         if (device_2_interrupt == 1) {
-            CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_2);
+            CPU_pseudo_isr(cpu, INTERRUPT_IO, process_ID, PCB_get_PC(cpu->currentProcess), device_2);
             Timer_set_count(device_2->timer, QUANTUM * (rand() % 3 + 3));
         }
 
