@@ -23,6 +23,10 @@
 #define MAX_PROCESS 30
 #define STR_LEN 200
 #define CPU_CYCLES 100
+#define MAX_DEVICES 2
+#define MAX_IO_TRAPS 4
+#define DEVICE_ARRAY_1 1
+#define DEVICE_ARRAY_2 2
 
 // File for saving text
 FILE *file;
@@ -116,7 +120,7 @@ unsigned int CPU_pop_sysStack(CPU_p cpu) {
     return cpu->sysStack;
 }
 
-void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC) {
+void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device) {
     while (!Queue_isEmpty(cpu->newProcessesQueue)) {
         PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
         PCB_set_state(temp_pcb, ready);
@@ -142,6 +146,10 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC) {
 
             // 5. Returns to pseudo-ISR
             return;
+            break;
+        case io:
+            // 1. Put waiting process into the readyQueue
+            Queue_enqueue(cpu->readyQueue, Queue_dequeue(device->waitingQueue));
             break;
         default:
             CPU_dispatcher(cpu, normal);
@@ -191,7 +199,7 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
     return;
 }
 
-void CPU_pseudo_isr(CPU_p cpu, int PC) {
+void CPU_pseudo_isr(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device) {
     if (cpu->currentProcess != NULL) {
         fprintf(file, "Timer interrupt...\n");
 
@@ -210,11 +218,11 @@ void CPU_pseudo_isr(CPU_p cpu, int PC) {
         //cpu->pc = CPU_pop_sysStack(cpu);
 
         // 3. "Do an up-call" to the scheduler
-        CPU_scheduler(cpu, timer, PC);
+        CPU_scheduler(cpu, interrupt_type, PC, device);
 
     } else {
         fprintf(file, "No process currently running. Normal interrupt...\n");
-        CPU_scheduler(cpu, normal, PC);
+        CPU_scheduler(cpu, normal, PC, device);
     }
 
     return;
@@ -258,6 +266,27 @@ Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID) {
     return queue;
 }
 
+/**
+* Function that checks pending I/O requests. returns 0 if not and 1 if there is
+*/
+int CPU_check_io_request(PCB_p pcb, int device_num) {
+    int PC = PCB_get_PC(pcb);
+    int index;
+        for (index = 0; index < MAX_IO_TRAPS; index++) {
+            int check_request = PCB_get_io_trap_index(pcb, index, device_num)
+            if (index < check_request) break;
+            else if (index == check_request) return 1;
+        }
+    return 0;
+}
+
+/**
+* Function that handles the I/O traps.
+*/
+void CPU_io_trap_handler(CPU_p cpu, IO_p device) {
+    QUEUE_enqueue(device->waitingQueue, cpu->currentProcess);
+    cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+}
 
 int main() {
     // Prepare for file writing:
@@ -269,12 +298,13 @@ int main() {
     srand(time(0)); // Seed random generator
     unsigned int PC = 0;
     int total_procs = 0, process_ID = 1;
+    IO *device_1 = IO_constructor(), *device_2 = IO_constructor();
 
     Timer_p timer = Timer_constructor(300); //TODO: what should be the value here?
 
     // Create CPU:
     CPU *cpu = CPU_constructor();
-    int interrupt;
+    int interrupt, device_1_interrupt, device_2_interrupt, io_request;
 
     // CPU: Represent an instruction execution.
     long int time_count = 1;
@@ -304,26 +334,43 @@ int main() {
 
 
 
+        /**** EXECUTION INSTRUCTION ****/
         //Increment PC by 1 to stimulate instruction execution
-        PC += 1;
+        PCB_increment_PC(cpu->currentProcess);
 
         //fprintf(file, "Current PC: %d. System Stack: %d\n", PC, cpu->sysStack);
 
         //if (cpu->currentProcess != NULL)
-        CPU_push_sysStack(cpu, PC);
+        CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
 
+        /**** CHECK FOR TIMER INTERRUPT ****/
         //Timer interrupt if timer is 0, Timer_interrupt returns 1
         if (interrupt == 1) {
         	// calls pseudo ISR
-        	CPU_pseudo_isr(cpu, PC);
+        	CPU_pseudo_isr(cpu, timer, PCB_get_PC(cpu->currentProcess), NULL);
         }
 
-        fprintf(file, "Current PC: %d. System Stack: %d\n\n", PC,
+        fprintf(file, "Current PC: %d. System Stack: %d\n\n", PCB_get_PC(cpu->currentProcess),
                 cpu->sysStack);
 
         CTX_SWITCH_COUNT++;
         time_count++;
         interrupt = Timer_countDown(timer);
+        
+        /**** CHECK FOR I/O COMPLETION INTERRUPT  ****/
+        device_1_interrupt = Timer_countDown(device_1->timer);
+        if (device_1_interrupt == 1) CPU_pseudo_isr(cpu, io, PCB_get_PC(cpu->currentProcess), device_1);
+        
+        device_2_interrupt = Timer_countDown(device_2->timer);
+        if (device_2_interrupt == 1) CPU_pseudo_isr(cpu, io, PCB_get_PC(cpu->currentProcess), device_2);
+        
+        /**** CHECK FOR I/O TRAP ****/
+        io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_1);
+        if (io_request == 1) CPU_io_trap_handler(cpu, device_1);
+        
+        io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_2);
+        if (io_request == 1) CPU_io_trap_handler(cpu, device_2);
+        
     }
     fclose(file);
     CPU_destructor(cpu);

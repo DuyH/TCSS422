@@ -94,9 +94,9 @@ unsigned int CPU_pop_sysStack(CPU_p);  // Pops off int value from cpu's sysStack
 
 void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type);
 
-void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int);
+void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int, IO_p);
 
-void CPU_pseudo_isr(CPU_p cpu, int);
+void CPU_pseudo_isr(CPU_p cpu,Interrupt_type, int, IO_p);
 
 PCB_p dispatch(CPU_p);                          // Dispatches...
 
@@ -107,5 +107,9 @@ Queue_p CPU_create_processes(Queue_p, int, int);     // Creates new processes
 void CPU_file_handler(char *string);            // Handles file writing
 
 void CPU_remove_file();                         // Removes existing file
+
+int CPU_check_io_request(PCB_p, int);                // checks io request
+
+void CPU_io_trap_handler(CPU_p cpu, IO_p device);   // handles io traps
 
 #endif //ASSIGNMENT1_CPU_H

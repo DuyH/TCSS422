@@ -96,6 +96,10 @@ unsigned int PCB_get_io_trap_index(PCB_p, int, int); // returns the referenced i
 
 /* Utility Functions */
 
+void PCB_increment_PC(PCB_p); // increments the PC value
+
+void PCB_increment_term_count(PCB_p); // increments term_count
+
 const char *PCB_get_state_string(State);   // returns state value
 
 char *PCB_toString(PCB_p); // returns pointer to character array of this pcb's contents

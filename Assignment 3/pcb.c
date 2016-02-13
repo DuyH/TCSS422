@@ -299,6 +299,24 @@ unsigned int PCB_get_io_trap_index(PCB_p pcb, int index, int io_trap_num) {
 ****************************************************/
 
 /**
+* Increments the PC value
+*
+* Parameters: PCB_p pcb: the pcb which has the PC to be incremented.
+*/
+void PCB_increment_PC(PCB_p pcb) {
+    pcb->pc_value++;
+}
+
+/**
+* Increments the term_count value
+*
+* Parameters: PCB_p pcb: the pcb which has the term_count to be incremented.
+*/
+void PCB_increment_term_count(PCB_p pcb) {
+    pcb->term_count++;
+}
+
+/**
  * Retrieve the descriptive name of pcb's state, given enumeration.
  *
  * Parameters:  State state: Enumeration of State
