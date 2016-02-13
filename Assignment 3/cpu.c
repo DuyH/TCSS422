@@ -5,11 +5,11 @@
  * Duy Huynh
  * Jeffrey LeCompte
  * Trung Dang
- * Brandon Scholor
+ * Brandon Scholer
  *
  * TCSS 422 - Winter 2016
- * Date: 1/20/16
- * Assignment 2
+ * Date: 2/12/16
+ * Assignment 3
  *
  * Description:
  * This program represents a CPU in terms of a Round-Robin scheduler, utilizing the PCB and Queue from Assignment 1.
@@ -17,14 +17,9 @@
  ************************************************************************************************/
 #include <pthread.h>
 #include "cpu.h"
-#include "timer.h"
-#include "io.h"
 
 
 #define MAX_PROCESS 30
-#define STR_LEN 200
-#define CPU_CYCLES 100
-#define MAX_DEVICES 2
 #define MAX_IO_TRAPS 4
 #define DEVICE_ARRAY_1 1
 #define DEVICE_ARRAY_2 2
@@ -159,14 +154,14 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
 void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
 
     // Save pointers to the previous and next process (needed so we can print)
-    PCB_p prevProcess = cpu->currentProcess;
-    PCB_p nextProcess = Queue_peek(cpu->readyQueue);
-    if (CTX_SWITCH_COUNT % 4 == 0) {
-    	if (prevProcess != NULL)
-    		fprintf(file, "Running process: %s", PCB_toString(prevProcess));
-    	if (nextProcess != NULL)
-    		fprintf(file, "Switching to: %s", PCB_toString(nextProcess));
-    }
+//    PCB_p prevProcess = cpu->currentProcess;
+//    PCB_p nextProcess = Queue_peek(cpu->readyQueue);
+//    if (CTX_SWITCH_COUNT % 4 == 0) {
+//    	if (prevProcess != NULL)
+//    		fprintf(file, "Running process: %s", PCB_toString(prevProcess));
+//    	if (nextProcess != NULL)
+//    		fprintf(file, "Switching to: %s", PCB_toString(nextProcess));
+//    }
     // 1. Save the state of current process into its PCB (PC value)
     // Per Canvas Discussions, DON'T DO THIS AGAIN HERE! It's in ISR.
 
@@ -184,13 +179,13 @@ void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
         CPU_set_pc(cpu, cpu->sysStack);
     }
 
-    if (CTX_SWITCH_COUNT % 4 == 0) {
-    	if (prevProcess != NULL)
-    		fprintf(file, "Last Process: %s", PCB_toString(prevProcess));
-    	if (nextProcess != NULL)
-    		fprintf(file, "Current running Process: %s", PCB_toString(nextProcess));
-    	fprintf(file, "Ready Queue: %s", Queue_toString(cpu->readyQueue, 0));
-    }
+//    if (CTX_SWITCH_COUNT % 4 == 0) {
+//    	if (prevProcess != NULL)
+//    		fprintf(file, "Last Process: %s", PCB_toString(prevProcess));
+//    	if (nextProcess != NULL)
+//    		fprintf(file, "Current running Process: %s", PCB_toString(nextProcess));
+//    	fprintf(file, "Ready Queue: %s", Queue_toString(cpu->readyQueue, 0));
+//    }
 
     // 5. Return to the scheduler
     // returns prevalent stuff to scheduler, but not for this project
@@ -238,7 +233,7 @@ void CPU_pseudo_isr(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p devic
  * Removes the text file if already in place
  */
 void CPU_remove_file() {
-    remove("scheduleTrace.txt");
+    remove("discontinuities.txt");
     return;
 }
 
@@ -256,7 +251,7 @@ Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long
         PCB_set_state(pcb, created);
         PCB_set_pc(pcb, rand() % 3000 + 1500);
         queue = Queue_enqueue(queue, pcb);
-        fprintf(file, "Process created: PID %d at %u", PCB_get_pid(pcb), PCB_get_creation(pcb));
+        fprintf(file, "Process created: PID %d at %ld", PCB_get_pid(pcb), PCB_get_creation(pcb));
     }
     return queue;
 }
@@ -265,7 +260,7 @@ Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long
 * Function that checks pending I/O requests. returns 0 if not and 1 if there is
 */
 int CPU_check_io_request(PCB_p pcb, int device_num) {
-    int PC = PCB_get_PC(pcb);
+//    int PC = PCB_get_PC(pcb);
     int index;
         for (index = 0; index < MAX_IO_TRAPS; index++) {
             int check_request = PCB_get_io_trap_index(pcb, index, device_num);
@@ -287,13 +282,15 @@ void CPU_io_trap_handler(CPU_p cpu, IO_p device, int dev_num) {
 
 int main() {
     // Prepare for file writing:
-    CPU_remove_file();
+//    CPU_remove_file();
+
+    printf("testing");
 
     // House Keeping:
     file = fopen("discontinuities.txt", "w+");
 
     srand(time(0)); // Seed random generator
-    unsigned int PC = 0;
+//    unsigned int PC = 0;
     int total_procs = 0, process_ID = 1;
     IO *device_1 = IO_constructor(), *device_2 = IO_constructor();
 
@@ -308,8 +305,8 @@ int main() {
 
     //total_procs <= MAX_PROCESS - 5
     while (time_count < 100000) {
-        fprintf(file, "***************Instruction cycle %lu ***************\n",
-                time_count);
+//        fprintf(file, "***************Instruction cycle %lu ***************\n",
+//                time_count);
 
         time_count++;
 
@@ -318,7 +315,7 @@ int main() {
         do {
         	num_proc_created = rand() % 6;
         } while (total_procs + num_proc_created > MAX_PROCESS);
-        fprintf(file, "Process randomed: %d\n", num_proc_created);
+//        fprintf(file, "Process randomed: %d\n", num_proc_created);
         total_procs += num_proc_created;
 
         cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue,
@@ -327,10 +324,10 @@ int main() {
         process_ID += num_proc_created;
 
         // 1c. Print newly created processes queue to file:
-        fprintf(file, "New processes initialized: %d. Total processes: %d\n",
-                num_proc_created, total_procs);
-        fprintf(file, "Newly created processes list: %s",
-                Queue_toString(cpu->newProcessesQueue, 0));
+//        fprintf(file, "New processes initialized: %d. Total processes: %d\n",
+//                num_proc_created, total_procs);
+//        fprintf(file, "Newly created processes list: %s",
+//                Queue_toString(cpu->newProcessesQueue, 0));
 
         while (!Queue_isEmpty(cpu->newProcessesQueue)) {
             PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
@@ -354,13 +351,13 @@ int main() {
                     continue;
             }
 
-        fprintf(file, "Current PC: %d. System Stack: %d\n", PC, cpu->sysStack);
+//        fprintf(file, "Current PC: %d. System Stack: %d\n", PC, cpu->sysStack);
 
         if (cpu->currentProcess != NULL)
             CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
 
-        fprintf(file, "Current PC: %d. System Stack: %d\n\n", PCB_get_PC(cpu->currentProcess),
-                cpu->sysStack);
+//        fprintf(file, "Current PC: %d. System Stack: %d\n\n", PCB_get_PC(cpu->currentProcess),
+//                cpu->sysStack);
 
         CTX_SWITCH_COUNT++;
         interrupt = Timer_countDown(timer);

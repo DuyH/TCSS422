@@ -123,7 +123,7 @@ void PCB_set_creation(PCB_p pcb, long int new_creation) {
 *Parameters:    PCB_p pcb: a pointer to the PCB structure
 *               int new_termination: the new termination value
 */
-void PCB_set_termination(PCB_p pcb, int new_termination) {
+void PCB_set_termination(PCB_p pcb, long int new_termination) {
     pcb->termination = new_termination;
 }
 
@@ -229,7 +229,7 @@ unsigned int PCB_get_max_pc(PCB_p pcb) {
  * Parameters:   PCB_p  pcb: A pointer to the PCB structure
  * Returns:     int creation value of PCB object.
  */
-unsigned int PCB_get_creation(PCB_p pcb) {
+long int PCB_get_creation(PCB_p pcb) {
     return pcb->creation;
 }
 
@@ -239,7 +239,7 @@ unsigned int PCB_get_creation(PCB_p pcb) {
  * Parameters:   PCB_p  pcb: A pointer to the PCB structure
  * Returns:     int termination value of PCB object.
  */
-unsigned int PCB_get_termination(PCB_p pcb) {
+long int PCB_get_termination(PCB_p pcb) {
     return pcb->termination;
 }
 

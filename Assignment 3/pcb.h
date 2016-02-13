@@ -12,7 +12,6 @@
  * Assignment 2
  *
  * Description:
- * testing 123
  * This header file defines the class and methods for the process control block implementation
  *
  ************************************************************************************************/
@@ -30,8 +29,8 @@ typedef struct pcb_type {
     enum process_state state;       // state of the process
     unsigned int pc_value;          // pc value
     unsigned int max_pc;            // the max pc value before reset
-    unsigned int creation;          // clock time at process creation
-    unsigned int termination;       // clock time at process termination
+    long int creation;              // clock time at process creation
+    long int termination;           // clock time at process termination
     unsigned int terminate;         // max number for process termination, 0 for no termination
     unsigned int term_count;        // counter until process termination
     unsigned int io_trap_1[4];
@@ -60,7 +59,7 @@ void PCB_set_max_pc(PCB_p, int);    // sets this->max_pc to int value
 
 void PCB_set_creation(PCB_p, long int);  // sets this->creation to int value
 
-void PCB_set_termination(PCB_p, int); // sets this->termination to int value
+void PCB_set_termination(PCB_p, long int); // sets this->termination to int value
 
 void PCB_set_terminate(PCB_p, int); // sets this->terminate to int value
 
@@ -82,9 +81,9 @@ unsigned int PCB_get_PC(PCB_p);              // returns pc value
 
 unsigned int PCB_get_max_pc(PCB_p);         // returns max_pc value
 
-unsigned int PCB_get_creation(PCB_p);       // returns creation value
+long int PCB_get_creation(PCB_p);       // returns creation value
 
-unsigned int PCB_get_termination(PCB_p);    // returns termination value
+long int PCB_get_termination(PCB_p);    // returns termination value
 
 unsigned int PCB_get_terminate(PCB_p);      // returns terminate value
 

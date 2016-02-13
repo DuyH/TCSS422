@@ -22,7 +22,7 @@
 #define QUANTUM 300
 
 typedef struct timer {
-	int count;
+	long int count;
 } Timer;
 
 typedef Timer *Timer_p;

@@ -112,7 +112,6 @@ Queue_p Queue_enqueue(Queue_p queue, PCB_p pcb) {
 PCB_p Queue_dequeue(Queue_p queue) {
 
     if (queue->size == 0) {
-        printf("There was nothing to dequeue\n");
         return NULL;
     } else {
         queue->size--;
