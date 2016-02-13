@@ -133,7 +133,8 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
             // 3. Make call to dispatcher
             CPU_dispatcher(cpu, INTERRUPT_TIMER);
 
-            fprintf(file, "PID %d is %s, PID %d put in ready queue", );
+            fprintf(file, "PID %d is running, PID %d put in ready queue",
+                    cpu->currentProcess->pid, cpu->readyQueue->head->pcb->pid);
 
             // 4. Returned from dispatcher, do any housekeeping
             // Nothing here to do at the moment!
@@ -143,6 +144,9 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
         case INTERRUPT_IO:
             // 1. Put waiting process into the readyQueue
             Queue_enqueue(cpu->readyQueue, Queue_dequeue(device->waitingQueue));
+
+            fprintf(file, "I/O completion interrupt: PID %d is running, PID %d in ready queue",
+                    cpu->currentProcess->pid, device->waitingQueue->head->pcb->pid);
             break;
         default:
             CPU_dispatcher(cpu, INTERRUPT_NORMAL);
@@ -247,6 +251,7 @@ Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long
         PCB *pcb = PCB_constructor();
         PCB_set_pid(pcb, process_ID + n);
         PCB_set_creation(pcb, time_count);
+        PCB_set_max_pc(pcb, 2345);
         PCB_set_priority(pcb, rand() % 31 + 1);
         PCB_set_state(pcb, created);
         PCB_set_pc(pcb, rand() % 3000 + 1500);
@@ -273,9 +278,11 @@ int CPU_check_io_request(PCB_p pcb, int device_num) {
 /**
 * Function that handles the I/O traps.
 */
-void CPU_io_trap_handler(CPU_p cpu, IO_p device) {
+void CPU_io_trap_handler(CPU_p cpu, IO_p device, int dev_num) {
     Queue_enqueue(device->waitingQueue, cpu->currentProcess);
     cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+    fprintf(file, "I/O trap request: I/O device %d, PID %d put into waiting queue, PID %d dispatched",
+            dev_num, device->waitingQueue->rear->pcb->pid, cpu->currentProcess->pid);
 }
 
 int main() {
@@ -336,6 +343,7 @@ int main() {
         /**** EXECUTION INSTRUCTION ****/
         //Increment PC by 1 to stimulate instruction execution
         PCB_increment_PC(cpu->currentProcess);
+        if (cpu->currentProcess->pc_value > cpu->currentProcess->max_pc) PCB_set_pc(cpu->currentProcess, 0);
         if (PCB_get_PC(cpu->currentProcess) == 0) PCB_increment_term_count(cpu->currentProcess);
         if (PCB_get_terminate(cpu->currentProcess) != 0 &&
                 PCB_get_terminate(cpu->currentProcess) == PCB_get_term_count(cpu->currentProcess)) {
@@ -380,10 +388,10 @@ int main() {
 
         /**** CHECK FOR I/O TRAP ****/
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_1);
-        if (io_request == 1) CPU_io_trap_handler(cpu, device_1);
+        if (io_request == 1) CPU_io_trap_handler(cpu, device_1, DEVICE_ARRAY_1);
 
         io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_2);
-        if (io_request == 1) CPU_io_trap_handler(cpu, device_2);
+        if (io_request == 1) CPU_io_trap_handler(cpu, device_2, DEVICE_ARRAY_2);
         
     }
     fclose(file);

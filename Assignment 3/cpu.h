@@ -111,6 +111,6 @@ void CPU_remove_file();                         // Removes existing file
 
 int CPU_check_io_request(PCB_p, int);                // checks io request
 
-void CPU_io_trap_handler(CPU_p cpu, IO_p device);   // handles io traps
+void CPU_io_trap_handler(CPU_p cpu, IO_p device, int dev_num);   // handles io traps
 
 #endif //ASSIGNMENT1_CPU_H
