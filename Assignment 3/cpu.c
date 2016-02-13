@@ -338,6 +338,14 @@ int main() {
         /**** EXECUTION INSTRUCTION ****/
         //Increment PC by 1 to stimulate instruction execution
         PCB_increment_PC(cpu->currentProcess);
+        if (PCB_get_PC(cpu->currentProcess) == 0) PCB_increment_term_count(cpu->currentProcess);
+        if (PCB_get_terminate(cpu->currentProcess) != 0
+            && PCB_get_teriminate(cpu->currentProcess) == PCB_term_count(cpu->currentProcess) {
+                fprintf(file, "Process terminated: PID %d at ", PCB_get_pid(cpu->currentProcess));
+                PCB_destructor(cpu->currentProcess);
+                cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+                continue;
+            }
 
         //fprintf(file, "Current PC: %d. System Stack: %d\n", PC, cpu->sysStack);
 

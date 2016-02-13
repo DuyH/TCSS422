@@ -39,6 +39,7 @@ PCB_p PCB_constructor() {
         PCB_set_io_trap_1(pcb, new, i);
         PCB_set_io_trap_2(pcb, new1, i);
     }
+    pcb->terminate = rand() % 5;
     return pcb;
 }
 
