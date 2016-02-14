@@ -89,9 +89,12 @@ Queue_p Queue_enqueue(Queue_p queue, PCB_p pcb) {
     node->next = NULL;
 
     // Node becomes head in empty list, otherwise appended to rear.
-
-    queue->size == 0 ? (queue->head = queue->rear = node) : (queue->rear->next =
-                                                                     node);
+    if (queue->size == 0 || queue->head == NULL) {
+        queue->head = node;
+        queue->rear = queue->head;
+    }else {
+        queue->rear->next = node;
+    }
     // New node always becomes the new rear node
     queue->rear = node;
 

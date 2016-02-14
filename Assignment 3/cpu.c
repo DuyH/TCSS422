@@ -121,17 +121,24 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
         case INTERRUPT_TIMER:
             // 1. Put process back into the readyQueue
             Queue_enqueue(cpu->readyQueue, cpu->currentProcess);
+            fprintf(file, "PID %d put in ready queue\n", cpu->readyQueue->head->pcb->pid);
+            printf("PID %d put in ready queue\n", cpu->readyQueue->head->pcb->pid);
 
             // 2. Change its state from interrupted to ready
             PCB_set_state(cpu->currentProcess, ready);
 
             // 3. Make call to dispatcher
-            CPU_dispatcher(cpu, INTERRUPT_TIMER);
+            int successfulDispatch = CPU_dispatcher(cpu, INTERRUPT_TIMER);
+            if (successfulDispatch) {
+                fprintf(file, "PID %d is running, ", cpu->currentProcess->pid);
+                printf("PID %d is running, ", cpu->currentProcess->pid);
+            } else {
+                fprintf(file, "No PID is running; readyQueue was empty on Dispatch call");
+                printf("No PID is running; readyQueue was empty on Dispatch call");
+            }
 
-            fprintf(file, "PID %d is running, ", cpu->currentProcess->pid);
-            fprintf(file, "PID %d put in ready queue\n", cpu->readyQueue->head->pcb->pid);
-            printf("PID %d is running, ", cpu->currentProcess->pid);
-            printf("PID %d put in ready queue\n", cpu->readyQueue->head->pcb->pid);
+
+
 
             // 4. Returned from dispatcher, do any housekeeping
             // Nothing here to do at the moment!
@@ -156,43 +163,48 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
     return;
 }
 
-void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
+int CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
+
     // 1. Save the state of current process into its PCB (PC value)
     // Per Canvas Discussions, DON'T DO THIS AGAIN HERE! It's in ISR.
 
-    // 2. Then dequeue next waiting process
-    if (!Queue_isEmpty(cpu->readyQueue))
+    // As long as we have processes in the ready Queue...
+    if (!Queue_isEmpty(cpu->readyQueue)) {
+
+        // 2. Then dequeue next waiting process
         cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
 
-    // 3. Change its state to running
-    PCB_set_state(cpu->currentProcess, running);
+        // 3. Change its state to running
+        PCB_set_state(cpu->currentProcess, running);
 
-    if (interrupt_type == INTERRUPT_TIMER) {
-        // 4. Copy its PC value to sysStack, replacing the interrupted process
-        CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
+        if (interrupt_type == INTERRUPT_TIMER) {
+            // 4. Copy its PC value to sysStack, replacing the interrupted process
+            CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
+        }
+
+        return 1; // return 1 if a process was available to dispatch
     }
 
     // 5. Return to the scheduler
-    // returns prevalent stuff to scheduler, but not for this project
-    return;
+    return 0; // No process was dispatched
 }
 
 void CPU_pseudo_isr(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device) {
 
-        // 1. Change the state of the running process to interrupted
-        PCB_set_state(cpu->currentProcess, interrupted);
+    // 1. Change the state of the running process to interrupted
+    PCB_set_state(cpu->currentProcess, interrupted);
 
-        // 2. Save the CPU state to the PCB
-        PCB_set_pc(cpu->currentProcess, cpu->pc);
+    // 2. Save the CPU state to the PCB
+    PCB_set_pc(cpu->currentProcess, cpu->pc);
 
-        //Replace PC of CPU will value stored in systemStack
-        cpu->pc = cpu->sysStack;
+    //Replace PC of CPU will value stored in systemStack
+    cpu->pc = cpu->sysStack;
 
-        //cpu->pc = CPU_pop_sysStack(cpu);
+    //cpu->pc = CPU_pop_sysStack(cpu);
 
-        // 3. "Do an up-call" to the scheduler
-        CPU_scheduler(cpu, interrupt_type, PC, device);
-    }
+    // 3. "Do an up-call" to the scheduler
+    CPU_scheduler(cpu, interrupt_type, PC, device);
+}
 
 /**
  * Removes the text file if already in place
@@ -258,7 +270,7 @@ void CPU_io_trap_handler(CPU_p cpu, IO_p device, int device_num) {
         cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
         fprintf(file, "PID %d dispatched\n", cpu->currentProcess->pid);
         printf("PID %d dispatched\n", cpu->currentProcess->pid);
-    }else{
+    } else {
         fprintf(file, "No PID dispatched; empty readyQueue\n");
         printf("No PID dispatched; empty readyQueue\n");
     }
@@ -285,7 +297,7 @@ int main() {
 // 1a. Create a queue of new processes, 0 - 5 processes at a time:
     int num_proc_created = 0;
     do {
-        num_proc_created = rand() % 6+1;
+        num_proc_created = rand() % 6 + 1;
     } while (total_procs + num_proc_created > MAX_PROCESS);
     total_procs += num_proc_created;
 
@@ -304,7 +316,7 @@ int main() {
 
 
     //total_procs <= MAX_PROCESS - 5
-    while (time_count < 100000) {
+    while (total_procs!=Queue_get_size(cpu->terminatedQueue)) {
 
 
         printf("Check: %u\n", time_count);
@@ -349,23 +361,26 @@ int main() {
 
 
             // Create some more processes until MAX_PROCESS allowed
-            int num_proc_created = 0;
-            do {
-                num_proc_created = rand() % 6 +1;
-            } while (total_procs + num_proc_created > MAX_PROCESS);
-            total_procs += num_proc_created;
+            if (total_procs < MAX_PROCESS) {
+                int num_proc_created = 0;
+                do {
+                    num_proc_created = rand() % 6 + 1;
+                } while (total_procs + num_proc_created > MAX_PROCESS);
+                total_procs += num_proc_created;
 
-            cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue,
-                                                          num_proc_created, process_ID, time_count);
+                cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue,
+                                                              num_proc_created, process_ID, time_count);
 
-            process_ID += num_proc_created;
+                process_ID += num_proc_created;
 
-            // Add newly created processes to the CPU's ready Queue
-            while (!Queue_isEmpty(cpu->newProcessesQueue)) {
-                PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
-                PCB_set_state(temp_pcb, ready);
-                Queue_enqueue(cpu->readyQueue, temp_pcb);
+                // Add newly created processes to the CPU's ready Queue
+                while (!Queue_isEmpty(cpu->newProcessesQueue)) {
+                    PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
+                    PCB_set_state(temp_pcb, ready);
+                    Queue_enqueue(cpu->readyQueue, temp_pcb);
+                }
             }
+
 
         }
 
@@ -403,6 +418,8 @@ int main() {
         }
         time_count++;
     }
+    fprintf(file, "Simulation finished!");
+    printf("Simulation finished!");
     fclose(file);
     CPU_destructor(cpu);
     return 0;

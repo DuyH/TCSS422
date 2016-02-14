@@ -98,7 +98,7 @@ unsigned int CPU_pop_sysStack(CPU_p);  // Pops off int value from cpu's sysStack
 
 /* Utility Functions */
 
-void CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type);
+int CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type);   // Returns 1 if successfully dispatched process from readyQueue
 
 void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int, IO_p);
 
