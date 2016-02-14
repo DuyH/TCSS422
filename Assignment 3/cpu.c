@@ -390,6 +390,7 @@ int main() {
             device_1_interrupt = Timer_countDown(device_1->timer);
             if (device_1_interrupt == 1) {
                 CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_1);
+                if (device_1->timer->count == -1 || device_1->timer->count == 0)
                 Timer_set_count(device_1->timer, QUANTUM * (rand() % 3 + 3));
             }
         }
