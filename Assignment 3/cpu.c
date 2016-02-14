@@ -121,9 +121,9 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
             fprintf(file, "=======TIMER INTERRUPT=======\n");
             printf("=======TIMER INTERRUPT=======\n");
             // 1. Put process back into the readyQueue
+            fprintf(file, "Timer interrupt: PID %d was running, ", cpu->currentProcess->pid);
+            printf("Timer interrupt: PID %d was running, ", cpu->currentProcess->pid);
             Queue_enqueue(cpu->readyQueue, cpu->currentProcess);
-            fprintf(file, "PID %d put in ready queue\n", cpu->readyQueue->head->pcb->pid);
-            printf("PID %d put in ready queue\n", cpu->readyQueue->head->pcb->pid);
 
             // 2. Change its state from interrupted to ready
             PCB_set_state(cpu->currentProcess, ready);
@@ -131,17 +131,12 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
             // 3. Make call to dispatcher
             int successfulDispatch = CPU_dispatcher(cpu, INTERRUPT_TIMER);
             if (successfulDispatch) {
-                fprintf(file, "PID %d is running, ", cpu->currentProcess->pid);
-                printf("PID %d is running, ", cpu->currentProcess->pid);
+                fprintf(file, "PID %d dispatched.\n", cpu->currentProcess->pid);
+                printf("PID %d dispatched.\n", cpu->currentProcess->pid);
             } else {
-                fprintf(file, "No PID is running; readyQueue was empty on Dispatch call");
-                printf("No PID is running; readyQueue was empty on Dispatch call");
+                fprintf(file, "No PID was dispatched; readyQueue was empty!\n");
+                printf("No PID was dispatched; readyQueue was empty!\n");
             }
-            fprintf(file, "\n");
-            printf("\n");
-
-
-
 
             // 4. Returned from dispatcher, do any housekeeping
             // Nothing here to do at the moment!

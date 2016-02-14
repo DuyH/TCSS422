@@ -1,468 +1,406 @@
-=======PROCESSES CREATION=======
+	=======PROCESSES CREATION=======
 Process created: PID 1 at 1
 Process created: PID 2 at 1
 Process created: PID 3 at 1
 Process created: PID 4 at 1
 Process created: PID 5 at 1
+Process created: PID 6 at 1
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 1 put into waiting queue, PID 2 dispatched
 
 =======TIMER INTERRUPT=======
-PID 2 put in ready queue
-PID 2 is running, 
+Timer interrupt: PID 2 was running, PID 3 dispatched.
 
 =======PROCESSES CREATION=======
-Process created: PID 6 at 300
 Process created: PID 7 at 300
-
-=======TIMER INTERRUPT=======
-PID 3 put in ready queue
-PID 3 is running, 
-
-=======PROCESSES CREATION=======
-Process created: PID 8 at 600
-Process created: PID 9 at 600
-
-=======TIMER INTERRUPT=======
-PID 4 put in ready queue
-PID 4 is running, 
-
-=======PROCESSES CREATION=======
-Process created: PID 10 at 900
-Process created: PID 11 at 900
-
-=======TIMER INTERRUPT=======
-PID 5 put in ready queue
-PID 5 is running, 
-
-=======PROCESSES CREATION=======
-Process created: PID 12 at 1200
-Process created: PID 13 at 1200
-
-=======TIMER INTERRUPT=======
-PID 1 put in ready queue
-PID 1 is running, 
-
-=======PROCESSES CREATION=======
-Process created: PID 14 at 1500
-Process created: PID 15 at 1500
-
-=======TIMER INTERRUPT=======
-PID 6 put in ready queue
-PID 6 is running, 
-
-=======PROCESSES CREATION=======
-Process created: PID 16 at 1800
-Process created: PID 17 at 1800
-
-=======TIMER INTERRUPT=======
-PID 7 put in ready queue
-PID 7 is running, 
-
-=======PROCESSES CREATION=======
-Process created: PID 18 at 2100
-Process created: PID 19 at 2100
-
-=======TIMER INTERRUPT=======
-PID 2 put in ready queue
-PID 2 is running, 
-
-=======PROCESSES CREATION=======
-Process created: PID 20 at 2400
-Process created: PID 21 at 2400
+Process created: PID 8 at 300
+Process created: PID 9 at 300
+Process created: PID 10 at 300
+Process created: PID 11 at 300
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 2 put into waiting queue, PID 8 dispatched
+I/O trap request: I/O device 2, PID 3 put into waitingQueue queue, PID 4 dispatched
 
 =======TIMER INTERRUPT=======
-PID 9 put in ready queue
-PID 9 is running, 
+Timer interrupt: PID 4 was running, PID 5 dispatched.
 
 =======PROCESSES CREATION=======
-Process created: PID 22 at 2700
-Process created: PID 23 at 2700
-Process created: PID 24 at 2700
-Process created: PID 25 at 2700
-
-=======TIMER INTERRUPT=======
-PID 3 put in ready queue
-PID 3 is running, 
-
-=======PROCESSES CREATION=======
-Process created: PID 26 at 3000
-Process created: PID 27 at 3000
+Process created: PID 12 at 600
+Process created: PID 13 at 600
+Process created: PID 14 at 600
+Process created: PID 15 at 600
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 3 put into waiting queue, PID 10 dispatched
+I/O trap request: I/O device 2, PID 5 put into waiting queue, PID 6 dispatched
 
 =======TIMER INTERRUPT=======
-PID 11 put in ready queue
-PID 11 is running, 
+Timer interrupt: PID 6 was running, PID 2 dispatched.
 
 =======PROCESSES CREATION=======
-Process created: PID 28 at 3300
-Process created: PID 29 at 3300
+Process created: PID 16 at 900
+Process created: PID 17 at 900
+Process created: PID 18 at 900
+Process created: PID 19 at 900
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 2 put into waiting queue, PID 7 dispatched
 
 =======TIMER INTERRUPT=======
-PID 4 put in ready queue
-PID 4 is running, 
+Timer interrupt: PID 7 was running, PID 8 dispatched.
 
 =======PROCESSES CREATION=======
-Process created: PID 30 at 3600
+Process created: PID 20 at 1200
+Process created: PID 21 at 1200
+Process created: PID 22 at 1200
+Process created: PID 23 at 1200
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 8 put into waiting queue, PID 9 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 9 was running, PID 10 dispatched.
+
+=======PROCESSES CREATION=======
+Process created: PID 24 at 1500
+Process created: PID 25 at 1500
+Process created: PID 26 at 1500
+Process created: PID 27 at 1500
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 10 put into waiting queue, PID 11 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 11 was running, PID 4 dispatched.
+
+=======PROCESSES CREATION=======
+Process created: PID 28 at 1800
+Process created: PID 29 at 1800
+Process created: PID 30 at 1800
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 4 put into waiting queue, PID 12 dispatched
-
-=======TIMER INTERRUPT=======
-PID 13 put in ready queue
-PID 13 is running, 
-
-=======TIMER INTERRUPT=======
-PID 5 put in ready queue
-PID 5 is running, 
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 5 put into waiting queue, PID 14 dispatched
-
-=======TIMER INTERRUPT=======
-PID 15 put in ready queue
-PID 15 is running, 
-
-=======TIMER INTERRUPT=======
-PID 1 put in ready queue
-PID 1 is running, 
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 1 put into waiting queue, PID 16 dispatched
-
-=======TIMER INTERRUPT=======
-PID 17 put in ready queue
-PID 17 is running, 
-
-=======TIMER INTERRUPT=======
-PID 6 put in ready queue
-PID 6 is running, 
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 18 dispatched
-
-=======TIMER INTERRUPT=======
-PID 19 put in ready queue
-PID 19 is running, 
-
-=======TIMER INTERRUPT=======
-PID 7 put in ready queue
-PID 7 is running, 
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 7 put into waiting queue, PID 20 dispatched
-
-=======TIMER INTERRUPT=======
-PID 21 put in ready queue
-PID 21 is running, 
-
-=======TIMER INTERRUPT=======
-PID 8 put in ready queue
-PID 8 is running, 
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 8 put into waiting queue, PID 22 dispatched
-
-=======TIMER INTERRUPT=======
-PID 23 put in ready queue
-PID 23 is running, 
-
-=======TIMER INTERRUPT=======
-PID 24 put in ready queue
-PID 24 is running, 
-
-=======TIMER INTERRUPT=======
-PID 25 put in ready queue
-PID 25 is running, 
-
-=======TIMER INTERRUPT=======
-PID 9 put in ready queue
-PID 9 is running, 
-
-=======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
-
-=======TIMER INTERRUPT=======
-PID 27 put in ready queue
-PID 27 is running, 
-
-=======TIMER INTERRUPT=======
-PID 10 put in ready queue
-PID 10 is running, 
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 10 put into waiting queue, PID 28 dispatched
-
-=======TIMER INTERRUPT=======
-PID 29 put in ready queue
-PID 29 is running, 
-
-=======TIMER INTERRUPT=======
-PID 11 put in ready queue
-PID 11 is running, 
-
-=======TIMER INTERRUPT=======
-PID 30 put in ready queue
-PID 30 is running, 
-
-=======TIMER INTERRUPT=======
-PID 12 put in ready queue
-PID 12 is running, 
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 12 put into waiting queue, PID 13 dispatched
 
 =======TIMER INTERRUPT=======
-PID 14 put in ready queue
-PID 14 is running, 
+Timer interrupt: PID 13 was running, PID 14 dispatched.
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 14 put into waiting queue, PID 15 dispatched
 
 =======TIMER INTERRUPT=======
-PID 16 put in ready queue
-PID 16 is running, 
+Timer interrupt: PID 15 was running, PID 6 dispatched.
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 16 dispatched
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 16 put into waiting queue, PID 17 dispatched
 
 =======TIMER INTERRUPT=======
-PID 18 put in ready queue
-PID 18 is running, 
+Timer interrupt: PID 17 was running, PID 18 dispatched.
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 18 put into waiting queue, PID 19 dispatched
 
 =======TIMER INTERRUPT=======
-PID 20 put in ready queue
-PID 20 is running, 
+Timer interrupt: PID 19 was running, PID 7 dispatched.
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 7 put into waiting queue, PID 20 dispatched
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 20 put into waiting queue, PID 21 dispatched
 
 =======TIMER INTERRUPT=======
-PID 22 put in ready queue
-PID 22 is running, 
+Timer interrupt: PID 21 was running, PID 22 dispatched.
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 22 put into waiting queue, PID 23 dispatched
 
 =======TIMER INTERRUPT=======
-PID 24 put in ready queue
-PID 24 is running, 
+Timer interrupt: PID 23 was running, PID 9 dispatched.
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 9 put into waiting queue, PID 24 dispatched
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 24 put into waiting queue, PID 25 dispatched
 
 =======TIMER INTERRUPT=======
-PID 9 put in ready queue
-PID 9 is running, 
+Timer interrupt: PID 25 was running, PID 26 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 9 put into waiting queue, PID 26 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 26 put into waiting queue, PID 27 dispatched
+I/O trap request: I/O device 2, PID 26 put into waiting queue, PID 27 dispatched
 
 =======TIMER INTERRUPT=======
-PID 28 put in ready queue
-PID 28 is running, 
+Timer interrupt: PID 27 was running, PID 11 dispatched.
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 11 put into waiting queue, PID 28 dispatched
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 28 put into waiting queue, PID 29 dispatched
 
 =======TIMER INTERRUPT=======
-PID 11 put in ready queue
-PID 11 is running, 
+Timer interrupt: PID 29 was running, PID 30 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 11 put into waiting queue, PID 30 dispatched
+I/O trap request: I/O device 2, PID 30 put into waiting queue, PID 13 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 30 put into waiting queue, PID 13 dispatched
+I/O trap request: I/O device 2, PID 13 put into waiting queue, PID 15 dispatched
 
 =======TIMER INTERRUPT=======
-PID 15 put in ready queue
-PID 15 is running, 
+Timer interrupt: PID 15 was running, PID 17 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 15 put into waiting queue, PID 17 dispatched
-
-=======TIMER INTERRUPT=======
-PID 19 put in ready queue
-PID 19 is running, 
+I/O trap request: I/O device 2, PID 17 put into waiting queue, PID 19 dispatched
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 19 put into waiting queue, PID 21 dispatched
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 21 is running, PID 26 put in ready queue
-
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 21 put into waiting queue, PID 23 dispatched
 
 =======TIMER INTERRUPT=======
-PID 25 put in ready queue
-PID 25 is running, 
+Timer interrupt: PID 23 was running, PID 25 dispatched.
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 25 put into waiting queue, PID 27 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 27 put into waiting queue, PID 29 dispatched
+I/O trap request: I/O device 2, PID 27 put into waiting queue, PID 29 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 13 dispatched
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 15 dispatched
 
 =======TIMER INTERRUPT=======
-PID 17 put in ready queue
-PID 17 is running, 
+Timer interrupt: PID 15 was running, PID 23 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 17 put into waiting queue, PID 26 dispatched
+I/O trap request: I/O device 2, PID 23 put into waiting queue, PID 15 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======TIMER INTERRUPT=======
-PID 23 put in ready queue
-PID 23 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 23 put into waiting queue, PID 13 dispatched
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 13 put into waiting queue, PID 26 dispatched
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 26 is running, PID 30 put in ready queue
+I/O completion interrupt: PID 15 is running, PID 15 put in ready queue
 
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 15 dispatched
 
 =======TIMER INTERRUPT=======
-PID 30 put in ready queue
-PID 30 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 30 put into waiting queue, PID 26 dispatched
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 26 is running, PID 27 put in ready queue
+I/O completion interrupt: PID 15 is running, PID 15 put in ready queue
 
 
 =======TIMER INTERRUPT=======
-PID 27 put in ready queue
-PID 27 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 27 put into waiting queue, PID 26 dispatched
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 15 dispatched
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 26 is running, PID 26 put in ready queue
+I/O completion interrupt: PID 15 is running, PID 15 put in ready queue
 
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 26 put into waiting queue, PID 26 dispatched
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 26 is running, PID 26 put in ready queue
+I/O completion interrupt: PID 15 is running, PID 15 put in ready queue
 
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 26 put into waiting queue, PID 26 dispatched
+I/O trap request: I/O device 2, PID 15 put into waiting queue, PID 15 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 15 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
 
 =======TIMER INTERRUPT=======
-PID 26 put in ready queue
-PID 26 is running, 
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 15 is running, PID 15 put in ready queue
+
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 15 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 15 put into waiting queue, No PID dispatched; empty readyQueue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 15 is running, PID 15 put in ready queue
+
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 was running, PID 15 dispatched.
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 15 is running, PID 15 put in ready queue
+
 
 =======PROCESS TERMINATION=======
-Process terminated: PID 26 at 18486
+Process terminated: PID 15 at 14322
+
+=======PROCESS TERMINATION=======
+Process terminated: PID 15 at 14322
+
+=======PROCESS TERMINATION=======
+Process terminated: PID 15 at 14322
 
 Simulation finished!
