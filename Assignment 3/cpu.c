@@ -12,13 +12,17 @@
  * Assignment 3
  *
  * Description:
- * This program represents a CPU in terms of a Round-Robin scheduler, utilizing the PCB and Queue from Assignment 1.
+ * Simulates execution cycles of the CPU, complete with IO traps, IO completion interrupts, Timer interrupts, and
+ * terminating processes. Since processes are able to have the property of NOT terminating over the course of a
+ * simulation, this program will simulate CPU cycles until all processes have been terminated OR until a defined
+ * number of cycles has been reached, whichever comes first.
  *
  ************************************************************************************************/
 
 #include "cpu.h"
 
 #define MAX_PROCESS 30
+#define MAX_SIMULATION_CYCLES 500000
 #define MAX_IO_TRAPS 4
 #define DEVICE_ARRAY_1 1
 #define DEVICE_ARRAY_2 2
@@ -115,27 +119,29 @@ unsigned int CPU_pop_sysStack(CPU_p cpu) {
     return cpu->sysStack;
 }
 
-void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device) {
+void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, IO_p device) {
     switch (interrupt_type) {
         case INTERRUPT_TIMER:
             fprintf(file, "=======TIMER INTERRUPT=======\n");
             printf("=======TIMER INTERRUPT=======\n");
-            // 1. Put process back into the readyQueue
-            fprintf(file, "Timer interrupt: PID %d was running, ", cpu->currentProcess->pid);
-            printf("Timer interrupt: PID %d was running, ", cpu->currentProcess->pid);
-            Queue_enqueue(cpu->readyQueue, cpu->currentProcess);
+            if (cpu->currentProcess != NULL) {
+                // 1. Put process back into the readyQueue
+                fprintf(file, "Timer interrupt: PID %d was running, ", cpu->currentProcess->pid);
+                printf("Timer interrupt: PID %d was running, ", cpu->currentProcess->pid);
+                Queue_enqueue(cpu->readyQueue, cpu->currentProcess);
 
-            // 2. Change its state from interrupted to ready
-            PCB_set_state(cpu->currentProcess, ready);
+                // 2. Change its state from interrupted to ready
+                PCB_set_state(cpu->currentProcess, ready);
+            }
 
             // 3. Make call to dispatcher
             int successfulDispatch = CPU_dispatcher(cpu, INTERRUPT_TIMER);
             if (successfulDispatch) {
-                fprintf(file, "PID %d dispatched.\n", cpu->currentProcess->pid);
-                printf("PID %d dispatched.\n", cpu->currentProcess->pid);
+                fprintf(file, "PID %d dispatched.\n\n", cpu->currentProcess->pid);
+                printf("PID %d dispatched.\n\n", cpu->currentProcess->pid);
             } else {
-                fprintf(file, "No PID was dispatched; readyQueue was empty!\n");
-                printf("No PID was dispatched; readyQueue was empty!\n");
+                fprintf(file, "No PID was dispatched; readyQueue was empty!\n\n");
+                printf("No PID was dispatched; readyQueue was empty!\n\n");
             }
 
             // 4. Returned from dispatcher, do any housekeeping
@@ -146,10 +152,17 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
         case INTERRUPT_IO:
             fprintf(file, "=======IO INTERRUPT=======\n");
             printf("=======IO INTERRUPT=======\n");
-            // 1. Put waiting process into the readyQueue
-            fprintf(file, "I/O completion interrupt: PID %d is running, ", cpu->currentProcess->pid);
+
+            // IF there is a currently running process
+            if (cpu->currentProcess != NULL) {
+                // 1. Put waiting process into the readyQueue
+                fprintf(file, "I/O completion interrupt: PID %d is running, ", cpu->currentProcess->pid);
+                printf("I/O completion interrupt: PID %d is running, ", cpu->currentProcess->pid);
+            } else {
+                fprintf(file, "I/O completion interrupt: No process was running, ");
+                printf("I/O completion interrupt: No process was running, ");
+            }
             fprintf(file, "PID %d put in ready queue\n\n", device->waitingQueue->head->pcb->pid);
-            printf("I/O completion interrupt: PID %d is running, ", cpu->currentProcess->pid);
             printf("PID %d in ready queue\n\n", device->waitingQueue->head->pcb->pid);
             Queue_enqueue(cpu->readyQueue, Queue_dequeue(device->waitingQueue));
             break;
@@ -157,8 +170,6 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
             CPU_dispatcher(cpu, INTERRUPT_NORMAL);
             break;
     }
-    fprintf(file, "\n");
-    printf("\n");
     return;
 }
 
@@ -188,13 +199,17 @@ int CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
     return 0; // No process was dispatched
 }
 
-void CPU_pseudo_isr(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device) {
+void CPU_pseudo_isr(CPU_p cpu, Interrupt_type interrupt_type, IO_p device) {
 
-    // 1. Change the state of the running process to interrupted
-    PCB_set_state(cpu->currentProcess, interrupted);
+    // IF there is a running process:
+    if (cpu->currentProcess != NULL) {
+        // 1. Change the state of the running process to interrupted
+        PCB_set_state(cpu->currentProcess, interrupted);
 
-    // 2. Save the CPU state to the PCB
-    PCB_set_pc(cpu->currentProcess, cpu->pc);
+        // 2. Save the CPU state to the PCB
+        PCB_set_pc(cpu->currentProcess, cpu->pc);
+    }
+
 
     //Replace PC of CPU will value stored in systemStack
     cpu->pc = cpu->sysStack;
@@ -202,7 +217,7 @@ void CPU_pseudo_isr(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p devic
     //cpu->pc = CPU_pop_sysStack(cpu);
 
     // 3. "Do an up-call" to the scheduler
-    CPU_scheduler(cpu, interrupt_type, PC, device);
+    CPU_scheduler(cpu, interrupt_type, device);
 }
 
 /**
@@ -322,8 +337,8 @@ int main() {
     cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
 
 
-    //total_procs <= MAX_PROCESS - 5
-    while (Queue_get_size(cpu->terminatedQueue) < MAX_PROCESS) {
+    // Run the simulation until either all processes terminate or max cycles reached (+1 for printing pretty # cycles)
+    while (Queue_get_size(cpu->terminatedQueue) < MAX_PROCESS && time_count < MAX_SIMULATION_CYCLES + 1) {
 
         /**** EXECUTION INSTRUCTION ****/
         if (cpu->currentProcess != NULL) {
@@ -341,18 +356,18 @@ int main() {
             // When a process terminates
             if (PCB_get_terminate(cpu->currentProcess) != 0 &&
                 PCB_get_terminate(cpu->currentProcess) == PCB_get_term_count(cpu->currentProcess)) {
+
                 fprintf(file, "=======PROCESS TERMINATION=======\n");
                 printf("=======PROCESS TERMINATION=======\n");
                 fprintf(file, "Process terminated: PID %d at %u\n\n", PCB_get_pid(cpu->currentProcess), time_count);
                 printf("Process terminated: PID %d at %u\n\n", PCB_get_pid(cpu->currentProcess), time_count);
                 PCB_set_termination(cpu->currentProcess, time_count);
                 CPU_enqueue_terminatedQueue(cpu, cpu->currentProcess);
+                cpu->currentProcess = NULL;
                 if (!Queue_isEmpty(cpu->readyQueue)) {
                     cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
-                } else {
-                    break;
                 }
-                continue;
+//                continue;
             }
         }
 
@@ -365,7 +380,7 @@ int main() {
 
             // calls pseudo ISR
             if (cpu->currentProcess != NULL) {
-                CPU_pseudo_isr(cpu, INTERRUPT_TIMER, PCB_get_PC(cpu->currentProcess), NULL);
+                CPU_pseudo_isr(cpu, INTERRUPT_TIMER, NULL);
             }
 
 
@@ -390,6 +405,10 @@ int main() {
                 }
             }
 
+            // If there is no currently running process, dequeue from the newly create processes
+            if (cpu->currentProcess == NULL && !Queue_isEmpty(cpu->readyQueue)) {
+                cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+            }
 
         }
 
@@ -397,7 +416,7 @@ int main() {
         if (!Queue_isEmpty(device_1->waitingQueue)) {
             device_1_interrupt = Timer_countDown(device_1->timer);
             if (device_1_interrupt == 1) {
-                CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_1);
+                CPU_pseudo_isr(cpu, INTERRUPT_IO, device_1);
                 if (device_1->timer->count == -1 || device_1->timer->count == 0)
                     Timer_set_count(device_1->timer, QUANTUM * (rand() % 3 + 3));
             }
@@ -406,7 +425,7 @@ int main() {
         if (!Queue_isEmpty(device_2->waitingQueue)) {
             device_2_interrupt = Timer_countDown(device_2->timer);
             if (device_2_interrupt == 1) {
-                CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_2);
+                CPU_pseudo_isr(cpu, INTERRUPT_IO, device_2);
                 if (device_2->timer->count == -1 || device_2->timer->count == 0)
                     Timer_set_count(device_2->timer, QUANTUM * (rand() % 3 + 3));
             }
@@ -431,8 +450,8 @@ int main() {
         time_count++;
     }
 
-    fprintf(file, "Simulation finished!");
-    printf("Simulation finished!");
+    fprintf(file, "Simulation finished! Total cycles: %d", time_count - 1);
+    printf("Simulation finished! Total cycles: %d", time_count - 1);
     fclose(file);
     CPU_destructor(cpu);
     return 0;

@@ -100,9 +100,9 @@ unsigned int CPU_pop_sysStack(CPU_p);  // Pops off int value from cpu's sysStack
 
 int CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type);   // Returns 1 if successfully dispatched process from readyQueue
 
-void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int, IO_p);
+void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, IO_p);
 
-void CPU_pseudo_isr(CPU_p cpu, Interrupt_type, int, IO_p);
+void CPU_pseudo_isr(CPU_p cpu, Interrupt_type, IO_p);
 
 PCB_p dispatch(CPU_p);                          // Dispatches...
 
