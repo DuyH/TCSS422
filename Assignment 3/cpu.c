@@ -316,7 +316,7 @@ int main() {
 
 
     //total_procs <= MAX_PROCESS - 5
-    while (total_procs!=Queue_get_size(cpu->terminatedQueue)) {
+    while (total_procs != Queue_get_size(cpu->terminatedQueue)) {
 
 
         printf("Check: %u\n", time_count);
@@ -342,6 +342,8 @@ int main() {
                 CPU_enqueue_terminatedQueue(cpu, cpu->currentProcess);
                 if (!Queue_isEmpty(cpu->readyQueue)) {
                     cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+                } else {
+                    break;
                 }
                 continue;
             }

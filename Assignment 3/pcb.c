@@ -51,6 +51,10 @@ PCB_p PCB_constructor() {
     pcb->io_trap_2[2] = 600;
     pcb->io_trap_2[3] = 910;
 
+    // Randomly generate 8 numbers for trap calls
+    int i = 0;
+    for(;i<8;i)
+
 
 
 
