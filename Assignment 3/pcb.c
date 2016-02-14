@@ -29,35 +29,17 @@
 PCB_p PCB_constructor() {
     PCB_p pcb = (PCB_p) malloc(sizeof(PCB));
 
-
-//    		new += pcb->io_trap_1[i - 1];
-//    		new1 += pcb->io_trap_2[i - 1];
-//    	}
-//        PCB_set_io_trap_1(pcb, new, i);
-//        PCB_set_io_trap_2(pcb, new1, i);
-//    }
-
     srand((unsigned int)time(NULL));
-    // Randomly pick a number in the hundreds:
-    unsigned int starting = (rand() % 30 + 1) * 10;
-
-    pcb->io_trap_1[0] = 200;
-    pcb->io_trap_1[1] = 750;
-    pcb->io_trap_1[2] = 920;
-    pcb->io_trap_1[3] = 1430;
-
-    pcb->io_trap_2[0] = 100;
-    pcb->io_trap_2[1] = 180;
-    pcb->io_trap_2[2] = 600;
-    pcb->io_trap_2[3] = 910;
-
-    // Randomly generate 8 numbers for trap calls
-    int i = 0;
-    for(;i<8;i)
-
-
-
-
+    int i=0;
+    for (; i < 2; i++) {
+        pcb->io_trap_1[0] = (rand() % 60) * 10;
+        pcb->io_trap_2[0] = (rand() % 60) * 10;
+        int j = 1;
+        for (; j < 4; j++) {
+            pcb->io_trap_1[j] = pcb->io_trap_1[j-1]+ (rand() % 60) * 10;
+            pcb->io_trap_2[j] = pcb->io_trap_2[j-1]+ (rand() % 60) * 10;
+        }
+    }
     return pcb;
 }
 
