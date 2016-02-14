@@ -116,9 +116,10 @@ unsigned int CPU_pop_sysStack(CPU_p cpu) {
 }
 
 void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device) {
-    printf("INTERRUPT: %u\n", interrupt_type);
     switch (interrupt_type) {
         case INTERRUPT_TIMER:
+            fprintf(file, "=======TIMER INTERRUPT=======\n");
+            printf("=======TIMER INTERRUPT=======\n");
             // 1. Put process back into the readyQueue
             Queue_enqueue(cpu->readyQueue, cpu->currentProcess);
             fprintf(file, "PID %d put in ready queue\n", cpu->readyQueue->head->pcb->pid);
@@ -136,6 +137,8 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
                 fprintf(file, "No PID is running; readyQueue was empty on Dispatch call");
                 printf("No PID is running; readyQueue was empty on Dispatch call");
             }
+            fprintf(file, "\n");
+            printf("\n");
 
 
 
@@ -146,11 +149,13 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
             // 5. Returns to pseudo-ISR
             break;
         case INTERRUPT_IO:
+            fprintf(file, "=======IO INTERRUPT=======\n");
+            printf("=======IO INTERRUPT=======\n");
             // 1. Put waiting process into the readyQueue
             fprintf(file, "I/O completion interrupt: PID %d is running, ", cpu->currentProcess->pid);
-            fprintf(file, "PID %d put in ready queue\n", device->waitingQueue->head->pcb->pid);
+            fprintf(file, "PID %d put in ready queue\n\n", device->waitingQueue->head->pcb->pid);
             printf("I/O completion interrupt: PID %d is running, ", cpu->currentProcess->pid);
-            printf("PID %d in ready queue\n", device->waitingQueue->head->pcb->pid);
+            printf("PID %d in ready queue\n\n", device->waitingQueue->head->pcb->pid);
             Queue_enqueue(cpu->readyQueue, Queue_dequeue(device->waitingQueue));
             break;
         default:
@@ -217,6 +222,8 @@ void CPU_remove_file() {
  * Function that creates 0-5 new processes and puts them into a list.
  */
 Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long int time_count) {
+    fprintf(file, "=======PROCESSES CREATION=======\n");
+    printf("=======PROCESSES CREATION=======\n");
     int n;
     static int proc_id = 1;
     for (n = 0; n < numb_process; n++) {
@@ -236,6 +243,8 @@ Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long
         fprintf(file, "Process created: PID %d at %ld\n", PCB_get_pid(pcb), PCB_get_creation(pcb));
         printf("Process created: PID %d at %ld\n", PCB_get_pid(pcb), PCB_get_creation(pcb));
     }
+    fprintf(file, "\n");
+    printf("\n");
     return queue;
 }
 
@@ -258,6 +267,8 @@ int CPU_check_io_request(PCB_p pcb, int device_num) {
 */
 void CPU_io_trap_handler(CPU_p cpu, IO_p device, int device_num) {
 
+    fprintf(file, "=======IO TRAP HANDLER=======\n");
+    printf("=======IO TRAP HANDLER=======\n");
     fprintf(file, "I/O trap request: I/O device %d, ", device_num);
     printf("I/O trap request: I/O device %d, ", device_num);
 
@@ -273,6 +284,8 @@ void CPU_io_trap_handler(CPU_p cpu, IO_p device, int device_num) {
         fprintf(file, "No PID dispatched; empty readyQueue\n");
         printf("No PID dispatched; empty readyQueue\n");
     }
+    fprintf(file, "\n");
+    printf("\n");
 
 }
 
@@ -315,13 +328,11 @@ int main() {
 
 
     //total_procs <= MAX_PROCESS - 5
-    while (total_procs != Queue_get_size(cpu->terminatedQueue)) {
-
-
-        printf("Check: %u\n", time_count);
+    while (Queue_get_size(cpu->terminatedQueue) < MAX_PROCESS) {
 
         /**** EXECUTION INSTRUCTION ****/
         if (cpu->currentProcess != NULL) {
+
             //Increment PC by 1 to stimulate instruction execution
             PCB_increment_PC(cpu->currentProcess);
             CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
@@ -335,8 +346,10 @@ int main() {
             // When a process terminates
             if (PCB_get_terminate(cpu->currentProcess) != 0 &&
                 PCB_get_terminate(cpu->currentProcess) == PCB_get_term_count(cpu->currentProcess)) {
-                fprintf(file, "Process terminated: PID %d at %u\n", PCB_get_pid(cpu->currentProcess), time_count);
-                printf("Process terminated: PID %d at %u\n", PCB_get_pid(cpu->currentProcess), time_count);
+                fprintf(file, "=======PROCESS TERMINATION=======\n");
+                printf("=======PROCESS TERMINATION=======\n");
+                fprintf(file, "Process terminated: PID %d at %u\n\n", PCB_get_pid(cpu->currentProcess), time_count);
+                printf("Process terminated: PID %d at %u\n\n", PCB_get_pid(cpu->currentProcess), time_count);
                 PCB_set_termination(cpu->currentProcess, time_count);
                 CPU_enqueue_terminatedQueue(cpu, cpu->currentProcess);
                 if (!Queue_isEmpty(cpu->readyQueue)) {
@@ -391,7 +404,7 @@ int main() {
             if (device_1_interrupt == 1) {
                 CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_1);
                 if (device_1->timer->count == -1 || device_1->timer->count == 0)
-                Timer_set_count(device_1->timer, QUANTUM * (rand() % 3 + 3));
+                    Timer_set_count(device_1->timer, QUANTUM * (rand() % 3 + 3));
             }
         }
 
@@ -423,8 +436,7 @@ int main() {
         time_count++;
     }
 
-    fprintf(file,
-            "Simulation finished!");
+    fprintf(file, "Simulation finished!");
     printf("Simulation finished!");
     fclose(file);
     CPU_destructor(cpu);
