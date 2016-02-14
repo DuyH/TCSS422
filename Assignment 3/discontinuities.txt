@@ -1,0 +1,704 @@
+Process created: PID 1 at 1
+Process created: PID 2 at 1
+Process created: PID 3 at 1
+I/O trap request: I/O device 1, PID 1 put into waiting queue, PID 2 dispatched
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 3 dispatched
+I/O trap request: I/O device 1, PID 3 put into waiting queue, No PID dispatched; empty readyQueue
+PID 3 put in ready queue
+PID 3 is running, 
+Process created: PID 4 at 300
+Process created: PID 5 at 300
+Process created: PID 6 at 300
+Process created: PID 7 at 300
+Process created: PID 8 at 300
+I/O trap request: I/O device 1, PID 3 put into waiting queue, PID 4 dispatched
+I/O trap request: I/O device 1, PID 4 put into waiting queue, PID 5 dispatched
+I/O trap request: I/O device 1, PID 5 put into waiting queue, PID 6 dispatched
+I/O trap request: I/O device 1, PID 6 put into waiting queue, PID 7 dispatched
+I/O trap request: I/O device 1, PID 7 put into waiting queue, PID 8 dispatched
+I/O trap request: I/O device 1, PID 8 put into waiting queue, No PID dispatched; empty readyQueue
+PID 8 put in ready queue
+PID 8 is running, 
+Process created: PID 9 at 600
+Process created: PID 10 at 600
+Process created: PID 11 at 600
+Process created: PID 12 at 600
+Process created: PID 13 at 600
+I/O trap request: I/O device 1, PID 8 put into waiting queue, PID 9 dispatched
+I/O trap request: I/O device 1, PID 9 put into waiting queue, PID 10 dispatched
+I/O trap request: I/O device 1, PID 10 put into waiting queue, PID 11 dispatched
+I/O trap request: I/O device 1, PID 11 put into waiting queue, PID 12 dispatched
+I/O trap request: I/O device 1, PID 12 put into waiting queue, PID 13 dispatched
+PID 13 put in ready queue
+PID 13 is running, 
+Process created: PID 14 at 900
+Process created: PID 15 at 900
+Process created: PID 16 at 900
+Process created: PID 17 at 900
+Process created: PID 18 at 900
+I/O trap request: I/O device 1, PID 13 put into waiting queue, PID 14 dispatched
+I/O trap request: I/O device 1, PID 14 put into waiting queue, PID 15 dispatched
+PID 16 put in ready queue
+PID 16 is running, 
+Process created: PID 19 at 1200
+Process created: PID 20 at 1200
+Process created: PID 21 at 1200
+Process created: PID 22 at 1200
+Process created: PID 23 at 1200
+I/O trap request: I/O device 1, PID 16 put into waiting queue, PID 17 dispatched
+I/O trap request: I/O device 1, PID 17 put into waiting queue, PID 18 dispatched
+I/O trap request: I/O device 1, PID 18 put into waiting queue, PID 15 dispatched
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 19 dispatched
+I/O trap request: I/O device 1, PID 19 put into waiting queue, PID 20 dispatched
+I/O trap request: I/O device 1, PID 20 put into waiting queue, PID 21 dispatched
+I/O trap request: I/O device 1, PID 21 put into waiting queue, PID 22 dispatched
+I/O trap request: I/O device 1, PID 22 put into waiting queue, PID 23 dispatched
+I/O trap request: I/O device 1, PID 23 put into waiting queue, No PID dispatched; empty readyQueue
+PID 23 put in ready queue
+PID 23 is running, 
+Process created: PID 24 at 1500
+Process created: PID 25 at 1500
+Process created: PID 26 at 1500
+Process created: PID 27 at 1500
+Process created: PID 28 at 1500
+I/O trap request: I/O device 1, PID 23 put into waiting queue, PID 24 dispatched
+I/O completion interrupt: PID 24 is running, PID 1 put in ready queue
+
+PID 25 put in ready queue
+PID 25 is running, 
+Process created: PID 29 at 1800
+Process created: PID 30 at 1800
+I/O trap request: I/O device 1, PID 25 put into waiting queue, PID 26 dispatched
+I/O trap request: I/O device 1, PID 26 put into waiting queue, PID 27 dispatched
+I/O trap request: I/O device 1, PID 27 put into waiting queue, PID 28 dispatched
+I/O trap request: I/O device 1, PID 28 put into waiting queue, PID 1 dispatched
+PID 24 put in ready queue
+PID 24 is running, 
+I/O trap request: I/O device 1, PID 24 put into waiting queue, PID 29 dispatched
+I/O trap request: I/O device 1, PID 29 put into waiting queue, PID 30 dispatched
+I/O trap request: I/O device 1, PID 30 put into waiting queue, PID 1 dispatched
+I/O trap request: I/O device 1, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O trap request: I/O device 1, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 2 put in ready queue
+
+I/O trap request: I/O device 2, PID 1 put into waiting queue, PID 2 dispatched
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O completion interrupt: PID 2 is running, PID 1 put in ready queue
+
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 1 dispatched
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 3 put in ready queue
+
+I/O trap request: I/O device 1, PID 1 put into waiting queue, PID 3 dispatched
+PID 3 put in ready queue
+PID 3 is running, 
+I/O trap request: I/O device 2, PID 3 put into waiting queue, No PID dispatched; empty readyQueue
+PID 3 put in ready queue
+PID 3 is running, 
+PID 3 put in ready queue
+PID 3 is running, 
+PID 3 put in ready queue
+PID 3 is running, 
+I/O completion interrupt: PID 3 is running, PID 3 put in ready queue
+
+I/O completion interrupt: PID 3 is running, PID 1 put in ready queue
+
+I/O trap request: I/O device 1, PID 3 put into waiting queue, PID 3 dispatched
+I/O trap request: I/O device 2, PID 3 put into waiting queue, PID 1 dispatched
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+PID 1 put in ready queue
+PID 1 is running, 
+I/O trap request: I/O device 1, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O trap request: I/O device 1, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 4 put in ready queue
+
+I/O completion interrupt: PID 1 is running, PID 1 put in ready queue
+
+PID 4 put in ready queue
+PID 4 is running, 
+I/O trap request: I/O device 1, PID 4 put into waiting queue, PID 1 dispatched
+PID 1 put in ready queue
+PID 1 is running, 
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 5 put in ready queue
+
+PID 1 put in ready queue
+PID 1 is running, 
+I/O trap request: I/O device 1, PID 1 put into waiting queue, PID 5 dispatched
+I/O completion interrupt: PID 5 is running, PID 1 put in ready queue
+
+PID 1 put in ready queue
+PID 1 is running, 
+I/O trap request: I/O device 1, PID 1 put into waiting queue, PID 1 dispatched
+I/O trap request: I/O device 2, PID 1 put into waiting queue, PID 5 dispatched
+PID 5 put in ready queue
+PID 5 is running, 
+I/O trap request: I/O device 1, PID 5 put into waiting queue, No PID dispatched; empty readyQueue
+PID 5 put in ready queue
+PID 5 is running, 
+I/O trap request: I/O device 1, PID 5 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 5 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 5 put into waiting queue, No PID dispatched; empty readyQueue
+PID 5 put in ready queue
+PID 5 is running, 
+I/O completion interrupt: PID 5 is running, PID 6 put in ready queue
+
+I/O trap request: I/O device 1, PID 5 put into waiting queue, PID 6 dispatched
+I/O completion interrupt: PID 6 is running, PID 2 put in ready queue
+
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 6 dispatched
+PID 6 put in ready queue
+PID 6 is running, 
+I/O trap request: I/O device 1, PID 6 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 6 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 6 put into waiting queue, No PID dispatched; empty readyQueue
+PID 6 put in ready queue
+PID 6 is running, 
+I/O completion interrupt: PID 6 is running, PID 2 put in ready queue
+
+I/O trap request: I/O device 1, PID 6 put into waiting queue, PID 2 dispatched
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O completion interrupt: PID 2 is running, PID 7 put in ready queue
+
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 7 dispatched
+PID 7 put in ready queue
+PID 7 is running, 
+I/O trap request: I/O device 1, PID 7 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 7 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 7 put into waiting queue, No PID dispatched; empty readyQueue
+PID 7 put in ready queue
+PID 7 is running, 
+I/O completion interrupt: PID 7 is running, PID 2 put in ready queue
+
+I/O trap request: I/O device 1, PID 7 put into waiting queue, PID 2 dispatched
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O completion interrupt: PID 2 is running, PID 8 put in ready queue
+
+PID 8 put in ready queue
+PID 8 is running, 
+I/O trap request: I/O device 1, PID 8 put into waiting queue, PID 2 dispatched
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O completion interrupt: PID 2 is running, PID 1 put in ready queue
+
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 1 dispatched
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 8 put in ready queue
+
+I/O trap request: I/O device 2, PID 1 put into waiting queue, PID 8 dispatched
+I/O trap request: I/O device 2, PID 8 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 8 put into waiting queue, No PID dispatched; empty readyQueue
+PID 8 put in ready queue
+PID 8 is running, 
+PID 8 put in ready queue
+PID 8 is running, 
+I/O trap request: I/O device 1, PID 8 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 8 put into waiting queue, No PID dispatched; empty readyQueue
+PID 8 put in ready queue
+PID 8 is running, 
+I/O completion interrupt: PID 8 is running, PID 9 put in ready queue
+
+I/O trap request: I/O device 1, PID 8 put into waiting queue, PID 9 dispatched
+PID 9 put in ready queue
+PID 9 is running, 
+I/O completion interrupt: PID 9 is running, PID 3 put in ready queue
+
+PID 3 put in ready queue
+PID 3 is running, 
+I/O trap request: I/O device 2, PID 3 put into waiting queue, PID 9 dispatched
+I/O trap request: I/O device 1, PID 9 put into waiting queue, No PID dispatched; empty readyQueue
+PID 9 put in ready queue
+PID 9 is running, 
+I/O trap request: I/O device 1, PID 9 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 9 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 9 put into waiting queue, No PID dispatched; empty readyQueue
+PID 9 put in ready queue
+PID 9 is running, 
+I/O completion interrupt: PID 9 is running, PID 3 put in ready queue
+
+I/O trap request: I/O device 1, PID 9 put into waiting queue, PID 3 dispatched
+I/O trap request: I/O device 2, PID 3 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 3 put into waiting queue, No PID dispatched; empty readyQueue
+PID 3 put in ready queue
+PID 3 is running, 
+I/O completion interrupt: PID 3 is running, PID 10 put in ready queue
+
+I/O trap request: I/O device 1, PID 3 put into waiting queue, PID 10 dispatched
+PID 10 put in ready queue
+PID 10 is running, 
+I/O trap request: I/O device 1, PID 10 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 10 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 10 put into waiting queue, No PID dispatched; empty readyQueue
+PID 10 put in ready queue
+PID 10 is running, 
+I/O trap request: I/O device 1, PID 10 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 10 put into waiting queue, No PID dispatched; empty readyQueue
+PID 10 put in ready queue
+PID 10 is running, 
+I/O trap request: I/O device 1, PID 10 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 10 put into waiting queue, No PID dispatched; empty readyQueue
+I/O completion interrupt: PID 10 is running, PID 1 put in ready queue
+
+I/O trap request: I/O device 2, PID 10 put into waiting queue, PID 1 dispatched
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 11 put in ready queue
+
+I/O trap request: I/O device 1, PID 1 put into waiting queue, PID 11 dispatched
+PID 11 put in ready queue
+PID 11 is running, 
+I/O trap request: I/O device 1, PID 11 put into waiting queue, No PID dispatched; empty readyQueue
+PID 11 put in ready queue
+PID 11 is running, 
+I/O trap request: I/O device 1, PID 11 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 11 put into waiting queue, No PID dispatched; empty readyQueue
+PID 11 put in ready queue
+PID 11 is running, 
+I/O trap request: I/O device 2, PID 11 put into waiting queue, No PID dispatched; empty readyQueue
+I/O completion interrupt: PID 11 is running, PID 1 put in ready queue
+
+I/O trap request: I/O device 2, PID 11 put into waiting queue, PID 1 dispatched
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 12 put in ready queue
+
+I/O trap request: I/O device 1, PID 1 put into waiting queue, PID 12 dispatched
+PID 12 put in ready queue
+PID 12 is running, 
+PID 12 put in ready queue
+PID 12 is running, 
+I/O completion interrupt: PID 12 is running, PID 1 put in ready queue
+
+PID 1 put in ready queue
+PID 1 is running, 
+I/O trap request: I/O device 1, PID 1 put into waiting queue, PID 12 dispatched
+I/O completion interrupt: PID 12 is running, PID 13 put in ready queue
+
+PID 13 put in ready queue
+PID 13 is running, 
+I/O trap request: I/O device 1, PID 13 put into waiting queue, PID 12 dispatched
+I/O trap request: I/O device 1, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+PID 12 put in ready queue
+PID 12 is running, 
+PID 12 put in ready queue
+PID 12 is running, 
+I/O trap request: I/O device 1, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+PID 12 put in ready queue
+PID 12 is running, 
+I/O trap request: I/O device 1, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+I/O completion interrupt: PID 12 is running, PID 14 put in ready queue
+
+I/O completion interrupt: PID 12 is running, PID 5 put in ready queue
+
+PID 14 put in ready queue
+PID 14 is running, 
+I/O trap request: I/O device 1, PID 14 put into waiting queue, PID 5 dispatched
+I/O trap request: I/O device 2, PID 5 put into waiting queue, PID 12 dispatched
+I/O trap request: I/O device 1, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+PID 12 put in ready queue
+PID 12 is running, 
+I/O trap request: I/O device 1, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+PID 12 put in ready queue
+PID 12 is running, 
+PID 12 put in ready queue
+PID 12 is running, 
+I/O trap request: I/O device 2, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 1, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+PID 12 put in ready queue
+PID 12 is running, 
+I/O completion interrupt: PID 12 is running, PID 16 put in ready queue
+
+I/O completion interrupt: PID 12 is running, PID 5 put in ready queue
+
+PID 16 put in ready queue
+PID 16 is running, 
+I/O trap request: I/O device 1, PID 16 put into waiting queue, PID 5 dispatched
+I/O trap request: I/O device 2, PID 5 put into waiting queue, PID 12 dispatched
+I/O trap request: I/O device 1, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+PID 12 put in ready queue
+PID 12 is running, 
+PID 12 put in ready queue
+PID 12 is running, 
+PID 12 put in ready queue
+PID 12 is running, 
+I/O completion interrupt: PID 12 is running, PID 17 put in ready queue
+
+PID 17 put in ready queue
+PID 17 is running, 
+I/O trap request: I/O device 1, PID 17 put into waiting queue, PID 12 dispatched
+I/O completion interrupt: PID 12 is running, PID 6 put in ready queue
+
+PID 6 put in ready queue
+PID 6 is running, 
+I/O trap request: I/O device 1, PID 6 put into waiting queue, PID 12 dispatched
+I/O trap request: I/O device 1, PID 12 put into waiting queue, No PID dispatched; empty readyQueue
+PID 12 put in ready queue
+PID 12 is running, 
+PID 12 put in ready queue
+PID 12 is running, 
+PID 12 put in ready queue
+PID 12 is running, 
+I/O completion interrupt: PID 12 is running, PID 18 put in ready queue
+
+I/O trap request: I/O device 1, PID 12 put into waiting queue, PID 18 dispatched
+I/O completion interrupt: PID 18 is running, PID 6 put in ready queue
+
+I/O trap request: I/O device 1, PID 18 put into waiting queue, PID 6 dispatched
+I/O trap request: I/O device 2, PID 6 put into waiting queue, No PID dispatched; empty readyQueue
+PID 6 put in ready queue
+PID 6 is running, 
+PID 6 put in ready queue
+PID 6 is running, 
+I/O trap request: I/O device 1, PID 6 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 6 put into waiting queue, No PID dispatched; empty readyQueue
+PID 6 put in ready queue
+PID 6 is running, 
+I/O completion interrupt: PID 6 is running, PID 15 put in ready queue
+
+PID 15 put in ready queue
+PID 15 is running, 
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 6 dispatched
+I/O trap request: I/O device 1, PID 6 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 6 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 6 put into waiting queue, No PID dispatched; empty readyQueue
+PID 6 put in ready queue
+PID 6 is running, 
+I/O completion interrupt: PID 6 is running, PID 2 put in ready queue
+
+I/O trap request: I/O device 1, PID 6 put into waiting queue, PID 2 dispatched
+PID 2 put in ready queue
+PID 2 is running, 
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O completion interrupt: PID 2 is running, PID 19 put in ready queue
+
+I/O completion interrupt: PID 2 is running, PID 7 put in ready queue
+
+PID 19 put in ready queue
+PID 19 is running, 
+I/O trap request: I/O device 1, PID 19 put into waiting queue, PID 7 dispatched
+I/O trap request: I/O device 2, PID 7 put into waiting queue, PID 2 dispatched
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+PID 2 put in ready queue
+PID 2 is running, 
+I/O completion interrupt: PID 2 is running, PID 20 put in ready queue
+
+I/O completion interrupt: PID 2 is running, PID 7 put in ready queue
+
+PID 20 put in ready queue
+PID 20 is running, 
+I/O trap request: I/O device 1, PID 20 put into waiting queue, PID 7 dispatched
+I/O trap request: I/O device 2, PID 7 put into waiting queue, PID 2 dispatched
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O completion interrupt: PID 2 is running, PID 21 put in ready queue
+
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 21 dispatched
+PID 21 put in ready queue
+PID 21 is running, 
+I/O trap request: I/O device 1, PID 21 put into waiting queue, No PID dispatched; empty readyQueue
+PID 21 put in ready queue
+PID 21 is running, 
+I/O completion interrupt: PID 21 is running, PID 2 put in ready queue
+
+I/O trap request: I/O device 2, PID 21 put into waiting queue, PID 2 dispatched
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O completion interrupt: PID 2 is running, PID 22 put in ready queue
+
+PID 22 put in ready queue
+PID 22 is running, 
+I/O trap request: I/O device 1, PID 22 put into waiting queue, PID 2 dispatched
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 1, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O completion interrupt: PID 2 is running, PID 2 put in ready queue
+
+PID 2 put in ready queue
+PID 2 is running, 
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 2 dispatched
+I/O completion interrupt: PID 2 is running, PID 23 put in ready queue
+
+PID 23 put in ready queue
+PID 23 is running, 
+I/O trap request: I/O device 1, PID 23 put into waiting queue, PID 2 dispatched
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+I/O completion interrupt: PID 2 is running, PID 2 put in ready queue
+
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 2 dispatched
+PID 2 put in ready queue
+PID 2 is running, 
+PID 2 put in ready queue
+PID 2 is running, 
+I/O completion interrupt: PID 2 is running, PID 23 put in ready queue
+
+I/O completion interrupt: PID 2 is running, PID 2 put in ready queue
+
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 23 dispatched
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 23 dispatched
+PID 23 put in ready queue
+PID 23 is running, 
+PID 23 put in ready queue
+PID 23 is running, 
+I/O completion interrupt: PID 23 is running, PID 1 put in ready queue
+
+I/O trap request: I/O device 1, PID 23 put into waiting queue, PID 1 dispatched
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 25 put in ready queue
+
+I/O trap request: I/O device 2, PID 1 put into waiting queue, PID 25 dispatched
+PID 25 put in ready queue
+PID 25 is running, 
+I/O trap request: I/O device 1, PID 25 put into waiting queue, No PID dispatched; empty readyQueue
+PID 25 put in ready queue
+PID 25 is running, 
+I/O trap request: I/O device 1, PID 25 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 25 put into waiting queue, No PID dispatched; empty readyQueue
+PID 25 put in ready queue
+PID 25 is running, 
+I/O completion interrupt: PID 25 is running, PID 1 put in ready queue
+
+I/O trap request: I/O device 2, PID 25 put into waiting queue, PID 1 dispatched
+PID 1 put in ready queue
+PID 1 is running, 
+I/O trap request: I/O device 1, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 26 put in ready queue
+
+I/O trap request: I/O device 1, PID 1 put into waiting queue, PID 26 dispatched
+PID 26 put in ready queue
+PID 26 is running, 
+PID 26 put in ready queue
+PID 26 is running, 
+I/O trap request: I/O device 1, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+PID 26 put in ready queue
+PID 26 is running, 
+I/O completion interrupt: PID 26 is running, PID 27 put in ready queue
+
+I/O completion interrupt: PID 26 is running, PID 8 put in ready queue
+
+PID 27 put in ready queue
+PID 27 is running, 
+I/O trap request: I/O device 1, PID 27 put into waiting queue, PID 8 dispatched
+I/O trap request: I/O device 2, PID 8 put into waiting queue, PID 26 dispatched
+I/O trap request: I/O device 1, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+PID 26 put in ready queue
+PID 26 is running, 
+PID 26 put in ready queue
+PID 26 is running, 
+I/O trap request: I/O device 2, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 1, PID 26 put into waiting queue, No PID dispatched; empty readyQueue
+PID 26 put in ready queue
+PID 26 is running, 
+I/O completion interrupt: PID 26 is running, PID 28 put in ready queue
+
+I/O trap request: I/O device 2, PID 26 put into waiting queue, PID 28 dispatched
+PID 28 put in ready queue
+PID 28 is running, 
+I/O completion interrupt: PID 28 is running, PID 8 put in ready queue
+
+PID 8 put in ready queue
+PID 8 is running, 
+I/O trap request: I/O device 2, PID 8 put into waiting queue, PID 28 dispatched
+I/O trap request: I/O device 1, PID 28 put into waiting queue, No PID dispatched; empty readyQueue
+PID 28 put in ready queue
+PID 28 is running, 
+I/O completion interrupt: PID 28 is running, PID 24 put in ready queue
+
+I/O trap request: I/O device 1, PID 28 put into waiting queue, PID 24 dispatched
+PID 24 put in ready queue
+PID 24 is running, 
+I/O trap request: I/O device 1, PID 24 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 24 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 24 put into waiting queue, No PID dispatched; empty readyQueue
+PID 24 put in ready queue
+PID 24 is running, 
+I/O completion interrupt: PID 24 is running, PID 8 put in ready queue
+
+I/O trap request: I/O device 1, PID 24 put into waiting queue, PID 8 dispatched
+I/O trap request: I/O device 2, PID 8 put into waiting queue, No PID dispatched; empty readyQueue
+PID 8 put in ready queue
+PID 8 is running, 
+I/O completion interrupt: PID 8 is running, PID 29 put in ready queue
+
+PID 29 put in ready queue
+PID 29 is running, 
+I/O trap request: I/O device 1, PID 29 put into waiting queue, PID 8 dispatched
+I/O trap request: I/O device 1, PID 8 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 8 put into waiting queue, No PID dispatched; empty readyQueue
+PID 8 put in ready queue
+PID 8 is running, 
+PID 8 put in ready queue
+PID 8 is running, 
+I/O completion interrupt: PID 8 is running, PID 30 put in ready queue
+
+I/O completion interrupt: PID 8 is running, PID 3 put in ready queue
+
+I/O trap request: I/O device 2, PID 8 put into waiting queue, PID 30 dispatched
+PID 3 put in ready queue
+PID 3 is running, 
+I/O trap request: I/O device 1, PID 3 put into waiting queue, PID 30 dispatched
+PID 30 put in ready queue
+PID 30 is running, 
+I/O trap request: I/O device 1, PID 30 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 30 put into waiting queue, No PID dispatched; empty readyQueue
+PID 30 put in ready queue
+PID 30 is running, 
+I/O trap request: I/O device 1, PID 30 put into waiting queue, No PID dispatched; empty readyQueue
+PID 30 put in ready queue
+PID 30 is running, 
+I/O trap request: I/O device 2, PID 30 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 1, PID 30 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 30 put into waiting queue, No PID dispatched; empty readyQueue
+PID 30 put in ready queue
+PID 30 is running, 
+I/O completion interrupt: PID 30 is running, PID 1 put in ready queue
+
+I/O completion interrupt: PID 30 is running, PID 9 put in ready queue
+
+I/O trap request: I/O device 1, PID 30 put into waiting queue, PID 1 dispatched
+PID 9 put in ready queue
+PID 9 is running, 
+I/O trap request: I/O device 1, PID 9 put into waiting queue, PID 1 dispatched
+I/O trap request: I/O device 1, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O trap request: I/O device 2, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 1, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 1 put in ready queue
+
+I/O trap request: I/O device 2, PID 1 put into waiting queue, PID 1 dispatched
+PID 1 put in ready queue
+PID 1 is running, 
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 9 put in ready queue
+
+PID 9 put in ready queue
+PID 9 is running, 
+I/O trap request: I/O device 1, PID 9 put into waiting queue, PID 1 dispatched
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 2 put in ready queue
+
+PID 2 put in ready queue
+PID 2 is running, 
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 1 dispatched
+I/O completion interrupt: PID 1 is running, PID 3 put in ready queue
+
+PID 3 put in ready queue
+PID 3 is running, 
+I/O trap request: I/O device 1, PID 3 put into waiting queue, PID 1 dispatched
+PID 1 put in ready queue
+PID 1 is running, 
+I/O trap request: I/O device 1, PID 1 put into waiting queue, No PID dispatched; empty readyQueue
+PID 1 put in ready queue
+PID 1 is running, 
+I/O completion interrupt: PID 1 is running, PID 3 put in ready queue
+
+PID 3 put in ready queue
+PID 3 is running, 
+I/O trap request: I/O device 1, PID 3 put into waiting queue, PID 1 dispatched
+I/O completion interrupt: PID 1 is running, PID 2 put in ready queue
+
+I/O trap request: I/O device 1, PID 1 put into waiting queue, PID 2 dispatched
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+I/O trap request: I/O device 2, PID 2 put into waiting queue, No PID dispatched; empty readyQueue
+PID 2 put in ready queue
+PID 2 is running, 
+Process terminated: PID 2 at 45086
+Simulation finished!

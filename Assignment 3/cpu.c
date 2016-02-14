@@ -147,12 +147,11 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, int PC, IO_p device
             break;
         case INTERRUPT_IO:
             // 1. Put waiting process into the readyQueue
-            Queue_enqueue(cpu->readyQueue, Queue_dequeue(device->waitingQueue));
-
             fprintf(file, "I/O completion interrupt: PID %d is running, ", cpu->currentProcess->pid);
-            fprintf(file, "PID %d in ready queue\n", device->waitingQueue->head->pcb->pid);
+            fprintf(file, "PID %d put in ready queue\n", device->waitingQueue->head->pcb->pid);
             printf("I/O completion interrupt: PID %d is running, ", cpu->currentProcess->pid);
             printf("PID %d in ready queue\n", device->waitingQueue->head->pcb->pid);
+            Queue_enqueue(cpu->readyQueue, Queue_dequeue(device->waitingQueue));
             break;
         default:
             CPU_dispatcher(cpu, INTERRUPT_NORMAL);
@@ -387,19 +386,21 @@ int main() {
         }
 
         /**** CHECK FOR I/O COMPLETION INTERRUPT  ****/
-        if (!Queue_isEmpty(device_1->waitingQueue))
+        if (!Queue_isEmpty(device_1->waitingQueue)) {
             device_1_interrupt = Timer_countDown(device_1->timer);
-        if (device_1_interrupt == 1) {
-            CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_1);
-            Timer_set_count(device_1->timer, QUANTUM * (rand() % 3 + 3));
+            if (device_1_interrupt == 1) {
+                CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_1);
+                Timer_set_count(device_1->timer, QUANTUM * (rand() % 3 + 3));
+            }
         }
 
-        if (!Queue_isEmpty(device_2->waitingQueue))
+        if (!Queue_isEmpty(device_2->waitingQueue)) {
             device_2_interrupt = Timer_countDown(device_2->timer);
-        if (device_2_interrupt == 1) {
-            CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_2);
-            if (device_2->timer->count == -1 || device_2->timer->count == 0)
-                Timer_set_count(device_2->timer, QUANTUM * (rand() % 3 + 3));
+            if (device_2_interrupt == 1) {
+                CPU_pseudo_isr(cpu, INTERRUPT_IO, PCB_get_PC(cpu->currentProcess), device_2);
+                if (device_2->timer->count == -1 || device_2->timer->count == 0)
+                    Timer_set_count(device_2->timer, QUANTUM * (rand() % 3 + 3));
+            }
         }
 
         /**** CHECK FOR I/O TRAP ****/
@@ -420,7 +421,9 @@ int main() {
         }
         time_count++;
     }
-    fprintf(file, "Simulation finished!");
+
+    fprintf(file,
+            "Simulation finished!");
     printf("Simulation finished!");
     fclose(file);
     CPU_destructor(cpu);
