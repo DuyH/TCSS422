@@ -26,9 +26,9 @@
  * Returns: Pointer to created IO object.
  */
 IO_p IO_constructor() {
-    IO_p io = calloc(1, sizeof(IO_p));
+    IO_p io = (IO_p) malloc(sizeof(IO));
     srand((unsigned int) time(NULL)); // Random seed
-    io->timer = Timer_constructor(-1); // 3-5 times larger than Quantum
+    io->timer = Timer_constructor(QUANTUM * (rand() % 3 + 3)); // 3-5 times larger than Quantum
     io->waitingQueue = Queue_constructor();
     return io;
 }

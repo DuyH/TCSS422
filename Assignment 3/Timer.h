@@ -19,10 +19,11 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
-#define QUANTUM 5
+#define QUANTUM 300
 
 typedef struct timer {
-	long int count;
+    long int count;
+    long int reset;
 } Timer;
 
 typedef Timer *Timer_p;
@@ -39,5 +40,7 @@ long int Timer_get_count(Timer_p timer);
 
 /* Utility Functions */
 int Timer_countDown(Timer_p);   // decrements the Timer, returning a 1 if countdown reaches 0.
+
+void Timer_reset(Timer_p);        // resets the timer back to original countdown
 
 #endif /* TIMER_H_ */

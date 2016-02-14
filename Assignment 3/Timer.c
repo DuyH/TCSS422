@@ -25,9 +25,10 @@
  * Returns: Pointer to created Timer object.
  */
 Timer_p Timer_constructor(long int time) {
-	Timer_p timer = calloc(300, sizeof(Timer_p));
-	timer->count = time;
-	return timer;
+    Timer_p timer = (Timer_p) malloc(sizeof(Timer));
+    timer->count = time;
+    timer->reset = time;
+    return timer;
 }
 
 void Timer_destructor(Timer_p timer) {
@@ -35,11 +36,11 @@ void Timer_destructor(Timer_p timer) {
 }
 
 void Timer_set_count(Timer_p timer, long int time) {
-	timer->count = time;
+    timer->count = time;
 }
 
 long int Timer_get_count(Timer_p timer) {
-	return timer->count;
+    return timer->count;
 }
 
 /**
@@ -49,7 +50,11 @@ long int Timer_get_count(Timer_p timer) {
  * Returns:	   int 1 if timer reaches the end of countdown, 0 otherwise.
  */
 int Timer_countDown(Timer_p timer) {
-	timer->count--;
-	if (timer->count == 0) return 1;
-	return 0;
+    timer->count--;
+    if (timer->count == 0) return 1;
+    return 0;
+}
+
+void Timer_reset(Timer_p timer) {
+    timer->count = timer->reset;
 }

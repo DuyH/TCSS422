@@ -26,7 +26,7 @@
  * Returns: Pointer to created PCB object.
  */
 PCB_p PCB_constructor() {
-    PCB_p pcb = calloc(3, sizeof(PCB));
+    PCB_p pcb = (PCB_p) malloc(sizeof(PCB));
     return pcb;
 }
 

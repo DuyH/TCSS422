@@ -28,7 +28,7 @@
  * Returns: Pointer to created Queue object.
  */
 Queue_p Queue_constructor() {
-    Queue_p queue = calloc(1, sizeof(Queue_p));
+    Queue_p queue = (Queue_p) malloc(sizeof(Queue));
     queue->head = NULL;
     queue->rear = NULL;
     queue->size = 0;

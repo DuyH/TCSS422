@@ -18,6 +18,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "pcb.h"
 
 /**
@@ -26,20 +27,33 @@
  * Returns: Pointer to created PCB object.
  */
 PCB_p PCB_constructor() {
-    PCB_p pcb = calloc(1, sizeof(PCB));
+    PCB_p pcb = (PCB_p) malloc(sizeof(PCB));
 
-    int i = 0;
-    for (; i < 4; i++) {
-    	int new = 1 * (rand() % 3  + 3);
-    	int new1 = 1 * (rand() % 3  + 3) + (rand() % 10 + 10);
-    	if (i != 0) {
-    		new += pcb->io_trap_1[i - 1];
-    		new1 += pcb->io_trap_2[i - 1];
-    	}
-        PCB_set_io_trap_1(pcb, new, i);
-        PCB_set_io_trap_2(pcb, new1, i);
-    }
-    pcb->terminate = rand() % 5;
+
+//    		new += pcb->io_trap_1[i - 1];
+//    		new1 += pcb->io_trap_2[i - 1];
+//    	}
+//        PCB_set_io_trap_1(pcb, new, i);
+//        PCB_set_io_trap_2(pcb, new1, i);
+//    }
+
+    srand((unsigned int)time(NULL));
+    // Randomly pick a number in the hundreds:
+    unsigned int starting = (rand() % 30 + 1) * 10;
+
+    pcb->io_trap_1[0] = 200;
+    pcb->io_trap_1[1] = 750;
+    pcb->io_trap_1[2] = 920;
+    pcb->io_trap_1[3] = 1430;
+
+    pcb->io_trap_2[0] = 100;
+    pcb->io_trap_2[1] = 180;
+    pcb->io_trap_2[2] = 600;
+    pcb->io_trap_2[3] = 910;
+
+
+
+
     return pcb;
 }
 
