@@ -454,6 +454,8 @@ int main() {
         }
         time_count++;
     }
+
+
     fprintf(file, "Simulation finished! Total cycles: %d", time_count - 1);
     printf("Simulation finished! Total cycles: %d", time_count - 1);
     fclose(file);
