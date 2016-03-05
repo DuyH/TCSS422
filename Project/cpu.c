@@ -20,6 +20,9 @@
  ************************************************************************************************/
 
 #include "cpu.h"
+#include "PriorityQueue.h"
+
+//#include "PriorityQueue.h"
 
 #define MAX_PROCESS 30
 #define MAX_SIMULATION_CYCLES 500000
@@ -38,7 +41,7 @@ CPU_p CPU_constructor(void) {
     cpu->timer = Timer_constructor(QUANTUM);
     cpu->sysStack = 0;
     cpu->currentProcess = NULL;
-    cpu->readyQueue = Queue_constructor();
+    cpu->readyQueue = PQueue_constructor();
     cpu->terminatedQueue = Queue_constructor();
     cpu->newProcessesQueue = Queue_constructor();
     return cpu;
@@ -60,7 +63,7 @@ void CPU_set_current_process(CPU_p cpu, PCB_p pcb) {
     cpu->currentProcess = pcb;
 }
 
-void CPU_set_readyQueue(CPU_p cpu, Queue_p queue) {
+void CPU_set_readyQueue(CPU_p cpu, PQueue_p queue) {
     cpu->readyQueue = queue;
 }
 
@@ -81,7 +84,7 @@ PCB_p CPU_get_current_proc(CPU_p cpu) {
     return cpu->currentProcess;
 }
 
-Queue_p CPU_get_readyQueue(CPU_p cpu) {
+PQueue_p CPU_get_readyQueue(CPU_p cpu) {
     return cpu->readyQueue;
 }
 
@@ -95,13 +98,14 @@ Queue_p CPU_get_newProcessesQueue(CPU_p cpu) {
 
 /* CPU ADT Functions */
 
-Queue_p CPU_enqueue_readyQueue(CPU_p cpu, PCB_p pcb) {
-    return Queue_enqueue(CPU_get_readyQueue(cpu), pcb);
+PQueue_p CPU_enqueue_readyQueue(CPU_p cpu, PCB_p pcb) {
+    return PQueue_enqueue(CPU_get_readyQueue(cpu), pcb);
 }
 
 PCB_p CPU_dequeue_readyQueue(CPU_p cpu) {
-    return Queue_dequeue(CPU_get_readyQueue(cpu));
+    return PQueue_dequeue(CPU_get_readyQueue(cpu));
 }
+
 
 Queue_p CPU_enqueue_terminatedQueue(CPU_p cpu, PCB_p pcb) {
     return Queue_enqueue(CPU_get_terminatedQueue(cpu), pcb);
@@ -128,7 +132,7 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, IO_p device) {
                 // 1. Put process back into the readyQueue
                 fprintf(file, "Timer interrupt: PID %d was running, ", cpu->currentProcess->pid);
                 printf("Timer interrupt: PID %d was running, ", cpu->currentProcess->pid);
-                Queue_enqueue(cpu->readyQueue, cpu->currentProcess);
+                PQueue_enqueue(cpu->readyQueue, cpu->currentProcess);
 
                 // 2. Change its state from interrupted to ready
                 PCB_set_state(cpu->currentProcess, ready);
@@ -164,7 +168,7 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, IO_p device) {
             }
             fprintf(file, "PID %d put in ready queue\n\n", device->waitingQueue->head->pcb->pid);
             printf("PID %d in ready queue\n\n", device->waitingQueue->head->pcb->pid);
-            Queue_enqueue(cpu->readyQueue, Queue_dequeue(device->waitingQueue));
+            PQueue_enqueue(cpu->readyQueue, Queue_dequeue(device->waitingQueue));
             break;
         default:
             CPU_dispatcher(cpu, INTERRUPT_NORMAL);
@@ -179,10 +183,11 @@ int CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
     // Per Canvas Discussions, DON'T DO THIS AGAIN HERE! It's in ISR.
 
     // As long as we have processes in the ready Queue...
-    if (!Queue_isEmpty(cpu->readyQueue)) {
+	int empty = PQueue_isEmpty(cpu->readyQueue);
+    if (empty) {
 
         // 2. Then dequeue next waiting process
-        cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+        cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
 
         // 3. Change its state to running
         PCB_set_state(cpu->currentProcess, running);
@@ -239,7 +244,7 @@ Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long
     for (n = 0; n < numb_process; n++) {
         PCB_p pcb = PCB_constructor();
         PCB_set_pid(pcb, proc_id++);
-        PCB_set_priority(pcb, rand() % 31 + 1);
+        PCB_set_priority(pcb, rand() % MAX_PRIORITY_LEVEL + 1);
         PCB_set_state(pcb, created);
         PCB_set_pc(pcb, 0);
         PCB_set_max_pc(pcb, 2345);
@@ -286,8 +291,8 @@ void CPU_io_trap_handler(CPU_p cpu, IO_p device, int device_num) {
     fprintf(file, "PID %d put into waiting queue, ", device->waitingQueue->rear->pcb->pid);
     printf("PID %d put into waiting queue, ", device->waitingQueue->rear->pcb->pid);
 
-    if (!Queue_isEmpty(cpu->readyQueue)) {
-        cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+    if (!PQueue_isEmpty(cpu->readyQueue)) {
+        cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
         fprintf(file, "PID %d dispatched\n", cpu->currentProcess->pid);
         printf("PID %d dispatched\n", cpu->currentProcess->pid);
     } else {
@@ -331,10 +336,10 @@ int main() {
     while (!Queue_isEmpty(cpu->newProcessesQueue)) {
         PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
         PCB_set_state(temp_pcb, ready);
-        Queue_enqueue(cpu->readyQueue, temp_pcb);
+        PQueue_enqueue(cpu->readyQueue, temp_pcb);
     }
 
-    cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+    cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
 
 
     // Run the simulation until either all processes terminate or max cycles reached (+1 for printing pretty # cycles)
@@ -364,8 +369,8 @@ int main() {
                 PCB_set_termination(cpu->currentProcess, time_count);
                 CPU_enqueue_terminatedQueue(cpu, cpu->currentProcess);
                 cpu->currentProcess = NULL;
-                if (!Queue_isEmpty(cpu->readyQueue)) {
-                    cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+                if (!PQueue_isEmpty(cpu->readyQueue)) {
+                    cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
                 }
 //                continue;
             }
@@ -401,13 +406,13 @@ int main() {
                 while (!Queue_isEmpty(cpu->newProcessesQueue)) {
                     PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
                     PCB_set_state(temp_pcb, ready);
-                    Queue_enqueue(cpu->readyQueue, temp_pcb);
+                    PQueue_enqueue(cpu->readyQueue, temp_pcb);
                 }
             }
 
             // If there is no currently running process, dequeue from the newly create processes
-            if (cpu->currentProcess == NULL && !Queue_isEmpty(cpu->readyQueue)) {
-                cpu->currentProcess = Queue_dequeue(cpu->readyQueue);
+            if (cpu->currentProcess == NULL && !PQueue_isEmpty(cpu->readyQueue)) {
+                cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
             }
 
         }
@@ -449,7 +454,6 @@ int main() {
         }
         time_count++;
     }
-
     fprintf(file, "Simulation finished! Total cycles: %d", time_count - 1);
     printf("Simulation finished! Total cycles: %d", time_count - 1);
     fclose(file);
