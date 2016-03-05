@@ -11,53 +11,59 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "priorityqueue.h"
+#include "PriorityQueue.h"
 
 #define PRIORITY_NUMBERS 4		// Range of priorities, as stated
 
 /*
 *instantiates a priority queue with a specified number of FIFO Queues.
 */
-p_queue * create_pqueue() {
+PQueue_p PQueue_constructor() {
 	
 	int i;
-	p_queue * thisPQueue = calloc(PRIORITY_NUMBERS, sizeof(p_queue));
+	PQueue_p thisPQueue = calloc(PRIORITY_NUMBERS, sizeof(p_queue));
 	for (i = 0; i < PRIORITY_NUMBERS; i++)
 	{
-		Queue * curQueue = calloc(PRIORITY_NUMBERS, sizeof(Queue));
+		Queue_p curQueue = calloc(PRIORITY_NUMBERS, sizeof(Queue));
 		thisPQueue->pri_Queue[i] = curQueue;
 		
 	}
-
     return thisPQueue;
 }
 
+	void PQueue_destructor(PQueue_p queue)  {      // frees memory allocated to queue object
+		free(queue);
+	}
 /*
 * adds a pcb to the Priority Queue
 */
-void add(p_queue * priority_Queue, PCB *pcb) {
+PQueue_p PQueue_enqueue(PQueue_p priority_Queue, PCB_p pcb) {
 	int p = pcb->priority;
-	Queue_enqueue(priority_Queue->pri_Queue[p], pcb);	// enqueues the new node into the Queue dictated by the pcb priority
+	priority_Queue->pri_Queue[p] = Queue_enqueue(priority_Queue->pri_Queue[p], pcb);	// enqueues the new node into the Queue dictated by the pcb priority
+	priority_Queue->size++;
+	return priority_Queue;
 }
 
 /*
 * checks the next node that will be dequeued without removing it.
 */
-void check(p_queue * priority_Queue) {
+PCB_p PQueue_peek(PQueue_p priority_Queue) {
 	int i;
+	PCB_p pcb;
 	for (i = 0; i < PRIORITY_NUMBERS; i++) {
 		
 		if (!Queue_isEmpty(priority_Queue->pri_Queue[i])) {		//checks whether the head is empty or not
-			Queue_peek(priority_Queue->pri_Queue[i]);
+			pcb = Queue_peek(priority_Queue->pri_Queue[i]);
 			break;
 		}
 	}
+	return pcb;
 }
 
 /*
 * dequeues the highest priority pcb from its FIFO queue
 */
-PCB * pop_pcb(p_queue * priority_Queue) {
+PCB * PQueue_dequeue(PQueue_p priority_Queue) {
 	int i;
 	for (i = 0; i < PRIORITY_NUMBERS; i++) {
 		
@@ -73,10 +79,20 @@ PCB * pop_pcb(p_queue * priority_Queue) {
 * displays the current iteration of the Priority Queue
 * takes an integer to determine if contents of last item should be shown.
 */
-void display(p_queue * priority_Queue, int showContents, int queue_count){
+void PQueue_print(PQueue_p priority_Queue, int showContents){
 	int i;
 	for (i = 0; i < PRIORITY_NUMBERS; i++) {
 		printf("Q%02d: ", i);
 		Queue_print(priority_Queue->pri_Queue[i], showContents);    // prints the queues in priority order
 	}
+}
+
+int PQueue_isEmpty(PQueue_p queue) {
+	int i;
+	for (i = 0; i < 4; i++) {
+		if (Queue_isEmpty(queue->pri_Queue[i])){
+			return 1;
+		}
+	}
+	return 0;
 }

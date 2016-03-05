@@ -19,13 +19,16 @@
 #ifndef CPU_H
 #define CPU_H
 
+#define MAX_PRIORITY_LEVEL 3
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "queue.h"
 #include "pcb.h"
+#include "PriorityQueue.h"
 #include "io.h"
+
 
 /* Enumerating interrupt states. */
 typedef enum interrupt_state {
@@ -39,7 +42,7 @@ typedef struct cpu_type {
     //unsigned int PID;
     unsigned int sysStack;
     PCB_p currentProcess;
-    Queue_p readyQueue;
+    PQueue_p readyQueue;
     Queue_p terminatedQueue;
     Queue_p newProcessesQueue;
 } CPU;
@@ -60,7 +63,7 @@ void CPU_set_pid(CPU_p, unsigned int);
 
 void CPU_set_current_process(CPU_p, PCB_p); // sets this->current_process to pcb pointer
 
-void CPU_set_readyQueue(CPU_p, Queue_p); // sets this->readyQueue to queue pointer
+void CPU_set_readyQueue(CPU_p, PQueue_p); // sets this->readyQueue to queue pointer
 
 void CPU_set_terminatedQueue(CPU_p, Queue_p); // sets this->terminatedQueue to queue pointer
 
@@ -74,7 +77,7 @@ unsigned int CPU_get_pid(CPU_p);
 
 PCB_p CPU_get_current_proc(CPU_p); // returns this cpu's currently running process (pcb pointer)
 
-Queue_p CPU_get_readyQueue(CPU_p);        // returns this cpu's readyQueue queue
+PQueue_p CPU_get_readyQueue(CPU_p);        // returns this cpu's readyQueue queue
 
 Queue_p CPU_get_terminatedQueue(CPU_p); // returns this cpu's terminatedQueue queue
 
@@ -82,7 +85,7 @@ Queue_p CPU_get_newProcessesQueue(CPU_p); // returns this cpu's newProcesses que
 
 /* ADT Functions */
 
-Queue_p CPU_enqueue_readyQueue(CPU_p, PCB_p); // Enqueues a PCB object to the CPU's readyQueue
+PQueue_p CPU_enqueue_readyQueue(CPU_p, PCB_p); // Enqueues a PCB object to the CPU's readyQueue
 
 PCB_p CPU_dequeue_readyQueue(CPU_p); // Dequeues a PCB object from the CPU's readyQueue
 
