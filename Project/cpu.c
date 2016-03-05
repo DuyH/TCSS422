@@ -21,8 +21,6 @@
 
 #include "cpu.h"
 
-//#include "PriorityQueue.h"
-
 #define MAX_PROCESS 30
 #define MAX_SIMULATION_CYCLES 500000
 #define MAX_IO_TRAPS 4

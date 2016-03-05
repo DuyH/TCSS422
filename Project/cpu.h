@@ -47,6 +47,14 @@ typedef struct cpu_type {
     Queue_p newProcessesQueue;
 } CPU;
 
+/* Struct imitates a mutex */
+typedef struct mutex_type {
+    PCB_p locked_process;
+    Queue_p waiting_queue;
+    unsigned int cond_wait;
+    unsigned int lock_free;
+} Mutex;
+
 typedef CPU *CPU_p;
 
 /* CPU Constructor */

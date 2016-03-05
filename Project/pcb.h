@@ -23,7 +23,11 @@ typedef enum process_state {
     created, new, ready, running, waiting, interrupted, terminated
 } State;
 
-typedef struct pcb_type {
+typedef enum process_type {
+    io, producer, consumer, intensive, mutual
+} Process_Type;
+
+typedef struct pcb {
     int pid;                        // id number
     int priority;                   // priority
     enum process_state state;       // state of the process
@@ -33,6 +37,13 @@ typedef struct pcb_type {
     long int termination;           // clock time at process termination
     unsigned int terminate;         // max number for process termination, 0 for no termination
     unsigned int term_count;        // counter until process termination
+    unsigned int boost;             // starvation field for priority switch
+    enum process_type type;         // differentiates different processes
+
+    unsigned int lock[4];
+    unsigned int trylock[4];
+    unsigned int unlocked[4];
+
     unsigned int io_trap_1[4];
     unsigned int io_trap_2[4];      // arrays where io trap will occur
 } PCB;
