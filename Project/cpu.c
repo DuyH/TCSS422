@@ -180,7 +180,7 @@ int CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type) {
     // Per Canvas Discussions, DON'T DO THIS AGAIN HERE! It's in ISR.
 
     // As long as we have processes in the ready Queue...
-	int empty = PQueue_isEmpty(cpu->readyQueue);
+    int empty = PQueue_isEmpty(cpu->readyQueue);
     if (empty) {
 
         // 2. Then dequeue next waiting process
@@ -233,27 +233,12 @@ void CPU_remove_file() {
 /**
  * Function that creates 0-5 new processes and puts them into a list.
  */
-Queue *CPU_create_processes(Queue *queue, int numb_process, int process_ID, long int time_count) {
-    fprintf(file, "=======PROCESSES CREATION=======\n");
-    printf("=======PROCESSES CREATION=======\n");
+Queue *CPU_create_processes(Queue_p queue, int numb_process, int process_ID, long int time_count) {
+
     int n;
     static int proc_id = 1;
     for (n = 0; n < numb_process; n++) {
         PCB_p pcb = PCB_constructor();
-        PCB_set_pid(pcb, proc_id++);
-        PCB_set_priority(pcb, rand() % MAX_PRIORITY_LEVEL + 1);
-        PCB_set_state(pcb, created);
-        PCB_set_pc(pcb, 0);
-        PCB_set_max_pc(pcb, 2345);
-        PCB_set_creation(pcb, time_count);
-        PCB_set_termination(pcb, 0);
-        PCB_set_terminate(pcb, rand() % 5); // Our terminate values are 0-4
-        PCB_set_term_count(pcb, 0);
-        // IO_1 trap taken care of in constructor
-        // IO_2 trap taken care of in constructor
-        queue = Queue_enqueue(queue, pcb);
-        fprintf(file, "Process created: PID %d at %ld\n", PCB_get_pid(pcb), PCB_get_creation(pcb));
-        printf("Process created: PID %d at %ld\n", PCB_get_pid(pcb), PCB_get_creation(pcb));
     }
     fprintf(file, "\n");
     printf("\n");
@@ -301,6 +286,130 @@ void CPU_io_trap_handler(CPU_p cpu, IO_p device, int device_num) {
 
 }
 
+/*****************************
+ * Process Manager
+ *****************************/
+
+// Process Manager constructor
+
+// Process Manager deconstructor
+
+
+
+/*  1. Randomly pick a priority
+ *      Then check if we are allowed to make any more of that priority
+ *          If it is priority 0, automatically make Intensive pcb and
+ *      If not, repick a priority
+ *  2. Randomly pick a process type
+ *      Check for hard-number limits for that
+ */
+Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int timeCount) {
+
+    fprintf(file, "=======PROCESSES CREATION=======\n");
+    printf("=======PROCESSES CREATION=======\n");
+    PCB_p pcb; // An uninitialized pcb which will be later defined...
+
+    // Randomly choose a process type:
+    Process_Type type;
+
+    // 1. Randomly pick a priority:
+    srand((unsigned int) time(NULL)); // Seed random generator
+    int randPriority;
+    int notUsable = 1;
+    while (notUsable) {
+
+        // Choose a randomize priority level
+        randPriority = rand() % MAX_PRIORITY_LEVEL;
+        double percentage = (double) manager->priority_counts[randPriority] / manager->num_running;
+
+        switch (randPriority) {
+            case 0:
+                if (percentage < 0.05) notUsable = 0;
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    notUsable = 1;
+    while (notUsable) {
+        if (randPriority == 0)
+            type = intensive;
+        else {
+            do {
+                type = (Process_Type) rand() % 5;
+            } while (type == intensive);
+        }
+
+        // Check hard-number limits:
+        switch (type) {
+            case io:
+                if (manager->process_type_count[0] < 50) {
+                    // TODO: Create IO process here
+                    manager->process_type_count[(int) type]++;   // Increment the number of this type in manager
+                    notUsable = 0;
+                }
+                break;
+            case producer:
+                break;
+            case consumer:
+                break;
+            case intensive:
+                if (manager->process_type_count[(int) intensive < 25]) {
+                    manager->process_type_count[(int) intensive]++;
+                    manager->priority_counts[0]++;
+                    notUsable = 0;
+                    // TODO: Create intensive pcb here!
+                } else {
+                    randPriority = rand() % 5;
+                }
+                break;
+            case mutual:
+                break;
+            default:
+                break;
+        }
+    }
+
+    // Continue detailing the pcb:
+    PCB_set_pid(pcb, manager->num_processes);   // Set PID
+    PCB_set_priority(pcb, randPriority);        // Set priority
+    PCB_set_state(pcb, created);                // Set state
+    PCB_set_pc(pcb, 0);                         // Set PC
+    PCB_set_max_pc(pcb, 2345);                  // Set max PC
+    PCB_set_creation(pcb, timeCount);           // Set creation time
+    PCB_set_termination(pcb, 0);                // init termination
+    PCB_set_terminate(pcb, rand() % 5);         // Our terminate values are 0-4
+    PCB_set_term_count(pcb, 0);                 // init term count
+    manager->num_processes++;                   // Update the number of TOTAL processes
+    manager->num_running++;                     // Update number of currently running processes
+    manager->priority_counts[randPriority]++;   // Update the number of priorities of that type
+    queue = Queue_enqueue(queue, pcb);          // Enqueue newly created PCB to new proc q
+    fprintf(file, "Process created: PID %d with Priority %d and Type %s at %ld\n", PCB_get_pid(pcb),
+            PCB_get_priority(pcb), PCB_get_type_string(type), PCB_get_creation(pcb));
+    printf("Process created: PID %d with Priority %d and Type %s at %ld\n", PCB_get_pid(pcb),
+           PCB_get_priority(pcb), PCB_get_type_string(type), PCB_get_creation(pcb));
+
+
+    return queue;
+}
+
+
+
+//
+// 2. randomly pick a priority
+// 3.
+// 3. Create process of that type, using a function(type){switch(type)}
+// 4. Update manager of the process counts
+
+
 int main() {
     // House Keeping:
     file = fopen("discontinuities.txt", "w");
@@ -319,10 +428,8 @@ int main() {
     unsigned int time_count = 1;
 
 // 1a. Create a queue of new processes, 0 - 5 processes at a time:
-    int num_proc_created = 0;
-    do {
-        num_proc_created = rand() % 6 + 1;
-    } while (total_procs + num_proc_created > MAX_PROCESS);
+    int ran_proc_created = rand() % 6 + 1;
+
     total_procs += num_proc_created;
 
     cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue,
