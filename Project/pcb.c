@@ -40,6 +40,7 @@ PCB_p PCB_constructor() {
             pcb->io_trap_2[j] = pcb->io_trap_2[j-1]+ (rand() % 60) * 10;
         }
     }
+
     return pcb;
 }
 

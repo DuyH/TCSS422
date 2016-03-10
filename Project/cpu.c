@@ -21,8 +21,8 @@
 
 #include "cpu.h"
 
-#define MAX_PROCESS 30
-#define MAX_SIMULATION_CYCLES 500000
+#define MAX_PROCESS 50
+#define MAX_SIMULATION_CYCLES 100000
 #define MAX_IO_TRAPS 4
 #define DEVICE_ARRAY_1 1
 #define DEVICE_ARRAY_2 2
