@@ -238,7 +238,7 @@ Queue *CPU_create_processes(Queue_p queue, int numb_process, int process_ID, lon
     int n;
     static int proc_id = 1;
     for (n = 0; n < numb_process; n++) {
-        PCB_p pcb = PCB_constructor();
+        PCB_p pcb = PCB_constructor(io);
     }
     fprintf(file, "\n");
     printf("\n");
@@ -307,7 +307,7 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
 
     fprintf(file, "=======PROCESSES CREATION=======\n");
     printf("=======PROCESSES CREATION=======\n");
-    PCB_p pcb; // An uninitialized pcb which will be later defined...
+    PCB_p pcb = PCB_constructor(io); // An uninitialized pcb which will be later defined...
 
     // Randomly choose a process type:
     Process_Type type;
