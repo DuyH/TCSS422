@@ -20,6 +20,9 @@
 #define CPU_H
 
 
+#define MAX_PRIORITY_LEVEL 4
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -46,14 +49,6 @@ typedef struct cpu_type {
     Queue_p terminatedQueue;
     Queue_p newProcessesQueue;
 } CPU;
-
-/* Struct imitates a mutex */
-typedef struct mutex_type {
-    PCB_p locked_process;
-    Queue_p waiting_queue;
-    unsigned int cond_wait;
-    unsigned int lock_free;
-} Mutex;
 
 typedef CPU *CPU_p;
 
@@ -109,7 +104,8 @@ unsigned int CPU_pop_sysStack(CPU_p);  // Pops off int value from cpu's sysStack
 
 /* Utility Functions */
 
-int CPU_dispatcher(CPU_p cpu, Interrupt_type interrupt_type);   // Returns 1 if successfully dispatched process from readyQueue
+int CPU_dispatcher(CPU_p cpu,
+                   Interrupt_type interrupt_type);   // Returns 1 if successfully dispatched process from readyQueue
 
 void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, IO_p);
 
@@ -128,5 +124,47 @@ void CPU_remove_file();                         // Removes existing file
 int CPU_check_io_request(PCB_p, int);                // checks io request
 
 void CPU_io_trap_handler(CPU_p cpu, IO_p device, int device_num);   // handles io traps
+
+
+/*****************************
+ *      Process Manager
+ ****************************/
+
+typedef struct process_manager {
+    unsigned int num_processes;         // TOTAL number of processes ever created by simulation, also used for #PIDs
+    unsigned int num_running;           // Total number of currently RUNNING processes
+
+    unsigned int process_type_count[5];      // Keeps count how many of each type of processes cpu has
+    unsigned int priority_counts[4];    // How many processes for each priority (io, producer, consumer, intensive, mutual)
+    unsigned int total_pairs;           // Keeps track of the total number of pairs created, also for naming
+
+} Process_Manager;
+
+typedef Process_Manager *Process_Manager_p;
+
+/* Process Manager Constructor */
+
+/* Process Manager Destructor */
+
+/* Process Manager Utility Functions */
+
+Queue_p createProcess(Process_Manager_p, Queue_p, unsigned int);    // Creates process, returns the Queue...
+
+
+
+/*****************************
+ *          Mutex
+ ****************************/
+
+/* Struct imitates a mutex */
+typedef struct mutex_type {
+    PCB_p locked_process;
+    Queue_p waiting_queue;      // List of processes waiting for this mutex
+    unsigned int cond_wait;
+    unsigned int lock_free;
+} Mutex;
+
+typedef Mutex *Mutex_p;
+
 
 #endif //ASSIGNMENT1_CPU_H

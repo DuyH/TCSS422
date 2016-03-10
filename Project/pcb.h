@@ -38,11 +38,14 @@ typedef struct pcb {
     unsigned int terminate;         // max number for process termination, 0 for no termination
     unsigned int term_count;        // counter until process termination
     unsigned int boost;             // starvation field for priority switch
+    unsigned int boost_start;       // PC Value when the boost was triggered (for starvation)
     enum process_type type;         // differentiates different processes
 
     unsigned int lock[4];
     unsigned int trylock[4];
     unsigned int unlocked[4];
+
+    unsigned int pair_name;         // Pair "name"
 
     unsigned int io_trap_1[4];
     unsigned int io_trap_2[4];      // arrays where io trap will occur
@@ -51,7 +54,7 @@ typedef struct pcb {
 typedef PCB *PCB_p;
 
 /* PCB Constructor */
-PCB_p PCB_constructor();            // constructs a new pcb object in the heap
+PCB_p PCB_constructor(Process_Type);// constructs a new pcb object in the heap
 
 /* PCB Destructor */
 void PCB_destructor(PCB_p);         // frees memory allocated to pcb object
@@ -100,7 +103,7 @@ unsigned int PCB_get_terminate(PCB_p);      // returns terminate value
 
 unsigned int PCB_get_term_count(PCB_p);     // returns term_count value;
 
-unsigned int * PCB_get_io_trap(PCB_p, int); // returns the referenced io_trap array;
+unsigned int *PCB_get_io_trap(PCB_p, int); // returns the referenced io_trap array;
 
 unsigned int PCB_get_io_trap_index(PCB_p, int, int); // returns the referenced index of the referenced io_trap array;
 
@@ -111,6 +114,8 @@ void PCB_increment_PC(PCB_p); // increments the PC value
 void PCB_increment_term_count(PCB_p); // increments term_count
 
 const char *PCB_get_state_string(State);   // returns state value
+
+const char *PCB_get_type_string(Process_Type);   // returns process type value
 
 char *PCB_toString(PCB_p); // returns pointer to character array of this pcb's contents
 

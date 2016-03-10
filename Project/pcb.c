@@ -26,19 +26,34 @@
  *
  * Returns: Pointer to created PCB object.
  */
-PCB_p PCB_constructor() {
+PCB_p PCB_constructor(Process_Type type) {
     PCB_p pcb = (PCB_p) malloc(sizeof(PCB));
+    srand((unsigned int) time(NULL));
 
-    srand((unsigned int)time(NULL));
-    int i=0;
-    for (; i < 2; i++) {
-        pcb->io_trap_1[0] = (rand() % 60) * 10;
-        pcb->io_trap_2[0] = (rand() % 60) * 10;
-        int j = 1;
-        for (; j < 4; j++) {
-            pcb->io_trap_1[j] = pcb->io_trap_1[j-1]+ (rand() % 60) * 10;
-            pcb->io_trap_2[j] = pcb->io_trap_2[j-1]+ (rand() % 60) * 10;
-        }
+    int i = 0;
+    switch (type) {
+        case io:
+            for (i = 0; i < 2; i++) {
+                pcb->io_trap_1[0] = (rand() % 60) * 10;
+                pcb->io_trap_2[0] = (rand() % 60) * 10;
+                int j = 1;
+                for (; j < 4; j++) {
+                    pcb->io_trap_1[j] = pcb->io_trap_1[j - 1] + (rand() % 60) * 10;
+                    pcb->io_trap_2[j] = pcb->io_trap_2[j - 1] + (rand() % 60) * 10;
+                }
+            }
+            return pcb;
+        case producer:
+            break;
+        case consumer:
+            break;
+        case intensive:
+            pcb->priority = 0;  // Intensive processes always have 0 priority
+            return pcb;
+        case mutual:
+            break;
+        default:
+            break;
     }
 
     return pcb;
@@ -105,7 +120,7 @@ void PCB_set_pc(PCB_p pcb, int new_pc_value) {
 *               int new_max_pc: the new max_pc value
 */
 void PCB_set_max_pc(PCB_p pcb, int new_max_pc) {
-  pcb->max_pc = new_max_pc;
+    pcb->max_pc = new_max_pc;
 }
 
 /**
@@ -270,7 +285,7 @@ unsigned int PCB_get_term_count(PCB_p pcb) {
  * Parameters:   PCB_p  pcb: A pointer to the PCB structure
  * Returns:      indicated io_trap array of PCB object.
  */
-unsigned int * PCB_get_io_trap(PCB_p pcb, int io_trap_num) {
+unsigned int *PCB_get_io_trap(PCB_p pcb, int io_trap_num) {
     switch (io_trap_num) {
         case 1 :
             return pcb->io_trap_1;
@@ -294,7 +309,7 @@ unsigned int PCB_get_io_trap_index(PCB_p pcb, int index, int io_trap_num) {
         case 2 :
             return pcb->io_trap_2[index];
         default:
-        	return -1;
+            return -1;
     }
 }
 
@@ -342,6 +357,29 @@ const char *PCB_get_state_string(State state) {
             return "interrupted";
         case terminated:
             return "terminated";
+        default:
+            return "0";
+    }
+}
+
+/**
+ * Retrieve the descriptive name of pcb's process type, given enumeration.
+ *
+ * Parameters:  Process_type type: Enumeration of Process_type
+ * Returns:     char Process_type string value.
+ */
+const char *PCB_get_type_string(Process_Type type) {
+    switch (type) {
+        case io:
+            return "io";
+        case producer:
+            return "producer";
+        case consumer:
+            return "consumer";
+        case intensive:
+            return "intensive";
+        case mutual:
+            return "mutual";
         default:
             return "0";
     }
