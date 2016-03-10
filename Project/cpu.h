@@ -19,7 +19,6 @@
 #ifndef CPU_H
 #define CPU_H
 
-#define MAX_PRIORITY_LEVEL 3
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,6 +28,7 @@
 #include "PriorityQueue.h"
 #include "io.h"
 
+#define MAX_PRIORITY_LEVEL 3
 
 /* Enumerating interrupt states. */
 typedef enum interrupt_state {
