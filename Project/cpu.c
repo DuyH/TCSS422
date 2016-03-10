@@ -430,12 +430,12 @@ int main() {
 // 1a. Create a queue of new processes, 0 - 5 processes at a time:
     int ran_proc_created = rand() % 6 + 1;
 
-    total_procs += num_proc_created;
+    total_procs += ran_proc_created;
 
     cpu->newProcessesQueue = CPU_create_processes(cpu->newProcessesQueue,
-                                                  num_proc_created, process_ID, time_count);
+                                                  ran_proc_created, process_ID, time_count);
 
-    process_ID += num_proc_created;
+    process_ID += ran_proc_created;
 
     while (!Queue_isEmpty(cpu->newProcessesQueue)) {
         PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
