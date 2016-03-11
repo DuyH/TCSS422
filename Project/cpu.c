@@ -318,10 +318,14 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
     srand((unsigned int) time(NULL)); // Seed random generator
     int randPriority = 0;
     int notUsable = 1;
+
     while (notUsable) {
         // Choose a randomize priority level
         randPriority = rand() % MAX_PRIORITY_LEVEL;
-        double percentage = (double) manager->priority_counts[randPriority] / manager->num_running;
+        double percentage;
+        if (manager->num_running != 0)
+        percentage = (double) manager->priority_counts[randPriority] /  manager->num_running;
+        else percentage = 0;
 
         switch (randPriority) {
             case 0:
@@ -362,7 +366,6 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 type = (Process_Type) rand() % 5;
             } while (type == intensive);
         }
-
         // Check hard-number limits:
         switch (type) {
             case io:
@@ -463,8 +466,13 @@ Process_Manager_p process_manager_constructor() {
     Process_Manager_p manager_p = malloc(sizeof(Process_Manager_p));
     manager_p->num_processes = 0;
     manager_p->num_running = 0;
-    manager_p->process_type_count[5] = {0};
-    manager_p->priority_counts[4] = {0};
+    int i;
+    for (i = 0; i < 5; i++) {
+        manager_p->process_type_count[i] = 0;
+    }
+    for (i = 0; i < 4; i++) {
+        manager_p->priority_counts[i] = 0;
+    }
     manager_p->total_pairs = 0;
 
     return manager_p;
@@ -505,7 +513,8 @@ int main() {
 
     // creates new process queue with new manager
     Process_Manager_p manager_p = process_manager_constructor();
-    for (int i = 0; i < 5; i++) {
+    int i;
+    for (i = 0; i < 5; i++) {
         cpu->newProcessesQueue = createProcess(manager_p, cpu->newProcessesQueue, time_count);
     }
 
