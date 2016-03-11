@@ -34,16 +34,17 @@ PCB_p PCB_constructor(Process_Type type) {
     switch (type) {
         case io:
             for (i = 0; i < 2; i++) {
-                pcb->io_trap_1[0] = (rand() % 60) * 10;
-                pcb->io_trap_2[0] = (rand() % 60) * 10;
+                pcb->io_trap_1[0] = (rand() % 60) * 10 + 100;
+                pcb->io_trap_2[0] = (rand() % 60) * 10 + 100;
                 int j = 1;
                 for (; j < 4; j++) {
-                    pcb->io_trap_1[j] = pcb->io_trap_1[j - 1] + (rand() % 60) * 10;
-                    pcb->io_trap_2[j] = pcb->io_trap_2[j - 1] + (rand() % 60) * 10;
+                    pcb->io_trap_1[j] = pcb->io_trap_1[j - 1] + (rand() % 60) * 10 + 100;
+                    pcb->io_trap_2[j] = pcb->io_trap_2[j - 1] + (rand() % 60) * 10 + 100;
                 }
             }
             return pcb;
         case producer:
+
             break;
         case consumer:
             break;
