@@ -42,7 +42,7 @@
 #define NUM_PRIORITIES 4
 
 // Priority levels for simulation
-#define STARVATION_THRESHOLD 300
+#define STARVATION_THRESHOLD 1200 // Quantum Cycles * 4 (arbitrary)
 
 #define MAX_IO_TRAPS 4
 #define DEVICE_ARRAY_1 1
