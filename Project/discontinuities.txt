@@ -1,45 +1,47 @@
 =======PROCESSES CREATION=======
-Process created: PID 0 with Priority 3 and Type mutual at 1
-Process created: PID 1 with Priority 3 and Type mutual at 1
+Process created: PID 0 with Priority 2 and Type producer at 1
+Process created: PID 1 with Priority 2 and Type consumer at 1
 
 =======PROCESSES CREATION=======
-Process created: PID 2 with Priority 2 and Type producer at 1
-Process created: PID 3 with Priority 2 and Type consumer at 1
+Process created: PID 2 with Priority 3 and Type consumer at 1
+Process created: PID 3 with Priority 3 and Type producer at 1
 
 =======PROCESSES CREATION=======
-Process created: PID 4 with Priority 1 and Type mutual at 1
-Process created: PID 5 with Priority 1 and Type mutual at 1
+Process created: PID 4 with Priority 1 and Type producer at 1
+Process created: PID 5 with Priority 1 and Type consumer at 1
 
 =======PROCESSES CREATION=======
-Process created: PID 6 with Priority 1 and Type mutual at 1
-Process created: PID 7 with Priority 1 and Type mutual at 1
+Process created: PID 6 with Priority 1 and Type producer at 1
+Process created: PID 7 with Priority 1 and Type consumer at 1
 
 =======PROCESSES CREATION=======
-Process created: PID 8 with Priority 1 and Type consumer at 1
-Process created: PID 9 with Priority 1 and Type producer at 1
+Process created: PID 8 with Priority 1 and Type producer at 1
+Process created: PID 9 with Priority 1 and Type consumer at 1
+
+PID: 5 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 4 (producer) was running, No PID was dispatched; readyQueue was empty!
 
 =======PROCESSES CREATION=======
-Process created: PID 10 with Priority 1 and Type consumer at 300
-Process created: PID 11 with Priority 1 and Type producer at 300
+Process created: PID 10 with Priority 1 and Type producer at 300
+Process created: PID 11 with Priority 1 and Type consumer at 300
 
 =======PROCESSES CREATION=======
-Process created: PID 12 with Priority 1 and Type consumer at 300
-Process created: PID 13 with Priority 1 and Type producer at 300
+Process created: PID 12 with Priority 1 and Type producer at 300
+Process created: PID 13 with Priority 1 and Type consumer at 300
 
 =======PROCESSES CREATION=======
-Process created: PID 14 with Priority 1 and Type consumer at 300
-Process created: PID 15 with Priority 1 and Type producer at 300
+Process created: PID 14 with Priority 1 and Type producer at 300
+Process created: PID 15 with Priority 1 and Type consumer at 300
 
 =======PROCESSES CREATION=======
-Process created: PID 16 with Priority 1 and Type consumer at 300
-Process created: PID 17 with Priority 1 and Type producer at 300
+Process created: PID 16 with Priority 1 and Type producer at 300
+Process created: PID 17 with Priority 1 and Type consumer at 300
 
 =======PROCESSES CREATION=======
-Process created: PID 18 with Priority 1 and Type consumer at 300
-Process created: PID 19 with Priority 1 and Type producer at 300
+Process created: PID 18 with Priority 1 and Type producer at 300
+Process created: PID 19 with Priority 1 and Type consumer at 300
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 1, PID 4 put into waiting queue, PID 5 dispatched
@@ -47,65 +49,95 @@ I/O trap request: I/O device 1, PID 4 put into waiting queue, PID 5 dispatched
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 5 put into waiting queue, PID 6 dispatched
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+PID: 0 was STARVED for 602 cycles. BOOSTING it to Priority: 2
 
-=======PROCESSES CREATION=======
-Process created: PID 20 with Priority 2 and Type producer at 600
-Process created: PID 21 with Priority 2 and Type consumer at 600
+PID: 7 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESSES CREATION=======
-Process created: PID 22 with Priority 1 and Type consumer at 600
-Process created: PID 23 with Priority 1 and Type producer at 600
-
-=======PROCESSES CREATION=======
-Process created: PID 24 with Priority 1 and Type consumer at 600
-Process created: PID 25 with Priority 1 and Type producer at 600
-
-=======PROCESSES CREATION=======
-Process created: PID 26 with Priority 1 and Type io at 600
-
-=======PROCESSES CREATION=======
-Process created: PID 27 with Priority 1 and Type io at 600
+PID: 2 was STARVED for 902 cycles. BOOSTING it to Priority: 3
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 20 with Priority 2 and Type io at 600
+
+=======PROCESSES CREATION=======
+Process created: PID 21 with Priority 1 and Type io at 600
+
+=======PROCESSES CREATION=======
+Process created: PID 22 with Priority 1 and Type io at 600
+
+=======PROCESSES CREATION=======
+Process created: PID 23 with Priority 1 and Type io at 600
+
+=======PROCESSES CREATION=======
+Process created: PID 24 with Priority 1 and Type io at 600
+
+PID: 8 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 1 was STARVED for 602 cycles. BOOSTING it to Priority: 2
+
+PID: 9 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 25 with Priority 1 and Type io at 900
+
+=======PROCESSES CREATION=======
+Process created: PID 26 with Priority 1 and Type io at 900
+
+=======PROCESSES CREATION=======
+Process created: PID 27 with Priority 1 and Type io at 900
 
 =======PROCESSES CREATION=======
 Process created: PID 28 with Priority 1 and Type io at 900
 
 =======PROCESSES CREATION=======
-Process created: PID 29 with Priority 1 and Type io at 900
+Process created: PID 29 with Priority 0 and Type intensive at 900
 
-=======PROCESSES CREATION=======
-Process created: PID 30 with Priority 1 and Type io at 900
+PID: 3 was STARVED for 902 cycles. BOOSTING it to Priority: 3
 
-=======PROCESSES CREATION=======
-Process created: PID 31 with Priority 1 and Type io at 900
+PID: 4 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESSES CREATION=======
-Process created: PID 32 with Priority 1 and Type io at 900
+PID: 20 was STARVED for 602 cycles. BOOSTING it to Priority: 2
+
+PID: 10 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 30 with Priority 2 and Type io at 1200
+
+=======PROCESSES CREATION=======
+Process created: PID 31 with Priority 1 and Type io at 1200
+
+=======PROCESSES CREATION=======
+Process created: PID 32 with Priority 1 and Type io at 1200
 
 =======PROCESSES CREATION=======
 Process created: PID 33 with Priority 1 and Type io at 1200
 
 =======PROCESSES CREATION=======
-Process created: PID 34 with Priority 0 and Type intensive at 1200
+Process created: PID 34 with Priority 1 and Type io at 1200
 
-=======PROCESSES CREATION=======
-Process created: PID 35 with Priority 1 and Type io at 1200
+PID: 11 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESSES CREATION=======
-Process created: PID 36 with Priority 1 and Type io at 1200
-
-=======PROCESSES CREATION=======
-Process created: PID 37 with Priority 1 and Type io at 1200
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 35 with Priority 1 and Type io at 1500
+
+=======PROCESSES CREATION=======
+Process created: PID 36 with Priority 1 and Type io at 1500
+
+=======PROCESSES CREATION=======
+Process created: PID 37 with Priority 1 and Type io at 1500
 
 =======PROCESSES CREATION=======
 Process created: PID 38 with Priority 1 and Type io at 1500
@@ -113,20 +145,26 @@ Process created: PID 38 with Priority 1 and Type io at 1500
 =======PROCESSES CREATION=======
 Process created: PID 39 with Priority 0 and Type intensive at 1500
 
-=======PROCESSES CREATION=======
-Process created: PID 40 with Priority 3 and Type io at 1500
-
-=======PROCESSES CREATION=======
-Process created: PID 41 with Priority 2 and Type io at 1500
-
-=======PROCESSES CREATION=======
-Process created: PID 42 with Priority 1 and Type io at 1500
-
 =======IO INTERRUPT=======
 I/O completion interrupt: PID 6 is running, PID 4 put in ready queue
 
+PID: 30 was STARVED for 602 cycles. BOOSTING it to Priority: 2
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 14 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 40 with Priority 2 and Type io at 1800
+
+=======PROCESSES CREATION=======
+Process created: PID 41 with Priority 3 and Type io at 1800
+
+=======PROCESSES CREATION=======
+Process created: PID 42 with Priority 1 and Type io at 1800
 
 =======PROCESSES CREATION=======
 Process created: PID 43 with Priority 1 and Type io at 1800
@@ -134,17 +172,21 @@ Process created: PID 43 with Priority 1 and Type io at 1800
 =======PROCESSES CREATION=======
 Process created: PID 44 with Priority 1 and Type io at 1800
 
-=======PROCESSES CREATION=======
-Process created: PID 45 with Priority 1 and Type io at 1800
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESSES CREATION=======
-Process created: PID 46 with Priority 1 and Type io at 1800
-
-=======PROCESSES CREATION=======
-Process created: PID 47 with Priority 1 and Type io at 1800
+PID: 16 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 45 with Priority 1 and Type io at 2100
+
+=======PROCESSES CREATION=======
+Process created: PID 46 with Priority 1 and Type io at 2100
+
+=======PROCESSES CREATION=======
+Process created: PID 47 with Priority 1 and Type io at 2100
 
 =======PROCESSES CREATION=======
 Process created: PID 48 with Priority 1 and Type io at 2100
@@ -152,17 +194,25 @@ Process created: PID 48 with Priority 1 and Type io at 2100
 =======PROCESSES CREATION=======
 Process created: PID 49 with Priority 1 and Type io at 2100
 
-=======PROCESSES CREATION=======
-Process created: PID 50 with Priority 2 and Type io at 2100
+PID: 40 was STARVED for 602 cycles. BOOSTING it to Priority: 2
 
-=======PROCESSES CREATION=======
-Process created: PID 51 with Priority 1 and Type io at 2100
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESSES CREATION=======
-Process created: PID 52 with Priority 1 and Type io at 2100
+PID: 41 was STARVED for 902 cycles. BOOSTING it to Priority: 3
+
+PID: 18 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 50 with Priority 2 and Type io at 2400
+
+=======PROCESSES CREATION=======
+Process created: PID 51 with Priority 1 and Type io at 2400
+
+=======PROCESSES CREATION=======
+Process created: PID 52 with Priority 1 and Type io at 2400
 
 =======PROCESSES CREATION=======
 Process created: PID 53 with Priority 1 and Type io at 2400
@@ -170,17 +220,23 @@ Process created: PID 53 with Priority 1 and Type io at 2400
 =======PROCESSES CREATION=======
 Process created: PID 54 with Priority 1 and Type io at 2400
 
-=======PROCESSES CREATION=======
-Process created: PID 55 with Priority 1 and Type io at 2400
+PID: 19 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESSES CREATION=======
-Process created: PID 56 with Priority 1 and Type io at 2400
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESSES CREATION=======
-Process created: PID 57 with Priority 1 and Type io at 2400
+PID: 21 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 55 with Priority 1 and Type io at 2700
+
+=======PROCESSES CREATION=======
+Process created: PID 56 with Priority 1 and Type io at 2700
+
+=======PROCESSES CREATION=======
+Process created: PID 57 with Priority 1 and Type io at 2700
 
 =======PROCESSES CREATION=======
 Process created: PID 58 with Priority 1 and Type io at 2700
@@ -188,17 +244,23 @@ Process created: PID 58 with Priority 1 and Type io at 2700
 =======PROCESSES CREATION=======
 Process created: PID 59 with Priority 0 and Type intensive at 2700
 
-=======PROCESSES CREATION=======
-Process created: PID 60 with Priority 3 and Type io at 2700
+PID: 50 was STARVED for 602 cycles. BOOSTING it to Priority: 2
 
-=======PROCESSES CREATION=======
-Process created: PID 61 with Priority 2 and Type io at 2700
+PID: 22 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESSES CREATION=======
-Process created: PID 62 with Priority 1 and Type io at 2700
+PID: 23 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 60 with Priority 2 and Type io at 3000
+
+=======PROCESSES CREATION=======
+Process created: PID 61 with Priority 3 and Type io at 3000
+
+=======PROCESSES CREATION=======
+Process created: PID 62 with Priority 1 and Type io at 3000
 
 =======PROCESSES CREATION=======
 Process created: PID 63 with Priority 1 and Type io at 3000
@@ -206,17 +268,21 @@ Process created: PID 63 with Priority 1 and Type io at 3000
 =======PROCESSES CREATION=======
 Process created: PID 64 with Priority 1 and Type io at 3000
 
-=======PROCESSES CREATION=======
-Process created: PID 65 with Priority 1 and Type io at 3000
+PID: 24 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESSES CREATION=======
-Process created: PID 66 with Priority 1 and Type io at 3000
-
-=======PROCESSES CREATION=======
-Process created: PID 67 with Priority 1 and Type io at 3000
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 65 with Priority 1 and Type io at 3300
+
+=======PROCESSES CREATION=======
+Process created: PID 66 with Priority 1 and Type io at 3300
+
+=======PROCESSES CREATION=======
+Process created: PID 67 with Priority 1 and Type io at 3300
 
 =======PROCESSES CREATION=======
 Process created: PID 68 with Priority 1 and Type io at 3300
@@ -224,560 +290,654 @@ Process created: PID 68 with Priority 1 and Type io at 3300
 =======PROCESSES CREATION=======
 Process created: PID 69 with Priority 1 and Type io at 3300
 
-=======PROCESSES CREATION=======
-Process created: PID 70 with Priority 2 and Type io at 3300
+PID: 60 was STARVED for 602 cycles. BOOSTING it to Priority: 2
 
-=======PROCESSES CREATION=======
-Process created: PID 71 with Priority 1 and Type io at 3300
+PID: 25 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESSES CREATION=======
-Process created: PID 72 with Priority 1 and Type io at 3300
+PID: 61 was STARVED for 902 cycles. BOOSTING it to Priority: 3
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======PROCESSES CREATION=======
-Process created: PID 73 with Priority 1 and Type io at 3600
-
-=======PROCESSES CREATION=======
-Process created: PID 74 with Priority 1 and Type io at 3600
-
-=======PROCESSES CREATION=======
-Process created: PID 75 with Priority 1 and Type io at 3600
-
-=======PROCESSES CREATION=======
-Process created: PID 76 with Priority 1 and Type io at 3600
-
-=======PROCESSES CREATION=======
-Process created: PID 77 with Priority 1 and Type io at 3600
+PID: 26 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
 
 =======PROCESSES CREATION=======
-Process created: PID 78 with Priority 1 and Type io at 3900
+Process created: PID 70 with Priority 2 and Type io at 3600
+
+=======PROCESSES CREATION=======
+Process created: PID 71 with Priority 1 and Type io at 3600
+
+=======PROCESSES CREATION=======
+Process created: PID 72 with Priority 1 and Type io at 3600
+
+=======PROCESSES CREATION=======
+Process created: PID 73 with Priority 1 and Type mutual at 3600
+Process created: PID 74 with Priority 1 and Type mutual at 3600
+
+=======PROCESSES CREATION=======
+Process created: PID 75 with Priority 1 and Type mutual at 3600
+Process created: PID 76 with Priority 1 and Type mutual at 3600
+
+PID: 27 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 28 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESSES CREATION=======
+Process created: PID 77 with Priority 1 and Type mutual at 3900
+Process created: PID 78 with Priority 1 and Type mutual at 3900
 
 =======PROCESSES CREATION=======
 Process created: PID 79 with Priority 0 and Type intensive at 3900
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 6 put into waiting queue, PID 34 dispatched
+PID: 70 was STARVED for 602 cycles. BOOSTING it to Priority: 2
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 31 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 34 put into waiting queue, PID 39 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 39 (intensive) was running, No PID was dispatched; readyQueue was empty!
+I/O trap request: I/O device 1, PID 6 put into waiting queue, PID 7 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 39 put into waiting queue, PID 59 dispatched
+I/O trap request: I/O device 2, PID 7 put into waiting queue, PID 8 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 8 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 32 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 33 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 59 put into waiting queue, PID 79 dispatched
+I/O trap request: I/O device 1, PID 8 put into waiting queue, PID 9 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 9 put into waiting queue, PID 29 dispatched
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 34 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 35 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 36 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 37 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 38 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 42 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 79 is running, PID 6 put in ready queue
+I/O completion interrupt: PID 29 is running, PID 6 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 43 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 44 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 45 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 46 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
 
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 79 is running, PID 39 put in ready queue
+PID: 47 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 79 put into waiting queue, PID 39 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 39 put into waiting queue, PID 79 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+PID: 48 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 79 is running, PID 79 put in ready queue
+I/O completion interrupt: PID 29 is running, PID 8 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 49 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 51 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 52 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 53 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 54 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 55 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 56 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 57 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 58 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 62 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 63 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 64 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 65 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 66 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 67 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 68 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 79 put into waiting queue, PID 79 dispatched
+I/O trap request: I/O device 1, PID 29 put into waiting queue, PID 4 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 79 put into waiting queue, PID 79 dispatched
+I/O trap request: I/O device 2, PID 4 put into waiting queue, PID 10 dispatched
+
+PID: 69 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 71 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 10 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 72 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 73 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 10 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 75 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 10 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 10 put into waiting queue, PID 11 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 11 put into waiting queue, PID 12 dispatched
+
+PID: 76 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 78 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 8 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 79 is running, PID 79 put in ready queue
+I/O completion interrupt: PID 12 is running, PID 29 put in ready queue
+
+PID: 10 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13065
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 79 put into waiting queue, PID 79 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 79 put into waiting queue, PID 79 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13066
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 39 put into waiting queue, PID 79 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13067
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13068
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13069
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13070
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13071
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13072
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13073
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13074
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13075
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13076
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13077
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13078
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13079
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13080
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13081
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13082
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13083
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13084
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13085
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13086
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13087
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13088
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13089
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13090
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 13091
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 7 put into waiting queue, PID 8 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 8 put into waiting queue, PID 9 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 9 is running, PID 79 put in ready queue
+I/O completion interrupt: PID 12 is running, PID 10 put in ready queue
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 9 put into waiting queue, PID 79 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 79 at 14348
+I/O trap request: I/O device 1, PID 12 put into waiting queue, PID 39 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 4 put into waiting queue, PID 10 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 10 put into waiting queue, PID 11 dispatched
+I/O trap request: I/O device 2, PID 39 put into waiting queue, PID 13 dispatched
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 11 is running, PID 39 put in ready queue
+I/O completion interrupt: PID 13 is running, PID 12 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 13 put into waiting queue, PID 14 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 14 put into waiting queue, PID 15 dispatched
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 11 is running, PID 7 put in ready queue
+I/O completion interrupt: PID 15 is running, PID 13 put in ready queue
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 11 put into waiting queue, PID 39 dispatched
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 16 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 39 put into waiting queue, PID 12 dispatched
+I/O trap request: I/O device 2, PID 16 put into waiting queue, PID 17 dispatched
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 12 is running, PID 9 put in ready queue
+I/O completion interrupt: PID 17 is running, PID 15 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 12 put into waiting queue, PID 13 dispatched
+I/O trap request: I/O device 1, PID 17 put into waiting queue, PID 18 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 13 put into waiting queue, PID 14 dispatched
+I/O trap request: I/O device 2, PID 18 put into waiting queue, PID 19 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 19 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 19 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 19 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 19 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 19 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 19 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 14 is running, PID 4 put in ready queue
+I/O completion interrupt: PID 19 is running, PID 17 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 19 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 19 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 19 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 19 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 19 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 19 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 19 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 19 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 19 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 19 put into waiting queue, PID 0 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 0 put into waiting queue, PID 6 dispatched
+
+PID: 19 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 14 is running, PID 11 put in ready queue
+I/O completion interrupt: PID 6 is running, PID 19 put in ready queue
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 6 put into waiting queue, PID 21 dispatched
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 21 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 21 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 21 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 21 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 21 put into waiting queue, PID 59 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 59 put into waiting queue, PID 22 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 22 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 14 is running, PID 12 put in ready queue
+I/O completion interrupt: PID 22 is running, PID 6 put in ready queue
+
+PID: 22 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 22 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 14 put into waiting queue, PID 15 dispatched
+I/O trap request: I/O device 1, PID 22 put into waiting queue, PID 23 dispatched
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 15 put into waiting queue, PID 16 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+PID: 22 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 16 is running, PID 14 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 16 put into waiting queue, PID 17 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 17 put into waiting queue, PID 18 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 18 is running, PID 16 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 18 put into waiting queue, PID 19 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 19 put into waiting queue, PID 6 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 6 put into waiting queue, PID 22 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 22 put into waiting queue, PID 23 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 23 is running, PID 18 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 23 is running, PID 6 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 23 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 1, PID 23 put into waiting queue, PID 24 dispatched
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 24 put into waiting queue, PID 25 dispatched
+PID: 23 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 24 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 25 is running, PID 23 put in ready queue
+I/O completion interrupt: PID 24 is running, PID 21 put in ready queue
+
+PID: 24 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 24 put into waiting queue, PID 1 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 1 put into waiting queue, PID 2 dispatched
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 2 was STARVED for 902 cycles. BOOSTING it to Priority: 3
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 2 is running, PID 22 put in ready queue
+
+PID: 2 was STARVED for 902 cycles. BOOSTING it to Priority: 3
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 2 was STARVED for 902 cycles. BOOSTING it to Priority: 3
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 2 was STARVED for 902 cycles. BOOSTING it to Priority: 3
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 2 is running, PID 23 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 2 was STARVED for 902 cycles. BOOSTING it to Priority: 3
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 2 was STARVED for 902 cycles. BOOSTING it to Priority: 3
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 2 is running, PID 24 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 2 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 2 put into waiting queue, PID 6 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 25 dispatched
+
+PID: 2 was STARVED for 902 cycles. BOOSTING it to Priority: 3
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 25 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 25 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 25 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 25 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 1, PID 25 put into waiting queue, PID 26 dispatched
@@ -785,569 +945,1064 @@ I/O trap request: I/O device 1, PID 25 put into waiting queue, PID 26 dispatched
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 26 (io) was running, No PID was dispatched; readyQueue was empty!
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 26 put into waiting queue, PID 27 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 27 put into waiting queue, PID 6 dispatched
+PID: 26 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 26 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 6 is running, PID 25 put in ready queue
+I/O completion interrupt: PID 26 is running, PID 2 put in ready queue
+
+PID: 26 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 26 (io) was running, No PID was dispatched; readyQueue was empty!
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+PID: 26 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 6 put into waiting queue, PID 28 dispatched
+I/O trap request: I/O device 1, PID 26 put into waiting queue, PID 27 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 27 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 27 put into waiting queue, PID 28 dispatched
+
+PID: 27 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 28 (io) was running, No PID was dispatched; readyQueue was empty!
 
+PID: 28 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 28 (io) was running, No PID was dispatched; readyQueue was empty!
 
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 28 is running, PID 25 put in ready queue
+
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 28 put into waiting queue, PID 29 dispatched
+I/O trap request: I/O device 1, PID 28 put into waiting queue, PID 20 dispatched
+
+PID: 28 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 29 (io) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 20 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 30 dispatched
+I/O trap request: I/O device 1, PID 20 put into waiting queue, PID 3 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 3 put into waiting queue, PID 79 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 20 was STARVED for 602 cycles. BOOSTING it to Priority: 2
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 30 is running, PID 6 put in ready queue
+I/O completion interrupt: PID 79 is running, PID 26 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 30 (io) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 79 is running, PID 27 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 79 is running, PID 28 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 79 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 79 is running, PID 20 put in ready queue
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 30 put into waiting queue, PID 31 dispatched
+I/O trap request: I/O device 1, PID 79 put into waiting queue, PID 6 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 31 put into waiting queue, PID 32 dispatched
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 31 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 31 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 31 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 31 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 31 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 31 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 31 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 31 is running, PID 79 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 31 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 31 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 31 put into waiting queue, PID 32 dispatched
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 32 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 32 put into waiting queue, PID 6 dispatched
+I/O trap request: I/O device 1, PID 32 put into waiting queue, PID 33 dispatched
+
+PID: 32 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 33 (io) was running, No PID was dispatched; readyQueue was empty!
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 6 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 44330
+PID: 33 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 33 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 33 put into waiting queue, PID 35 dispatched
+I/O trap request: I/O device 1, PID 33 put into waiting queue, PID 29 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 34 dispatched
+
+PID: 33 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 34 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 34 put into waiting queue, PID 6 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 35 dispatched
+
+PID: 34 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 35 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 35 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 35 is running, PID 31 put in ready queue
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 35 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 35 put into waiting queue, PID 36 dispatched
+I/O trap request: I/O device 1, PID 35 put into waiting queue, PID 29 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 36 dispatched
+
+PID: 35 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 36 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 36 put into waiting queue, PID 37 dispatched
+I/O trap request: I/O device 1, PID 36 put into waiting queue, PID 37 dispatched
+
+PID: 36 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 37 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 37 put into waiting queue, PID 6 dispatched
+I/O trap request: I/O device 1, PID 37 put into waiting queue, PID 29 dispatched
 
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 45277
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 38 dispatched
+
+PID: 37 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 38 (io) was running, No PID was dispatched; readyQueue was empty!
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 38 put into waiting queue, PID 42 dispatched
+PID: 38 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 42 put into waiting queue, PID 4 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
+I/O trap request: I/O device 1, PID 38 put into waiting queue, PID 4 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 4 put into waiting queue, PID 6 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 50024
+I/O trap request: I/O device 2, PID 4 put into waiting queue, PID 30 dispatched
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 43 (io) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 30 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 30 is running, PID 32 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 30 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 30 was STARVED for 602 cycles. BOOSTING it to Priority: 2
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 30 put into waiting queue, PID 6 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 42 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 42 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 42 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 42 put into waiting queue, PID 29 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 43 dispatched
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 43 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 43 put into waiting queue, PID 44 dispatched
+I/O trap request: I/O device 1, PID 43 put into waiting queue, PID 44 dispatched
+
+PID: 43 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 44 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 44 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 44 is running, PID 33 put in ready queue
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 44 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 44 put into waiting queue, PID 45 dispatched
+I/O trap request: I/O device 1, PID 44 put into waiting queue, PID 6 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 45 put into waiting queue, PID 46 dispatched
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 29 dispatched
+
+PID: 44 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 29 is running, PID 34 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 29 is running, PID 35 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 29 is running, PID 36 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 29 (intensive) was running, No PID was dispatched; readyQueue was empty!
+
+=======PROCESS TERMINATION=======
+Process terminated: PID 29 at 46773
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 45 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 45 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 45 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 45 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 45 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 45 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 45 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 45 put into waiting queue, PID 46 dispatched
+
+PID: 45 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 46 is running, PID 37 put in ready queue
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 46 (io) was running, No PID was dispatched; readyQueue was empty!
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 46 put into waiting queue, PID 47 dispatched
+PID: 46 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 47 put into waiting queue, PID 6 dispatched
+I/O trap request: I/O device 1, PID 46 put into waiting queue, PID 29 dispatched
 
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 51195
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 47 dispatched
 
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 48 is running, PID 4 put in ready queue
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 47 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 47 put into waiting queue, PID 48 dispatched
+
+PID: 47 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 48 (io) was running, No PID was dispatched; readyQueue was empty!
 
+PID: 48 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 48 is running, PID 38 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 48 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 48 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 48 put into waiting queue, PID 49 dispatched
+I/O trap request: I/O device 1, PID 48 put into waiting queue, PID 29 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 49 dispatched
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 49 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 49 put into waiting queue, PID 51 dispatched
+I/O trap request: I/O device 1, PID 49 put into waiting queue, PID 40 dispatched
+
+PID: 49 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 40 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 51 put into waiting queue, PID 52 dispatched
+I/O trap request: I/O device 1, PID 40 put into waiting queue, PID 41 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 41 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 40 was STARVED for 602 cycles. BOOSTING it to Priority: 2
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 41 is running, PID 30 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 41 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 41 put into waiting queue, PID 6 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 51 dispatched
+
+PID: 41 was STARVED for 902 cycles. BOOSTING it to Priority: 3
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 51 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 51 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 51 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 51 put into waiting queue, PID 29 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 52 dispatched
+
+PID: 51 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 52 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 52 put into waiting queue, PID 6 dispatched
+I/O trap request: I/O device 1, PID 52 put into waiting queue, PID 53 dispatched
 
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 51953
+PID: 52 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 53 is running, PID 42 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 53 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 53 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 53 put into waiting queue, PID 54 dispatched
+I/O trap request: I/O device 1, PID 53 put into waiting queue, PID 29 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 54 dispatched
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 54 (io) was running, No PID was dispatched; readyQueue was empty!
 
+PID: 54 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 54 put into waiting queue, PID 55 dispatched
+I/O trap request: I/O device 1, PID 54 put into waiting queue, PID 6 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 55 dispatched
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 55 (io) was running, No PID was dispatched; readyQueue was empty!
 
+PID: 55 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 55 put into waiting queue, PID 56 dispatched
+I/O trap request: I/O device 1, PID 55 put into waiting queue, PID 29 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 56 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 56 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 56 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 56 is running, PID 43 put in ready queue
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 56 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 56 put into waiting queue, PID 57 dispatched
+I/O trap request: I/O device 1, PID 56 put into waiting queue, PID 57 dispatched
+
+PID: 56 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 57 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 57 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 57 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 57 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 57 put into waiting queue, PID 6 dispatched
+I/O trap request: I/O device 1, PID 57 put into waiting queue, PID 29 dispatched
 
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 53000
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 58 dispatched
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 58 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 58 put into waiting queue, PID 62 dispatched
+I/O trap request: I/O device 1, PID 58 put into waiting queue, PID 50 dispatched
+
+PID: 58 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 50 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 50 is running, PID 44 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 50 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 50 was STARVED for 602 cycles. BOOSTING it to Priority: 2
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 62 put into waiting queue, PID 6 dispatched
+I/O trap request: I/O device 1, PID 50 put into waiting queue, PID 6 dispatched
 
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 53314
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 62 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 62 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 62 put into waiting queue, PID 29 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 29 put into waiting queue, PID 63 dispatched
+
+PID: 62 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 63 (io) was running, No PID was dispatched; readyQueue was empty!
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 63 put into waiting queue, PID 64 dispatched
+PID: 63 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 64 put into waiting queue, PID 65 dispatched
+I/O trap request: I/O device 1, PID 63 put into waiting queue, PID 64 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 64 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 64 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 64 put into waiting queue, PID 6 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 29 dispatched
+
+=======PROCESS TERMINATION=======
+Process terminated: PID 29 at 55074
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 65 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 65 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 65 is running, PID 45 put in ready queue
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 65 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 65 put into waiting queue, PID 66 dispatched
+I/O trap request: I/O device 1, PID 65 put into waiting queue, PID 66 dispatched
+
+PID: 65 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 66 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 66 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 66 put into waiting queue, PID 67 dispatched
+I/O trap request: I/O device 1, PID 66 put into waiting queue, PID 29 dispatched
+
+=======PROCESS TERMINATION=======
+Process terminated: PID 29 at 56008
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 67 (io) was running, No PID was dispatched; readyQueue was empty!
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 67 put into waiting queue, PID 6 dispatched
+PID: 67 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 54171
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 67 put into waiting queue, PID 68 dispatched
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 68 (io) was running, No PID was dispatched; readyQueue was empty!
 
+PID: 68 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 68 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 68 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 68 is running, PID 46 put in ready queue
+
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 68 put into waiting queue, PID 69 dispatched
+I/O trap request: I/O device 1, PID 68 put into waiting queue, PID 29 dispatched
+
+=======PROCESS TERMINATION=======
+Process terminated: PID 29 at 56942
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 69 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 69 put into waiting queue, PID 71 dispatched
+I/O trap request: I/O device 1, PID 69 put into waiting queue, PID 60 dispatched
+
+PID: 69 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 60 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 60 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 60 was STARVED for 602 cycles. BOOSTING it to Priority: 2
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 71 put into waiting queue, PID 72 dispatched
+I/O trap request: I/O device 1, PID 60 put into waiting queue, PID 61 dispatched
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 61 is running, PID 47 put in ready queue
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 61 put into waiting queue, PID 6 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 71 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 71 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 71 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 71 (io) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 71 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 71 (io) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 71 put into waiting queue, PID 72 dispatched
+
+PID: 71 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
 Timer interrupt: PID 72 (io) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 72 put into waiting queue, PID 6 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 54975
+I/O trap request: I/O device 1, PID 72 put into waiting queue, PID 73 dispatched
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 73 put into waiting queue, PID 74 dispatched
 
+PID: 72 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 74 (io) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 74 is running, PID 48 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 74 is running, PID 49 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 74 is running, PID 40 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 74 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 74 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 74 put into waiting queue, PID 75 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 75 (io) was running, No PID was dispatched; readyQueue was empty!
+I/O trap request: I/O device 1, PID 74 put into waiting queue, PID 75 dispatched
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 75 put into waiting queue, PID 76 dispatched
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 76 (io) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 76 (mutual) was running, No PID was dispatched; readyQueue was empty!
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 76 put into waiting queue, PID 77 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 77 put into waiting queue, PID 6 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 56022
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 78 (io) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 78 put into waiting queue, PID 6 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 56146
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 9 put into waiting queue, PID 9 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 9 put into waiting queue, PID 9 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
+PID: 76 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 9 is running, PID 9 put in ready queue
+I/O completion interrupt: PID 76 is running, PID 41 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 76 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 76 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 76 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 76 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 76 (mutual) was running, No PID was dispatched; readyQueue was empty!
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
+PID: 76 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 9 put into waiting queue, PID 9 dispatched
+I/O trap request: I/O device 1, PID 76 put into waiting queue, PID 6 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 9 put into waiting queue, PID 11 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 11 put into waiting queue, PID 11 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 11 put into waiting queue, PID 11 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+I/O trap request: I/O device 2, PID 6 put into waiting queue, PID 77 dispatched
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 11 is running, PID 9 put in ready queue
+I/O completion interrupt: PID 77 is running, PID 51 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 11 is running, PID 11 put in ready queue
+I/O completion interrupt: PID 77 is running, PID 52 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 11 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
 
-=======PROCESS TERMINATION=======
-Process terminated: PID 11 at 65084
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 77 is running, PID 53 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 77 (mutual) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 77 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 11 put into waiting queue, PID 11 dispatched
+I/O trap request: I/O device 1, PID 77 put into waiting queue, PID 78 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 11 put into waiting queue, PID 11 dispatched
+I/O trap request: I/O device 2, PID 78 put into waiting queue, PID 70 dispatched
 
-=======PROCESS TERMINATION=======
-Process terminated: PID 11 at 65085
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 11 at 65086
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 11 at 65087
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 70 is running, PID 54 put in ready queue
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 7 put into waiting queue, PID 11 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 11 at 65088
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 11 at 65089
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 11 at 65090
+I/O trap request: I/O device 1, PID 70 put into waiting queue, PID 8 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 12 put into waiting queue, PID 12 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 12 put into waiting queue, PID 9 dispatched
+I/O trap request: I/O device 2, PID 8 put into waiting queue, PID 6 dispatched
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 9 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 6 is running, PID 55 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 6 is running, PID 56 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 6 is running, PID 57 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 6 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 6 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======PROCESS TERMINATION=======
-Process terminated: PID 9 at 65768
+Process terminated: PID 6 at 71956
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 8 put into waiting queue, PID 29 dispatched
+
+=======PROCESS TERMINATION=======
+Process terminated: PID 29 at 71957
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 10 put into waiting queue, PID 10 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 10 put into waiting queue, PID 10 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 10 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 10 put into waiting queue, PID 12 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 12 put into waiting queue, PID 12 dispatched
+
+PID: 10 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 12 is running, PID 58 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 12 is running, PID 50 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 12 is running, PID 62 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 1, PID 12 put into waiting queue, PID 12 dispatched
@@ -1355,568 +2010,561 @@ I/O trap request: I/O device 1, PID 12 put into waiting queue, PID 12 dispatched
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 2, PID 12 put into waiting queue, PID 12 dispatched
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 12 is running, PID 11 put in ready queue
+I/O completion interrupt: PID 12 is running, PID 63 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 12 (producer) was running, No PID was dispatched; readyQueue was empty!
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+PID: 12 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 12 is running, PID 7 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 12 is running, PID 12 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 12 is running, PID 12 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 12 (consumer) was running, No PID was dispatched; readyQueue was empty!
+=======PROCESS TERMINATION=======
+Process terminated: PID 12 at 77006
 
 =======IO TRAP HANDLER=======
 I/O trap request: I/O device 1, PID 12 put into waiting queue, PID 12 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 12 put into waiting queue, PID 4 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 4 is running, PID 12 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 4 (mutual) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 4 put into waiting queue, PID 14 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 14 put into waiting queue, PID 14 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 14 is running, PID 4 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 14 put into waiting queue, PID 14 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 14 put into waiting queue, PID 14 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 14 is running, PID 14 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 14 put into waiting queue, PID 11 dispatched
+I/O trap request: I/O device 2, PID 12 put into waiting queue, PID 12 dispatched
 
 =======PROCESS TERMINATION=======
-Process terminated: PID 11 at 75951
+Process terminated: PID 12 at 77007
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 14 put into waiting queue, PID 14 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 14 put into waiting queue, PID 14 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 14 is running, PID 14 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 14 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 14 is running, PID 14 put in ready queue
+I/O trap request: I/O device 1, PID 10 put into waiting queue, PID 12 dispatched
 
 =======PROCESS TERMINATION=======
-Process terminated: PID 14 at 78138
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 12 put into waiting queue, PID 14 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 14 put into waiting queue, PID 14 dispatched
+Process terminated: PID 12 at 77008
 
 =======PROCESS TERMINATION=======
-Process terminated: PID 14 at 78139
+Process terminated: PID 12 at 77009
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 13 put into waiting queue, PID 13 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 13 put into waiting queue, PID 13 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 13 is running, PID 64 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 13 is running, PID 65 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 13 is running, PID 66 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 13 put into waiting queue, PID 13 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 13 put into waiting queue, PID 13 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 13 put into waiting queue, PID 12 dispatched
 
 =======PROCESS TERMINATION=======
-Process terminated: PID 14 at 78140
+Process terminated: PID 12 at 81533
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 16 put into waiting queue, PID 16 dispatched
+I/O trap request: I/O device 1, PID 13 put into waiting queue, PID 13 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 16 put into waiting queue, PID 16 dispatched
+I/O trap request: I/O device 2, PID 13 put into waiting queue, PID 13 dispatched
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 16 is running, PID 12 put in ready queue
+I/O completion interrupt: PID 13 is running, PID 67 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 16 is running, PID 16 put in ready queue
+I/O completion interrupt: PID 13 is running, PID 68 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 16 put into waiting queue, PID 16 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 16 put into waiting queue, PID 16 dispatched
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 16 is running, PID 16 put in ready queue
+I/O completion interrupt: PID 13 is running, PID 69 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 16 put into waiting queue, PID 14 dispatched
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 13 is running, PID 60 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 13 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
 =======PROCESS TERMINATION=======
-Process terminated: PID 14 at 82642
+Process terminated: PID 13 at 85826
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 16 put into waiting queue, PID 18 dispatched
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 15 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 18 put into waiting queue, PID 18 dispatched
+I/O trap request: I/O device 2, PID 15 put into waiting queue, PID 15 dispatched
+
+PID: 13 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 18 is running, PID 16 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 18 is running, PID 16 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+I/O completion interrupt: PID 15 is running, PID 61 put in ready queue
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 18 put into waiting queue, PID 18 dispatched
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 15 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 18 put into waiting queue, PID 16 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 16 (consumer) was running, No PID was dispatched; readyQueue was empty!
+I/O trap request: I/O device 2, PID 15 put into waiting queue, PID 13 dispatched
 
 =======PROCESS TERMINATION=======
-Process terminated: PID 16 at 87370
+Process terminated: PID 13 at 86649
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 18 put into waiting queue, PID 18 dispatched
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 15 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 18 put into waiting queue, PID 18 dispatched
+I/O trap request: I/O device 2, PID 15 put into waiting queue, PID 15 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 18 is running, PID 18 put in ready queue
+I/O completion interrupt: PID 15 is running, PID 71 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 18 is running, PID 18 put in ready queue
+I/O completion interrupt: PID 15 is running, PID 72 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 18 put into waiting queue, PID 18 dispatched
+I/O trap request: I/O device 1, PID 15 put into waiting queue, PID 15 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 18 put into waiting queue, PID 18 dispatched
+I/O trap request: I/O device 2, PID 15 put into waiting queue, PID 17 dispatched
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 18 is running, PID 18 put in ready queue
+I/O completion interrupt: PID 17 is running, PID 74 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 18 (consumer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 17 is running, PID 76 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 17 put into waiting queue, PID 17 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 17 put into waiting queue, PID 17 dispatched
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 17 is running, PID 77 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 17 is running, PID 70 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 1, PID 17 put into waiting queue, PID 17 dispatched
+
+=======IO TRAP HANDLER=======
+I/O trap request: I/O device 2, PID 17 put into waiting queue, PID 15 dispatched
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======IO INTERRUPT=======
+I/O completion interrupt: PID 15 is running, PID 8 put in ready queue
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 15 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 15 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======PROCESS TERMINATION=======
-Process terminated: PID 18 at 91940
+Process terminated: PID 15 at 96510
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 18 put into waiting queue, PID 18 dispatched
+I/O trap request: I/O device 1, PID 17 put into waiting queue, PID 17 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 18 put into waiting queue, PID 18 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 18 at 91941
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 18 at 91942
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 6 at 91943
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 23 put into waiting queue, PID 23 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 23 put into waiting queue, PID 18 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 18 at 91944
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 23 put into waiting queue, PID 23 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 23 put into waiting queue, PID 23 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+I/O trap request: I/O device 2, PID 17 put into waiting queue, PID 17 dispatched
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 23 is running, PID 18 put in ready queue
+I/O completion interrupt: PID 17 is running, PID 10 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
+
+=======TIMER INTERRUPT=======
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 23 is running, PID 23 put in ready queue
+I/O completion interrupt: PID 17 is running, PID 10 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======IO INTERRUPT=======
-I/O completion interrupt: PID 23 is running, PID 23 put in ready queue
+I/O completion interrupt: PID 17 is running, PID 12 put in ready queue
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 17 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 23 put into waiting queue, PID 6 dispatched
+PID: 17 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======PROCESS TERMINATION=======
-Process terminated: PID 6 at 95435
+Process terminated: PID 17 at 99541
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 23 put into waiting queue, PID 23 dispatched
+I/O trap request: I/O device 1, PID 17 put into waiting queue, PID 19 dispatched
 
 =======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 23 put into waiting queue, PID 23 dispatched
+I/O trap request: I/O device 2, PID 19 put into waiting queue, PID 19 dispatched
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 19 (consumer) was running, No PID was dispatched; readyQueue was empty!
+
+PID: 19 was STARVED for 302 cycles. BOOSTING it to Priority: 1
 
 =======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 23 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 23 at 96530
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 23 put into waiting queue, PID 23 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 23 put into waiting queue, PID 23 dispatched
-
-=======PROCESS TERMINATION=======
-Process terminated: PID 23 at 96531
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 1, PID 25 put into waiting queue, PID 25 dispatched
-
-=======IO TRAP HANDLER=======
-I/O trap request: I/O device 2, PID 25 put into waiting queue, PID 25 dispatched
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 25 is running, PID 23 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 25 is running, PID 23 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======IO INTERRUPT=======
-I/O completion interrupt: PID 25 is running, PID 23 put in ready queue
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
-
-=======TIMER INTERRUPT=======
-Timer interrupt: PID 25 (producer) was running, No PID was dispatched; readyQueue was empty!
+Timer interrupt: PID 19 (consumer) was running, No PID was dispatched; readyQueue was empty!
 
 Simulation finished! Total cycles: 100000

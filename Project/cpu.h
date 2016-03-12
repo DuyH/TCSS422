@@ -148,6 +148,7 @@ void process_manager_destructor(Process_Manager_p);
 
 Queue_p createProcess(Process_Manager_p, Queue_p, unsigned int);    // Creates process, returns the Queue...
 
+void Process_Manager_starvation_detection(Process_Manager_p, PQueue_p);
 
 
 /*****************************

@@ -41,6 +41,9 @@
 // Priority levels for simulation
 #define NUM_PRIORITIES 4
 
+// Priority levels for simulation
+#define STARVATION_THRESHOLD 300
+
 #define MAX_IO_TRAPS 4
 #define DEVICE_ARRAY_1 1
 #define DEVICE_ARRAY_2 2
@@ -147,6 +150,14 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, IO_p device) {
             fprintf(file, "=======TIMER INTERRUPT=======\n");
             printf("=======TIMER INTERRUPT=======\n");
             if (cpu->currentProcess != NULL) {
+
+                // 0. [STARVATION] Boosted PCBs have their priorities reverted back
+                if (cpu->currentProcess->boost) {
+                    cpu->currentProcess->boost = 0;             // Reset boost flag
+                    cpu->currentProcess->starvation_count = 0;  // Reset starvation count
+//                    cpu->currentProcess->priority++;            // Revert PCB's priority
+                }
+
                 // 1. Put process back into the readyQueue
                 fprintf(file, "Timer interrupt: PID %d (%s) was running, ", cpu->currentProcess->pid,
                         PCB_get_type_string(cpu->currentProcess->type));
@@ -470,6 +481,39 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
     return queue;
 }
 
+/* Starvation Detection function */
+void Process_Manager_starvation_detection(Process_Manager_p manager, PQueue_p readyQueue) {
+
+
+    int i;
+    for (i = 1; i < MAX_PRIORITY_LEVEL; i++) {
+
+        if (readyQueue->pri_Queue[i]->size > 0) {
+            PCB_p head_pcb = readyQueue->pri_Queue[i]->head->pcb;
+
+            // 1. Increment the starvation count for each head PCB of each of the queues in Priority queue
+            head_pcb->starvation_count++;
+
+            // 2. Check to see if pcb's starvation count exceeds arbitrary threshold, then boost
+            if (head_pcb->starvation_count++ > STARVATION_THRESHOLD * head_pcb->priority) {
+                fprintf(file, "PID: %d was STARVED for %d cycles. BOOSTING it to Priority: %d\n\n", head_pcb->pid,
+                        head_pcb->starvation_count, head_pcb->priority);
+                printf("PID: %d was STARVED for %d cycles. BOOSTING it to Priority: %d\n\n", head_pcb->pid,
+                       head_pcb->starvation_count, head_pcb->priority);
+                head_pcb->boost = 1;
+//                head_pcb->priority--;
+            }
+
+            // 3. If so, move that pcb to the next priority up and change it's boosted flag
+            if (head_pcb->boost) { // TODO: This can be combined with step 2 above...
+                head_pcb->starvation_count = 0;
+                Queue_enqueue(readyQueue->pri_Queue[i - 1], Queue_dequeue(readyQueue->pri_Queue[i]));
+            }
+        }
+    }
+}
+
+
 //
 // 2. randomly pick a priority
 // 3.
@@ -644,6 +688,12 @@ int main() {
                     Timer_set_count(device_1->timer, QUANTUM * (rand() % 3 + 3));
             }
         }
+
+        /***********************************
+         *      STARVATION CHECKER         *
+         ***********************************/
+        Process_Manager_starvation_detection(manager_p, cpu->readyQueue);
+
         time_count++;
     }
 
