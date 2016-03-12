@@ -43,7 +43,7 @@ typedef struct pcb {
 
     unsigned int lock[4];
     unsigned int trylock[4];
-    unsigned int unlocked[4];
+    unsigned int unlock[4];
 
     unsigned int pair_name;         // Pair "name"
 

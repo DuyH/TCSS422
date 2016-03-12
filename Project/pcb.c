@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 #include "pcb.h"
 
 /**
@@ -43,17 +44,13 @@ PCB_p PCB_constructor(Process_Type type) {
                 }
             }
             return pcb;
-        case producer:
-
-            break;
-        case consumer:
-            break;
         case intensive:
             pcb->priority = 0;  // Intensive processes always have 0 priority
             return pcb;
-        case mutual:
-            break;
         default:
+            memcpy(pcb->trylock, (int[4]){10, 30, 50, 70}, 4*sizeof(int));
+            memcpy(pcb->lock, (int[4]){15, 35, 55, 75}, 4*sizeof(int));
+            memcpy(pcb->unlock, (int[4]){20, 40, 60, 80}, 4*sizeof(int));
             break;
     }
 
