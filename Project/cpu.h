@@ -1,3 +1,4 @@
+
 /***********************************************************************************************
  * cpu.h
  *
@@ -19,9 +20,7 @@
 #ifndef CPU_H
 #define CPU_H
 
-
 #define MAX_PRIORITY_LEVEL 4
-
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,6 +29,7 @@
 #include "pcb.h"
 #include "PriorityQueue.h"
 #include "io.h"
+
 
 /* Enumerating interrupt states. */
 typedef enum interrupt_state {
@@ -140,10 +140,10 @@ typedef struct process_manager {
 typedef Process_Manager *Process_Manager_p;
 
 /* Process Manager Constructor */
-Process_Manager_p process_manager_constructor();
+Process_Manager_p process_manager_constructor(void);
 
 /* Process Manager Destructor */
-void process_manager_destructor(Process_Manager_p manager_p);
+void process_manager_destructor(Process_Manager_p);
 
 /* Process Manager Utility Functions */
 
@@ -167,3 +167,4 @@ typedef Mutex *Mutex_p;
 
 
 #endif //ASSIGNMENT1_CPU_H
+

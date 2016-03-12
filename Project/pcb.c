@@ -30,6 +30,7 @@
 PCB_p PCB_constructor(Process_Type type) {
     PCB_p pcb = (PCB_p) malloc(sizeof(PCB));
     srand((unsigned int) time(NULL));
+    pcb->type = type;
 
     int i = 0;
     switch (type) {
@@ -48,9 +49,9 @@ PCB_p PCB_constructor(Process_Type type) {
             pcb->priority = 0;  // Intensive processes always have 0 priority
             return pcb;
         default:
-            memcpy(pcb->trylock, (int[4]){10, 30, 50, 70}, 4*sizeof(int));
-            memcpy(pcb->lock, (int[4]){15, 35, 55, 75}, 4*sizeof(int));
-            memcpy(pcb->unlock, (int[4]){20, 40, 60, 80}, 4*sizeof(int));
+            memcpy(pcb->trylock, (int[4]) {10, 30, 50, 70}, 4 * sizeof(int));
+            memcpy(pcb->lock, (int[4]) {15, 35, 55, 75}, 4 * sizeof(int));
+            memcpy(pcb->unlock, (int[4]) {20, 40, 60, 80}, 4 * sizeof(int));
             break;
     }
 
