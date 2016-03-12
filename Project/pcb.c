@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 #include "pcb.h"
 
 /**
@@ -34,25 +35,22 @@ PCB_p PCB_constructor(Process_Type type) {
     switch (type) {
         case io:
             for (i = 0; i < 2; i++) {
-                pcb->io_trap_1[0] = (rand() % 60) * 10;
-                pcb->io_trap_2[0] = (rand() % 60) * 10;
+                pcb->io_trap_1[0] = (rand() % 60) * 10 + 100;
+                pcb->io_trap_2[0] = (rand() % 60) * 10 + 100;
                 int j = 1;
                 for (; j < 4; j++) {
-                    pcb->io_trap_1[j] = pcb->io_trap_1[j - 1] + (rand() % 60) * 10;
-                    pcb->io_trap_2[j] = pcb->io_trap_2[j - 1] + (rand() % 60) * 10;
+                    pcb->io_trap_1[j] = pcb->io_trap_1[j - 1] + (rand() % 60) * 10 + 100;
+                    pcb->io_trap_2[j] = pcb->io_trap_2[j - 1] + (rand() % 60) * 10 + 100;
                 }
             }
             return pcb;
-        case producer:
-            break;
-        case consumer:
-            break;
         case intensive:
             pcb->priority = 0;  // Intensive processes always have 0 priority
             return pcb;
-        case mutual:
-            break;
         default:
+            memcpy(pcb->trylock, (int[4]){10, 30, 50, 70}, 4*sizeof(int));
+            memcpy(pcb->lock, (int[4]){15, 35, 55, 75}, 4*sizeof(int));
+            memcpy(pcb->unlock, (int[4]){20, 40, 60, 80}, 4*sizeof(int));
             break;
     }
 
