@@ -19,6 +19,7 @@ Mutex_p mutex_constructor(int id) {
     mutex->mutex_id = id;
     mutex->pcb = NULL;
     mutex->mutex_waiting_queue = Queue_constructor();
+    return mutex;
 }
 
 /**
