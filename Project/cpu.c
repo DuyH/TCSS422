@@ -24,7 +24,7 @@
 // Maximum cycles before simulation termination
 #define MAX_SIMULATION_CYCLES 100000
 
-#define MAX_PROCESS 30 // No longer needed as we are dynamically determining this
+#define MAX_PROCESS 30 // Limit simulation to this many processes at a time
 
 // Max IO processes during simulation
 #define MAX_IO_PROCESSES 50
@@ -553,7 +553,9 @@ int main() {
     // Run the simulation until either all processes terminate or max cycles reached (+1 for printing pretty # cycles)
     while (time_count < MAX_SIMULATION_CYCLES + 1) {
 
-        /**** EXECUTION INSTRUCTION ****/
+        /**************************************
+         *      EXECUTE INSTRUCTION CYCLE     *
+         *************************************/
         if (cpu->currentProcess != NULL) {
 
             //Increment PC by 1 to simulate instruction execution
@@ -566,7 +568,9 @@ int main() {
             // Increase term count every time current process goes over its max PC
             if (PCB_get_PC(cpu->currentProcess) == 0) PCB_increment_term_count(cpu->currentProcess);
 
-            // When a process terminates
+            /**************************************
+             *      TERMINATION DETERMINATION     *
+             **************************************/
             if (PCB_get_terminate(cpu->currentProcess) != 0 &&
                 PCB_get_terminate(cpu->currentProcess) == PCB_get_term_count(cpu->currentProcess)) {
 
@@ -583,7 +587,9 @@ int main() {
             }
         }
 
-        /**** CHECK FOR TIMER INTERRUPT ****/
+        /**************************************
+         *      CHECK FOR TIMER INTERRUPT     *
+         *************************************/
         // Timer interrupt if timer is 0, Timer_interrupt returns 1
         if (Timer_countDown(cpu->timer)) {
 
@@ -594,36 +600,41 @@ int main() {
             if (cpu->currentProcess != NULL) {
                 CPU_pseudo_isr(cpu, INTERRUPT_TIMER, NULL);
             }
-
-
-            // Create some more processes until MAX_PROCESS allowed
-            if (total_procs < MAX_PROCESS) {
-                int num_proc_created = 0;
-                do {
-                    num_proc_created = rand() % 6 + 1;
-                } while (total_procs + num_proc_created > MAX_PROCESS);
-                total_procs += num_proc_created;
-
-                cpu->newProcessesQueue = createProcess(manager_p, cpu->newProcessesQueue, time_count);
-
-                process_ID += num_proc_created;
-
-                // Add newly created processes to the CPU's ready Queue
-                while (!Queue_isEmpty(cpu->newProcessesQueue)) {
-                    PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
-                    PCB_set_state(temp_pcb, ready);
-                    PQueue_enqueue(cpu->readyQueue, temp_pcb);
-                }
-            }
-
-            // If there is no currently running process, dequeue from the newly create processes
-            if (cpu->currentProcess == NULL && !PQueue_isEmpty(cpu->readyQueue)) {
-                cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
-            }
-
         }
 
-        /**** CHECK FOR I/O COMPLETION INTERRUPT  ****/
+        /**************************************
+         *       CREATE NEW PROCESSES          *
+         **************************************/
+
+        // 1. Generate a random number of processes to create
+        ran_proc_created = rand() % (NUM_PRIORITIES + 1);
+
+        // 2. Increment counters for total number of processes
+        total_procs += ran_proc_created;
+        process_ID += ran_proc_created;
+
+        // 3. Create randomly chosen number of processes
+        int i;
+        for (i = 0; i < 5; i++) {
+            cpu->newProcessesQueue = createProcess(manager_p, cpu->newProcessesQueue, time_count);
+        }
+
+        // 4. Enqueue the freshly created processes into CPU's readyqueue
+        while (!Queue_isEmpty(cpu->newProcessesQueue)) {
+            PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
+            PCB_set_state(temp_pcb, ready);
+            PQueue_enqueue(cpu->readyQueue, temp_pcb);
+        }
+
+        // 5. If there is no currently running process, dequeue from the newly create processes
+        if (cpu->currentProcess == NULL && !PQueue_isEmpty(cpu->readyQueue)) {
+            cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
+        }
+
+        /****************************************************
+         *      CHECK FOR I/O COMPLETION INTERRUPTS         *
+         ****************************************************/
+
         if (!Queue_isEmpty(device_1->waitingQueue)) {
             device_1_interrupt = Timer_countDown(device_1->timer);
             if (device_1_interrupt == 1) {
@@ -642,7 +653,9 @@ int main() {
             }
         }
 
-        /**** CHECK FOR I/O TRAP ****/
+        /***********************************
+         *      CHECK FOR I/O TRAP         *
+         ***********************************/
         if (cpu->currentProcess != NULL) {
             io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_1);
             if (io_request == 1) {
