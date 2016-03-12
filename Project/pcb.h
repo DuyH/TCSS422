@@ -38,7 +38,7 @@ typedef struct pcb {
     unsigned int terminate;         // max number for process termination, 0 for no termination
     unsigned int term_count;        // counter until process termination
     unsigned int boost;             // starvation field for priority switch
-    unsigned int boost_start;       // PC Value when the boost was triggered (for starvation)
+    unsigned int starvation_count;       // PC Value when the boost was triggered (for starvation)
     enum process_type type;         // differentiates different processes
 
     unsigned int lock[4];

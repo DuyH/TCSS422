@@ -31,6 +31,8 @@ PCB_p PCB_constructor(Process_Type type) {
     PCB_p pcb = (PCB_p) malloc(sizeof(PCB));
     srand((unsigned int) time(NULL));
     pcb->type = type;
+    pcb->boost = 0;
+    pcb->starvation_count = 0;
 
     int i = 0;
     switch (type) {
