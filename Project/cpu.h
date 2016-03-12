@@ -131,17 +131,18 @@ typedef struct process_manager {
     unsigned int num_processes;         // TOTAL number of processes ever created by simulation, also used for #PIDs
     unsigned int num_running;           // Total number of currently RUNNING processes
 
-    unsigned int process_type_count[5];      // Keeps count how many of each type of processes cpu has
+    unsigned int process_type_count[5]; // Keeps count how many of each type of processes cpu has
     unsigned int priority_counts[4];    // How many processes for each priority (io, producer, consumer, intensive, mutual)
     unsigned int total_pairs;           // Keeps track of the total number of pairs created, also for naming
-
 } Process_Manager;
 
 typedef Process_Manager *Process_Manager_p;
 
 /* Process Manager Constructor */
+Process_Manager_p process_manager_constructor();
 
 /* Process Manager Destructor */
+void process_manager_destructor(Process_Manager_p manager_p);
 
 /* Process Manager Utility Functions */
 

@@ -305,8 +305,8 @@ void CPU_io_trap_handler(CPU_p cpu, IO_p device, int device_num) {
  */
 Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int timeCount) {
 
-//    fprintf(file, "=======PROCESSES CREATION=======\n");
-//    printf("=======PROCESSES CREATION=======\n");
+    fprintf(file, "=======PROCESSES CREATION=======\n");
+    printf("=======PROCESSES CREATION=======\n");
 
     PCB_p pcb/* = (PCB_p) malloc(sizeof(PCB))*/;
     PCB_p pcb1/* = (PCB_p) malloc(sizeof(PCB))*/;
