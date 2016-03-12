@@ -253,21 +253,6 @@ void CPU_remove_file() {
 }
 
 /**
- * Function that creates 0-5 new processes and puts them into a list.
- */
-//Queue *CPU_create_processes(Queue_p queue, int numb_process, int process_ID, long int time_count) {
-//
-//    int n;
-//    static int proc_id = 1;
-//    for (n = 0; n < numb_process; n++) {
-//        PCB_p pcb = PCB_constructor();
-//    }
-//    fprintf(file, "\n");
-//    printf("\n");
-//    return queue;
-//}
-
-/**
 * Function that checks pending I/O requests. returns 0 if not and 1 if there is
 */
 int CPU_check_io_request(PCB_p pcb, int device_num) {
@@ -313,10 +298,26 @@ void CPU_io_trap_handler(CPU_p cpu, IO_p device, int device_num) {
  *****************************/
 
 // Process Manager constructor
+Process_Manager_p process_manager_constructor() {
+    Process_Manager_p manager_p = malloc(sizeof(Process_Manager));
+    manager_p->num_processes = 0;
+    manager_p->num_running = 0;
+    int i;
+    for (i = 0; i < 5; i++) {
+        manager_p->process_type_count[i] = 0;
+    }
+    for (i = 0; i < NUM_PRIORITIES; i++) {
+        manager_p->priority_counts[i] = 0;
+    }
+    manager_p->total_pairs = 0;
+
+    return manager_p;
+}
 
 // Process Manager deconstructor
-
-
+void process_manager_destructor(Process_Manager_p manager_p) {
+    free(manager_p);
+}
 
 /*  1. Randomly pick a priority
  *      Then check if we are allowed to make any more of that priority
@@ -326,12 +327,10 @@ void CPU_io_trap_handler(CPU_p cpu, IO_p device, int device_num) {
  *      Check for hard-number limits for that
  */
 Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int timeCount) {
-
     fprintf(file, "=======PROCESSES CREATION=======\n");
     printf("=======PROCESSES CREATION=======\n");
 
-    PCB_p pcb/* = (PCB_p) malloc(sizeof(PCB))*/;
-    PCB_p pcb1/* = (PCB_p) malloc(sizeof(PCB))*/;
+    PCB_p pcb;
 
     // Randomly choose a process type:
     Process_Type type;
@@ -346,7 +345,7 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
         randPriority = rand() % MAX_PRIORITY_LEVEL;
         double percentage;
         if (manager->num_running != 0)
-            percentage = (double) manager->priority_counts[randPriority] / manager->num_running;
+            percentage = (double) manager->priority_counts[randPriority] / (manager->num_running + 1);
         else percentage = 0;
 
         switch (randPriority) {
@@ -355,19 +354,16 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 break;
             case 1:
                 if (percentage < 0.80) {
-                    manager->priority_counts[1]++;
                     notUsable = 0;
                 }
                 break;
             case 2:
                 if (percentage < 0.10) {
-                    manager->priority_counts[2]++;
                     notUsable = 0;
                 }
                 break;
             case 3:
                 if (percentage < 0.05) {
-                    manager->priority_counts[3]++;
                     notUsable = 0;
                 }
                 break;
@@ -392,8 +388,6 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
         switch (type) {
             case io:
                 if (manager->process_type_count[(int) type] < MAX_IO_PROCESSES) {
-                    manager->process_type_count[(int) type]++;   // Increment the number of this type in manager
-
                     pro_con_pair[0] = PCB_constructor(type);
 
                     notUsable = 0;
@@ -401,9 +395,6 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 break;
             case producer:
                 if (manager->process_type_count[(int) type] < MAX_PROCON_PROCESSES) {
-                    manager->process_type_count[(int) type]++;
-                    manager->process_type_count[(int) consumer]++;
-
                     pro_con_pair[0] = PCB_constructor(type);
                     pro_con_pair[1] = PCB_constructor(consumer);
 
@@ -413,9 +404,6 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 break;
             case consumer:
                 if (manager->process_type_count[(int) type] < MAX_PROCON_PROCESSES) {
-                    manager->process_type_count[(int) type]++;
-                    manager->process_type_count[(int) producer]++;
-
                     pro_con_pair[0] = PCB_constructor(type);
                     pro_con_pair[1] = PCB_constructor(producer);
 
@@ -425,9 +413,6 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 break;
             case intensive:
                 if (manager->process_type_count[(int) type] < MAX_INTENSIVE_PROCESSES) {
-                    manager->process_type_count[(int) type]++;
-                    manager->priority_counts[0]++;
-
                     pro_con_pair[0] = PCB_constructor(type);
 
                     notUsable = 0;
@@ -437,9 +422,6 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 break;
             case mutual:
                 if (manager->process_type_count[(int) type] < MAX_MUTUAL_RESOURCE_PROCESSES) {
-                    manager->process_type_count[(int) type]++;
-                    manager->process_type_count[(int) type]++;
-
                     pro_con_pair[0] = PCB_constructor(type);
                     pro_con_pair[1] = PCB_constructor(type);
 
@@ -469,6 +451,7 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
         PCB_set_termination(pcb, 0);                // init termination
         PCB_set_terminate(pcb, rand() % 5);         // Our terminate values are 0-4
         PCB_set_term_count(pcb, 0);                 // init term count
+        manager->process_type_count[(int) pcb->type]++;
         manager->num_processes++;                   // Update the number of TOTAL processes
         manager->num_running++;                     // Update number of currently running processes
         manager->priority_counts[randPriority]++;   // Update the number of priorities of that type
@@ -481,26 +464,6 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
     }
 
     return queue;
-}
-
-Process_Manager_p process_manager_constructor() {
-    Process_Manager_p manager_p = malloc(sizeof(Process_Manager));
-    manager_p->num_processes = 0;
-    manager_p->num_running = 0;
-    int i;
-    for (i = 0; i < 5; i++) {
-        manager_p->process_type_count[i] = 0;
-    }
-    for (i = 0; i < NUM_PRIORITIES; i++) {
-        manager_p->priority_counts[i] = 0;
-    }
-    manager_p->total_pairs = 0;
-
-    return manager_p;
-}
-
-void process_manager_destructor(Process_Manager_p manager_p) {
-    free(manager_p);
 }
 
 //
@@ -614,9 +577,9 @@ int main() {
         process_ID += ran_proc_created;
 
         // 3. Create randomly chosen number of processes
-        int i;
         for (i = 0; i < 5; i++) {
-            cpu->newProcessesQueue = createProcess(manager_p, cpu->newProcessesQueue, time_count);
+            if (manager_p->num_processes < 80)
+                cpu->newProcessesQueue = createProcess(manager_p, cpu->newProcessesQueue, time_count);
         }
 
         // 4. Enqueue the freshly created processes into CPU's readyqueue
