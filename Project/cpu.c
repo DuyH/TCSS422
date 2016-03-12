@@ -148,8 +148,10 @@ void CPU_scheduler(CPU_p cpu, Interrupt_type interrupt_type, IO_p device) {
             printf("=======TIMER INTERRUPT=======\n");
             if (cpu->currentProcess != NULL) {
                 // 1. Put process back into the readyQueue
-                fprintf(file, "Timer interrupt: PID %d was running, ", cpu->currentProcess->pid);
-                printf("Timer interrupt: PID %d was running, ", cpu->currentProcess->pid);
+                fprintf(file, "Timer interrupt: PID %d (%s) was running, ", cpu->currentProcess->pid,
+                        PCB_get_type_string(cpu->currentProcess->type));
+                printf("Timer interrupt: PID %d (%s) was running, ", cpu->currentProcess->pid,
+                       PCB_get_type_string(cpu->currentProcess->type));
                 PQueue_enqueue(cpu->readyQueue, cpu->currentProcess);
 
                 // 2. Change its state from interrupted to ready
@@ -448,7 +450,7 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
         PCB_set_max_pc(pcb, 2345);                  // Set max PC
         PCB_set_creation(pcb, timeCount);           // Set creation time
         PCB_set_termination(pcb, 0);                // init termination
-        PCB_set_terminate(pcb, rand() % 5);         // Our terminate values are 0-4
+        PCB_set_terminate(pcb, rand() % 4 + 1);         // Our terminate values are 0-4
         PCB_set_term_count(pcb, 0);                 // init term count
         manager->process_type_count[(int) pcb->type]++;
         manager->num_processes++;                   // Update the number of TOTAL processes
@@ -542,6 +544,11 @@ int main() {
                 printf("Process terminated: PID %d at %u\n\n", PCB_get_pid(cpu->currentProcess), time_count);
                 PCB_set_termination(cpu->currentProcess, time_count);
                 CPU_enqueue_terminatedQueue(cpu, cpu->currentProcess);
+
+                manager_p->num_running--;
+                manager_p->process_type_count[(int) cpu->currentProcess->type]--;
+                manager_p->priority_counts[cpu->currentProcess->priority]--;
+
                 cpu->currentProcess = NULL;
                 if (!PQueue_isEmpty(cpu->readyQueue)) {
                     cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);

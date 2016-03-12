@@ -88,11 +88,11 @@ void PQueue_print(PQueue_p priority_Queue, int showContents){
 }
 
 int PQueue_isEmpty(PQueue_p queue) {
-	int i;
+	int i, count;
 	for (i = 0; i < 4; i++) {
 		if (Queue_isEmpty(queue->pri_Queue[i])){
-			return 1;
+			count++;
 		}
 	}
-	return 0;
+	return (count == 4);
 }
