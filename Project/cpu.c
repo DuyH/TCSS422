@@ -429,7 +429,7 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 break;
         }
     }
-
+    printf("Makes it\n");
     // Continue detailing the pcb:
     while (pair_flag) {
         // handles producer and consumer
