@@ -21,11 +21,32 @@
 
 #include "cpu.h"
 
-#define MAX_PROCESS 30
-#define MAX_SIMULATION_CYCLES 500000
+// Maximum cycles before simulation termination
+#define MAX_SIMULATION_CYCLES 100000
+
+#define MAX_PROCESS 30 // Limit simulation to this many processes at a time
+
+// Max IO processes during simulation
+#define MAX_IO_PROCESSES 50
+
+// Max Compute Intensive processes during simulation
+#define MAX_INTENSIVE_PROCESSES 25
+
+// Max Producer-Consumer pairs during simulation
+#define MAX_PROCON_PROCESSES 10
+
+// Max Mutual Resource Users during simulation
+#define MAX_MUTUAL_RESOURCE_PROCESSES 5
+
+// Priority levels for simulation
+#define NUM_PRIORITIES 4
+
 #define MAX_IO_TRAPS 4
 #define DEVICE_ARRAY_1 1
 #define DEVICE_ARRAY_2 2
+
+// Global Variable for each Producer-Consumer pair to manipulate
+int procon_globals[10];
 
 // File for saving text
 FILE *file;
@@ -324,7 +345,7 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
         randPriority = rand() % MAX_PRIORITY_LEVEL;
         double percentage;
         if (manager->num_running != 0)
-        percentage = (double) manager->priority_counts[randPriority] /  manager->num_running;
+            percentage = (double) manager->priority_counts[randPriority] / manager->num_running;
         else percentage = 0;
 
         switch (randPriority) {
@@ -363,13 +384,13 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
             type = intensive;
         else {
             do {
-                type = (Process_Type) rand() % 5;
+                type = (Process_Type) rand() % (NUM_PRIORITIES + 1);
             } while (type == intensive);
         }
         // Check hard-number limits:
         switch (type) {
             case io:
-                if (manager->process_type_count[(int) type] < 50) {
+                if (manager->process_type_count[(int) type] < MAX_IO_PROCESSES) {
                     manager->process_type_count[(int) type]++;   // Increment the number of this type in manager
 
                     pro_con_pair[0] = PCB_constructor(type);
@@ -378,7 +399,7 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 }
                 break;
             case producer:
-                if (manager->process_type_count[(int) type] < 10) {
+                if (manager->process_type_count[(int) type] < MAX_PROCON_PROCESSES) {
                     manager->process_type_count[(int) type]++;
                     manager->process_type_count[(int) consumer]++;
 
@@ -390,7 +411,7 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 }
                 break;
             case consumer:
-                if (manager->process_type_count[(int) type] < 10) {
+                if (manager->process_type_count[(int) type] < MAX_PROCON_PROCESSES) {
                     manager->process_type_count[(int) type]++;
                     manager->process_type_count[(int) producer]++;
 
@@ -402,7 +423,7 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 }
                 break;
             case intensive:
-                if (manager->process_type_count[(int) type] < 25) {
+                if (manager->process_type_count[(int) type] < MAX_INTENSIVE_PROCESSES) {
                     manager->process_type_count[(int) type]++;
                     manager->priority_counts[0]++;
 
@@ -410,11 +431,11 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
 
                     notUsable = 0;
                 } else {
-                    randPriority = rand() % 5;
+                    randPriority = rand() % (NUM_PRIORITIES + 1);
                 }
                 break;
             case mutual:
-                if (manager->process_type_count[(int) type] < 5) {
+                if (manager->process_type_count[(int) type] < MAX_MUTUAL_RESOURCE_PROCESSES) {
                     manager->process_type_count[(int) type]++;
                     manager->process_type_count[(int) type]++;
 
@@ -470,7 +491,7 @@ Process_Manager_p process_manager_constructor() {
     for (i = 0; i < 5; i++) {
         manager_p->process_type_count[i] = 0;
     }
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < NUM_PRIORITIES; i++) {
         manager_p->priority_counts[i] = 0;
     }
     manager_p->total_pairs = 0;
@@ -507,7 +528,7 @@ int main() {
     unsigned int time_count = 1;
 
 // 1a. Create a queue of new processes, 0 - 5 processes at a time:
-    int ran_proc_created = rand() % 5;
+    int ran_proc_created = rand() % (NUM_PRIORITIES + 1);
 
     total_procs += ran_proc_created;
 
@@ -530,12 +551,14 @@ int main() {
 
 
     // Run the simulation until either all processes terminate or max cycles reached (+1 for printing pretty # cycles)
-    while (Queue_get_size(cpu->terminatedQueue) < MAX_PROCESS && time_count < MAX_SIMULATION_CYCLES + 1) {
+    while (time_count < MAX_SIMULATION_CYCLES + 1) {
 
-        /**** EXECUTION INSTRUCTION ****/
+        /**************************************
+         *      EXECUTE INSTRUCTION CYCLE     *
+         *************************************/
         if (cpu->currentProcess != NULL) {
 
-            //Increment PC by 1 to stimulate instruction execution
+            //Increment PC by 1 to simulate instruction execution
             PCB_increment_PC(cpu->currentProcess);
             CPU_push_sysStack(cpu, PCB_get_PC(cpu->currentProcess));
 
@@ -545,7 +568,9 @@ int main() {
             // Increase term count every time current process goes over its max PC
             if (PCB_get_PC(cpu->currentProcess) == 0) PCB_increment_term_count(cpu->currentProcess);
 
-            // When a process terminates
+            /**************************************
+             *      TERMINATION DETERMINATION     *
+             **************************************/
             if (PCB_get_terminate(cpu->currentProcess) != 0 &&
                 PCB_get_terminate(cpu->currentProcess) == PCB_get_term_count(cpu->currentProcess)) {
 
@@ -559,11 +584,12 @@ int main() {
                 if (!PQueue_isEmpty(cpu->readyQueue)) {
                     cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
                 }
-//                continue;
             }
         }
 
-        /**** CHECK FOR TIMER INTERRUPT ****/
+        /**************************************
+         *      CHECK FOR TIMER INTERRUPT     *
+         *************************************/
         // Timer interrupt if timer is 0, Timer_interrupt returns 1
         if (Timer_countDown(cpu->timer)) {
 
@@ -574,36 +600,41 @@ int main() {
             if (cpu->currentProcess != NULL) {
                 CPU_pseudo_isr(cpu, INTERRUPT_TIMER, NULL);
             }
-
-
-            // Create some more processes until MAX_PROCESS allowed
-            if (total_procs < MAX_PROCESS) {
-                int num_proc_created = 0;
-                do {
-                    num_proc_created = rand() % 6 + 1;
-                } while (total_procs + num_proc_created > MAX_PROCESS);
-                total_procs += num_proc_created;
-
-                cpu->newProcessesQueue = createProcess(manager_p, cpu->newProcessesQueue, time_count);
-
-                process_ID += num_proc_created;
-
-                // Add newly created processes to the CPU's ready Queue
-                while (!Queue_isEmpty(cpu->newProcessesQueue)) {
-                    PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
-                    PCB_set_state(temp_pcb, ready);
-                    PQueue_enqueue(cpu->readyQueue, temp_pcb);
-                }
-            }
-
-            // If there is no currently running process, dequeue from the newly create processes
-            if (cpu->currentProcess == NULL && !PQueue_isEmpty(cpu->readyQueue)) {
-                cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
-            }
-
         }
 
-        /**** CHECK FOR I/O COMPLETION INTERRUPT  ****/
+        /**************************************
+         *       CREATE NEW PROCESSES          *
+         **************************************/
+
+        // 1. Generate a random number of processes to create
+        ran_proc_created = rand() % (NUM_PRIORITIES + 1);
+
+        // 2. Increment counters for total number of processes
+        total_procs += ran_proc_created;
+        process_ID += ran_proc_created;
+
+        // 3. Create randomly chosen number of processes
+        int i;
+        for (i = 0; i < 5; i++) {
+            cpu->newProcessesQueue = createProcess(manager_p, cpu->newProcessesQueue, time_count);
+        }
+
+        // 4. Enqueue the freshly created processes into CPU's readyqueue
+        while (!Queue_isEmpty(cpu->newProcessesQueue)) {
+            PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
+            PCB_set_state(temp_pcb, ready);
+            PQueue_enqueue(cpu->readyQueue, temp_pcb);
+        }
+
+        // 5. If there is no currently running process, dequeue from the newly create processes
+        if (cpu->currentProcess == NULL && !PQueue_isEmpty(cpu->readyQueue)) {
+            cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
+        }
+
+        /****************************************************
+         *      CHECK FOR I/O COMPLETION INTERRUPTS         *
+         ****************************************************/
+
         if (!Queue_isEmpty(device_1->waitingQueue)) {
             device_1_interrupt = Timer_countDown(device_1->timer);
             if (device_1_interrupt == 1) {
@@ -622,7 +653,9 @@ int main() {
             }
         }
 
-        /**** CHECK FOR I/O TRAP ****/
+        /***********************************
+         *      CHECK FOR I/O TRAP         *
+         ***********************************/
         if (cpu->currentProcess != NULL) {
             io_request = CPU_check_io_request(cpu->currentProcess, DEVICE_ARRAY_1);
             if (io_request == 1) {
