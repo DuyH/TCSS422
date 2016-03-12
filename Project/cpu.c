@@ -450,7 +450,6 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                 break;
         }
     }
-    printf("Makes it\n");
     // Continue detailing the pcb:
     while (pair_flag) {
         // handles producer and consumer
@@ -475,16 +474,16 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
         queue = Queue_enqueue(queue, pcb);          // Enqueue newly created PCB to new proc q
 
         fprintf(file, "Process created: PID %d with Priority %d and Type %s at %ld\n", PCB_get_pid(pcb),
-                PCB_get_priority(pcb), PCB_get_type_string(type), PCB_get_creation(pcb));
+                PCB_get_priority(pcb), PCB_get_type_string(pcb->type), PCB_get_creation(pcb));
         printf("Process created: PID %d with Priority %d and Type %s at %ld\n", PCB_get_pid(pcb),
-               PCB_get_priority(pcb), PCB_get_type_string(type), PCB_get_creation(pcb));
+               PCB_get_priority(pcb), PCB_get_type_string(pcb->type), PCB_get_creation(pcb));
     }
 
     return queue;
 }
 
 Process_Manager_p process_manager_constructor() {
-    Process_Manager_p manager_p = malloc(sizeof(Process_Manager_p));
+    Process_Manager_p manager_p = malloc(sizeof(Process_Manager));
     manager_p->num_processes = 0;
     manager_p->num_running = 0;
     int i;
@@ -520,14 +519,14 @@ int main() {
     IO_p device_2 = IO_constructor();
 
     // Create CPU:
-    CPU *cpu = CPU_constructor();
+    CPU_p cpu = CPU_constructor();
 
     int device_1_interrupt, device_2_interrupt, io_request;
 
     // CPU: Represent an instruction execution.
     unsigned int time_count = 1;
 
-// 1a. Create a queue of new processes, 0 - 5 processes at a time:
+    // 1a. Create a queue of new processes, 0 - 5 processes at a time:
     int ran_proc_created = rand() % (NUM_PRIORITIES + 1);
 
     total_procs += ran_proc_created;

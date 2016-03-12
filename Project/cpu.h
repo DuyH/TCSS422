@@ -139,10 +139,10 @@ typedef struct process_manager {
 typedef Process_Manager *Process_Manager_p;
 
 /* Process Manager Constructor */
-Process_Manager_p process_manager_constructor();
+Process_Manager_p process_manager_constructor(void);
 
 /* Process Manager Destructor */
-void process_manager_destructor(Process_Manager_p manager_p);
+void process_manager_destructor(Process_Manager_p);
 
 /* Process Manager Utility Functions */
 
