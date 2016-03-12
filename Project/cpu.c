@@ -464,6 +464,9 @@ Queue_p createProcess(Process_Manager_p manager, Queue_p queue, unsigned int tim
                PCB_get_priority(pcb), PCB_get_type_string(pcb->type), PCB_get_creation(pcb));
     }
 
+    fprintf(file, "\n");
+    printf("\n");
+
     return queue;
 }
 
@@ -569,36 +572,37 @@ int main() {
             if (cpu->currentProcess != NULL) {
                 CPU_pseudo_isr(cpu, INTERRUPT_TIMER, NULL);
             }
+
+            /**************************************
+             *       CREATE NEW PROCESSES          *
+             **************************************/
+
+            // 1. Generate a random number of processes to create
+            ran_proc_created = rand() % (NUM_PRIORITIES + 1);
+
+            // 2. Increment counters for total number of processes
+            total_procs += ran_proc_created;
+            process_ID += ran_proc_created;
+
+            // 3. Create randomly chosen number of processes
+            for (i = 0; i < 5; i++) {
+                if (manager_p->num_processes < 80)
+                    cpu->newProcessesQueue = createProcess(manager_p, cpu->newProcessesQueue, time_count);
+            }
+
+            // 4. Enqueue the freshly created processes into CPU's readyqueue
+            while (!Queue_isEmpty(cpu->newProcessesQueue)) {
+                PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
+                PCB_set_state(temp_pcb, ready);
+                PQueue_enqueue(cpu->readyQueue, temp_pcb);
+            }
+
+            // 5. If there is no currently running process, dequeue from the newly create processes
+            if (cpu->currentProcess == NULL && !PQueue_isEmpty(cpu->readyQueue)) {
+                cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
+            }
         }
 
-        /**************************************
-         *       CREATE NEW PROCESSES          *
-         **************************************/
-
-        // 1. Generate a random number of processes to create
-        ran_proc_created = rand() % (NUM_PRIORITIES + 1);
-
-        // 2. Increment counters for total number of processes
-        total_procs += ran_proc_created;
-        process_ID += ran_proc_created;
-
-        // 3. Create randomly chosen number of processes
-        for (i = 0; i < 5; i++) {
-            if (manager_p->num_processes < 80)
-                cpu->newProcessesQueue = createProcess(manager_p, cpu->newProcessesQueue, time_count);
-        }
-
-        // 4. Enqueue the freshly created processes into CPU's readyqueue
-        while (!Queue_isEmpty(cpu->newProcessesQueue)) {
-            PCB_p temp_pcb = Queue_dequeue(cpu->newProcessesQueue);
-            PCB_set_state(temp_pcb, ready);
-            PQueue_enqueue(cpu->readyQueue, temp_pcb);
-        }
-
-        // 5. If there is no currently running process, dequeue from the newly create processes
-        if (cpu->currentProcess == NULL && !PQueue_isEmpty(cpu->readyQueue)) {
-            cpu->currentProcess = PQueue_dequeue(cpu->readyQueue);
-        }
 
         /****************************************************
          *      CHECK FOR I/O COMPLETION INTERRUPTS         *
